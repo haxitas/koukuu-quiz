@@ -43,6 +43,7 @@ header h1 { font-size: 1.05rem; margin: 0; }
 #question { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1rem; }
 .q-no { font-weight: 700; color: var(--accent); }
 .q-instruction { font-size: .9rem; color: var(--muted); margin: .3rem 0; }
+.q-passage { white-space: pre-wrap; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: .8rem; margin: .5rem 0 .8rem; max-height: 46vh; overflow-y: auto; font-size: .95rem; }
 .q-text { margin: .5rem 0 1rem; white-space: pre-wrap; }
 .q-figure { max-width: 100%; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 1rem; }
 .figure-missing { padding: 1.5rem; text-align: center; color: var(--muted); background: var(--bg); border: 1px dashed var(--line); border-radius: 8px; margin-bottom: 1rem; }

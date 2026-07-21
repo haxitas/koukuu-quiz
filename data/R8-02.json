@@ -244,6 +244,163 @@
     },
 
     {
+      "id": "R8-02-eigo-A1", "subject": "英語", "no": "A-1", "type": "single",
+      "instruction": "問1・英文解釈:次の英文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "It was alarming news when air traffic controllers directing planes coming and going around one of the nation's busiest airports repeatedly lost their radar and radio communications, but pilots, independent air safety experts and the Federal Aviation Administration (FAA) say other redundant systems kept planes from colliding. \"I think the risk of a collision or an incident was increased, but not significantly because of the redundancy in the aviation system,\" said Jeff Guzzetti, a former accident investigator for the FAA and the National Transportation Safety Board (NTSB).\n\nThere are several contingency measures for radar or radio communication loss. When air traffic controllers lose the ability to see or speak to airborne planes, they can try text messaging the pilots via data link systems or try high-powered portable radios. An emergency radio frequency might also be an alternative if main communications are down. Tower controllers have high-powered light guns to send a green or red signal to pilots to let them know if they are clear to land even if they can't talk to them over the radio. And the entire air traffic control system is built on an overlapping network of radar sites. So, if a terminal control team loses its communications, a controller in a radar center that normally directs planes at higher altitudes might step in.\n\nEvery pilot is trained on what to do if they can't talk to the air traffic controllers, and modern passenger jets have their own backup systems. Airline pilots all regularly get refresher training emphasizing safety. Capt. Miles Morgan oversees all training for 17,000 United Airlines pilots at a facility in Denver filled with simulators and classrooms. He said losing communications is rare, but it's something pilots prepare for, as most training focuses on what to do if something goes wrong. In addition to multiple communications systems, planes are equipped with collision avoidance technology that shows pilots where all the other planes are moving around them. These systems alert pilots to an approaching aircraft's trajectory and can recommend evasive action to prevent a collision if planes get too close, Morgan said.\n\nAllied Pilots Association union spokesman Capt. Dennis Tajer said that when pilots lose contact with controllers, their first action is to continue on their last-directed path. If the outage continues, they'll broadcast their position to every other plane in the area — much like pilots do at small airports that don't have a control tower — as they follow their flight plans. \"It's not to downplay the seriousness of communication failure or radar outages, but it's to recognize that we have procedures, we trained to those procedures, and we have additional equipment that can only enhance the safety margin while we deal with that scenario,\" Tajer said.\n\n<注> FAA:連邦航空局 / NTSB:国家運輸安全委員会 / airborne:飛行中の / contingency:不測の事態 / trajectory:軌道 / evasive:回避する / outage:停止状態 / downplay:軽視する",
+      "text": "What is Mr. Guzzetti's view when he looks at the recent outages of ATC radar and radio communications?",
+      "figure": null,
+      "options": [
+        "The incidents drastically heightened collision risks, emphasizing systemic vulnerabilities.",
+        "The likelihood of accidents rose but only slightly because of the aviation system's redundancies.",
+        "The outages posed a negligible threat due to the inherent reliability of the air traffic controllers."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-eigo-A2", "subject": "英語", "no": "A-2", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "How does the article explain the high tolerance of the ATC system in the face of communication or radar failures?",
+      "figure": null,
+      "options": [
+        "By describing the prioritization of backup methods among the numerous emergency measures",
+        "By highlighting the reliance on central radar and communication sites which maintain uninterrupted watch",
+        "By giving examples of alternative communication methods and overlapping radar networks that enable contingency interventions"
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-eigo-A3", "subject": "英語", "no": "A-3", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "How does Capt. Morgan explain the preparedness of pilots for communication disruptions?",
+      "figure": null,
+      "options": [
+        "He explains the training of pilots focuses on what to do in such situations.",
+        "He explains that such events are commonplace and can be dealt with using routine drills alone.",
+        "He explains the refresher courses are so good that they provide full backup for all system failures."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-eigo-A4", "subject": "英語", "no": "A-4", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What does Capt. Tajer's commentary reveal about aviation protocols during controller contact loss?",
+      "figure": null,
+      "options": [
+        "That much depends on the pilot's own creative response",
+        "That the necessary contingency procedures exist and the relevant training is provided",
+        "That only advanced equipment and strict use of the original flight plan guarantees flight safety"
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-eigo-A5", "subject": "英語", "no": "A-5", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What philosophy can be observed in the aviation industry's approach to communication and radar outages?",
+      "figure": null,
+      "options": [
+        "The sole reliance on cutting-edge technological innovations eliminates all risks associated with system failure.",
+        "Safety depends on the pilot's own creativity in disruptive situations as there are no structured contingency measures.",
+        "The strategy integrates redundant systems with advanced collision avoidance technology, rigorous training, and standard procedures."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-eigo-A6", "subject": "英語", "no": "A-6", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "An aircraft operated as a controlled flight shall in principle maintain continuous air-ground voice communication watch on the appropriate communication channel of, and establish two-way communication as necessary with, the appropriate air traffic control unit.",
+      "text": "What does the above provision say with regard to air-ground voice communication watch on the appropriate communication channel?",
+      "figure": null,
+      "options": [
+        "That the watch is strictly optional and can be discontinued at the pilot's discretion.",
+        "That the watch is only required during specific phases of flight, such as takeoff and landing.",
+        "That the watch should generally be maintained, but exceptions may exist under certain conditions."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-eigo-A7", "subject": "英語", "no": "A-7", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Abbreviations and codes shall be used in the international aeronautical telecommunication service whenever they are appropriate and their use will shorten or otherwise facilitate communication.",
+      "text": "Under which circumstances must abbreviations and codes be employed in the international aeronautical telecommunication service?",
+      "figure": null,
+      "options": [
+        "Exclusively during emergency situations to prioritize speed over clarity.",
+        "Whenever they are deemed suitable and help to reduce the length or improve the ease of communication.",
+        "Only when they are mandated by national regulations, regardless of their impact on communication efficiency."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-eigo-A8", "subject": "英語", "no": "A-8", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "With regard to the use of frequencies between 156 MHz and 174 MHz to communicate with stations of the maritime mobile service, the communications of an aircraft station shall be brief and limited to operations in which stations of the maritime mobile service are primarily involved and where direct communication between the aircraft and the ship or coast station is required.",
+      "text": "According to the above regulation, how should the aircraft station communicate with stations of the maritime mobile service using frequencies between 156 MHz and 174 MHz?",
+      "figure": null,
+      "options": [
+        "They can be extended and include any topic as long as the frequency is not congested.",
+        "They should prioritize lengthy discussion to ensure all details are thoroughly conveyed.",
+        "They must be concise and restricted to situations where maritime stations play the main role and direct aircraft-to-ship or coast contact is essential."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-eigo-A9", "subject": "英語", "no": "A-9", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Any station which has knowledge of distress traffic, and which cannot itself assist the station in distress, shall nevertheless continue listening to such traffic until it is evident that assistance is being provided.",
+      "text": "What is the ongoing duty of a station aware of distress traffic if it is unable to provide direct help?",
+      "figure": null,
+      "options": [
+        "It must attempt to relay the distress information to other stations immediately.",
+        "It is required to keep monitoring the traffic until it becomes clear that help is underway.",
+        "It should discontinue monitoring to avoid interference with active assistance efforts."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-eigo-B1", "subject": "英語", "no": "B-1", "type": "fill_blanks",
+      "instruction": "問3・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】ジェット気流は、ほとんどの商業航空機が巡航する高度と同じ、高度約3万フィートから3万9千フィートを狭い幅で流れる強力な風である。東へ飛行する場合、飛行機はジェット気流がもたらす追い風を利用できる。この風は航空機の対地速度を高め、移動時間と燃料使用を削減する。一方、西行きの飛行機はジェット気流の向かい風に直面することがしばしばあり、移動時間と燃料消費が増加する。\n\n【英訳文】Jet streams are narrow bands of powerful winds that flow at ([ア]) of about 30,000 to 39,000 feet—the same range where most commercial flights cruise. When flying east, airplanes can take ([イ]) of the ([ウ]) provided by jet streams. These winds can boost an aircraft's ground speed, reducing travel time and fuel usage. In contrast, westbound flights often face ([エ]) from jet streams, increasing travel time and fuel ([オ]).",
+      "figure": null,
+      "options": ["advantage", "altitudes", "care", "conception", "consumption", "headwinds", "latitudes", "tailwinds", "whirlwinds"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 2 }, { "label": "イ", "answer": 1 },
+        { "label": "ウ", "answer": 8 }, { "label": "エ", "answer": 6 }, { "label": "オ", "answer": 5 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R8-02-eigo-B2", "subject": "英語", "no": "B-2", "type": "fill_blanks",
+      "instruction": "問4・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】天体物理学者たちは、ワシントン州ハンフォードとルイジアナ州リビングストンにある全長4キロメートルのL字型の装置を一斉に使う施設であるレーザー干渉計重力波観測所を使って、これまでで最大規模の、2つのブラックホールの合体があったことを発見した。2つのブラックホールのうち大きい方の質量は太陽の約140倍、もう1つの質量は約100倍だった。\n\n【英訳文】Astrophysicists have discovered the largest known ([ア]) of two black holes to form a larger single hole using the Laser Interferometer Gravitational-Wave Observatory, a ([イ]) that uses 4-km long, L-shaped ([ウ]) in Hanford, Washington, and Livingston, Louisiana, in ([エ]). The larger of the two black holes was about 140 times the ([オ]) of the sun and the other about 100 times.",
+      "figure": null,
+      "options": ["container", "facility", "fertility", "instruments", "mass", "merger", "sum", "total", "unison"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 6 }, { "label": "イ", "answer": 2 },
+        { "label": "ウ", "answer": 4 }, { "label": "エ", "answer": 9 }, { "label": "オ", "answer": 5 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R8-02-eigo-B3", "subject": "英語", "no": "B-3", "type": "fill_blanks",
+      "instruction": "問5・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】飛行中の航空機局及び航空機地球局は、安全にそして規則正しく飛行することに関して航空機に不可欠である通信の必要性を満たすため無線通信業務を維持し、又、権限のある機関が要求する聴守を維持しなければならない。さらに、航空機局及び航空機地球局は、安全上の理由がある場合を除くほか、関係の航空局又は航空地球局に通知することなく聴守を中止してはならない。\n\n【英訳文】Aircraft stations and aircraft earth stations in flight shall maintain radio service to meet the ([ア]) communications needs of the aircraft with ([イ]) to safety and ([ウ]) of flight and shall maintain watch as required by the ([エ]) authority and shall not cease watch, except for reasons of safety, ([オ]) informing the aeronautical station or aeronautical earth station concerned.",
+      "figure": null,
+      "options": ["competent", "essential", "esteem", "optional", "powerful", "regularity", "respect", "within", "without"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 2 }, { "label": "イ", "answer": 7 },
+        { "label": "ウ", "answer": 6 }, { "label": "エ", "answer": 1 }, { "label": "オ", "answer": 9 }
+      ],
+      "explanation": ""
+    },
+
+    {
       "id": "R8-02-eikaiwa-Q1", "subject": "英会話", "no": "Q-1", "type": "single",
       "instruction": "最も適切な答えを一つ選べ",
       "text": "Many children like watching films or reading books in which princes and princesses appear. What kind of story is Sleeping Beauty?",

@@ -93,6 +93,13 @@ function renderQuestion() {
   no.textContent = q.no;
   art.appendChild(no);
 
+  if (q.passage) {
+    const psg = document.createElement('div');
+    psg.className = 'q-passage';
+    psg.textContent = q.passage;
+    art.appendChild(psg);
+  }
+
   if (q.instruction) {
     const ins = document.createElement('div');
     ins.className = 'q-instruction';
