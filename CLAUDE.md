@@ -30,7 +30,7 @@ Question:
 ```
 { "attempts": [ { "key":"R8-02-無線工学", "date":"2026-07-21", "score":1, "total":2, "wrong":[1] } ] }
 ```
-`key` = `{code}-{subject}`。`wrong` = 誤答問題の**0始まり index**(出題順)。
+`key` = `{code}-{subject}`。`wrong` = 誤答問題の **id の配列**(SPEC原文の0始まりindexから変更。id基準ならデータの問題順が変わっても前回誤答を正しく突き合わせられる。出題画面で該当問題に「前回まちがえた」バッジを表示する)。
 
 ## 構成
 

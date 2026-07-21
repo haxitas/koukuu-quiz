@@ -71,21 +71,21 @@ check('fill 一部違いで不正解', () =>
   assert(gradeQuestion(qFill, { ア: 1, イ: 4, ウ: 6, エ: 8, オ: 10 }) === false));
 
 // --- gradeExam ------------------------------------------------------------
-check('gradeExam 集計(score/total/wrong=0始まりindex)', () => {
+check('gradeExam 集計(score/total/wrong=誤答id)', () => {
   const questions = [qSingle, qTF, qFill];
   const responses = {
     'R8-02-kougaku-A7': 5,                              // 正
-    'R8-02-houki-B1': { ア: 1, イ: 1, ウ: 2, エ: 2, オ: 1 }, // 誤(index 1)
+    'R8-02-houki-B1': { ア: 1, イ: 1, ウ: 2, エ: 2, オ: 1 }, // 誤
     'R8-02-houki-B2': { ア: 1, イ: 4, ウ: 6, エ: 8, オ: 9 }, // 正
   };
   const r = gradeExam(questions, responses);
   eq(r.score, 2, 'score');
   eq(r.total, 3, 'total');
-  eq(r.wrong, [1], 'wrong');
+  eq(r.wrong, ['R8-02-houki-B1'], 'wrong');
 });
-check('gradeExam 全問未回答なら全誤', () => {
+check('gradeExam 全問未回答なら全誤(id配列)', () => {
   const r = gradeExam([qSingle, qTF], {});
-  eq(r, { score: 0, total: 2, wrong: [0, 1] });
+  eq(r, { score: 0, total: 2, wrong: ['R8-02-kougaku-A7', 'R8-02-houki-B1'] });
 });
 
 // --- appendResult: append-only(既存を破壊しない) ------------------------

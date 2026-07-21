@@ -26,15 +26,16 @@ export function gradeQuestion(q, response) {
 }
 
 // 試験1回分を採点。responses は { questionId: response } のオブジェクト。
-// wrong は誤答問題の 0始まり index(出題順)の配列。
+// wrong は誤答問題の id の配列(出題順)。id 基準なので、後でデータの問題順が
+// 変わっても「前回どの問題を間違えたか」を正しく突き合わせられる。
 export function gradeExam(questions, responses) {
   const src = responses || {};
   let score = 0;
   const wrong = [];
-  questions.forEach((q, i) => {
+  for (const q of questions) {
     if (gradeQuestion(q, src[q.id])) score += 1;
-    else wrong.push(i);
-  });
+    else wrong.push(q.id);
+  }
   return { score, total: questions.length, wrong };
 }
 

@@ -75,8 +75,24 @@ async function startQuiz(exam, subject) {
   state.questions = data.questions.filter((q) => q.subject === subject);
   state.responses = {};
   state.qi = 0;
+  state.prevWrong = prevWrongIds(`${exam.code}-${subject}`, state.questions);
   renderQuestion();
   show('screen-quiz');
+}
+
+// 直近の挑戦で間違えた問題の id 集合を返す(前回誤答インジケータ用)。
+function prevWrongIds(key, questions) {
+  const store = loadStore();
+  const hits = store.attempts.filter((a) => a.key === key);
+  const last = hits[hits.length - 1];
+  const set = new Set();
+  if (last && Array.isArray(last.wrong)) {
+    for (const w of last.wrong) {
+      if (typeof w === 'string') set.add(w);            // id 形式(現行)
+      else if (typeof w === 'number' && questions[w]) set.add(questions[w].id); // 旧index形式の互換
+    }
+  }
+  return set;
 }
 
 // ---- 1問描画 ----
@@ -91,6 +107,12 @@ function renderQuestion() {
   const no = document.createElement('div');
   no.className = 'q-no';
   no.textContent = q.no;
+  if (state.prevWrong && state.prevWrong.has(q.id)) {
+    const badge = document.createElement('span');
+    badge.className = 'prev-wrong-badge';
+    badge.textContent = '前回まちがえた';
+    no.appendChild(badge);
+  }
   art.appendChild(no);
 
   if (q.passage) {
@@ -325,8 +347,9 @@ function renderResult(result) {
     wl.innerHTML = '<p class="all-correct">全問正解。誤答はありません。</p>';
     return;
   }
-  for (const i of result.wrong) {
-    const q = state.questions[i];
+  for (const id of result.wrong) {
+    const q = state.questions.find((x) => x.id === id);
+    if (!q) continue;
     const item = document.createElement('div');
     item.className = 'wrong-item';
     const parts = [

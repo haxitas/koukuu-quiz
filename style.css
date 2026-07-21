@@ -42,6 +42,8 @@ header h1 { font-size: 1.05rem; margin: 0; }
 #progress { font-size: .85rem; color: var(--muted); margin: .3rem 0 .8rem; }
 #question { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1rem; }
 .q-no { font-weight: 700; color: var(--accent); }
+.prev-wrong-badge { display: inline-block; margin-left: .6rem; padding: .1rem .5rem; font-size: .72rem; font-weight: 700; color: #fff; background: #d9730d; border-radius: 999px; vertical-align: middle; }
+@media (prefers-color-scheme: dark) { .prev-wrong-badge { background: #e8894a; color: #1a1c1f; } }
 .q-instruction { font-size: .9rem; color: var(--muted); margin: .3rem 0; }
 .q-passage { white-space: pre-wrap; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: .8rem; margin: .5rem 0 .8rem; max-height: 46vh; overflow-y: auto; font-size: .95rem; }
 .q-text { margin: .5rem 0 1rem; white-space: pre-wrap; }

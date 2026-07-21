@@ -634,19 +634,74 @@
 
     {
       "id": "R8-02-eikaiwa-Q1", "subject": "英会話", "no": "Q-1", "type": "single",
-      "instruction": "最も適切な答えを一つ選べ",
+      "instruction": "放送された英文に対して、最も適切な答えを一つ選べ",
       "text": "Many children like watching films or reading books in which princes and princesses appear. What kind of story is Sleeping Beauty?",
       "figure": null,
       "options": ["A fairy tale", "A documentary", "A suspense drama", "A science fiction story"],
       "answer": 1, "blanks": null, "explanation": ""
     },
     {
+      "id": "R8-02-eikaiwa-Q2", "subject": "英会話", "no": "Q-2", "type": "single",
+      "instruction": "放送された英文に対して、最も適切な答えを一つ選べ",
+      "text": "You are driving a car along a street and notice an ambulance coming up behind you. What will you do?",
+      "figure": null,
+      "options": [
+        "Increase your speed as fast as you can",
+        "Chase the emergency vehicle to claim priority",
+        "Sound your horn at the car in front so that you can go faster",
+        "Pull over to one side and give the emergency vehicle sufficient room to pass"
+      ],
+      "answer": 4, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-eikaiwa-Q3", "subject": "英会話", "no": "Q-3", "type": "single",
+      "instruction": "放送された英文に対して、最も適切な答えを一つ選べ",
+      "text": "Your colleague reminds you of an item we have decided to discuss at the meeting. How should you respond?",
+      "figure": null,
+      "options": [
+        "I should thank him for the heads-up.",
+        "I should pretend that I excluded the item on purpose.",
+        "I should ask him why he wants to include such an item on the agenda.",
+        "I should tell my boss that my colleague wants to discuss the item in the meeting."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
       "id": "R8-02-eikaiwa-Q4", "subject": "英会話", "no": "Q-4", "type": "single",
-      "instruction": "最も適切な答えを一つ選べ",
+      "instruction": "放送された英文に対して、最も適切な答えを一つ選べ",
       "text": "A passenger plane is being directed into a hangar at an airport. What is a possible reason for this?",
       "figure": null,
       "options": ["The fuel tank of the airplane needs to be filled.", "The airplane needs to be checked or repaired.", "The airplane is going to disembark passengers.", "The cargo on the airplane needs to be unloaded."],
       "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-eikaiwa-Q5", "subject": "英会話", "no": "Q-5", "type": "single",
+      "instruction": "放送された英文に対して、最も適切な答えを一つ選べ",
+      "text": "In aviation English, special expressions are used to avoid misunderstanding. \"Affirm\" is used instead of \"Yes.\" Which of the following is used instead of \"No\"?",
+      "figure": null,
+      "options": ["None", "Never", "Nothing", "Negative"],
+      "answer": 4, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-eikaiwa-Q6", "subject": "英会話", "no": "Q-6", "type": "single",
+      "instruction": "放送された英文に対して、最も適切な答えを一つ選べ",
+      "text": "You are the pilot of an airplane. It is very cold and snow is accumulating on the wings and fuselage. What might you need to do before takeoff?",
+      "figure": null,
+      "options": [
+        "Wait until the snow melts",
+        "De-ice and anti-ice the plane",
+        "Check the quality of the snow",
+        "Check the possibility of snowfall"
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-eikaiwa-Q7", "subject": "英会話", "no": "Q-7", "type": "single",
+      "instruction": "放送された英文に対して、最も適切な答えを一つ選べ",
+      "text": "You are the pilot of an airplane departing from Haneda Airport. You receive a message saying, \"Cleared to New Chitose Airport via PLUTO One Departure, flight planned route, maintain FL150 (flight level one five zero), expect FL 370 (flight level three seven zero), squawk 2146 (two one four six).\" Who is this message from?",
+      "figure": null,
+      "options": ["Departure", "Ground Control", "Clearance Delivery", "Local Control (Tower)"],
+      "answer": 3, "blanks": null, "explanation": ""
     }
   ]
 }
