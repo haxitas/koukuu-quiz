@@ -107,27 +107,19 @@ function renderQuestion() {
     art.appendChild(ins);
   }
 
-  const text = document.createElement('div');
-  text.className = 'q-text';
-  text.textContent = q.text;
-  art.appendChild(text);
-
-  if (q.figure) {
-    const img = document.createElement('img');
-    img.className = 'q-figure';
-    img.alt = '問題図';
-    img.src = q.figure;
-    img.onerror = () => {
-      const ph = document.createElement('div');
-      ph.className = 'figure-missing';
-      ph.textContent = '（図は準備中）';
-      img.replaceWith(ph);
-    };
-    art.appendChild(img);
+  if (q.type === 'fill_blanks') {
+    // 穴埋めは本文の（ア）位置にセレクトをインライン表示する
+    if (q.figure) renderFigure(art, q);
+    renderFillBlanks(art, q);
+  } else {
+    const text = document.createElement('div');
+    text.className = 'q-text';
+    text.textContent = q.text;
+    art.appendChild(text);
+    if (q.figure) renderFigure(art, q);
+    if (q.type === 'truefalse_list') renderComposite(art, q);
+    else renderSingle(art, q);
   }
-
-  if (isComposite(q)) renderComposite(art, q);
-  else renderSingle(art, q);
 
   // ナビ状態
   document.getElementById('prev-btn').disabled = (state.qi === 0);
@@ -158,6 +150,98 @@ function renderSingle(art, q) {
   });
 }
 
+function renderFigure(art, q) {
+  const img = document.createElement('img');
+  img.className = 'q-figure';
+  img.alt = '問題図';
+  img.src = q.figure;
+  img.onerror = () => {
+    const ph = document.createElement('div');
+    ph.className = 'figure-missing';
+    ph.textContent = '（図は準備中）';
+    img.replaceWith(ph);
+  };
+  art.appendChild(img);
+}
+
+// 空欄用のインラインセレクト。未選択時は「(ラベル)」を表示し、本文中で穴として読める。
+function makeBlankSelect(q, label) {
+  const cur = state.responses[q.id] || {};
+  const sel = document.createElement('select');
+  sel.className = 'blank-inline';
+  sel.dataset.label = label;
+  const none = document.createElement('option');
+  none.value = ''; none.textContent = `(${label})`;
+  sel.appendChild(none);
+  q.options.forEach((opt, i) => {
+    const idx = i + 1;
+    const o = document.createElement('option');
+    o.value = String(idx);
+    o.textContent = `${idx}. ${opt}`;
+    if (cur[label] === idx) o.selected = true;
+    sel.appendChild(o);
+  });
+  sel.addEventListener('change', () => {
+    const r = { ...(state.responses[q.id] || {}) };
+    if (sel.value === '') delete r[label];
+    else r[label] = Number(sel.value);
+    state.responses[q.id] = r;
+    renderQuestion(); // 同じ記号(例:ウ)が複数あるとき表示を同期する
+  });
+  return sel;
+}
+
+// fill_blanks: 本文の [ア]…[オ] マーカー位置にセレクトを差し込み、下に選択肢一覧を表示。
+function renderFillBlanks(art, q) {
+  const labels = q.blanks.map((b) => b.label);
+  const wrap = document.createElement('div');
+  wrap.className = 'q-text fill-text';
+  const re = new RegExp('[\\[［]\\s*(' + labels.join('|') + ')\\s*[\\]］]');
+  let rest = q.text;
+  let guard = 0;
+  const placed = new Set();
+  while (guard++ < 500) {
+    const m = rest.match(re);
+    if (!m) break;
+    if (m.index > 0) wrap.appendChild(document.createTextNode(rest.slice(0, m.index)));
+    wrap.appendChild(makeBlankSelect(q, m[1]));
+    placed.add(m[1]);
+    rest = rest.slice(m.index + m[0].length);
+  }
+  if (rest) wrap.appendChild(document.createTextNode(rest));
+  art.appendChild(wrap);
+
+  // 選択肢プール(紙の問題と同じく番号付きで一覧表示)
+  const pool = document.createElement('div');
+  pool.className = 'option-pool';
+  const head = document.createElement('div');
+  head.className = 'pool-head';
+  head.textContent = '選択肢';
+  pool.appendChild(head);
+  q.options.forEach((opt, i) => {
+    const item = document.createElement('span');
+    item.className = 'pool-item';
+    const b = document.createElement('b');
+    b.textContent = i + 1;
+    item.append(b, document.createTextNode(' ' + opt));
+    pool.appendChild(item);
+  });
+  art.appendChild(pool);
+
+  // マーカーが本文に無かった空欄はラベル付きセレクトで下に補う(フォールバック)
+  for (const b of q.blanks) {
+    if (placed.has(b.label)) continue;
+    const group = document.createElement('div');
+    group.className = 'blank-group';
+    const lab = document.createElement('div');
+    lab.className = 'blank-label';
+    lab.textContent = `［${b.label}］`;
+    group.append(lab, makeBlankSelect(q, b.label));
+    art.appendChild(group);
+  }
+}
+
+// truefalse_list 専用: 各設問文(ア〜オ)に2択ラジオ。
 function renderComposite(art, q) {
   const cur = state.responses[q.id] || {}; // { label: 1始まり index }
   for (const b of q.blanks) {
@@ -173,47 +257,22 @@ function renderComposite(art, q) {
       t.textContent = b.text;
       group.appendChild(t);
     }
-
-    if (q.type === 'truefalse_list') {
-      // 2択をラジオで
-      q.options.forEach((opt, i) => {
-        const idx = i + 1;
-        const wrap = document.createElement('label');
-        wrap.className = 'tf-row';
-        const input = document.createElement('input');
-        input.type = 'radio';
-        input.name = `tf-${b.label}`;
-        input.checked = (cur[b.label] === idx);
-        input.addEventListener('change', () => {
-          const r = { ...(state.responses[q.id] || {}) };
-          r[b.label] = idx;
-          state.responses[q.id] = r;
-        });
-        wrap.append(input, document.createTextNode(opt));
-        group.appendChild(wrap);
-      });
-    } else {
-      // fill_blanks: 選択肢プールから select
-      const sel = document.createElement('select');
-      const none = document.createElement('option');
-      none.value = ''; none.textContent = '— 選択 —';
-      sel.appendChild(none);
-      q.options.forEach((opt, i) => {
-        const idx = i + 1;
-        const o = document.createElement('option');
-        o.value = String(idx);
-        o.textContent = `${idx}. ${opt}`;
-        if (cur[b.label] === idx) o.selected = true;
-        sel.appendChild(o);
-      });
-      sel.addEventListener('change', () => {
+    q.options.forEach((opt, i) => {
+      const idx = i + 1;
+      const w = document.createElement('label');
+      w.className = 'tf-row';
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = `tf-${q.id}-${b.label}`;
+      input.checked = (cur[b.label] === idx);
+      input.addEventListener('change', () => {
         const r = { ...(state.responses[q.id] || {}) };
-        if (sel.value === '') delete r[b.label];
-        else r[b.label] = Number(sel.value);
+        r[b.label] = idx;
         state.responses[q.id] = r;
       });
-      group.appendChild(sel);
-    }
+      w.append(input, document.createTextNode(opt));
+      group.appendChild(w);
+    });
     art.appendChild(group);
   }
 }

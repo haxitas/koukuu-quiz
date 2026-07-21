@@ -51,6 +51,12 @@ header h1 { font-size: 1.05rem; margin: 0; }
 .choice:hover { border-color: var(--accent); }
 .choice.picked { background: var(--pick); border-color: var(--accent); }
 .choice input { margin-top: .35rem; }
+.fill-text { line-height: 2.4; }
+select.blank-inline { display: inline-block; margin: 0 .15rem; padding: .1rem .35rem; border-radius: 6px; border: 1.5px solid var(--accent); background: var(--pick); color: var(--ink); font-size: .95rem; max-width: 100%; vertical-align: baseline; }
+.option-pool { margin-top: 1rem; padding: .8rem; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; font-size: .9rem; }
+.pool-head { font-weight: 700; color: var(--muted); margin-bottom: .4rem; }
+.pool-item { display: inline-block; margin: .2rem 1rem .2rem 0; }
+.pool-item b { color: var(--accent); margin-right: .25rem; }
 .blank-group { border-top: 1px solid var(--line); padding-top: .7rem; margin-top: .7rem; }
 .blank-label { font-weight: 700; }
 .blank-text { font-size: .95rem; margin: .2rem 0 .4rem; }
