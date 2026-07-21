@@ -1,0 +1,15 @@
+{
+  "note": "利用可能な過去問の一覧。Phase1でdata/*.jsonから自動生成する予定。counts は各科目の問題数。",
+  "exams": [
+    {
+      "code": "R8-02",
+      "era": "令和8年2月期",
+      "file": "R8-02.json",
+      "subjects": [
+        { "subject": "無線工学", "count": 2 },
+        { "subject": "法規", "count": 3 },
+        { "subject": "英会話", "count": 2 }
+      ]
+    }
+  ]
+}

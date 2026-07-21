@@ -1,0 +1,75 @@
+{
+  "meta": { "era": "令和8年2月期", "code": "R8-02", "note": "スキーマ検証用サンプル(実データ+公式正答)" },
+  "questions": [
+    {
+      "id": "R8-02-eikaiwa-Q1", "subject": "英会話", "no": "Q-1", "type": "single",
+      "instruction": "最も適切な答えを一つ選べ",
+      "text": "Many children like watching films or reading books in which princes and princesses appear. What kind of story is Sleeping Beauty?",
+      "figure": null,
+      "options": ["A fairy tale", "A documentary", "A suspense drama", "A science fiction story"],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-eikaiwa-Q4", "subject": "英会話", "no": "Q-4", "type": "single",
+      "instruction": "最も適切な答えを一つ選べ",
+      "text": "A passenger plane is being directed into a hangar at an airport. What is a possible reason for this?",
+      "figure": null,
+      "options": ["The fuel tank of the airplane needs to be filled.", "The airplane needs to be checked or repaired.", "The airplane is going to disembark passengers.", "The cargo on the airplane needs to be unloaded."],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-houki-A1", "subject": "法規", "no": "A-1", "type": "single",
+      "instruction": "電波法(第19条)の規定に照らし、__内に入れるべき最も適切な字句の組合せを一つ選べ",
+      "text": "総務大臣は、免許人又は電波法第8条の予備免許を受けた者が識別信号、[A]又は運用許容時間の指定の変更を申請した場合において、[B]特に必要があると認めるときは、その指定を変更することができる。",
+      "figure": null,
+      "options": ["A:電波の型式、周波数、空中線電力 / B:電波の規整その他公益上", "A:無線設備の設置場所、電波の型式、周波数、空中線電力 / B:電波の規整その他公益上", "A:無線設備の設置場所、電波の型式、周波数、空中線電力 / B:混信の除去その他", "A:電波の型式、周波数、空中線電力 / B:混信の除去その他"],
+      "answer": 4, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-houki-B1", "subject": "法規", "no": "B-1", "type": "truefalse_list",
+      "instruction": "電波法(第79条)の規定に照らし、該当するものを1、該当しないものを2として解答せよ",
+      "text": "無線従事者が電波法違反等をしたときに総務大臣から受けることがある処分について。",
+      "figure": null,
+      "options": ["該当する", "該当しない"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "text": "期間を定めてその無線従事者が従事する無線局の空中線電力を制限する処分", "answer": 2 },
+        { "label": "イ", "text": "無線従事者の免許の取消しの処分", "answer": 1 },
+        { "label": "ウ", "text": "期間を定めてその無線従事者が従事する無線局の運用を停止する処分", "answer": 2 },
+        { "label": "エ", "text": "期間を定めてその無線従事者が従事する無線局の周波数を制限する処分", "answer": 2 },
+        { "label": "オ", "text": "3箇月以内の期間を定めてその業務に従事することを停止する処分", "answer": 1 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R8-02-houki-B2", "subject": "法規", "no": "B-2", "type": "fill_blanks",
+      "instruction": "電波法施行規則(第31条の3)の規定に照らし、__内に入れるべき最も適切な字句を1から10のうちからそれぞれ一つ選べ",
+      "text": "義務航空機局の送信設備の有効通達距離は次のとおり。118MHzから144MHzまでの周波数を使用する送信設備及び[イ]の送信設備については、[ウ]以上であること。D=3.8√h キロメートル。hは当該航空機の飛行する[エ]を[オ]で表した数とする。(ア=総則)",
+      "figure": null,
+      "options": ["A3E電波", "J3E電波", "機上DME", "ATCトランスポンダ", "314.8キロメートル", "370.4キロメートル", "最大巡航速度(毎時)", "最高高度", "メートル", "キロメートル"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 1 }, { "label": "イ", "answer": 4 },
+        { "label": "ウ", "answer": 6 }, { "label": "エ", "answer": 8 },
+        { "label": "オ", "answer": 9 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R8-02-kougaku-A7", "subject": "無線工学", "no": "A-7", "type": "single",
+      "instruction": "デジタル変調について、誤っているものを一つ選べ",
+      "text": "次の記述は、デジタル変調について述べたものである。このうち誤っているものを下の番号から選べ。",
+      "figure": null,
+      "options": ["FSKは、入力信号の0と1に応じて、搬送波の周波数を変化させる方式をいう。", "ASKは、入力信号の0と1に応じて、搬送波の振幅を変化させる方式をいう。", "PSKは、入力信号の0と1に応じて、搬送波の位相を変化させる方式をいう。", "QAMは、入力信号の0と1に応じて、搬送波の振幅と位相を変化させる方式をいう。", "QPSKは、PSKのうち、搬送波の位相を2種類変化させる方式をいう。"],
+      "answer": 5, "blanks": null, "explanation": "QPSKは位相を4種類変化させるため、5が誤り。"
+    },
+    {
+      "id": "R8-02-kougaku-A1", "subject": "無線工学", "no": "A-1", "type": "single",
+      "instruction": "図に示す並列共振回路について、誤っているものを一つ選べ",
+      "text": "交流電源電圧Ėの大きさを100[V]、抵抗Rを10[kΩ]、誘導リアクタンスX_Lを5[kΩ]とし、回路は共振状態にあるものとする。※本問は回路図が必須。",
+      "figure": "figures/R8-02-kougaku-A1.png",
+      "options": ["交流電源からみたインピーダンスの大きさは、10[kΩ]である。", "交流電源から流れる電流I0の大きさは、10[mA]である。", "X_Lに流れる電流I_Lの大きさは、20[mA]である。", "容量リアクタンスX_Cは、5[kΩ]である。", "X_Cに流れる電流I_CとX_Lに流れる電流I_Lとの位相差は、π/2[rad]である。"],
+      "answer": 5, "blanks": null, "explanation": "図がないと解答不能な問題の例(figureにページ切り出し画像を持たせる)。"
+    }
+  ]
+}

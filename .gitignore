@@ -1,0 +1,11 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*~
+
+# ローカルの一時物
+*.log
+.claude/launch.json
+
+# 変換元の生PDF(アプリは参照しない・容量が大きいのでPagesには載せない)
+koukuu-tuu/

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>航空無線通信士 過去問</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>航空無線通信士 過去問</h1>
+    <button id="home-btn" class="link-btn" hidden>← 科目選択にもどる</button>
+  </header>
+
+  <!-- 選択画面 -->
+  <section id="screen-select" class="screen">
+    <p class="hint">年・期を選び、科目をタップすると始まります。成績はこの端末にだけ保存されます。</p>
+    <div id="exam-list"></div>
+  </section>
+
+  <!-- 出題画面 -->
+  <section id="screen-quiz" class="screen" hidden>
+    <div id="quiz-meta"></div>
+    <div id="progress"></div>
+    <article id="question"></article>
+    <nav id="quiz-nav">
+      <button id="prev-btn">← 前へ</button>
+      <button id="next-btn">次へ →</button>
+      <button id="grade-btn" class="primary" hidden>採点する</button>
+    </nav>
+  </section>
+
+  <!-- 結果画面 -->
+  <section id="screen-result" class="screen" hidden>
+    <div id="result-summary"></div>
+    <h2>誤答の見直し</h2>
+    <div id="wrong-list"></div>
+    <button id="result-home-btn" class="primary">科目選択にもどる</button>
+  </section>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

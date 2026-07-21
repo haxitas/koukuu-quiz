@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>quiz-core tests</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 1.5rem; }
+    .ok { color: #137333; } .ng { color: #c5221f; font-weight: 700; }
+    #summary { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; }
+    li { margin: .2rem 0; }
+  </style>
+</head>
+<body>
+  <h1>quiz-core.mjs ユニットテスト</h1>
+  <div id="summary">running…</div>
+  <ul id="list"></ul>
+  <script type="module">
+    import { runTests } from './quiz-core.test.mjs';
+    const results = runTests();
+    const pass = results.filter(r => r.ok).length;
+    const fail = results.length - pass;
+    const summary = `PASS ${pass} / FAIL ${fail} / TOTAL ${results.length}`;
+    document.getElementById('summary').textContent = summary;
+    document.getElementById('summary').className = fail === 0 ? 'ok' : 'ng';
+    const ul = document.getElementById('list');
+    for (const r of results) {
+      const li = document.createElement('li');
+      li.className = r.ok ? 'ok' : 'ng';
+      li.textContent = (r.ok ? '✓ ' : '✗ ') + r.name + (r.ok ? '' : ' — ' + r.msg);
+      ul.appendChild(li);
+    }
+    // 機械判定用に window とタイトルへも出す
+    window.__TEST_RESULT__ = { pass, fail, total: results.length, results };
+    document.title = fail === 0 ? `PASS ${pass}/${results.length}` : `FAIL ${fail}/${results.length}`;
+    console.log('[TESTS] ' + summary);
+    results.filter(r => !r.ok).forEach(r => console.error('[FAIL] ' + r.name + ' — ' + r.msg));
+  </script>
+</body>
+</html>
