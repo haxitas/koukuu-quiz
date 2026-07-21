@@ -42,6 +42,7 @@ Question:
 ├── data/index.json        # 期・科目の一覧
 ├── data/R8-02.json        # 問題本体(期ごと1ファイル)
 ├── figures/               # 図(回路図等)。無い問題は figure=null
+├── scripts/               # データ変換パイプライン(pdf_to_png / crop_figures / validate_data / build_index)。要 pip install pymupdf
 ├── tests/                 # quiz-core.test.mjs + run-tests.html(ブラウザ実行のランナー)
 ├── MUSENN-PHASE_NOTES.md  # フェーズごとの記録(完了/未解決/仮定/次の初手)
 └── koukuu-tuu/            # 変換元の生PDF(2002〜)。アプリは参照しない
@@ -61,7 +62,7 @@ python -m http.server 8137
 ## フェーズ
 
 - **Phase0(完了)**: 素の静的アプリ + 実データ1期(R8-02)。選択→1問ずつ→採点→誤答表示、成績localStorage追記。実機(モバイル幅含む)で動作確認済み。
-- Phase1: 実物PDF→JSONの整形手順を確立。`data/index.json` を data から自動生成。数年分を投入。
+- **Phase1(進行中)**: 実物PDF→JSONの半自動パイプラインを確立(`scripts/` 参照)。無線工学 R8-02 を全14問+図7枚で投入済み。`data/index.json` は `build_index.py` で自動生成。次は同期の法規・英語を仕上げて「1年3科目」を満たし実測時間で全期間展開を判断(凍結条件)。
 - Phase2: 成績の蓄積表示の拡充、直近誤答だけの復習モード。
 - Phase3(任意): 端末間同期・検索・間隔反復。Phase2完了後に判断。
 

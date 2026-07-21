@@ -1,22 +1,210 @@
 {
-  "meta": { "era": "令和8年2月期", "code": "R8-02", "note": "スキーマ検証用サンプル(実データ+公式正答)" },
+  "meta": { "era": "令和8年2月期", "code": "R8-02", "note": "無線工学=全14問(2026(R8)-02 EZ802より転記・正答PDFで確認)。法規・英会話は一部サンプル。" },
   "questions": [
     {
-      "id": "R8-02-eikaiwa-Q1", "subject": "英会話", "no": "Q-1", "type": "single",
-      "instruction": "最も適切な答えを一つ選べ",
-      "text": "Many children like watching films or reading books in which princes and princesses appear. What kind of story is Sleeping Beauty?",
-      "figure": null,
-      "options": ["A fairy tale", "A documentary", "A suspense drama", "A science fiction story"],
+      "id": "R8-02-kougaku-A1", "subject": "無線工学", "no": "A-1", "type": "single",
+      "instruction": "図に示す並列共振回路について、誤っているものを一つ選べ",
+      "text": "次の記述は、図に示す並列共振回路について述べたものである。このうち誤っているものを下の番号から選べ。ただし、交流電源電圧Ėの大きさを100[V]、抵抗Rを10[kΩ]及び誘導リアクタンスX_Lを5[kΩ]とし、回路は共振状態にあるものとする。",
+      "figure": "figures/R8-02-kougaku-A1.png",
+      "options": [
+        "交流電源からみたインピーダンスの大きさは、10[kΩ]である。",
+        "交流電源から流れる電流I₀の大きさは、10[mA]である。",
+        "X_Lに流れる電流I_Lの大きさは、20[mA]である。",
+        "容量リアクタンスX_Cは、5[kΩ]である。",
+        "X_Cに流れる電流I_CとX_Lに流れる電流I_Lとの位相差は、π/2[rad]である。"
+      ],
+      "answer": 5, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-kougaku-A2", "subject": "無線工学", "no": "A-2", "type": "single",
+      "instruction": "Nチャネル接合形FETについて、__内の字句の正しい組合せを一つ選べ",
+      "text": "次の記述は、図(図記号)に示すNチャネル接合形の電界効果トランジスタ(FET)について述べたものである。__内に入れるべき字句の正しい組合せを下の番号から選べ。\n(1) ドレイン(D)電流を、[A]で制御する半導体素子である。\n(2) Nチャネル中の多数キャリアは、[B]である。\n(3) バイポーラトランジスタに比べて入力インピーダンスが極めて[C]。",
+      "figure": "figures/R8-02-kougaku-A2.png",
+      "options": [
+        "A:ゲート(G)-ソース(S)間の電圧 / B:正孔 / C:低い",
+        "A:ゲート(G)-ソース(S)間の電圧 / B:正孔 / C:高い",
+        "A:ゲート(G)-ソース(S)間の電圧 / B:電子 / C:高い",
+        "A:ゲート(G)に流れる電流 / B:電子 / C:低い",
+        "A:ゲート(G)に流れる電流 / B:正孔 / C:低い"
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-kougaku-A3", "subject": "無線工学", "no": "A-3", "type": "single",
+      "instruction": "増幅回路の電圧利得について、__内の字句の正しい組合せを一つ選べ",
+      "text": "次の記述は、増幅回路の電圧利得について述べたものである。__内に入れるべき字句の正しい組合せを下の番号から選べ。\n(1) 図1に示す増幅回路APの電圧利得Gは、G=[A]×log10([B])[dB]で表される。\n(2) 図2のように、電圧利得がG1[dB]の増幅回路AP1と電圧利得がG2[dB]の増幅回路AP2を接続したとき、全体の増幅回路AP0の電圧利得G0は、G0=[C][dB]で表される。",
+      "figure": "figures/R8-02-kougaku-A3.png",
+      "options": [
+        "A:20 / B:Vo/Vi / C:G1＋G2",
+        "A:20 / B:Vo/Vi / C:G1×G2",
+        "A:20 / B:Vi/Vo / C:G1＋G2",
+        "A:10 / B:Vo/Vi / C:G1＋G2",
+        "A:10 / B:Vi/Vo / C:G1×G2"
+      ],
       "answer": 1, "blanks": null, "explanation": ""
     },
     {
-      "id": "R8-02-eikaiwa-Q4", "subject": "英会話", "no": "Q-4", "type": "single",
-      "instruction": "最も適切な答えを一つ選べ",
-      "text": "A passenger plane is being directed into a hangar at an airport. What is a possible reason for this?",
+      "id": "R8-02-kougaku-A4", "subject": "無線工学", "no": "A-4", "type": "single",
+      "instruction": "リング変調器について、__内の字句の正しい組合せを一つ選べ",
+      "text": "次の記述は、図に示すリング変調器について述べたものである。__内に入れるべき字句の正しい組合せを下の番号から選べ。ただし、回路は理想的に動作するものとする。\n(1) 出力信号の成分は[A]である。\n(2) この変調器は、[B]送信機の変調部などで用いられる。",
+      "figure": "figures/R8-02-kougaku-A4.png",
+      "options": [
+        "A:搬送波成分及び両側波帯成分 / B:SSB(J3E)",
+        "A:搬送波成分及び両側波帯成分 / B:FM(F3E)",
+        "A:両側波帯成分 / B:FM(F3E)",
+        "A:両側波帯成分 / B:SSB(J3E)",
+        "A:両側波帯成分 / B:AM(A3E)"
+      ],
+      "answer": 4, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-kougaku-A5", "subject": "無線工学", "no": "A-5", "type": "single",
+      "instruction": "DSB(A3E)振幅変調波について、__内の字句の正しい組合せを一つ選べ",
+      "text": "次の記述は、図1に示すDSB(A3E)振幅変調波vAMについて述べたものである。__内に入れるべき字句の正しい組合せを下の番号から選べ。ただし、振幅変調波vAMの振幅の最大値をX[V]、最小値をY[V]、図2及び図3に示すように振幅変調波vAMの成分について、搬送波(正弦波)vCの振幅をC[V]、信号波(正弦波)vSの振幅をS[V]とし、C>Sとする。\n(1) vAMの変調度mをC及びSで表すと、m=([A])×100[%]である。\n(2) vAMの変調度mをX及びYで表すと、m={[B]}×100[%]である。",
+      "figure": "figures/R8-02-kougaku-A5.png",
+      "options": [
+        "A:C/S / B:(X-Y)/(X+Y)",
+        "A:C/S / B:(X+Y)/(X-Y)",
+        "A:S/C / B:(X-Y)/(X+Y)",
+        "A:S/C / B:(X+Y)/(X-Y)"
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-kougaku-A6", "subject": "無線工学", "no": "A-6", "type": "single",
+      "instruction": "FM(F3E)受信機について、__内の字句の正しい組合せを一つ選べ",
+      "text": "次の記述は、FM(F3E)受信機について述べたものである。__内に入れるべき字句の正しい組合せを下の番号から選べ。\n(1) 復調には一般に、[A]が用いられる。\n(2) 伝搬中に受けた振幅変調成分を除去するために、[B]が設けられる。\n(3) 受信電波が無いとき又は微弱なときに生じる大きな雑音を抑圧するため[C]回路が設けられる。",
       "figure": null,
-      "options": ["The fuel tank of the airplane needs to be filled.", "The airplane needs to be checked or repaired.", "The airplane is going to disembark passengers.", "The cargo on the airplane needs to be unloaded."],
+      "options": [
+        "A:周波数弁別器 / B:振幅制限器 / C:ディエンファシス",
+        "A:周波数弁別器 / B:振幅制限器 / C:スケルチ",
+        "A:周波数弁別器 / B:位相変調器 / C:スケルチ",
+        "A:周波数逓倍器 / B:位相変調器 / C:スケルチ",
+        "A:周波数逓倍器 / B:振幅制限器 / C:ディエンファシス"
+      ],
       "answer": 2, "blanks": null, "explanation": ""
     },
+    {
+      "id": "R8-02-kougaku-A7", "subject": "無線工学", "no": "A-7", "type": "single",
+      "instruction": "デジタル変調について、誤っているものを一つ選べ",
+      "text": "次の記述は、デジタル変調について述べたものである。このうち誤っているものを下の番号から選べ。",
+      "figure": null,
+      "options": [
+        "FSKは、入力信号の「0」と「1」に応じて、搬送波の周波数を変化させる方式をいう。",
+        "ASKは、入力信号の「0」と「1」に応じて、搬送波の振幅を変化させる方式をいう。",
+        "PSKは、入力信号の「0」と「1」に応じて、搬送波の位相を変化させる方式をいう。",
+        "QAMは、入力信号の「0」と「1」に応じて、搬送波の振幅と位相を変化させる方式をいう。",
+        "QPSKは、PSKのうち、搬送波の位相を2種類変化させる方式をいう。"
+      ],
+      "answer": 5, "blanks": null, "explanation": "QPSKは搬送波の位相を4種類変化させる方式であるため、5が誤り。"
+    },
+    {
+      "id": "R8-02-kougaku-A8", "subject": "無線工学", "no": "A-8", "type": "single",
+      "instruction": "レーダー電波の反射現象について、__内の字句の正しい組合せを一つ選べ",
+      "text": "次の記述は、レーダーから発射される電波が物体に当たって反射するときに生じる現象について述べたものである。__内に入れるべき字句の正しい組合せを下の番号から選べ。\n(1) アンテナから発射された電波が移動物体で反射されるとき、反射された電波の周波数が受信点で偏移する現象を[A]という。\n(2) 移動物体が電波の発射源[B]いるとき、移動物体から反射された電波の周波数は、発射された電波の周波数より低くなる。\n(3) この効果は、移動物体の[C]に利用されている。",
+      "figure": null,
+      "options": [
+        "A:ドプラ効果 / B:に近づいて / C:速度の測定",
+        "A:ドプラ効果 / B:から遠ざかって / C:速度の測定",
+        "A:ドプラ効果 / B:に近づいて / C:材質の把握",
+        "A:ホール効果 / B:から遠ざかって / C:速度の測定",
+        "A:ホール効果 / B:に近づいて / C:材質の把握"
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-kougaku-A9", "subject": "無線工学", "no": "A-9", "type": "single",
+      "instruction": "MSASについて、__内の字句の正しい組合せを一つ選べ",
+      "text": "次の記述は、我が国で運用するSBAS(Satellite-Based Augmentation System)のシステムであるMSASについて述べたものである。__内に入れるべき字句の正しい組合せを下の番号から選べ。\n(1) GPSの補強信号を衛星から配信することで、GPSを利用した電波航法の[A]を図るものである。\n(2) 補強信号は[B]衛星から、[C][GHz]帯の周波数により配信している。",
+      "figure": null,
+      "options": [
+        "A:精度向上 / B:みちびき / C:1.5",
+        "A:精度向上 / B:みちびき / C:2.5",
+        "A:精度向上 / B:インマルサット / C:2.5",
+        "A:測位エリア拡大 / B:みちびき / C:1.5",
+        "A:測位エリア拡大 / B:インマルサット / C:2.5"
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R8-02-kougaku-A10", "subject": "無線工学", "no": "A-10", "type": "single",
+      "instruction": "電池について、誤っているものを一つ選べ",
+      "text": "次の記述は、電池について述べたものである。このうち誤っているものを下の番号から選べ。",
+      "figure": null,
+      "options": [
+        "電圧の異なる電池を並列に接続することは避けなければならない。",
+        "電圧が等しく、容量が10[Ah]の電池を極性を合わせて2個並列に接続したとき、合成容量は10[Ah]になる。",
+        "電圧の等しい電池を極性を合わせて2個並列に接続したとき、その端子電圧は1個の端子電圧と同じになる。",
+        "充放電を繰り返して使用できる電池を二次電池という。",
+        "鉛蓄電池及びリチウムイオン蓄電池は二次電池である。"
+      ],
+      "answer": 2, "blanks": null, "explanation": "同容量の電池を2個並列接続すると合成容量は2倍(20[Ah])になるため、2が誤り。"
+    },
+    {
+      "id": "R8-02-kougaku-B1", "subject": "無線工学", "no": "B-1", "type": "truefalse_list",
+      "instruction": "航空用レーダーについて、正しいものを1、誤っているものを2として解答せよ",
+      "text": "次の記述は、航空用レーダーについて述べたものである。このうち正しいものを1、誤っているものを2として解答せよ。",
+      "figure": null,
+      "options": ["正しい", "誤っている"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "text": "航空機搭載WXレーダーは、航空機の前方(進行方向)の気象状況を探知し、安全な飛行をするために用いられるレーダーである。", "answer": 1 },
+        { "label": "イ", "text": "ASDEは、空港の滑走路や誘導路等の地上における航空機あるいは車両等を把握し、安全な地上管制を行うために用いられるレーダーである。", "answer": 1 },
+        { "label": "ウ", "text": "ORSRは、洋上空域を航行する航空機を監視するために用いられるレーダーである。", "answer": 1 },
+        { "label": "エ", "text": "ARSRは、航空路を航行する航空機を監視するために用いられるレーダーである。", "answer": 1 },
+        { "label": "オ", "text": "SSRは、空港周辺空域における航空機の進入及び出発管制を行うために用いられる一次監視レーダーである。", "answer": 2 }
+      ],
+      "explanation": "オのSSR(二次監視レーダー)を「一次監視レーダー」とする点が誤り。"
+    },
+    {
+      "id": "R8-02-kougaku-B2", "subject": "無線工学", "no": "B-2", "type": "fill_blanks",
+      "instruction": "図に示す構造のアンテナについて、__内に入れるべき字句を1〜10からそれぞれ一つ選べ",
+      "text": "次の記述は、図に示す構造のアンテナについて述べたものである。__内に入れるべき字句を下の番号から選べ。\n(1) 名称は、[ア]アンテナである。\n(2) 一般に円盤状の導体面を大地に[イ]用いる。\n(3) (2)のように用いた場合、偏波は、[ウ]である。\n(4) (2)のように用いた場合、水平面内の指向性は[エ]である。\n(5) 主に[オ]帯で用いられている。",
+      "figure": "figures/R8-02-kougaku-B2.png",
+      "options": [
+        "アルホードループ", "垂直にして", "垂直偏波", "単一指向性", "超短波(VHF)及び極超短波(UHF)",
+        "ディスコーン", "平行にして", "水平偏波", "全方向性", "長波(LF)"
+      ],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 6 }, { "label": "イ", "answer": 7 },
+        { "label": "ウ", "answer": 3 }, { "label": "エ", "answer": 9 }, { "label": "オ", "answer": 5 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R8-02-kougaku-B3", "subject": "無線工学", "no": "B-3", "type": "fill_blanks",
+      "instruction": "小電力用の同軸給電線について、__内に入れるべき字句を1〜10からそれぞれ一つ選べ",
+      "text": "次の記述は、図に示す原理的な構造の小電力用の同軸給電線について述べたものである。__内に入れるべき字句を下の番号から選べ。\n(1) 同心円状に内部導体と外部導体を配置した構造の、[ア]形給電線である。\n(2) 図の「A」の部分は、[イ]である。\n(3) 周波数が高くなると、誘電損や[ウ]による内部導体の抵抗損等が増加して伝送効率が低下する。\n(4) 平行二線式給電線に比べて外部からの電波の影響を受けることが[エ]。\n(5) 特性インピーダンスは、[オ]のものが多い。",
+      "figure": "figures/R8-02-kougaku-B3.png",
+      "options": [
+        "不平衡", "誘電体", "表皮効果", "少ない", "50[Ω]又は75[Ω]",
+        "平衡", "磁性体", "ゼーベック効果", "多い", "300[Ω]"
+      ],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 1 }, { "label": "イ", "answer": 2 },
+        { "label": "ウ", "answer": 3 }, { "label": "エ", "answer": 4 }, { "label": "オ", "answer": 5 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R8-02-kougaku-B4", "subject": "無線工学", "no": "B-4", "type": "fill_blanks",
+      "instruction": "VHF帯及びUHF帯の電波伝搬について、__内に入れるべき字句を1〜10からそれぞれ一つ選べ",
+      "text": "次の記述は、超短波(VHF)帯及び極超短波(UHF)帯の電波伝搬について述べたものである。__内に入れるべき字句を下の番号から選べ。\n(1) 地表波伝搬では、中波(MF)帯に比べて、著しく減衰が[ア]。\n(2) 電離層(スポラジックE層(Es層)を除く。)を突き[イ]。\n(3) 遠距離の通信において、伝搬路上に山岳があり、送受信点のそれぞれからその山頂が見通せるとき、電波は見通し外へ伝搬[ウ]。\n(4) 一般に、見通し距離内では、直接波と[エ]との合成波が受信される。\n(5) 大気中に温度の逆転層が生じて[オ]が形成され、より遠方まで伝搬することがある。",
+      "figure": null,
+      "options": [
+        "大きい", "抜けることはない", "することはない", "大地反射波", "フェージング",
+        "小さい", "抜ける", "することがある", "電離層反射波", "ラジオダクト"
+      ],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 1 }, { "label": "イ", "answer": 7 },
+        { "label": "ウ", "answer": 8 }, { "label": "エ", "answer": 4 }, { "label": "オ", "answer": 10 }
+      ],
+      "explanation": ""
+    },
+
     {
       "id": "R8-02-houki-A1", "subject": "法規", "no": "A-1", "type": "single",
       "instruction": "電波法(第19条)の規定に照らし、__内に入れるべき最も適切な字句の組合せを一つ選べ",
@@ -50,26 +238,26 @@
       "answer": null,
       "blanks": [
         { "label": "ア", "answer": 1 }, { "label": "イ", "answer": 4 },
-        { "label": "ウ", "answer": 6 }, { "label": "エ", "answer": 8 },
-        { "label": "オ", "answer": 9 }
+        { "label": "ウ", "answer": 6 }, { "label": "エ", "answer": 8 }, { "label": "オ", "answer": 9 }
       ],
       "explanation": ""
     },
+
     {
-      "id": "R8-02-kougaku-A7", "subject": "無線工学", "no": "A-7", "type": "single",
-      "instruction": "デジタル変調について、誤っているものを一つ選べ",
-      "text": "次の記述は、デジタル変調について述べたものである。このうち誤っているものを下の番号から選べ。",
+      "id": "R8-02-eikaiwa-Q1", "subject": "英会話", "no": "Q-1", "type": "single",
+      "instruction": "最も適切な答えを一つ選べ",
+      "text": "Many children like watching films or reading books in which princes and princesses appear. What kind of story is Sleeping Beauty?",
       "figure": null,
-      "options": ["FSKは、入力信号の0と1に応じて、搬送波の周波数を変化させる方式をいう。", "ASKは、入力信号の0と1に応じて、搬送波の振幅を変化させる方式をいう。", "PSKは、入力信号の0と1に応じて、搬送波の位相を変化させる方式をいう。", "QAMは、入力信号の0と1に応じて、搬送波の振幅と位相を変化させる方式をいう。", "QPSKは、PSKのうち、搬送波の位相を2種類変化させる方式をいう。"],
-      "answer": 5, "blanks": null, "explanation": "QPSKは位相を4種類変化させるため、5が誤り。"
+      "options": ["A fairy tale", "A documentary", "A suspense drama", "A science fiction story"],
+      "answer": 1, "blanks": null, "explanation": ""
     },
     {
-      "id": "R8-02-kougaku-A1", "subject": "無線工学", "no": "A-1", "type": "single",
-      "instruction": "図に示す並列共振回路について、誤っているものを一つ選べ",
-      "text": "交流電源電圧Ėの大きさを100[V]、抵抗Rを10[kΩ]、誘導リアクタンスX_Lを5[kΩ]とし、回路は共振状態にあるものとする。※本問は回路図が必須。",
-      "figure": "figures/R8-02-kougaku-A1.png",
-      "options": ["交流電源からみたインピーダンスの大きさは、10[kΩ]である。", "交流電源から流れる電流I0の大きさは、10[mA]である。", "X_Lに流れる電流I_Lの大きさは、20[mA]である。", "容量リアクタンスX_Cは、5[kΩ]である。", "X_Cに流れる電流I_CとX_Lに流れる電流I_Lとの位相差は、π/2[rad]である。"],
-      "answer": 5, "blanks": null, "explanation": "図がないと解答不能な問題の例(figureにページ切り出し画像を持たせる)。"
+      "id": "R8-02-eikaiwa-Q4", "subject": "英会話", "no": "Q-4", "type": "single",
+      "instruction": "最も適切な答えを一つ選べ",
+      "text": "A passenger plane is being directed into a hangar at an airport. What is a possible reason for this?",
+      "figure": null,
+      "options": ["The fuel tank of the airplane needs to be filled.", "The airplane needs to be checked or repaired.", "The airplane is going to disembark passengers.", "The cargo on the airplane needs to be unloaded."],
+      "answer": 2, "blanks": null, "explanation": ""
     }
   ]
 }
