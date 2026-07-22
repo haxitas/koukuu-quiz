@@ -1,7 +1,7 @@
 // app.js — 表示と画面遷移のみ。採点ロジックは quiz-core.mjs に委譲(外部API呼び出しなし)。
 import {
-  gradeExam, makeAttempt, appendResult, statsForKey, isComposite,
-  currentMistakes, pickReviewQuestions,
+  gradeExam, appendResult, statsForKey, isComposite,
+  currentMistakes, pickReviewQuestions, splitAttemptsByKey,
 } from './quiz-core.mjs';
 
 const STORE_KEY = 'aviation_quiz_results';
@@ -48,6 +48,19 @@ async function initSelect() {
   const store = loadStore();
   const list = document.getElementById('exam-list');
   list.innerHTML = '';
+
+  // ---- グローバル復習エントリ(全期間・全科目の誤答バンク。最上部に1つだけ) ----
+  const globalMistakes = currentMistakes(store);
+  if (globalMistakes.length > 0) {
+    const gbtn = document.createElement('button');
+    gbtn.className = 'global-review-btn';
+    gbtn.textContent = globalMistakes.length > REVIEW_MAX
+      ? `過去に間違えた問題集（誤答${globalMistakes.length}問中${REVIEW_MAX}問）`
+      : `過去に間違えた問題集（誤答${globalMistakes.length}問）`;
+    gbtn.addEventListener('click', startGlobalReview);
+    list.appendChild(gbtn);
+  }
+
   for (const exam of idx.exams) {
     const card = document.createElement('div');
     card.className = 'exam-card';
@@ -57,10 +70,6 @@ async function initSelect() {
     for (const s of exam.subjects) {
       const key = `${exam.code}-${s.subject}`;
       const st = statsForKey(store, key);
-      const mistakes = currentMistakes(store, key);
-
-      const row = document.createElement('div');
-      row.className = 'subject-row';
 
       const btn = document.createElement('button');
       btn.className = 'subject-btn';
@@ -70,53 +79,54 @@ async function initSelect() {
       btn.innerHTML = `<span class="name">${s.subject}</span>（全${s.count}問）` +
         `<span class="stats">${statsText}</span>`;
       btn.addEventListener('click', () => startQuiz(exam, s.subject));
-      row.appendChild(btn);
-
-      if (mistakes.length > 0) {
-        const rbtn = document.createElement('button');
-        rbtn.className = 'review-btn';
-        const label = mistakes.length > REVIEW_MAX
-          ? `復習（誤答${mistakes.length}問中${REVIEW_MAX}問）`
-          : `復習（誤答${mistakes.length}問）`;
-        rbtn.textContent = label;
-        rbtn.addEventListener('click', () => startReview(exam, s.subject));
-        row.appendChild(rbtn);
-      }
-
-      card.appendChild(row);
+      card.appendChild(btn);
     }
     list.appendChild(card);
   }
   show('screen-select');
 }
 
+// 問題オブジェクトに出典(期コード・期名)を付与する。
+// grade() のキー分割(splitAttemptsByKey)と、復習回の出典タグ表示の両方で使う。
+function tagQuestion(q, exam) {
+  return { ...q, examCode: exam.code, era: exam.era };
+}
+
 // ---- 出題開始(通常回: 科目の全問) ----
 async function startQuiz(exam, subject) {
   const data = await (await fetch(`data/${exam.file}`)).json();
-  const key = `${exam.code}-${subject}`;
   state.exam = exam;
   state.subject = subject;
   state.mode = 'normal';
-  state.questions = data.questions.filter((q) => q.subject === subject);
+  state.questions = data.questions
+    .filter((q) => q.subject === subject)
+    .map((q) => tagQuestion(q, exam));
   state.responses = {};
   state.qi = 0;
-  // 誤答バンクに入っている問題は出題画面で「前回まちがえた」バッジを出す。
-  state.prevWrong = new Set(currentMistakes(loadStore(), key));
+  // 誤答バンクに入っている問題は出題画面で「前回まちがえた」バッジを出す
+  // (グローバル判定だが、他科目のidはこの科目の問題リストに現れないので結果は従来と同じ)。
+  state.prevWrong = new Set(currentMistakes(loadStore()));
   renderQuestion();
   show('screen-quiz');
 }
 
-// ---- 出題開始(復習回: 誤答バンクから最大 REVIEW_MAX 問) ----
-async function startReview(exam, subject) {
-  const data = await (await fetch(`data/${exam.file}`)).json();
-  const key = `${exam.code}-${subject}`;
-  const all = data.questions.filter((q) => q.subject === subject);
-  const mistakes = currentMistakes(loadStore(), key);
-  const picked = pickReviewQuestions(all, mistakes, REVIEW_MAX);
-  if (picked.length === 0) return; // 誤答が解消済みなら何もしない
+// ---- 出題開始(グローバル復習回: 全期間・全科目の誤答バンクから最大 REVIEW_MAX 問) ----
+async function startGlobalReview() {
+  const mistakes = currentMistakes(loadStore());
+  if (mistakes.length === 0) return; // 選択画面のボタン自体が非表示のはずだが念のため
 
-  state.exam = exam;
-  state.subject = subject;
+  // data/index.json 記載の全期を取得して結合する(state.exams、build_index.py が
+  // code降順=新しい期が先に並ぶ)。期の数は少数な前提なので全期取得のコストは無視できる。
+  const combined = [];
+  for (const exam of state.exams) {
+    const data = await (await fetch(`data/${exam.file}`)).json();
+    for (const q of data.questions) combined.push(tagQuestion(q, exam));
+  }
+  const picked = pickReviewQuestions(combined, mistakes, REVIEW_MAX);
+  if (picked.length === 0) return;
+
+  state.exam = null;
+  state.subject = null;
   state.mode = 'review';
   state.questions = picked;
   state.responses = {};
@@ -130,8 +140,9 @@ async function startReview(exam, subject) {
 // ---- 1問描画 ----
 function renderQuestion() {
   const q = state.questions[state.qi];
-  const modeTag = state.mode === 'review' ? '（復習）' : '';
-  document.getElementById('quiz-meta').textContent = `${state.exam.era} ／ ${state.subject}${modeTag}`;
+  document.getElementById('quiz-meta').textContent = state.mode === 'review'
+    ? '過去に間違えた問題集（復習）'
+    : `${state.exam.era} ／ ${state.subject}`;
   document.getElementById('progress').textContent = `第 ${state.qi + 1} / ${state.questions.length} 問`;
 
   const art = document.getElementById('question');
@@ -140,6 +151,13 @@ function renderQuestion() {
   const no = document.createElement('div');
   no.className = 'q-no';
   no.textContent = q.no;
+  if (state.mode === 'review') {
+    // 全期間横断の復習は問題ごとに出典(期・科目)が異なり得るので明示する。
+    const src = document.createElement('span');
+    src.className = 'source-tag';
+    src.textContent = `${q.era} ／ ${q.subject}`;
+    no.appendChild(src);
+  }
   if (state.prevWrong && state.prevWrong.has(q.id)) {
     const badge = document.createElement('span');
     badge.className = 'prev-wrong-badge';
@@ -341,14 +359,20 @@ function go(delta) {
 }
 
 // ---- 採点 ----
+// 全期間横断の復習は科目・期をまたぎ得るため、採点結果をキーごとに分割して
+// それぞれ別のAttemptとして追記する(通常回はキーが1種類なので1件に退化する)。
 function grade() {
   const result = gradeExam(state.questions, state.responses);
-  const key = `${state.exam.code}-${state.subject}`;
   const date = new Date().toISOString().slice(0, 10);
-  const presented = state.questions.map((q) => q.id);
-  saveAttempt(makeAttempt(key, date, result, presented));
-  // 採点直後の誤答バンク残数(正解した問題はここで自動的に消えている)。
-  const remaining = currentMistakes(loadStore(), key).length;
+  const attempts = splitAttemptsByKey(
+    state.questions,
+    result,
+    date,
+    (q) => `${q.examCode}-${q.subject}`,
+  );
+  for (const attempt of attempts) saveAttempt(attempt);
+  // 採点直後のグローバル誤答バンク残数(正解した問題はここで自動的に消えている)。
+  const remaining = currentMistakes(loadStore()).length;
   renderResult(result, remaining);
   show('screen-result');
 }
@@ -372,14 +396,16 @@ function correctText(q) {
 
 function renderResult(result, remainingMistakes) {
   const rate = result.total > 0 ? result.score / result.total : 0;
-  const modeTag = state.mode === 'review' ? '（復習）' : '';
+  const headerLine = state.mode === 'review'
+    ? '過去に間違えた問題集（復習）'
+    : `${state.exam.era} ／ ${state.subject}`;
   const resolved = remainingMistakes === 0;
   const bankLine = resolved
-    ? 'この分野の誤答バンク: 0問(すべて解消)'
-    : `この分野の誤答バンク: ${remainingMistakes}問` +
+    ? '誤答バンク: 0問(すべて解消)'
+    : `誤答バンク: ${remainingMistakes}問` +
       (remainingMistakes > REVIEW_MAX ? `(次の復習は${REVIEW_MAX}問まで)` : '');
   document.getElementById('result-summary').innerHTML =
-    `<div>${state.exam.era} ／ ${state.subject}${modeTag}</div>` +
+    `<div>${headerLine}</div>` +
     `<div class="score-big">${result.score} / ${result.total}</div>` +
     `<div class="rate">正答率 ${Math.round(rate * 100)}%</div>` +
     `<div class="bank-status${resolved ? ' resolved' : ''}">${bankLine}</div>`;
@@ -395,8 +421,11 @@ function renderResult(result, remainingMistakes) {
     if (!q) continue;
     const item = document.createElement('div');
     item.className = 'wrong-item';
+    const sourceTag = state.mode === 'review'
+      ? ` <span class="source-tag">${escapeHtml(q.era)}／${escapeHtml(q.subject)}</span>`
+      : '';
     const parts = [
-      `<div class="q-no">${q.no}</div>`,
+      `<div class="q-no">${q.no}${sourceTag}</div>`,
       `<div class="q-text">${escapeHtml(q.text)}</div>`,
       `<div class="yours">あなたの解答: ${escapeHtml(answerText(q, state.responses[q.id]))}</div>`,
       `<div class="correct">正解: ${escapeHtml(correctText(q))}</div>`,

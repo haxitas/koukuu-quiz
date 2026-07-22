@@ -71,16 +71,18 @@ export function statsForKey(store, key) {
   return { count: hits.length, last, best };
 }
 
-// 誤答バンク(復習モードの対象)を attempts から都度導出する。可変ストアを持たない。
-// 判定規則: あるidについて、そのキーでの直近の出題(presentedに含まれた回)時に
-// 誤答だったら「現在の誤答」とみなす。正解すれば次回は含まれず自然に消え、
-// 誤答すれば残り続ける。一度も再提示されていない誤答は未解決のまま残る。
+// 誤答バンク(「過去に間違えた問題集」の実体)を attempts から都度導出する。可変ストアを持たない。
+// id は元々 {examCode}-{subject}-{no} でグローバルに一意なので、key での絞り込みはしない
+// (科目・期をまたいで attempts 全体を横断走査してよい)。
+// 判定規則: あるidについて、直近の出題(presentedに含まれた回)時に誤答だったら
+// 「現在の誤答」とみなす。正解すれば次回は含まれず自然に消え、誤答すれば残り続ける。
+// 一度も再提示されていない誤答は未解決のまま残る。attempts の並び順(=append-only なので
+// 挿入順=時系列)をそのまま Map の「後勝ち」に使う。
 // presented を持たない旧形式の記録は判定不能として無視する(安全側に倒す)。
-export function currentMistakes(store, key) {
+export function currentMistakes(store) {
   const all = store && Array.isArray(store.attempts) ? store.attempts : [];
   const lastWrong = new Map(); // id -> boolean(直近の出題で誤答だったか)
   for (const a of all) {
-    if (a.key !== key) continue;
     if (!Array.isArray(a.presented)) continue; // 旧形式は判定できないためスキップ
     const wrongSet = new Set(a.wrong || []);
     for (const id of a.presented) {
@@ -100,4 +102,30 @@ export function pickReviewQuestions(questions, mistakeIds, max = 10) {
   const set = new Set(mistakeIds);
   const picked = questions.filter((q) => set.has(q.id));
   return picked.slice(0, max);
+}
+
+// gradeExam の結果(examResult)を questions の並びに沿ってキーごとに束ね直し、
+// キー1つにつき Attempt を1件作る(= grade() が保存すべきレコード列)。
+// 全期間横断の復習セッションは科目・期をまたぎ得るため、1回の採点でも
+// statsForKey を汚さないよう、キーごとに別々のAttemptとしてappendする必要がある。
+// keyOf(q) が全問題で同じ値を返すとき(=通常回)は要素数1になり、
+// makeAttempt(key, date, examResult, questions.map(q=>q.id)) を直接呼んだ場合と
+// 完全に同じ Attempt になる(退化ケース)。examResult はここでは採点し直さない(純関数)。
+export function splitAttemptsByKey(questions, examResult, date, keyOf) {
+  const wrongSet = new Set(examResult.wrong);
+  const groups = new Map(); // key -> { presented: string[], wrong: string[] }
+  for (const q of questions) {
+    const k = keyOf(q);
+    if (!groups.has(k)) groups.set(k, { presented: [], wrong: [] });
+    const g = groups.get(k);
+    g.presented.push(q.id);
+    if (wrongSet.has(q.id)) g.wrong.push(q.id);
+  }
+  const attempts = [];
+  for (const [key, g] of groups) {
+    const total = g.presented.length;
+    const score = total - g.wrong.length;
+    attempts.push(makeAttempt(key, date, { score, total, wrong: g.wrong }, g.presented));
+  }
+  return attempts;
 }

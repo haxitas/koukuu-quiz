@@ -36,17 +36,15 @@ header h1 { font-size: 1.05rem; margin: 0; }
 .subject-btn:hover { border-color: var(--accent); }
 .subject-btn .name { font-weight: 700; }
 .subject-btn .stats { display: block; color: var(--muted); font-size: .8rem; margin-top: .2rem; }
-.subject-row { margin: .5rem 0; }
-.subject-row .subject-btn { margin: 0; }
-.review-btn {
-  display: block; width: 100%; text-align: left; margin-top: .35rem; padding: .55rem 1rem;
-  background: transparent; border: 1px dashed #d9730d; border-radius: 10px;
-  color: #d9730d; font-size: .85rem; font-weight: 700; cursor: pointer;
+.global-review-btn {
+  display: block; width: 100%; text-align: left; margin-bottom: 1rem; padding: .9rem 1.1rem;
+  background: transparent; border: 1.5px dashed #d9730d; border-radius: 12px;
+  color: #d9730d; font-size: 1rem; font-weight: 700; cursor: pointer;
 }
-.review-btn:hover { background: rgba(217, 115, 13, 0.08); }
+.global-review-btn:hover { background: rgba(217, 115, 13, 0.08); }
 @media (prefers-color-scheme: dark) {
-  .review-btn { color: #e8894a; border-color: #e8894a; }
-  .review-btn:hover { background: rgba(232, 137, 74, 0.12); }
+  .global-review-btn { color: #e8894a; border-color: #e8894a; }
+  .global-review-btn:hover { background: rgba(232, 137, 74, 0.12); }
 }
 
 /* 出題画面 */
@@ -56,6 +54,7 @@ header h1 { font-size: 1.05rem; margin: 0; }
 .q-no { font-weight: 700; color: var(--accent); }
 .prev-wrong-badge { display: inline-block; margin-left: .6rem; padding: .1rem .5rem; font-size: .72rem; font-weight: 700; color: #fff; background: #d9730d; border-radius: 999px; vertical-align: middle; }
 @media (prefers-color-scheme: dark) { .prev-wrong-badge { background: #e8894a; color: #1a1c1f; } }
+.source-tag { display: inline-block; margin-left: .6rem; padding: .05rem .5rem; font-size: .72rem; font-weight: 600; color: var(--muted); background: var(--bg); border: 1px solid var(--line); border-radius: 999px; vertical-align: middle; }
 .q-instruction { font-size: .9rem; color: var(--muted); margin: .3rem 0; }
 .q-passage { white-space: pre-wrap; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: .8rem; margin: .5rem 0 .8rem; max-height: 46vh; overflow-y: auto; font-size: .95rem; }
 .q-text { margin: .5rem 0 1rem; white-space: pre-wrap; }

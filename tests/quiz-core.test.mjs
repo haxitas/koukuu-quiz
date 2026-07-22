@@ -9,6 +9,7 @@ import {
   statsForKey,
   currentMistakes,
   pickReviewQuestions,
+  splitAttemptsByKey,
 } from '../quiz-core.mjs';
 
 // --- 最小アサートハーネス -------------------------------------------------
@@ -133,49 +134,52 @@ check('makeAttempt presented省略時は空配列', () => {
   eq(at.presented, []);
 });
 
-// --- currentMistakes: attempts から誤答バンクを導出(可変ストアを持たない) ---
+// --- currentMistakes: attempts から誤答バンクを導出(可変ストアを持たない・全期間横断) ---
 // 「あるidの直近の出題時に誤答だったか」で判定 → 正解すれば消え、誤答すれば残る。
+// id は元々 {examCode}-{subject}-{no} でグローバルに一意なので、key での絞り込みはしない
+// (科目・期をまたいで attempts 全体を横断走査する = 「過去に間違えた問題集」の実体)。
 check('currentMistakes 記録なしは空', () => {
-  eq(currentMistakes({ attempts: [] }, 'R8-02-無線工学'), []);
+  eq(currentMistakes({ attempts: [] }), []);
 });
 check('currentMistakes 1回目の誤答がそのまま残る', () => {
   const store = { attempts: [
     { key: 'R8-02-無線工学', date: '2026-07-20', score: 1, total: 2, wrong: ['q1'], presented: ['q1', 'q2'] },
   ] };
-  eq(currentMistakes(store, 'R8-02-無線工学'), ['q1']);
+  eq(currentMistakes(store), ['q1']);
 });
 check('currentMistakes 再挑戦で正解すると消える', () => {
   const store = { attempts: [
     { key: 'R8-02-無線工学', date: '2026-07-20', score: 1, total: 2, wrong: ['q1'], presented: ['q1', 'q2'] },
     { key: 'R8-02-無線工学', date: '2026-07-21', score: 1, total: 1, wrong: [], presented: ['q1'] }, // 復習でq1正解
   ] };
-  eq(currentMistakes(store, 'R8-02-無線工学'), []);
+  eq(currentMistakes(store), []);
 });
 check('currentMistakes 再挑戦でまた誤答なら残り続ける', () => {
   const store = { attempts: [
     { key: 'R8-02-無線工学', date: '2026-07-20', score: 1, total: 2, wrong: ['q1'], presented: ['q1', 'q2'] },
     { key: 'R8-02-無線工学', date: '2026-07-21', score: 0, total: 1, wrong: ['q1'], presented: ['q1'] },
   ] };
-  eq(currentMistakes(store, 'R8-02-無線工学'), ['q1']);
+  eq(currentMistakes(store), ['q1']);
 });
 check('currentMistakes 再提示されていない誤答は残る(未解決のまま)', () => {
   const store = { attempts: [
     { key: 'R8-02-無線工学', date: '2026-07-20', score: 1, total: 2, wrong: ['q1'], presented: ['q1', 'q2'] },
     { key: 'R8-02-無線工学', date: '2026-07-21', score: 1, total: 1, wrong: [], presented: ['q3'] }, // q1には触れていない
   ] };
-  eq(currentMistakes(store, 'R8-02-無線工学'), ['q1']);
+  eq(currentMistakes(store), ['q1']);
 });
-check('currentMistakes 別キーは無視', () => {
+check('currentMistakes 複数キー(科目・期)を横断して集約する', () => {
   const store = { attempts: [
     { key: 'R8-02-法規', date: '2026-07-20', score: 0, total: 1, wrong: ['b1'], presented: ['b1'] },
+    { key: 'R8-02-無線工学', date: '2026-07-20', score: 0, total: 1, wrong: ['k1'], presented: ['k1'] },
   ] };
-  eq(currentMistakes(store, 'R8-02-無線工学'), []);
+  eq(currentMistakes(store), ['b1', 'k1'], 'キーに関わらず両方が誤答バンクに入る');
 });
 check('currentMistakes presented欠落の旧レコードは無視して安全に動く', () => {
   const store = { attempts: [
     { key: 'R8-02-無線工学', date: '2026-07-20', score: 0, total: 1, wrong: ['q1'] }, // presented無し(旧形式)
   ] };
-  eq(currentMistakes(store, 'R8-02-無線工学'), []);
+  eq(currentMistakes(store), []);
 });
 
 // --- pickReviewQuestions: 出題順を保ち、最大件数でキャップする ---
@@ -196,6 +200,32 @@ check('pickReviewQuestions maxを指定できる', () => {
 });
 check('pickReviewQuestions 誤答が無ければ空', () => {
   eq(pickReviewQuestions([{ id: 'a' }], []), []);
+});
+
+// --- splitAttemptsByKey: 採点結果をキーごとに1 Attempt へ分割する ---
+// 全期間横断の復習セッションは科目・期をまたぎ得るため、1回のgrade()でも
+// キー(科目×期)ごとに別々のAttemptとして保存する必要がある(statsForKeyを汚さないため)。
+check('splitAttemptsByKey 混在キーをそれぞれ正しく採点したattemptに分割する', () => {
+  const qs = [
+    { id: 'a1', key: 'R8-02-無線工学' },
+    { id: 'b1', key: 'R8-02-法規' },
+    { id: 'a2', key: 'R8-02-無線工学' },
+  ];
+  const result = { score: 2, total: 3, wrong: ['b1'] };
+  const attempts = splitAttemptsByKey(qs, result, '2026-07-22', (q) => q.key);
+  eq(attempts.length, 2, '2キー分のattemptができる');
+  eq(attempts[0], { key: 'R8-02-無線工学', date: '2026-07-22', score: 2, total: 2, wrong: [], presented: ['a1', 'a2'] });
+  eq(attempts[1], { key: 'R8-02-法規', date: '2026-07-22', score: 0, total: 1, wrong: ['b1'], presented: ['b1'] });
+});
+check('splitAttemptsByKey 単一キーはmakeAttempt直呼びと同じ結果になる(通常回の退化ケース)', () => {
+  const qs = [{ id: 'x1', key: 'K' }, { id: 'x2', key: 'K' }];
+  const result = { score: 1, total: 2, wrong: ['x2'] };
+  const viaSplit = splitAttemptsByKey(qs, result, '2026-07-22', (q) => q.key);
+  const viaDirect = [makeAttempt('K', '2026-07-22', result, qs.map((q) => q.id))];
+  eq(viaSplit, viaDirect);
+});
+check('splitAttemptsByKey 出題0件なら空配列', () => {
+  eq(splitAttemptsByKey([], { score: 0, total: 0, wrong: [] }, '2026-07-22', (q) => q.key), []);
 });
 
 export function runTests() {
