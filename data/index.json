@@ -34,6 +34,28 @@
           "count": 20
         }
       ]
+    },
+    {
+      "code": "R5-02",
+      "era": "令和5年2月期",
+      "file": "R5-02.json",
+      "subjects": [
+        {
+          "subject": "法規",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "code": "R3-02",
+      "era": "令和3年2月期",
+      "file": "R3-02.json",
+      "subjects": [
+        {
+          "subject": "法規",
+          "count": 20
+        }
+      ]
     }
   ]
 }
