@@ -36,6 +36,50 @@
       ]
     },
     {
+      "code": "R7-02",
+      "era": "令和7年2月期",
+      "file": "R7-02.json",
+      "subjects": [
+        {
+          "subject": "法規",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "code": "R6-08",
+      "era": "令和6年8月期",
+      "file": "R6-08.json",
+      "subjects": [
+        {
+          "subject": "法規",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "code": "R6-02",
+      "era": "令和6年2月期",
+      "file": "R6-02.json",
+      "subjects": [
+        {
+          "subject": "法規",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "code": "R5-08",
+      "era": "令和5年8月期",
+      "file": "R5-08.json",
+      "subjects": [
+        {
+          "subject": "法規",
+          "count": 20
+        }
+      ]
+    },
+    {
       "code": "R5-02",
       "era": "令和5年2月期",
       "file": "R5-02.json",
@@ -47,9 +91,64 @@
       ]
     },
     {
+      "code": "R4-08",
+      "era": "令和4年8月期",
+      "file": "R4-08.json",
+      "subjects": [
+        {
+          "subject": "法規",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "code": "R4-02",
+      "era": "令和4年2月期",
+      "file": "R4-02.json",
+      "subjects": [
+        {
+          "subject": "法規",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "code": "R3-08",
+      "era": "令和3年8月期",
+      "file": "R3-08.json",
+      "subjects": [
+        {
+          "subject": "法規",
+          "count": 20
+        }
+      ]
+    },
+    {
       "code": "R3-02",
       "era": "令和3年2月期",
       "file": "R3-02.json",
+      "subjects": [
+        {
+          "subject": "法規",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "code": "R2-08",
+      "era": "令和2年8月期",
+      "file": "R2-08.json",
+      "subjects": [
+        {
+          "subject": "法規",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "code": "R2-02",
+      "era": "令和2年2月期",
+      "file": "R2-02.json",
       "subjects": [
         {
           "subject": "法規",
