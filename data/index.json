@@ -23,6 +23,17 @@
           "count": 7
         }
       ]
+    },
+    {
+      "code": "R7-08",
+      "era": "令和7年8月期",
+      "file": "R7-08.json",
+      "subjects": [
+        {
+          "subject": "法規",
+          "count": 20
+        }
+      ]
     }
   ]
 }
