@@ -40,13 +40,16 @@ export function gradeExam(questions, responses) {
 }
 
 // 採点結果を localStorage 追記用の1レコードへ整形。
-export function makeAttempt(key, date, examResult) {
+// presented はその回に出題した問題idの一覧(通常回=科目の全問、復習回=出題した誤答のみ)。
+// これを記録しておくことで、誤答バンク(currentMistakes)を可変ストア無しに導出できる。
+export function makeAttempt(key, date, examResult, presented) {
   return {
     key,
     date,
     score: examResult.score,
     total: examResult.total,
     wrong: examResult.wrong,
+    presented: presented || [],
   };
 }
 
@@ -66,4 +69,35 @@ export function statsForKey(store, key) {
   const last = rate(hits[hits.length - 1]);
   const best = Math.max(...hits.map(rate));
   return { count: hits.length, last, best };
+}
+
+// 誤答バンク(復習モードの対象)を attempts から都度導出する。可変ストアを持たない。
+// 判定規則: あるidについて、そのキーでの直近の出題(presentedに含まれた回)時に
+// 誤答だったら「現在の誤答」とみなす。正解すれば次回は含まれず自然に消え、
+// 誤答すれば残り続ける。一度も再提示されていない誤答は未解決のまま残る。
+// presented を持たない旧形式の記録は判定不能として無視する(安全側に倒す)。
+export function currentMistakes(store, key) {
+  const all = store && Array.isArray(store.attempts) ? store.attempts : [];
+  const lastWrong = new Map(); // id -> boolean(直近の出題で誤答だったか)
+  for (const a of all) {
+    if (a.key !== key) continue;
+    if (!Array.isArray(a.presented)) continue; // 旧形式は判定できないためスキップ
+    const wrongSet = new Set(a.wrong || []);
+    for (const id of a.presented) {
+      lastWrong.set(id, wrongSet.has(id));
+    }
+  }
+  const result = [];
+  for (const [id, isWrong] of lastWrong) {
+    if (isWrong) result.push(id);
+  }
+  return result;
+}
+
+// 復習回の出題リストを作る。questions の元の並び順を保ったまま、
+// mistakeIds に含まれるものだけを最大 max 件まで返す(既定10件)。
+export function pickReviewQuestions(questions, mistakeIds, max = 10) {
+  const set = new Set(mistakeIds);
+  const picked = questions.filter((q) => set.has(q.id));
+  return picked.slice(0, max);
 }

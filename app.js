@@ -1,15 +1,21 @@
 // app.js — 表示と画面遷移のみ。採点ロジックは quiz-core.mjs に委譲(外部API呼び出しなし)。
-import { gradeQuestion, gradeExam, makeAttempt, appendResult, statsForKey, isComposite } from './quiz-core.mjs';
+import {
+  gradeExam, makeAttempt, appendResult, statsForKey, isComposite,
+  currentMistakes, pickReviewQuestions,
+} from './quiz-core.mjs';
 
 const STORE_KEY = 'aviation_quiz_results';
+const REVIEW_MAX = 10; // 復習モードの1回あたりの最大出題数
 
 const state = {
   exams: [],
   exam: null,      // 選択中の試験(index.jsonのentry)
   subject: null,   // 選択中の科目名
-  questions: [],   // 出題(科目でフィルタ済み)
+  mode: 'normal',  // 'normal'(全問) | 'review'(誤答バンクからの復習)
+  questions: [],   // 出題(科目でフィルタ済み、復習モードは誤答のみ)
   responses: {},   // { questionId: response }
   qi: 0,           // 現在の問番号(0始まり)
+  prevWrong: null, // Set<questionId> 出題時点で誤答バンクに入っていたid(バッジ表示用)
 };
 
 // ---- localStorage(append-only) ----
@@ -51,6 +57,11 @@ async function initSelect() {
     for (const s of exam.subjects) {
       const key = `${exam.code}-${s.subject}`;
       const st = statsForKey(store, key);
+      const mistakes = currentMistakes(store, key);
+
+      const row = document.createElement('div');
+      row.className = 'subject-row';
+
       const btn = document.createElement('button');
       btn.className = 'subject-btn';
       const statsText = st.count === 0
@@ -59,46 +70,68 @@ async function initSelect() {
       btn.innerHTML = `<span class="name">${s.subject}</span>（全${s.count}問）` +
         `<span class="stats">${statsText}</span>`;
       btn.addEventListener('click', () => startQuiz(exam, s.subject));
-      card.appendChild(btn);
+      row.appendChild(btn);
+
+      if (mistakes.length > 0) {
+        const rbtn = document.createElement('button');
+        rbtn.className = 'review-btn';
+        const label = mistakes.length > REVIEW_MAX
+          ? `復習（誤答${mistakes.length}問中${REVIEW_MAX}問）`
+          : `復習（誤答${mistakes.length}問）`;
+        rbtn.textContent = label;
+        rbtn.addEventListener('click', () => startReview(exam, s.subject));
+        row.appendChild(rbtn);
+      }
+
+      card.appendChild(row);
     }
     list.appendChild(card);
   }
   show('screen-select');
 }
 
-// ---- 出題開始 ----
+// ---- 出題開始(通常回: 科目の全問) ----
 async function startQuiz(exam, subject) {
-  const res = await fetch(`data/${exam.file}`);
-  const data = await res.json();
+  const data = await (await fetch(`data/${exam.file}`)).json();
+  const key = `${exam.code}-${subject}`;
   state.exam = exam;
   state.subject = subject;
+  state.mode = 'normal';
   state.questions = data.questions.filter((q) => q.subject === subject);
   state.responses = {};
   state.qi = 0;
-  state.prevWrong = prevWrongIds(`${exam.code}-${subject}`, state.questions);
+  // 誤答バンクに入っている問題は出題画面で「前回まちがえた」バッジを出す。
+  state.prevWrong = new Set(currentMistakes(loadStore(), key));
   renderQuestion();
   show('screen-quiz');
 }
 
-// 直近の挑戦で間違えた問題の id 集合を返す(前回誤答インジケータ用)。
-function prevWrongIds(key, questions) {
-  const store = loadStore();
-  const hits = store.attempts.filter((a) => a.key === key);
-  const last = hits[hits.length - 1];
-  const set = new Set();
-  if (last && Array.isArray(last.wrong)) {
-    for (const w of last.wrong) {
-      if (typeof w === 'string') set.add(w);            // id 形式(現行)
-      else if (typeof w === 'number' && questions[w]) set.add(questions[w].id); // 旧index形式の互換
-    }
-  }
-  return set;
+// ---- 出題開始(復習回: 誤答バンクから最大 REVIEW_MAX 問) ----
+async function startReview(exam, subject) {
+  const data = await (await fetch(`data/${exam.file}`)).json();
+  const key = `${exam.code}-${subject}`;
+  const all = data.questions.filter((q) => q.subject === subject);
+  const mistakes = currentMistakes(loadStore(), key);
+  const picked = pickReviewQuestions(all, mistakes, REVIEW_MAX);
+  if (picked.length === 0) return; // 誤答が解消済みなら何もしない
+
+  state.exam = exam;
+  state.subject = subject;
+  state.mode = 'review';
+  state.questions = picked;
+  state.responses = {};
+  state.qi = 0;
+  // 復習回は出題されている問題が全て「バンク入り」で自明なため、個別バッジは出さない。
+  state.prevWrong = new Set();
+  renderQuestion();
+  show('screen-quiz');
 }
 
 // ---- 1問描画 ----
 function renderQuestion() {
   const q = state.questions[state.qi];
-  document.getElementById('quiz-meta').textContent = `${state.exam.era} ／ ${state.subject}`;
+  const modeTag = state.mode === 'review' ? '（復習）' : '';
+  document.getElementById('quiz-meta').textContent = `${state.exam.era} ／ ${state.subject}${modeTag}`;
   document.getElementById('progress').textContent = `第 ${state.qi + 1} / ${state.questions.length} 問`;
 
   const art = document.getElementById('question');
@@ -312,8 +345,11 @@ function grade() {
   const result = gradeExam(state.questions, state.responses);
   const key = `${state.exam.code}-${state.subject}`;
   const date = new Date().toISOString().slice(0, 10);
-  saveAttempt(makeAttempt(key, date, result));
-  renderResult(result);
+  const presented = state.questions.map((q) => q.id);
+  saveAttempt(makeAttempt(key, date, result, presented));
+  // 採点直後の誤答バンク残数(正解した問題はここで自動的に消えている)。
+  const remaining = currentMistakes(loadStore(), key).length;
+  renderResult(result, remaining);
   show('screen-result');
 }
 
@@ -334,12 +370,19 @@ function correctText(q) {
   return q.options[q.answer - 1];
 }
 
-function renderResult(result) {
+function renderResult(result, remainingMistakes) {
   const rate = result.total > 0 ? result.score / result.total : 0;
+  const modeTag = state.mode === 'review' ? '（復習）' : '';
+  const resolved = remainingMistakes === 0;
+  const bankLine = resolved
+    ? 'この分野の誤答バンク: 0問(すべて解消)'
+    : `この分野の誤答バンク: ${remainingMistakes}問` +
+      (remainingMistakes > REVIEW_MAX ? `(次の復習は${REVIEW_MAX}問まで)` : '');
   document.getElementById('result-summary').innerHTML =
-    `<div>${state.exam.era} ／ ${state.subject}</div>` +
+    `<div>${state.exam.era} ／ ${state.subject}${modeTag}</div>` +
     `<div class="score-big">${result.score} / ${result.total}</div>` +
-    `<div class="rate">正答率 ${Math.round(rate * 100)}%</div>`;
+    `<div class="rate">正答率 ${Math.round(rate * 100)}%</div>` +
+    `<div class="bank-status${resolved ? ' resolved' : ''}">${bankLine}</div>`;
 
   const wl = document.getElementById('wrong-list');
   wl.innerHTML = '';

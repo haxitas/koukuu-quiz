@@ -7,6 +7,8 @@ import {
   makeAttempt,
   appendResult,
   statsForKey,
+  currentMistakes,
+  pickReviewQuestions,
 } from '../quiz-core.mjs';
 
 // --- 最小アサートハーネス -------------------------------------------------
@@ -121,10 +123,79 @@ check('statsForKey last/best/count', () => {
   eq(s.best, 0.9, 'best');
 });
 
-// makeAttempt はUIの結線用。examResult を素直に写す。
-check('makeAttempt 形', () => {
-  const at = makeAttempt('R8-02-法規', '2026-07-22', { score: 2, total: 3, wrong: [1] });
-  eq(at, { key: 'R8-02-法規', date: '2026-07-22', score: 2, total: 3, wrong: [1] });
+// makeAttempt はUIの結線用。examResult を素直に写す。presented は出題したid一覧。
+check('makeAttempt 形(presentedを含む)', () => {
+  const at = makeAttempt('R8-02-法規', '2026-07-22', { score: 2, total: 3, wrong: ['b1'] }, ['a1', 'b1']);
+  eq(at, { key: 'R8-02-法規', date: '2026-07-22', score: 2, total: 3, wrong: ['b1'], presented: ['a1', 'b1'] });
+});
+check('makeAttempt presented省略時は空配列', () => {
+  const at = makeAttempt('k', 'd', { score: 1, total: 1, wrong: [] });
+  eq(at.presented, []);
+});
+
+// --- currentMistakes: attempts から誤答バンクを導出(可変ストアを持たない) ---
+// 「あるidの直近の出題時に誤答だったか」で判定 → 正解すれば消え、誤答すれば残る。
+check('currentMistakes 記録なしは空', () => {
+  eq(currentMistakes({ attempts: [] }, 'R8-02-無線工学'), []);
+});
+check('currentMistakes 1回目の誤答がそのまま残る', () => {
+  const store = { attempts: [
+    { key: 'R8-02-無線工学', date: '2026-07-20', score: 1, total: 2, wrong: ['q1'], presented: ['q1', 'q2'] },
+  ] };
+  eq(currentMistakes(store, 'R8-02-無線工学'), ['q1']);
+});
+check('currentMistakes 再挑戦で正解すると消える', () => {
+  const store = { attempts: [
+    { key: 'R8-02-無線工学', date: '2026-07-20', score: 1, total: 2, wrong: ['q1'], presented: ['q1', 'q2'] },
+    { key: 'R8-02-無線工学', date: '2026-07-21', score: 1, total: 1, wrong: [], presented: ['q1'] }, // 復習でq1正解
+  ] };
+  eq(currentMistakes(store, 'R8-02-無線工学'), []);
+});
+check('currentMistakes 再挑戦でまた誤答なら残り続ける', () => {
+  const store = { attempts: [
+    { key: 'R8-02-無線工学', date: '2026-07-20', score: 1, total: 2, wrong: ['q1'], presented: ['q1', 'q2'] },
+    { key: 'R8-02-無線工学', date: '2026-07-21', score: 0, total: 1, wrong: ['q1'], presented: ['q1'] },
+  ] };
+  eq(currentMistakes(store, 'R8-02-無線工学'), ['q1']);
+});
+check('currentMistakes 再提示されていない誤答は残る(未解決のまま)', () => {
+  const store = { attempts: [
+    { key: 'R8-02-無線工学', date: '2026-07-20', score: 1, total: 2, wrong: ['q1'], presented: ['q1', 'q2'] },
+    { key: 'R8-02-無線工学', date: '2026-07-21', score: 1, total: 1, wrong: [], presented: ['q3'] }, // q1には触れていない
+  ] };
+  eq(currentMistakes(store, 'R8-02-無線工学'), ['q1']);
+});
+check('currentMistakes 別キーは無視', () => {
+  const store = { attempts: [
+    { key: 'R8-02-法規', date: '2026-07-20', score: 0, total: 1, wrong: ['b1'], presented: ['b1'] },
+  ] };
+  eq(currentMistakes(store, 'R8-02-無線工学'), []);
+});
+check('currentMistakes presented欠落の旧レコードは無視して安全に動く', () => {
+  const store = { attempts: [
+    { key: 'R8-02-無線工学', date: '2026-07-20', score: 0, total: 1, wrong: ['q1'] }, // presented無し(旧形式)
+  ] };
+  eq(currentMistakes(store, 'R8-02-無線工学'), []);
+});
+
+// --- pickReviewQuestions: 出題順を保ち、最大件数でキャップする ---
+check('pickReviewQuestions 誤答idに一致する問題だけ出題順で返す', () => {
+  const qs = [{ id: 'a' }, { id: 'b' }, { id: 'c' }];
+  eq(pickReviewQuestions(qs, ['c', 'a']).map((q) => q.id), ['a', 'c']);
+});
+check('pickReviewQuestions 最大10問にキャップ', () => {
+  const qs = Array.from({ length: 15 }, (_, i) => ({ id: `q${i}` }));
+  const mistakes = qs.map((q) => q.id);
+  const picked = pickReviewQuestions(qs, mistakes);
+  eq(picked.length, 10);
+  eq(picked.map((q) => q.id), ['q0','q1','q2','q3','q4','q5','q6','q7','q8','q9']);
+});
+check('pickReviewQuestions maxを指定できる', () => {
+  const qs = [{ id: 'a' }, { id: 'b' }, { id: 'c' }];
+  eq(pickReviewQuestions(qs, ['a', 'b', 'c'], 2).map((q) => q.id), ['a', 'b']);
+});
+check('pickReviewQuestions 誤答が無ければ空', () => {
+  eq(pickReviewQuestions([{ id: 'a' }], []), []);
 });
 
 export function runTests() {
