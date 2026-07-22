@@ -36,15 +36,15 @@ header h1 { font-size: 1.05rem; margin: 0; }
 .subject-btn:hover { border-color: var(--accent); }
 .subject-btn .name { font-weight: 700; }
 .subject-btn .stats { display: block; color: var(--muted); font-size: .8rem; margin-top: .2rem; }
-.global-review-btn {
-  display: block; width: 100%; text-align: left; margin-bottom: 1rem; padding: .9rem 1.1rem;
+.mistake-review-btn {
+  display: block; width: 100%; text-align: left; margin: 0 0 .6rem; padding: .8rem 1.1rem;
   background: transparent; border: 1.5px dashed #d9730d; border-radius: 12px;
-  color: #d9730d; font-size: 1rem; font-weight: 700; cursor: pointer;
+  color: #d9730d; font-size: .95rem; font-weight: 700; cursor: pointer;
 }
-.global-review-btn:hover { background: rgba(217, 115, 13, 0.08); }
+.mistake-review-btn:hover { background: rgba(217, 115, 13, 0.08); }
 @media (prefers-color-scheme: dark) {
-  .global-review-btn { color: #e8894a; border-color: #e8894a; }
-  .global-review-btn:hover { background: rgba(232, 137, 74, 0.12); }
+  .mistake-review-btn { color: #e8894a; border-color: #e8894a; }
+  .mistake-review-btn:hover { background: rgba(232, 137, 74, 0.12); }
 }
 
 /* 出題画面 */

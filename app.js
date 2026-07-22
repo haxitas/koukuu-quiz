@@ -6,16 +6,19 @@ import {
 
 const STORE_KEY = 'aviation_quiz_results';
 const REVIEW_MAX = 10; // 復習モードの1回あたりの最大出題数
+const SUBJECT_ORDER = ['無線工学', '法規', '英語', '英会話']; // ボタンの並び順の好み(未知の科目は末尾にアルファベット順で追加)
 
 const state = {
   exams: [],
   exam: null,      // 選択中の試験(index.jsonのentry)
   subject: null,   // 選択中の科目名
   mode: 'normal',  // 'normal'(全問) | 'review'(誤答バンクからの復習)
+  reviewSubject: null, // 復習回の科目フィルタ。null=全分野横断、文字列=その科目のみ
   questions: [],   // 出題(科目でフィルタ済み、復習モードは誤答のみ)
   responses: {},   // { questionId: response }
   qi: 0,           // 現在の問番号(0始まり)
   prevWrong: null, // Set<questionId> 出題時点で誤答バンクに入っていたid(バッジ表示用)
+  allQuestionsCache: [], // 全期間・全科目の問題(出典タグ付き)。initSelect で作り、復習開始時に使い回す
 };
 
 // ---- localStorage(append-only) ----
@@ -40,6 +43,24 @@ function show(id) {
 }
 const pct = (r) => (r === null ? '—' : Math.round(r * 100) + '%');
 
+// 出題データに現れる科目を、好みの並び順(SUBJECT_ORDER)→未知はアルファベット順で返す。
+function sortedSubjects(questions) {
+  const present = new Set(questions.map((q) => q.subject));
+  const known = SUBJECT_ORDER.filter((s) => present.has(s));
+  const unknown = [...present].filter((s) => !SUBJECT_ORDER.includes(s)).sort();
+  return [...known, ...unknown];
+}
+
+// 誤答バンク入口ボタンを1個作る(全分野 or 特定科目)。
+function makeMistakeReviewButton(label, count) {
+  const btn = document.createElement('button');
+  btn.className = 'mistake-review-btn';
+  btn.textContent = count > REVIEW_MAX
+    ? `過去に間違えた問題集（${label}・誤答${count}問中${REVIEW_MAX}問）`
+    : `過去に間違えた問題集（${label}・誤答${count}問）`;
+  return btn;
+}
+
 // ---- 選択画面 ----
 async function initSelect() {
   const res = await fetch('data/index.json');
@@ -49,16 +70,29 @@ async function initSelect() {
   const list = document.getElementById('exam-list');
   list.innerHTML = '';
 
-  // ---- グローバル復習エントリ(全期間・全科目の誤答バンク。最上部に1つだけ) ----
+  // 全期間・全科目の問題を結合してキャッシュ(誤答バンクの内訳表示・復習開始の両方で使う)。
+  const combined = [];
+  for (const exam of idx.exams) {
+    const data = await (await fetch(`data/${exam.file}`)).json();
+    for (const q of data.questions) combined.push(tagQuestion(q, exam));
+  }
+  state.allQuestionsCache = combined;
+
+  // ---- 誤答バンク入口(最上部にまとめる): 全分野1つ + 科目ごとに1つずつ ----
   const globalMistakes = currentMistakes(store);
+  const mistakeSet = new Set(globalMistakes);
   if (globalMistakes.length > 0) {
-    const gbtn = document.createElement('button');
-    gbtn.className = 'global-review-btn';
-    gbtn.textContent = globalMistakes.length > REVIEW_MAX
-      ? `過去に間違えた問題集（誤答${globalMistakes.length}問中${REVIEW_MAX}問）`
-      : `過去に間違えた問題集（誤答${globalMistakes.length}問）`;
-    gbtn.addEventListener('click', startGlobalReview);
+    const gbtn = makeMistakeReviewButton('全分野', globalMistakes.length);
+    gbtn.addEventListener('click', () => startMistakeReview(null));
     list.appendChild(gbtn);
+
+    for (const subject of sortedSubjects(combined)) {
+      const count = combined.filter((q) => q.subject === subject && mistakeSet.has(q.id)).length;
+      if (count === 0) continue;
+      const sbtn = makeMistakeReviewButton(subject, count);
+      sbtn.addEventListener('click', () => startMistakeReview(subject));
+      list.appendChild(sbtn);
+    }
   }
 
   for (const exam of idx.exams) {
@@ -110,24 +144,32 @@ async function startQuiz(exam, subject) {
   show('screen-quiz');
 }
 
-// ---- 出題開始(グローバル復習回: 全期間・全科目の誤答バンクから最大 REVIEW_MAX 問) ----
-async function startGlobalReview() {
+// ---- 出題開始(誤答バンクからの復習回: 全期間横断、最大 REVIEW_MAX 問) ----
+// subjectFilter が null なら全分野横断、科目名を渡せばその科目だけに絞って復習する。
+async function startMistakeReview(subjectFilter) {
   const mistakes = currentMistakes(loadStore());
   if (mistakes.length === 0) return; // 選択画面のボタン自体が非表示のはずだが念のため
 
-  // data/index.json 記載の全期を取得して結合する(state.exams、build_index.py が
-  // code降順=新しい期が先に並ぶ)。期の数は少数な前提なので全期取得のコストは無視できる。
-  const combined = [];
-  for (const exam of state.exams) {
-    const data = await (await fetch(`data/${exam.file}`)).json();
-    for (const q of data.questions) combined.push(tagQuestion(q, exam));
-  }
-  const picked = pickReviewQuestions(combined, mistakes, REVIEW_MAX);
+  // 選択画面表示時に作った全期間・全科目のキャッシュを使い回す(無ければ念のため再取得)。
+  const combined = state.allQuestionsCache.length > 0
+    ? state.allQuestionsCache
+    : await (async () => {
+        const idx = await (await fetch('data/index.json')).json();
+        const all = [];
+        for (const exam of idx.exams) {
+          const data = await (await fetch(`data/${exam.file}`)).json();
+          for (const q of data.questions) all.push(tagQuestion(q, exam));
+        }
+        return all;
+      })();
+  const pool = subjectFilter ? combined.filter((q) => q.subject === subjectFilter) : combined;
+  const picked = pickReviewQuestions(pool, mistakes, REVIEW_MAX);
   if (picked.length === 0) return;
 
   state.exam = null;
   state.subject = null;
   state.mode = 'review';
+  state.reviewSubject = subjectFilter;
   state.questions = picked;
   state.responses = {};
   state.qi = 0;
@@ -137,11 +179,19 @@ async function startGlobalReview() {
   show('screen-quiz');
 }
 
+// 復習の対象範囲(全分野=null or 特定科目)における、現時点の誤答バンク件数。
+function remainingMistakeCount(subjectFilter) {
+  const mistakes = currentMistakes(loadStore());
+  if (!subjectFilter) return mistakes.length;
+  const idSubject = new Map(state.allQuestionsCache.map((q) => [q.id, q.subject]));
+  return mistakes.filter((id) => idSubject.get(id) === subjectFilter).length;
+}
+
 // ---- 1問描画 ----
 function renderQuestion() {
   const q = state.questions[state.qi];
   document.getElementById('quiz-meta').textContent = state.mode === 'review'
-    ? '過去に間違えた問題集（復習）'
+    ? `過去に間違えた問題集（${state.reviewSubject || '全分野'}・復習）`
     : `${state.exam.era} ／ ${state.subject}`;
   document.getElementById('progress').textContent = `第 ${state.qi + 1} / ${state.questions.length} 問`;
 
@@ -371,9 +421,11 @@ function grade() {
     (q) => `${q.examCode}-${q.subject}`,
   );
   for (const attempt of attempts) saveAttempt(attempt);
-  // 採点直後のグローバル誤答バンク残数(正解した問題はここで自動的に消えている)。
-  const remaining = currentMistakes(loadStore()).length;
-  renderResult(result, remaining);
+  // 採点直後の誤答バンク残数(正解した問題はここで自動的に消えている)。
+  // 通常回はその科目のスコープ、復習回は復習時に選んだスコープ(全分野 or 特定科目)で数える。
+  const scopeSubject = state.mode === 'review' ? state.reviewSubject : state.subject;
+  const remaining = remainingMistakeCount(scopeSubject);
+  renderResult(result, remaining, scopeSubject);
   show('screen-result');
 }
 
@@ -394,15 +446,16 @@ function correctText(q) {
   return q.options[q.answer - 1];
 }
 
-function renderResult(result, remainingMistakes) {
+function renderResult(result, remainingMistakes, scopeSubject) {
   const rate = result.total > 0 ? result.score / result.total : 0;
   const headerLine = state.mode === 'review'
-    ? '過去に間違えた問題集（復習）'
+    ? `過去に間違えた問題集（${state.reviewSubject || '全分野'}・復習）`
     : `${state.exam.era} ／ ${state.subject}`;
+  const scopeLabel = scopeSubject || '全分野';
   const resolved = remainingMistakes === 0;
   const bankLine = resolved
-    ? '誤答バンク: 0問(すべて解消)'
-    : `誤答バンク: ${remainingMistakes}問` +
+    ? `${scopeLabel}の誤答バンク: 0問(すべて解消)`
+    : `${scopeLabel}の誤答バンク: ${remainingMistakes}問` +
       (remainingMistakes > REVIEW_MAX ? `(次の復習は${REVIEW_MAX}問まで)` : '');
   document.getElementById('result-summary').innerHTML =
     `<div>${headerLine}</div>` +
