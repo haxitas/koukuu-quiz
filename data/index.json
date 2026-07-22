@@ -30,6 +30,10 @@
       "file": "R7-08.json",
       "subjects": [
         {
+          "subject": "無線工学",
+          "count": 14
+        },
+        {
           "subject": "法規",
           "count": 20
         }
@@ -40,6 +44,10 @@
       "era": "令和7年2月期",
       "file": "R7-02.json",
       "subjects": [
+        {
+          "subject": "無線工学",
+          "count": 14
+        },
         {
           "subject": "法規",
           "count": 20
@@ -52,6 +60,10 @@
       "file": "R6-08.json",
       "subjects": [
         {
+          "subject": "無線工学",
+          "count": 14
+        },
+        {
           "subject": "法規",
           "count": 20
         }
@@ -62,6 +74,10 @@
       "era": "令和6年2月期",
       "file": "R6-02.json",
       "subjects": [
+        {
+          "subject": "無線工学",
+          "count": 14
+        },
         {
           "subject": "法規",
           "count": 20
@@ -74,6 +90,10 @@
       "file": "R5-08.json",
       "subjects": [
         {
+          "subject": "無線工学",
+          "count": 14
+        },
+        {
           "subject": "法規",
           "count": 20
         }
@@ -84,6 +104,10 @@
       "era": "令和5年2月期",
       "file": "R5-02.json",
       "subjects": [
+        {
+          "subject": "無線工学",
+          "count": 14
+        },
         {
           "subject": "法規",
           "count": 20
@@ -96,6 +120,10 @@
       "file": "R4-08.json",
       "subjects": [
         {
+          "subject": "無線工学",
+          "count": 14
+        },
+        {
           "subject": "法規",
           "count": 20
         }
@@ -106,6 +134,10 @@
       "era": "令和4年2月期",
       "file": "R4-02.json",
       "subjects": [
+        {
+          "subject": "無線工学",
+          "count": 14
+        },
         {
           "subject": "法規",
           "count": 20
@@ -118,6 +150,10 @@
       "file": "R3-08.json",
       "subjects": [
         {
+          "subject": "無線工学",
+          "count": 14
+        },
+        {
           "subject": "法規",
           "count": 20
         }
@@ -128,6 +164,10 @@
       "era": "令和3年2月期",
       "file": "R3-02.json",
       "subjects": [
+        {
+          "subject": "無線工学",
+          "count": 14
+        },
         {
           "subject": "法規",
           "count": 20
@@ -140,6 +180,10 @@
       "file": "R2-08.json",
       "subjects": [
         {
+          "subject": "無線工学",
+          "count": 14
+        },
+        {
           "subject": "法規",
           "count": 20
         }
@@ -150,6 +194,10 @@
       "era": "令和2年2月期",
       "file": "R2-02.json",
       "subjects": [
+        {
+          "subject": "無線工学",
+          "count": 14
+        },
         {
           "subject": "法規",
           "count": 20
