@@ -2,7 +2,7 @@
  "meta": {
   "era": "令和3年8月期",
   "code": "R3-08",
-  "note": "法規(EY308)全20問を先行投入。無線工学(EZ308)全14問を追加(正答PDFで確認)。英語・英会話は未投入。"
+  "note": "法規(EY308)全20問・無線工学(EZ308)全14問・英語(ERA308)全12問すべて投入済み。英会話は対象外。"
  },
  "questions": [
   {
@@ -879,6 +879,162 @@
      "label": "オ",
      "answer": 10
     }
+   ],
+   "explanation": ""
+  },
+  {
+   "id": "R3-08-eigo-A1", "subject": "英語", "no": "A-1", "type": "single",
+   "instruction": "問1・英文解釈:次の英文を読み、設問に対して最も適切なものを一つ選べ",
+   "passage": "Before Neil Armstrong and Buzz Aldrin knew they would be the first to walk on the moon, they took crash courses in geology at the Grand Canyon and a nearby impact crater that is the most well-preserved on Earth. Northern Arizona has had deep ties to the Apollo missions: Every moon-walking astronaut trained here, and a crater on the moon was even named in honor of the city of Flagstaff. \"It's a really interesting and unique part of our history, and it's really cool to think that this relatively small town in northern Arizona played such a big role in the Apollo missions,\" said Benjamin Carver, a public lands historian at Northern Arizona University.\nToday, astronaut candidates still train in and around Flagstaff. They walk in the same volcanic cinder fields where the U.S. Geological Survey intentionally blasted hundreds of craters from the ground to replicate the lunar surface, testing rovers and geology tools. Scientists used early photos of the moon taken from orbit and re-created the Sea of Tranquility with \"remarkable accuracy\" before Apollo 11 landed there in 1969, the Geological Survey said.\nThe region's role in moon missions is credited to former Geological Survey scientist Gene Shoemaker, who moved the agency's astrogeology branch to Flagstaff in 1963. It wasn't long before Shoemaker guided Armstrong and Aldrin on hikes at Meteor Crater as he pushed to ensure NASA would include geology in lunar exploration. A story passed down by geologists at the crater says Aldrin ripped his spacesuit on jagged limestone rocks that are part of the aptly named \"tear-pants formation,\" forcing a redesign, head tour guide Jeff Beal said. Armstrong and Aldrin also hiked the Grand Canyon. A historical photo shows Armstrong carrying a rock hammer, a hand lens and a backpack for rock samples.\nIn another historical photo, Apollo astronauts Jim Irwin and David Scott ride around in Grover, a prototype of the lunar rover made in Flagstaff from spare parts and now on display at the Astrogeology Science Center. The eventual lunar rover used in three Apollo missions famously got a broken fender on a 1972 mission to the moon. Astronauts cobbled together a quick fix that included a map produced by geologists in Flagstaff.\nOf the three crater fields created in northern Arizona for astronaut training in the late 1960s, only one has a sign acknowledging its importance in the moon missions. Visitors can walk through gaps in a barbed-wire fence and feel their feet sink into the volcanic cinders, although not as deeply as the astronauts' feet sank on the moon. The craters don't come into view without being close up, some as darkened, shallow depressions and others as giant welts in the ground partially lost to the weather. Arizona has approved a nomination to list several of the training sites on the National Register of Historic Places to better preserve them.\n\n<注> crash course:短期集中講座 / volcanic cinder:噴石 / jagged:ギザギザの / replicate:レプリカを作る / formation:層 / cobble together:修理する / welt:縁かがり",
+   "text": "When did Armstrong and Aldrin take intensive courses in geology?",
+   "figure": null,
+   "options": [
+    "They studied the subject in northern Arizona before they went to the moon.",
+    "They took the course through an area with a lot of natural craters.",
+    "They took the course after returning from the moon after realizing the necessity of geological knowledge."
+   ],
+   "answer": 1, "blanks": null, "explanation": ""
+  },
+  {
+   "id": "R3-08-eigo-A2", "subject": "英語", "no": "A-2", "type": "single",
+   "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+   "passage": "(問1の英文はA-1を参照)",
+   "text": "How was northern Arizona used to assist the Apollo mission?",
+   "figure": null,
+   "options": [
+    "Northern Arizona was suitable for the astronauts' training because it had many volcanic mountains.",
+    "Arizona donated a great amount of money as the center of astrogeology research had been relocated there.",
+    "Some areas of northern Arizona were artificially blasted to simulate the moon's surface for use in astronaut training."
+   ],
+   "answer": 3, "blanks": null, "explanation": ""
+  },
+  {
+   "id": "R3-08-eigo-A3", "subject": "英語", "no": "A-3", "type": "single",
+   "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+   "passage": "(問1の英文はA-1を参照)",
+   "text": "How did Gene Shoemaker contribute to the scientific missions to the moon?",
+   "figure": null,
+   "options": [
+    "He guided Armstrong and Aldrin up a rocky mountain with great skill.",
+    "He persuaded NASA that geological research should be included in the exploration of the moon.",
+    "He was the one who repaired Aldrin's torn spacesuit and gave useful advice on how to improve the spacesuit."
+   ],
+   "answer": 2, "blanks": null, "explanation": ""
+  },
+  {
+   "id": "R3-08-eigo-A4", "subject": "英語", "no": "A-4", "type": "single",
+   "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+   "passage": "(問1の英文はA-1を参照)",
+   "text": "According to the article, the moon map produced by Flagstaff geologists was used for a unique purpose. What was that?",
+   "figure": null,
+   "options": [
+    "The map was used to locate every crater, including the one associated with the city of Flagstaff.",
+    "Although the map was produced to guide the astronauts, it was also used to repair the lunar rover's fender.",
+    "The map was used not only to help astronauts explore the moon but also to identify geologically unique spots."
+   ],
+   "answer": 2, "blanks": null, "explanation": ""
+  },
+  {
+   "id": "R3-08-eigo-A5", "subject": "英語", "no": "A-5", "type": "single",
+   "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+   "passage": "(問1の英文はA-1を参照)",
+   "text": "What is the current status of the training areas used in the late 1960s in northern Arizona?",
+   "figure": null,
+   "options": [
+    "Some have been proposed for designation as important heritage sites.",
+    "They look so different that anyone can identify them very easily from a distance.",
+    "They have been completely flattened by exposure to severe weather for over half a century."
+   ],
+   "answer": 1, "blanks": null, "explanation": ""
+  },
+  {
+   "id": "R3-08-eigo-A6", "subject": "英語", "no": "A-6", "type": "single",
+   "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+   "passage": "If the receiving operator is in doubt as to the correctness of the message received, he shall request repetition either in full or in part.",
+   "text": "How should a receiving operator respond if he is not sure that a message is correct?",
+   "figure": null,
+   "options": [
+    "He must not request that a message be repeated in full or in part when he doubts its correctness.",
+    "He must correct all messages received either in full or in part so there can be no doubt about a message's correctness.",
+    "He should ask for either the whole message or just a part of it to be repeated when he is not sure of its correctness."
+   ],
+   "answer": 3, "blanks": null, "explanation": ""
+  },
+  {
+   "id": "R3-08-eigo-A7", "subject": "英語", "no": "A-7", "type": "single",
+   "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+   "passage": "The English language shall be available, on request from any aircraft station, at all stations on the ground serving designated airports and routes used by international air services.",
+   "text": "What is the language requirement for ground stations serving designated airports for international air services?",
+   "figure": null,
+   "options": [
+    "Ground stations serving designated international airports must use English at all times.",
+    "Ground stations serving such airports must be able to use English when asked to do so.",
+    "Such ground stations may choose to use either English or the local language, depending on the language abilities of available personnel."
+   ],
+   "answer": 2, "blanks": null, "explanation": ""
+  },
+  {
+   "id": "R3-08-eigo-A8", "subject": "英語", "no": "A-8", "type": "single",
+   "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+   "passage": "In cases of distress and urgency communications, in general, the transmissions by radiotelephony shall be made slowly and distinctly, each word being clearly pronounced to facilitate transcription.",
+   "text": "According to the above regulation, how should radiotelephony communications be transmitted?",
+   "figure": null,
+   "options": [
+    "The radiotelephony transmissions must always be performed slowly and distinctly to facilitate transcription under any circumstances.",
+    "Except for distress or urgency communications, the radiotelephony transmissions should be performed slowly and distinctly to facilitate transcription.",
+    "For distress or urgency communications, the radiotelephony transmissions must generally be performed slowly and distinctly to facilitate transcription."
+   ],
+   "answer": 3, "blanks": null, "explanation": ""
+  },
+  {
+   "id": "R3-08-eigo-A9", "subject": "英語", "no": "A-9", "type": "single",
+   "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+   "passage": "The service of every aircraft station and every aircraft earth station shall be controlled by an operator holding a certificate issued or recognized by the government to which the station is subject. Provided the station is so controlled, other persons besides the holder of the certificate may use the radiotelephone equipment.",
+   "text": "In which situations may a person who does not have the operator's certificate use radiotelephone equipment?",
+   "figure": null,
+   "options": [
+    "When the station is under the control of a person holding the appropriate certificate",
+    "In cases where the government to which the station is subject recognizes the uncertified person",
+    "In situations where the person who does not have the operator's certificate owns the radiotelephone equipment"
+   ],
+   "answer": 1, "blanks": null, "explanation": ""
+  },
+  {
+   "id": "R3-08-eigo-B1", "subject": "英語", "no": "B-1", "type": "fill_blanks",
+   "instruction": "問3・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+   "text": "【日本文】JAXAと東北大学の共同研究によると、国際宇宙ステーションに持ち込まれたマウスの実験において、体内のあるタンパク質が老化プロセスを遅らせるのを助ける可能性があることが示された。JAXAと大学の科学者のチームは、この発見がアルツハイマー病や糖尿病のような老年期に関連する広範囲の病気を治療する薬の開発の道を開くことを望んでいる。\n\n【英訳文】Experiments on mice that were taken to the International Space Station have shown an [ア] protein has the potential to help slow the [イ] process, according to a joint study by JAXA and Tohoku University. A team of scientists from JAXA and the university hopes the discovery will [ウ] the way for the development of drugs to treat a broad [エ] of illnesses [オ] old age, such as Alzheimer's and diabetes.",
+   "figure": null,
+   "options": ["aging", "associated with", "combined to", "growing", "internal", "pass", "pave", "range", "width"],
+   "answer": null,
+   "blanks": [
+    { "label": "ア", "answer": 5 }, { "label": "イ", "answer": 1 }, { "label": "ウ", "answer": 7 },
+    { "label": "エ", "answer": 8 }, { "label": "オ", "answer": 2 }
+   ],
+   "explanation": ""
+  },
+  {
+   "id": "R3-08-eigo-B2", "subject": "英語", "no": "B-2", "type": "fill_blanks",
+   "instruction": "問4・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+   "text": "【日本文】現在、5社の会社からなるグループが、視覚障害者の単独旅行を支援する人工知能スーツケースを開発している。それらの会社によれば、ユーザーの位置と地図データに基づいて目的地までの最適ルートを立案できる小型ナビゲーションロボットが、多数のセンサーを駆使して周囲の状況を解析し、障害物にぶつからないようにしている。試作品の実地試験が、昨年の11月に日本の空港で行われた。\n\n【英訳文】A group of five companies are currently developing an artificial intelligence suitcase to help visually [ア] people travel independently. The small navigation robot, which is able to plan an optimal route to a [イ] based on the user's location and map data, uses [ウ] sensors to assess its [エ] to avoid bumping into [オ], according to the companies. A pilot test of a prototype was conducted at an airport in Japan last November.",
+   "figure": null,
+   "options": ["destination", "determination", "enclosures", "huge", "impaired", "multiple", "objections", "obstacles", "surroundings"],
+   "answer": null,
+   "blanks": [
+    { "label": "ア", "answer": 5 }, { "label": "イ", "answer": 1 }, { "label": "ウ", "answer": 6 },
+    { "label": "エ", "answer": 9 }, { "label": "オ", "answer": 8 }
+   ],
+   "explanation": ""
+  },
+  {
+   "id": "R3-08-eigo-B3", "subject": "英語", "no": "B-3", "type": "fill_blanks",
+   "instruction": "問5・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+   "text": "【日本文】飛行中の航空機局及び航空機地球局は、航空機の安全及び正常な飛行に関して不可欠な通信上の必要性を満たすために業務を維持し、また、権限のある機関が要求する聴守を維持する。さらに、航空機局及び航空機地球局は、安全上の理由がある場合を除くほか、関係の航空局又は航空地球局に通知することなく聴守を中止してはならない。\n\n【英訳文】Aircraft stations and aircraft earth stations in flight shall maintain service to [ア] the essential communications needs of the aircraft with [イ] to safety and regularity of flight and shall maintain watch as required by the competent authority and shall not [ウ] watch, [エ] reasons of safety, [オ] informing the aeronautical station or aeronautical earth station concerned.",
+   "figure": null,
+   "options": ["beside", "cease", "except for", "meet", "out of", "prevent", "respect", "see", "without"],
+   "answer": null,
+   "blanks": [
+    { "label": "ア", "answer": 4 }, { "label": "イ", "answer": 7 }, { "label": "ウ", "answer": 2 },
+    { "label": "エ", "answer": 3 }, { "label": "オ", "answer": 9 }
    ],
    "explanation": ""
   }

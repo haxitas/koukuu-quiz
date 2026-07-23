@@ -482,6 +482,162 @@
         { "label": "ウ", "answer": 8 }, { "label": "エ", "answer": 4 }, { "label": "オ", "answer": 10 }
       ],
       "explanation": ""
+    },
+    {
+      "id": "R2-02-eigo-A1", "subject": "英語", "no": "A-1", "type": "single",
+      "instruction": "問1・英文解釈:次の英文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "It will be weeks before Russian investigators conclusively identify the cause of Sunday's fiery emergency plane landing in Moscow, but they already know which countries have the worst aviation safety records in the world. A 2018 report by the Interstate Aviation Committee, a group that oversees air safety standards in countries that make up the former Soviet Union, found that 42 of the region's 58 aviation accidents that year took place in Russia. Across the former Soviet Union, 75% of those events labeled catastrophes or accidents were attributable to human error.\n\nAnother report reviewing data for 2018, released by the International Air Transport Association (IATA), placed the former Soviet Union dead last in a regional ranking of aircraft lost to crashes and other disasters. In 2018, it said the former Soviet region rated 1.19 hull losses per million flights. The next closest competitor was the Latin America/Caribbean region with 0.76 losses, and then the Asia Pacific with 0.32 losses. The former Soviet region (CIS) fared slightly better in a review of data from 2013-17, placing just above Africa and just below the Middle East. According to Mikhail Barabanov, an analyst at the Center for the Analysis of Strategies and Technologies, a Moscow think tank, \"Air traffic safety in the Russian Federation and the CIS in 2018 was the worst in the world — worse than Africa.\" Investigators quoted in the Russian press said Tuesday that preliminary results on the possible cause of Sunday's plane fire won't be available until next week, with a full report at least another month away. But on Tuesday, discussions about pilot error dominated the domestic media.\n\nVladimir Evmenkov, the mayor of Severomorsk, a town in northern Russia, says he noticed the pilot took the plane right up through a major thunderhead. He said he witnessed two lightning strikes to the plane's right engine. This is where technical questions about the airworthiness of the SSJ100 aircraft come into play. Lightning strikes are common and planes are designed to discharge the energy in electric strikes through their wings or tail section. It is not clear why the SSJ100 would have failed to do this.\n\nMuch Russian media speculation has focused on reports that the plane took off from Sheremetyevo with nearly a full tank but did not burn enough fuel before attempting to make an emergency landing, making it too heavy to survive a hard landing. However, Viktor Galenko, an expert on Russia's Interdepartmental Aviation Expert Council, told the Russian news agency that most commercial airliners do not have the ability to dump fuel and are designed to be able to land safely with full tanks.\n\n<注> hull:機体 / thunderhead:積乱雲 / airworthiness:耐空性",
+      "text": "According to the article, what do investigators know about the causes of the air disaster in Moscow?",
+      "figure": null,
+      "options": [
+        "At the time the article was written, the reasons for the accident were unconfirmed.",
+        "The investigators concluded beyond doubt that human error had caused the crash.",
+        "They have confirmed that the accident was the result of a small fire in the galley of the aircraft."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-02-eigo-A2", "subject": "英語", "no": "A-2", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "How many aviation accidents occurred in Russia in 2018?",
+      "figure": null,
+      "options": [
+        "A total of 58 Russian accidents were reported in that year.",
+        "In 2018, 75% of the world's aviation accidents occurred in Russian air space.",
+        "58 accidents were reported in the territories of the former Soviet Union and 42 of those happened in Russia."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-02-eigo-A3", "subject": "英語", "no": "A-3", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "Which of the following is the most logical conclusion to be drawn from IATA's 2018 data?",
+      "figure": null,
+      "options": [
+        "The Latin America/Caribbean region had far more hull losses than any other part of the world.",
+        "The Asia-Pacific region was the world's most dangerous area in which to fly.",
+        "The former Soviet Union was probably the most dangerous place in the world to fly on a commercial aircraft."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-02-eigo-A4", "subject": "英語", "no": "A-4", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What usually happens when lightning strikes an aircraft?",
+      "figure": null,
+      "options": [
+        "On most occasions when lightning strikes an aircraft, the result is a fatal accident.",
+        "Modern aircraft are designed to cope with lightning strikes, so usually there is no major damage.",
+        "Lightning strikes on planes are very rare but when they happen they often cause damage to the wings of the aircraft."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-02-eigo-A5", "subject": "英語", "no": "A-5", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What does the article imply about the fuel tanks on the aircraft that crashed?",
+      "figure": null,
+      "options": [
+        "The tanks did not contain enough fuel to make a successful take-off.",
+        "Like many commercial aircraft, this plane should have been able to land safely even with full fuel tanks.",
+        "An expert believes that the fuel tanks on the aircraft were too heavy and this may have caused the accident."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-02-eigo-A6", "subject": "英語", "no": "A-6", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Aircraft of each contracting State of the ICAO Convention may, in or over the territory of other contracting States, carry radio transmitting apparatus only if a license to install and operate such apparatus has been issued by the appropriate authorities of the State in which the aircraft is registered.",
+      "text": "Under what circumstances is it allowed to carry radio transmitting apparatus over the territory of another State?",
+      "figure": null,
+      "options": [
+        "Aircraft may only carry radio transmitting apparatus in or over the State in which the aircraft is registered.",
+        "Aircraft are permitted to carry such equipment if they have an appropriate license issued in the country of registration.",
+        "Aircraft are allowed to carry radio transmitting apparatus over any member country of the ICAO Convention without any operating license for the apparatus."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-02-eigo-A7", "subject": "英語", "no": "A-7", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Telecommunication logs, written or automatic, shall be retained for a period of at least thirty days. When logs are pertinent to inquiries or investigations they shall be retained for longer periods until it is evident that they will be no longer required.",
+      "text": "How long is it necessary to keep telecommunication logs?",
+      "figure": null,
+      "options": [
+        "Neither written nor automatic telecommunication logs are required for inquiries or investigations.",
+        "Telecommunication logs should be kept for a maximum of thirty days even when pertinent to an inquiry or investigation.",
+        "All logs should be kept for a minimum of thirty days, although there may be certain cases where they need to be retained for longer."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-02-eigo-A8", "subject": "英語", "no": "A-8", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "The service of an aeronautical station or an aeronautical earth station shall be continuous throughout the period during which it bears responsibility for the radiocommunication service to aircraft in flight.",
+      "text": "What is required of an aeronautical station in charge of radiocommunication to aircraft in flight?",
+      "figure": null,
+      "options": [
+        "Stations must continue to communicate with aircraft at all times.",
+        "Stations are responsible for maintaining a service for most of the required period but are permitted to take short breaks.",
+        "Stations must never stop providing the service at any time during the period they are responsible for such communication."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-02-eigo-A9", "subject": "英語", "no": "A-9", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "An aeronautical station should acknowledge position reports and other flight progress reports by reading back the report and terminating the readback by its call sign, except that the readback procedure may be suspended temporarily whenever it will alleviate congestion on the communication channel.\n\n<注> alleviate:緩和する / congestion:通信回線の混雑",
+      "text": "Under what circumstances is the aeronautical station not required to read back position reports and other flight progress reports received from the aircraft stations?",
+      "figure": null,
+      "options": [
+        "The readback is not required when communication channel congestion can be reduced by not reading back.",
+        "The readback acknowledgement for the position reports, but not for other flight progress reports, can only be omitted when the communication channel is congested.",
+        "The aeronautical station can give no readback acknowledgement to position reports when the operator's workload is so high that he or she requires a temporary rest."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-02-eigo-B1", "subject": "英語", "no": "B-1", "type": "fill_blanks",
+      "instruction": "問3・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】空港のラウンジは、かつて、ビジネスマンが仕事をするための静かな隠れ家と見られていたが、今では様々な用途を提供しようとしている。その変遷の中で、それらは航空会社の間でもうひとつの競争の場となった。ラウンジの中には、スパ・トリートメントや滑走路の広大な眺めを提供するものもあり、ほとんどのところではいろいろな食べ物を選べるよう改善している。\n\n【英訳文】Airport lounges were [ア] seen as quiet retreats for businessmen to get some work [イ], but now they are trying to serve a [ウ] of purposes. In that shift, they have become one more area of competition [エ] the airlines. Some lounges offer spa treatments and expansive views of the runways, and most are [オ] their food options.",
+      "figure": null,
+      "options": ["against", "among", "doing", "done", "improvement", "improving", "once", "variation", "variety"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 7 }, { "label": "イ", "answer": 4 },
+        { "label": "ウ", "answer": 9 }, { "label": "エ", "answer": 2 }, { "label": "オ", "answer": 6 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R2-02-eigo-B2", "subject": "英語", "no": "B-2", "type": "fill_blanks",
+      "instruction": "問4・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】太陽系内で実施される次なるミッションとして、NASAは土星の最大の衛星であるタイタンにドローン型のヘリコプターを飛ばし、生命の構成要素を探す計画をしている。そのドラゴンフライというミッションは、2026年に打ち上げられ2034年に着陸し、氷で覆われた衛星上の多数の場所を飛ばすためにドローンのような回転翼機を送り込む。タイタンにはかなりの大気があり、科学者は原始の地球に匹敵すると見ている。\n\n【英訳文】For its next mission in our [ア] system, NASA plans to fly a drone copter to Titan, Saturn's largest moon, in [イ] of the building blocks of life. The so-called Dragonfly mission, [ウ] will launch in 2026 and land in 2034, will send a rotorcraft like a drone to fly to dozens of locations across the icy moon. Titan has a substantial [エ] and is viewed by scientists as an [オ] of the very early earth.",
+      "figure": null,
+      "options": ["atmosphere", "equality", "equivalent", "gas", "search", "solar", "sunny", "what", "which"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 6 }, { "label": "イ", "answer": 5 },
+        { "label": "ウ", "answer": 9 }, { "label": "エ", "answer": 1 }, { "label": "オ", "answer": 3 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R2-02-eigo-B3", "subject": "英語", "no": "B-3", "type": "fill_blanks",
+      "instruction": "問5・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】無線通信の局は、遭難の呼出し及び通報を、いずれから発せられたかを問わず、絶対的優先順位において受信し、同様にこの通報に応答し、及び直ちに必要な措置をとる義務を負う。\n\n【英訳文】Radio stations shall be [ア] to accept, with [イ] priority, distress calls and messages regardless of their [ウ], to [エ] in the same manner to such messages, and immediately to take such [オ] in regard thereto as may be required.",
+      "figure": null,
+      "options": ["absolute", "action", "compulsory", "installation", "obliged", "origin", "relay", "reply", "unanimous"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 5 }, { "label": "イ", "answer": 1 },
+        { "label": "ウ", "answer": 6 }, { "label": "エ", "answer": 8 }, { "label": "オ", "answer": 2 }
+      ],
+      "explanation": ""
     }
   ]
 }

@@ -1,8 +1,15 @@
 {
-  "meta": { "era": "令和5年8月期", "code": "R5-08", "note": "法規(EY508)全20問を先行投入。無線工学(EZ508)=全14問を追加(正答PDFで確認)。英語・英会話は未投入。" },
+  "meta": {
+    "era": "令和5年8月期",
+    "code": "R5-08",
+    "note": "法規(EY508)全20問を先行投入。無線工学(EZ508)=全14問を追加(正答PDFで確認)。英語・英会話は未投入。"
+  },
   "questions": [
     {
-      "id": "R5-08-houki-A1", "subject": "法規", "no": "A-1", "type": "single",
+      "id": "R5-08-houki-A1",
+      "subject": "法規",
+      "no": "A-1",
+      "type": "single",
       "instruction": "航空機局等の免許の承継について、電波法(第20条)の規定に照らし、__内の字句の正しい組合せを一つ選べ(同じ記号には同じ字句が入る)",
       "text": "① 免許人について相続があったときは、その相続人は、[A]。\n② 航空機局若しくは航空機地球局(電気通信業務を行うことを目的とするものを除く。)のある航空機又は無線設備がレーダーのみの無線局のある航空機について、航空機の所有権の移転その他の理由により航空機を[B]に変更があったときは、変更後航空機を[B]は、[A]。\n③ ①及び②により免許人の地位を承継した者は、遅滞なく、その事実を証する書面を添えてその旨を総務大臣に[C]。",
       "figure": null,
@@ -12,10 +19,15 @@
         "A:総務大臣の許可を受けて免許人の地位を承継する / B:所有する者 / C:届け出なければならない",
         "A:免許人の地位を承継する / B:所有する者 / C:申し出て検査を受けなければならない"
       ],
-      "answer": 2, "blanks": null, "explanation": ""
+      "answer": 2,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-houki-A2", "subject": "法規", "no": "A-2", "type": "single",
+      "id": "R5-08-houki-A2",
+      "subject": "法規",
+      "no": "A-2",
+      "type": "single",
       "instruction": "送信設備に使用する電波の質及び受信設備の条件について、電波法(第28条及び第29条)の規定に照らし、__内の字句の正しい組合せを一つ選べ",
       "text": "① 送信設備に使用する電波の[A]、[B]電波の質は、総務省令で定めるところに適合するものでなければならない。\n② 受信設備は、その副次的に発する電波又は高周波電流が、総務省令で定める限度を超えて[C]を与えるものであってはならない。",
       "figure": null,
@@ -25,10 +37,15 @@
         "A:周波数の偏差、幅及び安定度 / B:空中線電力の偏差等 / C:他の無線設備の機能に支障",
         "A:周波数の偏差、幅及び安定度 / B:高調波の強度等 / C:電気通信業務の用に供する無線局の無線設備の機能に支障"
       ],
-      "answer": 1, "blanks": null, "explanation": ""
+      "answer": 1,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-houki-A3", "subject": "法規", "no": "A-3", "type": "single",
+      "id": "R5-08-houki-A3",
+      "subject": "法規",
+      "no": "A-3",
+      "type": "single",
       "instruction": "一般通信方法における無線通信の原則について、無線局運用規則(第10条)の規定に照らし、該当しないものを一つ選べ",
       "text": "次に掲げる事項のうち、一般通信方法における無線通信の原則に該当しないものはどれか。無線局運用規則(第10条)の規定に照らし、下の1から4までのうちから一つ選べ。",
       "figure": null,
@@ -38,10 +55,15 @@
         "無線通信を行うときは、暗語を使用してはならない。",
         "無線通信に使用する用語は、できる限り簡潔でなければならない。"
       ],
-      "answer": 3, "blanks": null, "explanation": ""
+      "answer": 3,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-houki-A4", "subject": "法規", "no": "A-4", "type": "single",
+      "id": "R5-08-houki-A4",
+      "subject": "法規",
+      "no": "A-4",
+      "type": "single",
       "instruction": "航空移動業務の無線局の免許状に記載した事項の遵守について、電波法(第52条から第55条まで)の規定に照らし、適合しないものを一つ選べ",
       "text": "航空移動業務の無線局の免許状に記載した事項の遵守に関する次の記述のうち、電波法(第52条から第55条まで)の規定に照らし、これらの規定に定めるところに適合しないものはどれか。下の1から4までのうちから一つ選べ。",
       "figure": null,
@@ -51,10 +73,15 @@
         "無線局を運用する場合においては、遭難通信を行う場合を除き、空中線電力は、次の(1)及び(2)の定めるところによらなければならない。(1)免許状に記載されたものの範囲内であること。(2)通信を行うため必要最小のものであること。",
         "無線局は、遭難通信を行う場合を除き、免許状に記載された目的又は通信の相手方若しくは通信事項の範囲を超えて運用してはならない。"
       ],
-      "answer": 4, "blanks": null, "explanation": ""
+      "answer": 4,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-houki-A5", "subject": "法規", "no": "A-5", "type": "single",
+      "id": "R5-08-houki-A5",
+      "subject": "法規",
+      "no": "A-5",
+      "type": "single",
       "instruction": "義務航空機局、航空機地球局、航空局及び航空地球局の運用義務時間について、電波法(第70条の3)及び無線局運用規則(第143条)の規定に照らし、__内の字句の正しい組合せを一つ選べ",
       "text": "① 義務航空機局及び航空機地球局は、総務省令で定める時間運用しなければならない。\n② ①による義務航空機局の運用義務時間は、[A]とする。\n③ ①による航空機地球局で航空機の安全運航又は正常運航に関する通信を行うものの運用義務時間は、その航空機が別に告示する区域を航行中常時とする。\n④ 航空局及び航空地球局は、[B]運用しなければならない。ただし、総務省令で定める場合は、この限りでない。",
       "figure": null,
@@ -64,10 +91,15 @@
         "A:責任航空局が指示する時間 / B:常時",
         "A:責任航空局が指示する時間 / B:航空機が自局の責任に係る区域を航行している時間中常時"
       ],
-      "answer": 1, "blanks": null, "explanation": ""
+      "answer": 1,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-houki-A6", "subject": "法規", "no": "A-6", "type": "single",
+      "id": "R5-08-houki-A6",
+      "subject": "法規",
+      "no": "A-6",
+      "type": "single",
       "instruction": "航空移動業務の無線電話通信における電波の発射前の措置について、無線局運用規則(第18条及び第19条の2)の規定に照らし、__内の字句の正しい組合せを一つ選べ",
       "text": "① 無線局は、相手局を呼び出そうとするときは、電波を発射する前に、[A]に調整し、自局の発射しようとする[B]によって聴守し、他の通信に混信を与えないことを確かめなければならない。ただし、遭難通信、緊急通信、安全通信及び電波法第74条(非常の場合の無線通信)第1項に規定する通信を行う場合並びに航空移動業務以外の業務において他の通信に混信を与えないことが確実である電波により通信を行う場合は、この限りでない。\n② ①の場合において、他の通信に混信を与えるおそれがあるときは、[C]でなければ呼出しをしてはならない。",
       "figure": null,
@@ -77,10 +109,15 @@
         "A:送信機を最良の動作状況 / B:電波の周波数その他必要と認める周波数 / C:少なくとも10分間経過した後",
         "A:受信機を最良の感度 / B:電波の周波数その他必要と認める周波数 / C:その通信が終了した後"
       ],
-      "answer": 4, "blanks": null, "explanation": ""
+      "answer": 4,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-houki-A7", "subject": "法規", "no": "A-7", "type": "single",
+      "id": "R5-08-houki-A7",
+      "subject": "法規",
+      "no": "A-7",
+      "type": "single",
       "instruction": "航空移動業務の無線電話通信における呼出し及び呼出しの反復について、無線局運用規則(第18条、第20条、第154条の2及び第154条の3)の規定に照らし、__内の字句の正しい組合せを一つ選べ",
       "text": "① 呼出しは、[A]を順次送信して行うものとする。\n② 航空機局は、[B]に対する呼出しを行っても応答がないときは、少なくとも[C]を置かなければ、呼出しを反復してはならない。",
       "figure": null,
@@ -90,10 +127,15 @@
         "A:(1)相手局の呼出符号又は呼出名称 3回以下 (2)自局の呼出符号又は呼出名称 3回以下 / B:航空局及び他の航空機局 / C:1分間の間隔",
         "A:(1)相手局の呼出符号又は呼出名称 3回以下 (2)こちらは 1回 (3)自局の呼出符号又は呼出名称 3回以下 / B:航空局 / C:1分間の間隔"
       ],
-      "answer": 2, "blanks": null, "explanation": ""
+      "answer": 2,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-houki-A8", "subject": "法規", "no": "A-8", "type": "single",
+      "id": "R5-08-houki-A8",
+      "subject": "法規",
+      "no": "A-8",
+      "type": "single",
       "instruction": "呼出符号等の使用の特例及び送信の省略について、無線局運用規則(第157条及び第158条)の規定に照らし、適合しないものを一つ選べ",
       "text": "呼出符号等の使用の特例及び送信の省略に関する次の記述のうち、無線局運用規則(第157条及び第158条)の規定に照らし、これらの規定に定めるところに適合しないものはどれか。下の1から4までのうちから一つ選べ。",
       "figure": null,
@@ -103,10 +145,15 @@
         "航空機局は、航空局から総務大臣が別に告示する簡易な識別表示により呼出しを受けた後でなければ、当該航空機局の呼出符号又は呼出名称に代えて、総務大臣が別に告示する簡易な識別表示を使用することはできない。",
         "航空移動業務の無線電話通信においては、連絡設定後であって混同のおそれがないときは、当該連絡設定に係る通信の継続中における呼出符号又は呼出名称の送信を省略することができる。"
       ],
-      "answer": 1, "blanks": null, "explanation": ""
+      "answer": 1,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-houki-A9", "subject": "法規", "no": "A-9", "type": "single",
+      "id": "R5-08-houki-A9",
+      "subject": "法規",
+      "no": "A-9",
+      "type": "single",
       "instruction": "緊急通信を行う場合について、電波法(第52条)の規定に照らし、該当するものを一つ選べ",
       "text": "次に掲げる事項のうち、緊急通信を行う場合に該当するものはどれか。電波法(第52条)の規定に照らし、下の1から4までのうちから一つ選べ。",
       "figure": null,
@@ -116,10 +163,15 @@
         "船舶又は航空機が重大かつ急迫の危険に陥った場合",
         "船舶又は航空機が重大かつ急迫の危険に陥るおそれがある場合その他緊急の事態が発生した場合"
       ],
-      "answer": 4, "blanks": null, "explanation": ""
+      "answer": 4,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-houki-A10", "subject": "法規", "no": "A-10", "type": "single",
+      "id": "R5-08-houki-A10",
+      "subject": "法規",
+      "no": "A-10",
+      "type": "single",
       "instruction": "遭難通信の取扱いについて、電波法(第66条及び第70条の6)の規定に照らし、__内の字句の正しい組合せを一つ選べ",
       "text": "① 航空局、航空地球局、航空機局及び航空機地球局は、遭難通信を受信したときは、[A]、かつ、[B]に対して通報する等総務省令で定めるところにより救助の通信に関し最善の措置をとらなければならない。\n② 無線局は、遭難信号又は電波法第52条(目的外使用の禁止等)第1号の総務省令で定める方法により行われる無線通信を受信したときは、[C]を直ちに中止しなければならない。",
       "figure": null,
@@ -129,10 +181,15 @@
         "A:他の一切の無線通信に優先して、直ちにこれに応答し / B:遭難している船舶又は航空機を救助するため最も便宜な位置にある無線局 / C:遭難通信を妨害するおそれのある電波の発射",
         "A:できる限り速やかにこれに応答し / B:遭難している船舶又は航空機を救助するため最も便宜な位置にある無線局 / C:すべての電波の発射"
       ],
-      "answer": 3, "blanks": null, "explanation": ""
+      "answer": 3,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-houki-A11", "subject": "法規", "no": "A-11", "type": "single",
+      "id": "R5-08-houki-A11",
+      "subject": "法規",
+      "no": "A-11",
+      "type": "single",
       "instruction": "航空移動業務における遭難通報の送信事項について、無線局運用規則(第170条)の規定に照らし、__内の字句の正しい組合せを一つ選べ",
       "text": "航空機局が無線電話により送信する遭難通報(海上移動業務の無線局にあてるものを除く。)は、[A](なるべく3回)に引き続き、できる限り、次の(1)から(5)までに掲げる事項を順次送信して行うものとする。ただし、遭難航空機局以外の航空機局が送信する場合には、その旨を明示して、次の(1)から(5)までに掲げる事項と異なる事項を送信することができる。\n(1)相手局の呼出符号又は呼出名称(遭難通報のあて先を特定しない場合を除く。)\n(2)[B]又は遭難航空機局の呼出符号若しくは呼出名称\n(3)遭難の種類\n(4)遭難した[C]\n(5)遭難した航空機の位置、高度及び針路",
       "figure": null,
@@ -142,10 +199,15 @@
         "A:遭難信号 / B:遭難した航空機の運行者 / C:航空機の機長の求める助言",
         "A:遭難信号 / B:遭難した航空機の識別 / C:航空機の機長のとろうとする措置"
       ],
-      "answer": 4, "blanks": null, "explanation": ""
+      "answer": 4,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-houki-A12", "subject": "法規", "no": "A-12", "type": "single",
+      "id": "R5-08-houki-A12",
+      "subject": "法規",
+      "no": "A-12",
+      "type": "single",
       "instruction": "免許状に記載した事項に変更を生じたときに免許人が執るべき措置について、電波法(第21条)の規定に照らし、適合するものを一つ選べ",
       "text": "免許状に記載した事項に変更を生じたときに免許人が執るべき措置に関する次の記述のうち、電波法(第21条)の規定に照らし、この規定に定めるところに適合するものはどれか。下の1から4までのうちから一つ選べ。",
       "figure": null,
@@ -155,10 +217,15 @@
         "その免許状を総務大臣に提出し、訂正を受けなければならない。",
         "その免許状を訂正することについて、あらかじめ総務大臣の許可を受けなければならない。"
       ],
-      "answer": 3, "blanks": null, "explanation": ""
+      "answer": 3,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-houki-A13", "subject": "法規", "no": "A-13", "type": "single",
+      "id": "R5-08-houki-A13",
+      "subject": "法規",
+      "no": "A-13",
+      "type": "single",
       "instruction": "航空局等における緊急通信の取扱いについて、電波法(第67条及び第70条の6)及び無線局運用規則(第93条及び第177条)の規定に照らし、適合しないものを一つ選べ",
       "text": "航空局等(注)における緊急通信の取扱いに関する次の記述のうち、電波法(第67条及び第70条の6)及び無線局運用規則(第93条及び第177条)の規定に照らし、これらの規定に定めるところに適合しないものはどれか。下の1から4までのうちから一つ選べ。\n(注: 航空局、航空地球局、航空機局及び航空機地球局をいう。)",
       "figure": null,
@@ -168,10 +235,15 @@
         "航空局又は航空機局は、自局に関係のある緊急通報を受信したときは、直ちにその航空局又は航空機の責任者に通報する等必要な措置をしなければならない。",
         "航空移動業務の無線局相互間において無線電話による緊急信号を受信した航空局又は航空機局は、緊急通信が行われないか又は緊急通信が終了したことを確かめた上でなければ再び通信を開始してはならない。"
       ],
-      "answer": 2, "blanks": null, "explanation": ""
+      "answer": 2,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-houki-A14", "subject": "法規", "no": "A-14", "type": "single",
+      "id": "R5-08-houki-A14",
+      "subject": "法規",
+      "no": "A-14",
+      "type": "single",
       "instruction": "無線局(登録局を除く)の周波数等の変更の命令について、電波法(第71条)の規定に照らし、適合するものを一つ選べ",
       "text": "総務大臣の行う無線局(登録局を除く。)の周波数等の変更の命令に関する次の記述のうち、電波法(第71条)の規定に照らし、この規定に定めるところに適合するものはどれか。下の1から4までのうちから一つ選べ。",
       "figure": null,
@@ -181,112 +253,273 @@
         "総務大臣は、混信の除去その他特に必要があるときは、無線局の目的の遂行に支障を及ぼさない範囲内に限り、当該無線局の電波の型式、周波数、空中線電力若しくは実効輻射電力の指定を変更し、又は人工衛星局の無線設備の設置場所の変更を命ずることができる。",
         "総務大臣は、混信の除去その他特に必要があるときは、無線局の目的の遂行に支障を及ぼさない範囲内に限り、当該無線局の識別信号、電波の型式、周波数若しくは空中線電力の指定を変更し、又は通信の相手方、通信事項若しくは無線局の無線設備の設置場所の変更を命ずることができる。"
       ],
-      "answer": 2, "blanks": null, "explanation": ""
+      "answer": 2,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-houki-B1", "subject": "法規", "no": "B-1", "type": "truefalse_list",
+      "id": "R5-08-houki-B1",
+      "subject": "法規",
+      "no": "B-1",
+      "type": "truefalse_list",
       "instruction": "航空機局の無線業務日誌について、電波法施行規則(第40条)の規定に照らし、適合するものを1、適合しないものを2として解答せよ",
       "text": "航空機局の無線業務日誌に関する次の記述のうち、電波法施行規則(第40条)の規定に照らし、この規定に定めるところに適合するものを1、適合しないものを2として解答せよ。",
       "figure": null,
-      "options": ["適合する", "適合しない"],
+      "options": [
+        "適合する",
+        "適合しない"
+      ],
       "answer": null,
       "blanks": [
-        { "label": "ア", "text": "免許人は、使用を終わった無線業務日誌を次の定期検査(電波法第73条第1項の検査をいう。)の日まで保存しなければならない。", "answer": 2 },
-        { "label": "イ", "text": "無線局が外国において、あらかじめ総務大臣が告示した以外の運用の制限をされたときは、その事実及び措置の内容を無線業務日誌に記載しなければならない。", "answer": 1 },
-        { "label": "ウ", "text": "免許人は、検査の結果について総合通信局長(沖縄総合通信事務所長を含む。)から指示を受け相当な措置をしたときは、その措置の内容を無線業務日誌の記載欄に記載しなければならない。", "answer": 2 },
-        { "label": "エ", "text": "レーダーの維持の概要及びその機能上又は操作上に現れた特異現象の詳細は、無線業務日誌に記載しなければならない。", "answer": 1 },
-        { "label": "オ", "text": "電波法第70条の4(聴守義務)の規定による聴守周波数は、無線業務日誌に記載しなければならない。", "answer": 1 }
+        {
+          "label": "ア",
+          "text": "免許人は、使用を終わった無線業務日誌を次の定期検査(電波法第73条第1項の検査をいう。)の日まで保存しなければならない。",
+          "answer": 2
+        },
+        {
+          "label": "イ",
+          "text": "無線局が外国において、あらかじめ総務大臣が告示した以外の運用の制限をされたときは、その事実及び措置の内容を無線業務日誌に記載しなければならない。",
+          "answer": 1
+        },
+        {
+          "label": "ウ",
+          "text": "免許人は、検査の結果について総合通信局長(沖縄総合通信事務所長を含む。)から指示を受け相当な措置をしたときは、その措置の内容を無線業務日誌の記載欄に記載しなければならない。",
+          "answer": 2
+        },
+        {
+          "label": "エ",
+          "text": "レーダーの維持の概要及びその機能上又は操作上に現れた特異現象の詳細は、無線業務日誌に記載しなければならない。",
+          "answer": 1
+        },
+        {
+          "label": "オ",
+          "text": "電波法第70条の4(聴守義務)の規定による聴守周波数は、無線業務日誌に記載しなければならない。",
+          "answer": 1
+        }
       ],
       "explanation": ""
     },
     {
-      "id": "R5-08-houki-B2", "subject": "法規", "no": "B-2", "type": "truefalse_list",
+      "id": "R5-08-houki-B2",
+      "subject": "法規",
+      "no": "B-2",
+      "type": "truefalse_list",
       "instruction": "電波法に規定する定義について、電波法(第2条)の規定に照らし、適合するものを1、適合しないものを2として解答せよ",
       "text": "電波法に規定する定義に関する次の記述のうち、電波法(第2条)の規定に照らし、この規定に定めるところに適合するものを1、適合しないものを2として解答せよ。",
       "figure": null,
-      "options": ["適合する", "適合しない"],
+      "options": [
+        "適合する",
+        "適合しない"
+      ],
       "answer": null,
       "blanks": [
-        { "label": "ア", "text": "「無線設備」とは、無線電信、無線電話その他電波を送り、又は受けるための電気的設備をいう。", "answer": 1 },
-        { "label": "イ", "text": "「無線電話」とは、電波を利用して、音声その他の音響を送り、又は受けるための通信設備をいう。", "answer": 1 },
-        { "label": "ウ", "text": "「無線電信」とは、電波を利用して、モールス符号を送り、又は受けるための通信設備をいう。", "answer": 2 },
-        { "label": "エ", "text": "「電波」とは、300万ギガヘルツ以下の周波数の電磁波をいう。", "answer": 2 },
-        { "label": "オ", "text": "「無線局」とは、無線設備及び無線設備の操作を行う者の総体をいう。ただし、受信のみを目的とするものを含まない。", "answer": 1 }
+        {
+          "label": "ア",
+          "text": "「無線設備」とは、無線電信、無線電話その他電波を送り、又は受けるための電気的設備をいう。",
+          "answer": 1
+        },
+        {
+          "label": "イ",
+          "text": "「無線電話」とは、電波を利用して、音声その他の音響を送り、又は受けるための通信設備をいう。",
+          "answer": 1
+        },
+        {
+          "label": "ウ",
+          "text": "「無線電信」とは、電波を利用して、モールス符号を送り、又は受けるための通信設備をいう。",
+          "answer": 2
+        },
+        {
+          "label": "エ",
+          "text": "「電波」とは、300万ギガヘルツ以下の周波数の電磁波をいう。",
+          "answer": 2
+        },
+        {
+          "label": "オ",
+          "text": "「無線局」とは、無線設備及び無線設備の操作を行う者の総体をいう。ただし、受信のみを目的とするものを含まない。",
+          "answer": 1
+        }
       ],
       "explanation": ""
     },
     {
-      "id": "R5-08-houki-B3", "subject": "法規", "no": "B-3", "type": "fill_blanks",
+      "id": "R5-08-houki-B3",
+      "subject": "法規",
+      "no": "B-3",
+      "type": "fill_blanks",
       "instruction": "航空移動業務の無線局の無線設備の操作(主任無線従事者制度)について、電波法(第39条)及び電波法施行規則(第34条の3)の規定に照らし、__内に入れるべき字句を1〜10からそれぞれ一つ選べ(同じ記号には同じ字句が入る)",
       "text": "① 電波法第40条(無線従事者の資格)の定めるところにより無線設備の操作を行うことができる無線従事者以外の者は、無線局の無線設備の[ア]を行う者(以下「主任無線従事者」という。)として選任された者であって②によりその選任の届出がされたものにより監督を受けなければ、無線局の無線設備の操作(簡易な操作であって総務省令で定めるものを除く。)を行ってはならない。ただし、[イ]ため無線従事者を補充することができないとき、その他総務省令で定める場合は、この限りでない。\n② 無線局の免許人は、主任無線従事者を選任したときは、遅滞なく、その旨を総務大臣に届け出なければならない。これを解任したときも、同様とする。\n③ 無線局の免許人は、②によりその選任の届出をした主任無線従事者に、[ウ]ごとに、無線設備の[ア]に関し総務大臣の行う[エ]を受けさせなければならない。\n④ 主任無線従事者は、電波法第40条の定めるところにより無線設備の[ア]を行うことができる無線従事者であって、次に定める事由に該当しないものでなければならない。\n(1)電波法第42条(免許を与えない場合)第1号に該当する者であること。\n(2)電波法第79条(無線従事者免許の取消し等)第1項第1号(同条第2項において準用する場合を含む。)の規定により業務に従事することを停止され、その処分の期間が終了した日から3箇月を経過していない者であること。\n(3)主任無線従事者として選任される日以前5年間において無線局(無線従事者の選任を要する無線局でアマチュア局以外のものに限る。)の無線設備の操作又はその監督の業務に従事した期間が[オ]に満たない者であること。",
       "figure": null,
       "options": [
-        "操作", "操作の監督",
-        "航空機の運航計画の変更の", "航空機が航行中である",
-        "総務省令で定める地域", "総務省令で定める期間",
-        "訓練", "講習",
-        "3箇月", "6箇月"
+        "操作",
+        "操作の監督",
+        "航空機の運航計画の変更の",
+        "航空機が航行中である",
+        "総務省令で定める地域",
+        "総務省令で定める期間",
+        "訓練",
+        "講習",
+        "3箇月",
+        "6箇月"
       ],
       "answer": null,
       "blanks": [
-        { "label": "ア", "answer": 2 }, { "label": "イ", "answer": 4 },
-        { "label": "ウ", "answer": 6 }, { "label": "エ", "answer": 8 }, { "label": "オ", "answer": 9 }
+        {
+          "label": "ア",
+          "answer": 2
+        },
+        {
+          "label": "イ",
+          "answer": 4
+        },
+        {
+          "label": "ウ",
+          "answer": 6
+        },
+        {
+          "label": "エ",
+          "answer": 8
+        },
+        {
+          "label": "オ",
+          "answer": 9
+        }
       ],
       "explanation": ""
     },
     {
-      "id": "R5-08-houki-B4", "subject": "法規", "no": "B-4", "type": "truefalse_list",
+      "id": "R5-08-houki-B4",
+      "subject": "法規",
+      "no": "B-4",
+      "type": "truefalse_list",
       "instruction": "無線通信の秘密の保護について、電波法(第59条及び第109条)の規定に照らし、適合するものを1、適合しないものを2として解答せよ",
       "text": "無線通信(注)の秘密の保護に関する次の記述のうち、電波法(第59条及び第109条)の規定に照らし、これらの規定に定めるところに適合するものを1、適合しないものを2として解答せよ。\n(注: 電気通信事業法第4条(秘密の保護)第1項又は第164条(適用除外等)第3項の通信であるものを除く。)",
       "figure": null,
-      "options": ["適合する", "適合しない"],
+      "options": [
+        "適合する",
+        "適合しない"
+      ],
       "answer": null,
       "blanks": [
-        { "label": "ア", "text": "無線局の取扱中に係る無線通信の秘密を漏らし、又は窃用した者は、1年以下の懲役又は50万円以下の罰金に処する。", "answer": 1 },
-        { "label": "イ", "text": "何人も法律に別段の定めがある場合を除くほか、いかなる無線通信も傍受してその存在若しくは内容を漏らし、又はこれを窃用してはならない。", "answer": 2 },
-        { "label": "ウ", "text": "何人も法律に別段の定めがある場合を除くほか、特定の相手方に対して行われる無線通信を傍受してその存在若しくは内容を漏らし、又はこれを窃用してはならない。", "answer": 1 },
-        { "label": "エ", "text": "何人も法律に別段の定めがある場合を除くほか、無線通信(特定の周波数を使用して暗語により行われるものに限る。)を傍受してその存在若しくは内容を漏らし、又はこれを窃用してはならない。", "answer": 2 },
-        { "label": "オ", "text": "無線通信の業務に従事する者がその業務に関し知り得た無線局の取扱中に係る無線通信の秘密を漏らし、又は窃用したときは、2年以下の懲役又は100万円以下の罰金に処する。", "answer": 1 }
+        {
+          "label": "ア",
+          "text": "無線局の取扱中に係る無線通信の秘密を漏らし、又は窃用した者は、1年以下の懲役又は50万円以下の罰金に処する。",
+          "answer": 1
+        },
+        {
+          "label": "イ",
+          "text": "何人も法律に別段の定めがある場合を除くほか、いかなる無線通信も傍受してその存在若しくは内容を漏らし、又はこれを窃用してはならない。",
+          "answer": 2
+        },
+        {
+          "label": "ウ",
+          "text": "何人も法律に別段の定めがある場合を除くほか、特定の相手方に対して行われる無線通信を傍受してその存在若しくは内容を漏らし、又はこれを窃用してはならない。",
+          "answer": 1
+        },
+        {
+          "label": "エ",
+          "text": "何人も法律に別段の定めがある場合を除くほか、無線通信(特定の周波数を使用して暗語により行われるものに限る。)を傍受してその存在若しくは内容を漏らし、又はこれを窃用してはならない。",
+          "answer": 2
+        },
+        {
+          "label": "オ",
+          "text": "無線通信の業務に従事する者がその業務に関し知り得た無線局の取扱中に係る無線通信の秘密を漏らし、又は窃用したときは、2年以下の懲役又は100万円以下の罰金に処する。",
+          "answer": 1
+        }
       ],
       "explanation": ""
     },
     {
-      "id": "R5-08-houki-B5", "subject": "法規", "no": "B-5", "type": "truefalse_list",
+      "id": "R5-08-houki-B5",
+      "subject": "法規",
+      "no": "B-5",
+      "type": "truefalse_list",
       "instruction": "無線局の運用の停止等の処分ができる場合について、電波法(第76条)の規定に照らし、該当するものを1、該当しないものを2として解答せよ",
       "text": "次に掲げる場合のうち、電波法(第76条)の規定に照らし、総務大臣が3月以内の期間を定めて無線局の運用の停止を命じ、又は期間を定めて運用許容時間、周波数若しくは空中線電力を制限することができるときに該当するものを1、該当しないものを2として解答せよ。",
       "figure": null,
-      "options": ["該当する", "該当しない"],
+      "options": [
+        "該当する",
+        "該当しない"
+      ],
       "answer": null,
       "blanks": [
-        { "label": "ア", "text": "無線局の発射する電波の質が総務省令で定めるものに適合していないと認めるとき。", "answer": 2 },
-        { "label": "イ", "text": "免許人が正当な理由がないのに当該無線局の運用を引き続き6月以上休止したとき。", "answer": 2 },
-        { "label": "ウ", "text": "免許人が電波法、電波法に基づく命令又はこれらに基づく処分に違反したとき。", "answer": 1 },
-        { "label": "エ", "text": "免許人が不正な手段により電波の型式、周波数、空中線電力又は運用許容時間の指定の変更を行わせたとき。", "answer": 2 },
-        { "label": "オ", "text": "無線局の無線従事者が電波法又は電波法に基づく命令に違反したとき。", "answer": 2 }
+        {
+          "label": "ア",
+          "text": "無線局の発射する電波の質が総務省令で定めるものに適合していないと認めるとき。",
+          "answer": 2
+        },
+        {
+          "label": "イ",
+          "text": "免許人が正当な理由がないのに当該無線局の運用を引き続き6月以上休止したとき。",
+          "answer": 2
+        },
+        {
+          "label": "ウ",
+          "text": "免許人が電波法、電波法に基づく命令又はこれらに基づく処分に違反したとき。",
+          "answer": 1
+        },
+        {
+          "label": "エ",
+          "text": "免許人が不正な手段により電波の型式、周波数、空中線電力又は運用許容時間の指定の変更を行わせたとき。",
+          "answer": 2
+        },
+        {
+          "label": "オ",
+          "text": "無線局の無線従事者が電波法又は電波法に基づく命令に違反したとき。",
+          "answer": 2
+        }
       ],
       "explanation": ""
     },
     {
-      "id": "R5-08-houki-B6", "subject": "法規", "no": "B-6", "type": "fill_blanks",
+      "id": "R5-08-houki-B6",
+      "subject": "法規",
+      "no": "B-6",
+      "type": "fill_blanks",
       "instruction": "無線局からの混信を防止するための措置について、無線通信規則(第15条)の規定に照らし、__内に入れるべき字句を1〜10からそれぞれ一つ選べ(同じ記号には同じ字句が入る)",
       "text": "① すべての局は、[ア]、過剰な信号の伝送、虚偽の又はまぎらわしい信号の伝送、[イ]の伝送を禁止する(無線通信規則第19条(局の識別)に定める場合を除く。)。\n② 送信局は、業務を満足に行うため必要な[ウ]で輻射する。\n③ 混信を避けるために、送信局の[エ]及び、業務の性質上可能な場合には、受信局の[エ]は、特に注意して選定しなければならない。\n④ 混信を避けるために、不要な方向への輻射又は不要な方向からの受信は、業務の性質上可能な場合には、指向性のアンテナの利点をできる限り利用して、[オ]にしなければならない。",
       "figure": null,
       "options": [
-        "長時間の伝送", "不要な伝送",
-        "識別表示のない信号", "無線通信規則に定めのない略語",
-        "十分な電力", "最小限の電力",
-        "位置", "無線設備",
-        "最大", "最小"
+        "長時間の伝送",
+        "不要な伝送",
+        "識別表示のない信号",
+        "無線通信規則に定めのない略語",
+        "十分な電力",
+        "最小限の電力",
+        "位置",
+        "無線設備",
+        "最大",
+        "最小"
       ],
       "answer": null,
       "blanks": [
-        { "label": "ア", "answer": 2 }, { "label": "イ", "answer": 3 },
-        { "label": "ウ", "answer": 6 }, { "label": "エ", "answer": 7 }, { "label": "オ", "answer": 10 }
+        {
+          "label": "ア",
+          "answer": 2
+        },
+        {
+          "label": "イ",
+          "answer": 3
+        },
+        {
+          "label": "ウ",
+          "answer": 6
+        },
+        {
+          "label": "エ",
+          "answer": 7
+        },
+        {
+          "label": "オ",
+          "answer": 10
+        }
       ],
       "explanation": ""
     },
     {
-      "id": "R5-08-kougaku-A1", "subject": "無線工学", "no": "A-1", "type": "single",
+      "id": "R5-08-kougaku-A1",
+      "subject": "無線工学",
+      "no": "A-1",
+      "type": "single",
       "instruction": "電気磁気量等の名称とその国際単位系(SI)の単位記号の組合せについて、誤っているものを一つ選べ",
       "text": "次は、電気磁気量等の名称とその国際単位系(SI)の単位記号の組合せを示したものである。このうち誤っているものを下の番号から選べ。",
       "figure": null,
@@ -297,10 +530,15 @@
         "電界の強さ … [V/m]",
         "力 … [N]"
       ],
-      "answer": 2, "blanks": null, "explanation": ""
+      "answer": 2,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-kougaku-A2", "subject": "無線工学", "no": "A-2", "type": "single",
+      "id": "R5-08-kougaku-A2",
+      "subject": "無線工学",
+      "no": "A-2",
+      "type": "single",
       "instruction": "図に示す抵抗R、容量リアクタンスX_C及び誘導リアクタンスX_Lの並列回路について、__内に入れるべき字句の正しい組合せを一つ選べ",
       "text": "次の記述は、図に示す抵抗R、容量リアクタンスX_C及び誘導リアクタンスX_Lの並列回路について述べたものである。__内に入れるべき字句の正しい組合せを下の番号から選べ。ただし、交流電源電圧V̇の大きさを50[V]、抵抗Rを10[kΩ]及び容量リアクタンスX_Cを1[kΩ]とし、回路は共振状態にあるものとする。\n(1) X_Lに流れる電流I_Lの大きさは、[A][mA]である。\n(2) 交流電源V̇から流れる電流I₀の大きさは、[B][mA]である。\n(3) V̇とI₀の位相差は、[C][rad]である。",
       "figure": "figures/R5-08-kougaku-A2.png",
@@ -311,10 +549,15 @@
         "A:50 / B:5 / C:0",
         "A:50 / B:5 / C:π/2"
       ],
-      "answer": 4, "blanks": null, "explanation": ""
+      "answer": 4,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-kougaku-A3", "subject": "無線工学", "no": "A-3", "type": "single",
+      "id": "R5-08-kougaku-A3",
+      "subject": "無線工学",
+      "no": "A-3",
+      "type": "single",
       "instruction": "図1(図記号)に示すNチャネル接合形の電界効果トランジスタ(FET)について、誤っているものを一つ選べ",
       "text": "次の記述は、図1(図記号)に示すNチャネル接合形の電界効果トランジスタ(FET)について述べたものである。このうち誤っているものを下の番号から選べ。",
       "figure": "figures/R5-08-kougaku-A3.png",
@@ -325,10 +568,15 @@
         "一般に、ドレイン(D)に正(+)、ソース(S)に負(-)の電圧をかけて使用する。",
         "バイポーラトランジスタに比べて、入力インピーダンスは極めて低い。"
       ],
-      "answer": 5, "blanks": null, "explanation": ""
+      "answer": 5,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-kougaku-A4", "subject": "無線工学", "no": "A-4", "type": "single",
+      "id": "R5-08-kougaku-A4",
+      "subject": "無線工学",
+      "no": "A-4",
+      "type": "single",
       "instruction": "論理回路及びその真理値表の組合せについて、誤っているものを一つ選べ",
       "text": "次は、論理回路及びその真理値表の組合せを示したものである(図参照)。このうち誤っているものを下の番号から選べ。ただし、正論理とし、A及びBを入力、Xを出力とする。",
       "figure": "figures/R5-08-kougaku-A4.png",
@@ -339,10 +587,15 @@
         "選択肢4(図の4)",
         "選択肢5(図の5)"
       ],
-      "answer": 1, "blanks": null, "explanation": "選択肢の論理回路と真理値表は図で示される。1はAND(論理積)回路だが真理値表がA=B=1でX=0(排他的論理和)となっており不一致のため誤り。"
+      "answer": 1,
+      "blanks": null,
+      "explanation": "選択肢の論理回路と真理値表は図で示される。1はAND(論理積)回路だが真理値表がA=B=1でX=0(排他的論理和)となっており不一致のため誤り。"
     },
     {
-      "id": "R5-08-kougaku-A5", "subject": "無線工学", "no": "A-5", "type": "single",
+      "id": "R5-08-kougaku-A5",
+      "subject": "無線工学",
+      "no": "A-5",
+      "type": "single",
       "instruction": "図に示すSSB(J3E)送信機の構成例について、__内に入れるべき字句の正しい組合せを一つ選べ",
       "text": "図は、SSB(J3E)送信機の構成例を示したものである。__内に入れるべき字句の正しい組合せを下の番号から選べ。",
       "figure": "figures/R5-08-kougaku-A5.png",
@@ -353,10 +606,15 @@
         "A:抵抗減衰器 / B:周波数混合器",
         "A:帯域フィルタ(BPF) / B:周波数混合器"
       ],
-      "answer": 5, "blanks": null, "explanation": ""
+      "answer": 5,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-kougaku-A6", "subject": "無線工学", "no": "A-6", "type": "single",
+      "id": "R5-08-kougaku-A6",
+      "subject": "無線工学",
+      "no": "A-6",
+      "type": "single",
       "instruction": "図に示す構成の航空局用のAM(A3E)スーパヘテロダイン受信機について、__内に入れるべき字句の正しい組合せを一つ選べ",
       "text": "次の記述は、図に示す構成の航空局用のAM(A3E)スーパヘテロダイン受信機について述べたものである。__内に入れるべき字句の正しい組合せを下の番号から選べ。\n(1) 高周波増幅器は、信号対雑音比(S/N)を改善して、[A]を良くする。\n(2) 中間周波増幅器は、フィルタなどを使用して選択度を良くし、[B]周波数の混信を減らす役割がある。\n(3) スケルチは、受信信号の強さが規定値[C]のときに、スピーカから雑音が出ることを防ぐ役割がある。",
       "figure": "figures/R5-08-kougaku-A6.png",
@@ -367,10 +625,15 @@
         "A:電源効率 / B:同一 / C:以上",
         "A:電源効率 / B:近接 / C:以下"
       ],
-      "answer": 3, "blanks": null, "explanation": ""
+      "answer": 3,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-kougaku-A7", "subject": "無線工学", "no": "A-7", "type": "single",
+      "id": "R5-08-kougaku-A7",
+      "subject": "無線工学",
+      "no": "A-7",
+      "type": "single",
       "instruction": "正弦波の搬送波をデジタル信号で変調したときの変調波形の概要について、__内に入れるべき字句の正しい組合せを一つ選べ",
       "text": "次の記述は、正弦波の搬送波をデジタル信号で変調したときの変調波形の概要について述べたものである。__内に入れるべき字句の正しい組合せを下の番号から選べ。ただし、デジタル信号は「1」又は「0」の2値で表されるものとする。\n(1) 図に示す変調波形Iは[A]の一例である。\n(2) 図に示す変調波形IIは[B]の一例である。",
       "figure": "figures/R5-08-kougaku-A7.png",
@@ -380,10 +643,15 @@
         "A:ASK / B:PSK",
         "A:ASK / B:FSK"
       ],
-      "answer": 4, "blanks": null, "explanation": ""
+      "answer": 4,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-kougaku-A8", "subject": "無線工学", "no": "A-8", "type": "single",
+      "id": "R5-08-kougaku-A8",
+      "subject": "無線工学",
+      "no": "A-8",
+      "type": "single",
       "instruction": "航空管制用レーダー等について、__内に入れるべき字句の正しい組合せを一つ選べ(同じ記号には同じ字句が入る)",
       "text": "次の記述は、航空管制用レーダー等について述べたものである。__内に入れるべき字句の正しい組合せを下の番号から選べ。なお、同じ記号の__内には、同じ字句が入るものとする。\n(1) 滑走路や誘導路など飛行場面の航空機や車両等を把握するために用いられる一次レーダーは、[A]といわれる。\n(2) [A]のブラインドエリアを解消するため、航空機に搭載のトランスポンダを利用した[B]が導入されている。\n(3) 空港周辺空域における航空機の進入及び出発の管制を行うために用いられるレーダーは、[C]といわれる。",
       "figure": null,
@@ -394,10 +662,15 @@
         "A:ASR / B:セルコールシステム / C:ASDE",
         "A:ARSR / B:マルチラテレーションシステム / C:ASR"
       ],
-      "answer": 1, "blanks": null, "explanation": ""
+      "answer": 1,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-kougaku-A9", "subject": "無線工学", "no": "A-9", "type": "single",
+      "id": "R5-08-kougaku-A9",
+      "subject": "無線工学",
+      "no": "A-9",
+      "type": "single",
       "instruction": "パルスレーダーにおけるMTIについて、__内に入れるべき字句の正しい組合せを一つ選べ",
       "text": "次の記述は、パルスレーダーにおけるMTIについて述べたものである。__内に入れるべき字句の正しい組合せを下の番号から選べ。\n(1) MTIは、移動物標と固定物標を識別し、[A]のみを検出する信号処理技術である。\n(2) MTIは、[B]を利用している。\n(3) MTIは、移動物標及び固定物標からの反射波のうち、[C]からの反射波のみ周波数が変動することを利用している。",
       "figure": null,
@@ -408,10 +681,15 @@
         "A:固定物標 / B:ドプラ効果 / C:移動物標",
         "A:固定物標 / B:トンネル効果 / C:固定物標"
       ],
-      "answer": 1, "blanks": null, "explanation": ""
+      "answer": 1,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-kougaku-A10", "subject": "無線工学", "no": "A-10", "type": "single",
+      "id": "R5-08-kougaku-A10",
+      "subject": "無線工学",
+      "no": "A-10",
+      "type": "single",
       "instruction": "図に示す原理的な構成の浮動(フローティング)充電方式について、誤っているものを一つ選べ",
       "text": "次の記述は、図に示す原理的な構成の浮動(フローティング)充電方式について述べたものである。このうち誤っているものを下の番号から選べ。",
       "figure": "figures/R5-08-kougaku-A10.png",
@@ -422,71 +700,480 @@
         "整流器(直流電源)、蓄電池及び負荷は直列に接続する。",
         "蓄電池は負荷電流の大きな変動に伴う電圧変動を吸収する。"
       ],
-      "answer": 4, "blanks": null, "explanation": ""
+      "answer": 4,
+      "blanks": null,
+      "explanation": ""
     },
     {
-      "id": "R5-08-kougaku-B1", "subject": "無線工学", "no": "B-1", "type": "fill_blanks",
+      "id": "R5-08-kougaku-B1",
+      "subject": "無線工学",
+      "no": "B-1",
+      "type": "fill_blanks",
       "instruction": "インマルサット航空衛星通信システムについて、__内に入れるべき字句を1〜10からそれぞれ一つ選べ",
       "text": "次の記述は、インマルサット航空衛星通信システムについて述べたものである。__内に入れるべき字句を下の番号から選べ。\n(1) 通信に利用するインマルサット衛星は、[ア]衛星である。\n(2) インマルサット衛星の位置は、赤道上空約[イ][km]である。\n(3) [ウ]のサービスが提供されている。\n(4) 航空機地球局と衛星(人工衛星局)間の使用周波数は、[エ]帯及び1.5[GHz]帯である。\n(5) 航空地球局と衛星(人工衛星局)間の使用周波数は、6[GHz]帯及び[オ]帯である。",
       "figure": null,
       "options": [
-        "周回", "20,000", "電話のみ", "1.6[GHz]", "2.2[GHz]",
-        "静止", "36,000", "電話、データ伝送など", "3[GHz]", "4[GHz]"
+        "周回",
+        "20,000",
+        "電話のみ",
+        "1.6[GHz]",
+        "2.2[GHz]",
+        "静止",
+        "36,000",
+        "電話、データ伝送など",
+        "3[GHz]",
+        "4[GHz]"
       ],
       "answer": null,
       "blanks": [
-        { "label": "ア", "answer": 6 }, { "label": "イ", "answer": 7 },
-        { "label": "ウ", "answer": 8 }, { "label": "エ", "answer": 4 }, { "label": "オ", "answer": 10 }
+        {
+          "label": "ア",
+          "answer": 6
+        },
+        {
+          "label": "イ",
+          "answer": 7
+        },
+        {
+          "label": "ウ",
+          "answer": 8
+        },
+        {
+          "label": "エ",
+          "answer": 4
+        },
+        {
+          "label": "オ",
+          "answer": 10
+        }
       ],
       "explanation": ""
     },
     {
-      "id": "R5-08-kougaku-B2", "subject": "無線工学", "no": "B-2", "type": "fill_blanks",
+      "id": "R5-08-kougaku-B2",
+      "subject": "無線工学",
+      "no": "B-2",
+      "type": "fill_blanks",
       "instruction": "図に示す原理的な構造のスリーブアンテナについて、__内に入れるべき字句を1〜10からそれぞれ一つ選べ",
       "text": "次の記述は、図に示す原理的な構造のスリーブアンテナについて述べたものである。__内に入れるべき字句を下の番号から選べ。ただし、アンテナは放射器を垂直にして用いるものとし、電波の波長をλ[m]とする。\n(1) 放射器及びスリーブの長さ l は[ア][m]である。\n(2) 水平面内の指向性は、[イ]である。\n(3) 利得は、[ウ]アンテナとほぼ同じである。\n(4) 特性インピーダンスが[エ]同軸給電線を用いると、整合回路がなくてもアンテナと給電線はほぼ整合する。\n(5) 一般に超短波(VHF)帯や[オ]帯のアンテナとして使われる。",
       "figure": "figures/R5-08-kougaku-B2.png",
       "options": [
-        "λ/2", "単一指向性", "半波長ダイポール", "75[Ω]", "極超短波(UHF)",
-        "λ/4", "全方向性", "八木・宇田(八木)", "50[Ω]", "長波(LF)"
+        "λ/2",
+        "単一指向性",
+        "半波長ダイポール",
+        "75[Ω]",
+        "極超短波(UHF)",
+        "λ/4",
+        "全方向性",
+        "八木・宇田(八木)",
+        "50[Ω]",
+        "長波(LF)"
       ],
       "answer": null,
       "blanks": [
-        { "label": "ア", "answer": 6 }, { "label": "イ", "answer": 7 },
-        { "label": "ウ", "answer": 3 }, { "label": "エ", "answer": 4 }, { "label": "オ", "answer": 5 }
+        {
+          "label": "ア",
+          "answer": 6
+        },
+        {
+          "label": "イ",
+          "answer": 7
+        },
+        {
+          "label": "ウ",
+          "answer": 3
+        },
+        {
+          "label": "エ",
+          "answer": 4
+        },
+        {
+          "label": "オ",
+          "answer": 5
+        }
       ],
       "explanation": ""
     },
     {
-      "id": "R5-08-kougaku-B3", "subject": "無線工学", "no": "B-3", "type": "fill_blanks",
+      "id": "R5-08-kougaku-B3",
+      "subject": "無線工学",
+      "no": "B-3",
+      "type": "fill_blanks",
       "instruction": "図に示す原理的な構造の小電力用の同軸給電線について、__内に入れるべき字句を1〜10からそれぞれ一つ選べ",
       "text": "次の記述は、図に示す原理的な構造の小電力用の同軸給電線について述べたものである。__内に入れるべき字句を下の番号から選べ。\n(1) 同心円状に内部導体と外部導体を配置した構造の、[ア]形給電線である。\n(2) 図の「A」の部分は、[イ]である。\n(3) 周波数が高くなると、誘電損や[ウ]による内部導体の抵抗損等が増加して、伝送効率が低下する。\n(4) 平行二線式給電線に比べて、外部からの電波の影響を受けることが[エ]。\n(5) 特性インピーダンスは、[オ]のものが多い。",
       "figure": "figures/R5-08-kougaku-B3.png",
       "options": [
-        "平衡", "磁性体", "ゼーベック効果", "多い", "300[Ω]",
-        "不平衡", "誘電体", "表皮効果", "少ない", "50[Ω]と75[Ω]"
+        "平衡",
+        "磁性体",
+        "ゼーベック効果",
+        "多い",
+        "300[Ω]",
+        "不平衡",
+        "誘電体",
+        "表皮効果",
+        "少ない",
+        "50[Ω]と75[Ω]"
       ],
       "answer": null,
       "blanks": [
-        { "label": "ア", "answer": 6 }, { "label": "イ", "answer": 7 },
-        { "label": "ウ", "answer": 8 }, { "label": "エ", "answer": 9 }, { "label": "オ", "answer": 10 }
+        {
+          "label": "ア",
+          "answer": 6
+        },
+        {
+          "label": "イ",
+          "answer": 7
+        },
+        {
+          "label": "ウ",
+          "answer": 8
+        },
+        {
+          "label": "エ",
+          "answer": 9
+        },
+        {
+          "label": "オ",
+          "answer": 10
+        }
       ],
       "explanation": ""
     },
     {
-      "id": "R5-08-kougaku-B4", "subject": "無線工学", "no": "B-4", "type": "truefalse_list",
+      "id": "R5-08-kougaku-B4",
+      "subject": "無線工学",
+      "no": "B-4",
+      "type": "truefalse_list",
       "instruction": "電波の基本的性質について、正しいものを1、誤っているものを2として解答せよ",
       "text": "次の記述は、電波の基本的性質について述べたものである。このうち正しいものを1、誤っているものを2として解答せよ。ただし、電波の伝搬速度をc[m/s]、周波数をf[Hz]及び波長をλ[m]とする。",
       "figure": null,
-      "options": ["正しい", "誤っている"],
+      "options": [
+        "正しい",
+        "誤っている"
+      ],
       "answer": null,
       "blanks": [
-        { "label": "ア", "text": "電波は、放射源から広がって伝わり、徐々に減衰する。", "answer": 1 },
-        { "label": "イ", "text": "電波は、縦波である。", "answer": 2 },
-        { "label": "ウ", "text": "電波は、互いに直交する電界と磁界から成り立っている。", "answer": 1 },
-        { "label": "エ", "text": "電波の電界の振動する方向を偏波といい、偏波面が常に大地に対して水平なものを水平偏波という。", "answer": 1 },
-        { "label": "オ", "text": "cは c=fλ[m/s]で表され、真空中では約3×10⁸[m/s]である。", "answer": 1 }
+        {
+          "label": "ア",
+          "text": "電波は、放射源から広がって伝わり、徐々に減衰する。",
+          "answer": 1
+        },
+        {
+          "label": "イ",
+          "text": "電波は、縦波である。",
+          "answer": 2
+        },
+        {
+          "label": "ウ",
+          "text": "電波は、互いに直交する電界と磁界から成り立っている。",
+          "answer": 1
+        },
+        {
+          "label": "エ",
+          "text": "電波の電界の振動する方向を偏波といい、偏波面が常に大地に対して水平なものを水平偏波という。",
+          "answer": 1
+        },
+        {
+          "label": "オ",
+          "text": "cは c=fλ[m/s]で表され、真空中では約3×10⁸[m/s]である。",
+          "answer": 1
+        }
       ],
       "explanation": "イの「縦波」が誤り。電波は横波である。"
+    },
+    {
+      "id": "R5-08-eigo-A1",
+      "subject": "英語",
+      "no": "A-1",
+      "type": "single",
+      "instruction": "問1・英文解釈:次の英文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Boeing bid farewell to an icon on Tuesday, delivering its final 747 jumbo jet as thousands of workers who helped build the planes over the past 55 years looked on. Since its first flight in 1969, the giant yet graceful 747 has served as a cargo plane, a commercial aircraft capable of carrying nearly 500 passengers, a transport for NASA's space shuttles, and the Air Force One presidential aircraft. It revolutionized travel, connecting international cities that had never before had direct routes and helping popularize passenger flight.\n\nBut over about the past 15 years, Boeing and its European rival Airbus have introduced more profitable and fuel efficient wide-body planes, with only two engines to maintain instead of the 747's four. The final plane is the 1,574th built by Boeing in the Puget Sound region of Washington State. \"If you love this business, you've been dreading this moment,\" said longtime aviation analyst Richard Aboulafia. \"Nobody wants a four-engine airliner anymore, but that doesn't erase the tremendous contribution the aircraft made to the development of the industry or its remarkable legacy.\"\n\n\"It was the first big carrier, the first widebody, so it set a new standard for airlines to figure out what to do with it, and how to fill it,\" said Guillaume de Syon, a history professor at Pennsylvania's Albright College who specializes in aviation and mobility. \"It became the essence of mass air travel: You couldn't fill it with people paying full price, so you need to lower prices to get people onboard. It contributed to what happened in the late 1970s with the deregulation of air travel.\" The first 747 entered service in 1970 on Pan Am's New York-London route, and its timing was terrible, Aboulafia said. It debuted shortly before the oil crisis of 1973, amid a recession that saw Boeing's employment fall from 100,800 employees in 1967 to a low of 38,690 in April 1971. The \"Boeing bust\" was infamously marked by a billboard near the Seattle-Tacoma International Airport that read, \"Will the last person leaving SEATTLE – Turn out the lights.\"\n\nDelta was the last U.S. airline to use the 747 for passenger flights, which ended in 2017, although some other international carriers continue to fly it, including the German airline Lufthansa. Lufthansa CEO Carsten Spohr recalled traveling in a 747 as a young exchange student and said that when he realized he'd be traveling to the West Coast of the U.S. for Tuesday's event, there was only one way to go: riding first-class in the nose of a Lufthansa 747 from Frankfurt to San Francisco. He promised the crowd Lufthansa would keep flying the 747 for many years to come.\n\n<注> revolutionize:革命を起こす / popularize:大衆化する / deregulation:自由化",
+      "text": "What does the article say about the Boeing 747's effect upon global air travel?",
+      "figure": null,
+      "options": [
+        "It opened up new direct flight routes between countries and popularized air travel.",
+        "Airlines' commercial viability became a matter of concern after the 747 had popularized air travel.",
+        "The US president ordered airline companies to reduce air fares to fly more passengers to many places."
+      ],
+      "answer": 1,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R5-08-eigo-A2",
+      "subject": "英語",
+      "no": "A-2",
+      "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "According to the article, why is the Boeing 747 being discontinued?",
+      "figure": null,
+      "options": [
+        "New US regulations to reduce emissions have made the production of large planes impractical.",
+        "Wide-body planes no longer suit modern tastes with passengers now wanting to travel in smaller aircraft.",
+        "Modern planes are now more fuel efficient and easier to maintain, making the 747 less cost-effective by comparison."
+      ],
+      "answer": 3,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R5-08-eigo-A3",
+      "subject": "英語",
+      "no": "A-3",
+      "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "How, according to Guillaume de Syon, did the Boeing 747 change air travel?",
+      "figure": null,
+      "options": [
+        "People were willing to pay higher prices for air tickets on such an innovative plane.",
+        "Deregulation by the US government permitted commercial airlines to use wide body airplanes.",
+        "Airlines had to rethink their ticket prices in order to have more passengers fill the large plane's seats."
+      ],
+      "answer": 3,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R5-08-eigo-A4",
+      "subject": "英語",
+      "no": "A-4",
+      "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "Judging from the article, what was the reason behind the billboard which said, \"Will the last person leaving SEATTLE – Turn out the lights.\"?",
+      "figure": null,
+      "options": [
+        "The oil crisis of 1973 meant that energy-saving was imperative everywhere in the US, even in Seattle.",
+        "Employment numbers at Boeing had fallen very low and it was feared Boeing might collapse.",
+        "Boeing had gone bust because the cost of developing the 747 was too high and it had to save every cent."
+      ],
+      "answer": 2,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R5-08-eigo-A5",
+      "subject": "英語",
+      "no": "A-5",
+      "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What did the CEO of Lufthansa say to the crowd at the Boeing 747's farewell party?",
+      "figure": null,
+      "options": [
+        "He said to the crowd that he regretted not having been able to fly there in a 747 from Frankfurt.",
+        "He promised the crowd that the 747 would continue to be used for many years by Lufthansa.",
+        "He said to the crowd that he remembered his days of flying first-class as a young exchange student."
+      ],
+      "answer": 2,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R5-08-eigo-A6",
+      "subject": "英語",
+      "no": "A-6",
+      "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "All stations shall radiate the minimum power necessary to ensure a satisfactory service.",
+      "text": "What power does the above provision require when radio stations transmit signals?",
+      "figure": null,
+      "options": [
+        "The power must be the largest possible for the transmitter to ensure a satisfactory service.",
+        "The power must be as small as possible but large enough to provide a good service.",
+        "All stations must radiate radio waves at the lowest level even if their services are degraded."
+      ],
+      "answer": 2,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R5-08-eigo-A7",
+      "subject": "英語",
+      "no": "A-7",
+      "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "After the aircraft station has called the aeronautical station, a period of at least 10 seconds should elapse before a second call is made. This should eliminate unnecessary transmissions while the aeronautical station is getting ready to reply to the initial call.",
+      "text": "Why does the above provision require the aircraft station to wait ten seconds before making a second call?",
+      "figure": null,
+      "options": [
+        "To give the aeronautical station time to send a reply to the first call.",
+        "To avoid the two messages from the calling aircraft station getting mixed together.",
+        "To give the aeronautical station a chance to reject the clearance request from the aircraft station."
+      ],
+      "answer": 1,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R5-08-eigo-A8",
+      "subject": "英語",
+      "no": "A-8",
+      "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "All stations, whatever their purpose, must be established and operated in such a manner as not to cause harmful interference to the radio services or communications of other ITU Member States or of recognized operating agencies, or of other duly authorized operating agencies which carry on a radio service, and which operate in accordance with the provisions of the Radio Regulations.",
+      "text": "How must any station set up for any purpose be established and operated?",
+      "figure": null,
+      "options": [
+        "So as not to disrupt the radio communications or services of other ITU Member States or operating agencies properly carrying on radio services.",
+        "So as to monitor other ITU Member States and operating agencies in order that they may not cause harmful interference to properly operating radio stations.",
+        "So as not to interfere with most radio services or communications of other ITU Member States, except for those of recognized or duly authorized operating agencies."
+      ],
+      "answer": 1,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R5-08-eigo-A9",
+      "subject": "英語",
+      "no": "A-9",
+      "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Before transmitting, a station shall take precautions to ensure that it will not interfere with a communication already in progress and that the station called is not in communication with another station.",
+      "text": "What must a station do before transmitting radio signals?",
+      "figure": null,
+      "options": [
+        "A station should request interfering stations to stop all communications and ensure that the station to be called is ready to receive its call.",
+        "A station should request the station it is calling to stop its communication with other radio stations in order to prevent interference with its own radio communications.",
+        "A station should ensure that it doesn't interfere with any communication in progress and confirm that the station it is calling is not engaged in another radio communication."
+      ],
+      "answer": 3,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R5-08-eigo-B1",
+      "subject": "英語",
+      "no": "B-1",
+      "type": "fill_blanks",
+      "instruction": "問3・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】日本の空飛ぶ車のスタートアップ企業が電動垂直離着陸機の開発を加速していて、2025年の大阪万博までに初の商業飛行を目指している。その企業は空飛ぶ車が万博会場の上空を疾走し、参加者を遊覧飛行に連れて行くという計画を持っている。この新しい交通手段は、交通渋滞を緩和するだけでなく、緊急医療や災害救助にも使用できる。\n\n【英訳文】A Japanese flying car startup is [ア] the development of its electric [イ] takeoff and landing vehicle, setting its sights on a first commercial flight by the 2025 World Expo in Osaka. The company plans to have flying cars zipping over the Expo [ウ], taking [エ] on pleasure flights. This new mode of transportation will not only help to [オ] traffic jams, but can also be used for medical emergencies and disaster relief.",
+      "figure": null,
+      "options": [
+        "accelerating",
+        "ease",
+        "erase",
+        "expanding",
+        "participants",
+        "revenue",
+        "upright",
+        "venue",
+        "vertical"
+      ],
+      "answer": null,
+      "blanks": [
+        {
+          "label": "ア",
+          "answer": 1
+        },
+        {
+          "label": "イ",
+          "answer": 9
+        },
+        {
+          "label": "ウ",
+          "answer": 8
+        },
+        {
+          "label": "エ",
+          "answer": 5
+        },
+        {
+          "label": "オ",
+          "answer": 2
+        }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R5-08-eigo-B2",
+      "subject": "英語",
+      "no": "B-2",
+      "type": "fill_blanks",
+      "instruction": "問4・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】アメリカの研究者たちは、自律型航空機が混雑した空域を航行できるようにするAIパイロットを開発した。AIは衝突を安全に回避し、他の航空機の意図を予測し、(複数の)航空機を追跡してそれらの行動を調整し、パイロットたちや航空管制官たちと無線で通信することができる。彼らは自分たちのシステムの動作が、人間のパイロットが行うものと区別がつかなくなるようAIを開発することを目指している。\n\n【英訳文】Researchers in America have developed an AI pilot that [ア] autonomous aircraft to navigate a crowded airspace. The AI can safely avoid collisions, [イ] the [ウ] of other aircraft, track aircraft and [エ] with their actions, and communicate over the radio with pilots and air traffic controllers. They aim to develop the AI [オ] the behaviors of their system will be indistinguishable from those of a human pilot.",
+      "figure": null,
+      "options": [
+        "content",
+        "coordinate",
+        "enables",
+        "ensures",
+        "intent",
+        "predict",
+        "preside",
+        "so that",
+        "which"
+      ],
+      "answer": null,
+      "blanks": [
+        {
+          "label": "ア",
+          "answer": 3
+        },
+        {
+          "label": "イ",
+          "answer": 6
+        },
+        {
+          "label": "ウ",
+          "answer": 5
+        },
+        {
+          "label": "エ",
+          "answer": 2
+        },
+        {
+          "label": "オ",
+          "answer": 8
+        }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R5-08-eigo-B3",
+      "subject": "英語",
+      "no": "B-3",
+      "type": "fill_blanks",
+      "instruction": "問5・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】緊急通信は、すべて、緊急な状態に関連する無線電話通報で構成されなければならない。緊急な状態は、航空機、その他の移動体、又は機上の若しくは視界内の人員の安全に関する状態として定義されるが、即時の救助を必要とするものではない。\n\n【英訳文】Urgency traffic shall [ア] all radiotelephony messages [イ] to the urgency conditions. Urgency conditions are [ウ] as conditions [エ] the safety of an aircraft or other vehicle, or of some person on board it or [オ], not requiring immediate assistance.",
+      "figure": null,
+      "options": [
+        "comprise",
+        "compromise",
+        "concerning",
+        "confined",
+        "connects",
+        "defined",
+        "invisible",
+        "relative",
+        "within sight"
+      ],
+      "answer": null,
+      "blanks": [
+        {
+          "label": "ア",
+          "answer": 1
+        },
+        {
+          "label": "イ",
+          "answer": 8
+        },
+        {
+          "label": "ウ",
+          "answer": 6
+        },
+        {
+          "label": "エ",
+          "answer": 3
+        },
+        {
+          "label": "オ",
+          "answer": 9
+        }
+      ],
+      "explanation": ""
     }
   ]
 }

@@ -482,6 +482,163 @@
         { "label": "ウ", "answer": 3 }, { "label": "エ", "answer": 9 }, { "label": "オ", "answer": 5 }
       ],
       "explanation": ""
+    },
+
+    {
+      "id": "R7-02-eigo-A1", "subject": "英語", "no": "A-1", "type": "single",
+      "instruction": "問1・英文解釈:次の英文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "As a Delta Air Lines jet began roaring down a runway, an air traffic controller at New York's JFK International Airport suddenly blurted out a swear word, then ordered the pilots to stop their takeoff roll. The controller saw an American Airlines plane mistakenly crossing the same runway, into the path of the accelerating Delta jet. JFK is one of only 35 U.S. airports with the equipment to track planes and vehicles on the ground. The system alerted the airport control tower to the danger, possibly saving lives last year. The NTSB and many independent experts say pilots should get warnings without waiting precious seconds to get word from controllers. Just last week, the NTSB recommended that the FAA collaborate with manufacturers to develop technology for alerting pilots directly.\n\nHoneywell International, a conglomerate with a big aerospace business, has been working on such an early-warning system for about 15 years and thinks it is close to a finished product. Honeywell officials claim their technology would have alerted the Delta pilots who had the January 2023 near-miss at JFK 13 seconds before the air traffic controller screamed the swear word and told them to stop their takeoff. Merely removing the need for a controller to relay the warning from ground-based systems could be critical. \"Those are microseconds, but they are enough to make a difference,\" Michael McCormick, a former FAA official who now teaches air-traffic management at Embry-Riddle Aeronautical University in Florida, said.\n\nThe NTSB's examination of the February 2023 close call between a FedEx plane and a Southwest Airlines jet in Austin also renewed attention on technology to provide cockpit warnings of possible incursions and included a brief reference to the system Honeywell is developing. The FAA has not certified the system, which Honeywell calls \"Surf-A\" for surface alerts, but the company thinks certification could happen in the next 18 months. Honeywell began working on a cockpit warning system around 2008 and tried to convince airlines to support the idea. The company suspended the project when the pandemic devastated aviation in 2020. Then, as air travel recovered early last year, there were a series of high-profile close calls between planes at major U.S. airports, including the ones at JFK and Austin–Bergstrom International Airport. \"Previously, when we would talk to airlines, they were not interested. Last year, we go talk to the airlines again, and now they're interested,\" said Thea Feyereisen, part of the Honeywell team working on the system. Still, Honeywell doesn't have a launch customer.\n\n<注> blurt out:思わず口にする / NTSB:国家運輸安全委員会 / FAA:連邦航空局 / conglomerate:複合企業 / microsecond:百万分の一秒 / close call:危機一髪 / incursion:(滑走路への突然の)侵入",
+      "text": "According to the above article, what happened at JFK airport in January 2023?",
+      "figure": null,
+      "options": [
+        "A controller saw an American Airlines airplane crossing the same runway a Delta plane was due to take off from and a disaster occurred a few seconds later on the runway.",
+        "As an American Airlines airplane was crossing the runway where a Delta airplane was about to land, the controller asked the Delta airplane to go around, and a collision was avoided.",
+        "A controller prevented a collision when he saw an American Airlines plane crossing the runway a Delta Air Lines plane was due to take off from by stopping the Delta airplane's takeoff roll."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-02-eigo-A2", "subject": "英語", "no": "A-2", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What do the NTSB and other experts say about the relaying of tracking equipment warnings to pilots by air traffic controllers?",
+      "figure": null,
+      "options": [
+        "A system for alerting pilots directly is needed.",
+        "The total cost of the early warning system is too low.",
+        "The system is good enough for warning the pilots already."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-02-eigo-A3", "subject": "英語", "no": "A-3", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "According to Michael McCormick, what effect would a direct warning system have?",
+      "figure": null,
+      "options": [
+        "It would enable pilots to double-check the alert with the air traffic controller.",
+        "It would reduce the time needed to alert pilots. Even microseconds could be important.",
+        "It would automatically prevent every single ground-based accident caused by incursions."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-02-eigo-A4", "subject": "英語", "no": "A-4", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "At the time of the above article, what was the Honeywell cockpit warning system's certification status?",
+      "figure": null,
+      "options": [
+        "The system was certified by NTSB's examination.",
+        "It was not yet certified, but the manufacturer expected it would be in one and a half years' time.",
+        "The FAA intends to certify it after airline trials but no one expects this certification in the near future."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-02-eigo-A5", "subject": "英語", "no": "A-5", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What do the airline companies think about the cockpit warning system Honeywell has been developing?",
+      "figure": null,
+      "options": [
+        "The airline companies were interested in the system, but they have lost interest since the pandemic.",
+        "The airlines are cooperating with the project and the system is already being tested at multiple US sites.",
+        "The aviation companies showed interest last year but none of them is willing to use it for their aircraft yet."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-02-eigo-A6", "subject": "英語", "no": "A-6", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Air traffic services units using direct pilot-controller communication channels shall only be required to handle flight regularity messages provided this can be achieved without interference with their primary role and no other channels are available for the handling of such messages.",
+      "text": "In what circumstances should the air traffic services units NOT handle flight regularity messages?",
+      "figure": null,
+      "options": [
+        "If there is another channel to deal with such communications",
+        "Air traffic services units should in principle handle flight regularity messages.",
+        "There are no circumstances in which flight regularity messages can be handled on direct pilot-controller communication channels."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-02-eigo-A7", "subject": "英語", "no": "A-7", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "An aircraft shall be advised by the appropriate aeronautical station to transfer from one radio frequency to another in accordance with agreed procedures. In the absence of such advice, the aircraft station shall notify the appropriate aeronautical station before such a transfer takes place.",
+      "text": "According to the above provision, in what circumstances may an aircraft station change its radio frequency on its own initiative?",
+      "figure": null,
+      "options": [
+        "Only when the aeronautical station has not provided any advice",
+        "An aircraft station is not permitted to change its radio frequency under any circumstances.",
+        "When the aircraft station cannot tune in to the frequency assigned by the aeronautical station"
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-02-eigo-A8", "subject": "英語", "no": "A-8", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "The service of automatic communication devices installed in an aircraft station or aircraft earth station shall be controlled by an operator holding a certificate issued or recognized by the government to which the station is subject. Provided the devices are so controlled, they may be used by other persons. The term \"automatic communication devices\" is intended to include such equipment as teleprinters, data transfer systems, etc.",
+      "text": "When is it acceptable for someone without a certificate issued or recognized by the relevant government to operate an automatic communication device?",
+      "figure": null,
+      "options": [
+        "Such devices must always be used by certified operators only.",
+        "When the devices are under the control of an appropriately certified operator",
+        "When the device is regarded as an automatic communication device by the appropriate government"
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-02-eigo-A9", "subject": "英語", "no": "A-9", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "The aeronautical station, having received the message from ATS, should not delegate to another station the responsibility for delivery of the message to the aircraft. However, in case of communication difficulties, other stations should assist, when requested, in relaying the message to the aircraft. In this case, the station having received the message from ATS should obtain without delay definite assurance that the aircraft has correctly acknowledged the message.",
+      "text": "What should happen when an aeronautical station experiences communication difficulties with an aircraft after having received the message from ATS?",
+      "figure": null,
+      "options": [
+        "The original station shall transfer all responsibilities to the station that establishes contact.",
+        "The aeronautical station that receives the message from ATS is not permitted to request aid from any other station.",
+        "The aeronautical station concerned can request other stations to relay the message to the aircraft and should immediately confirm that the aircraft has received the message."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-02-eigo-B1", "subject": "英語", "no": "B-1", "type": "fill_blanks",
+      "instruction": "問3・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】コロラド州に拠点を置くエネルギースタートアップ企業が、航空史上最大の航空機を開発している。それは、ボーイング747の12倍の貨物室容積を持ち、その幅はニューヨーク市の1ブロックと同じになるだろう。その主なミッションは、道路で輸送するには大きすぎる巨大な風力タービンブレードを運ぶことだ。その航空機は、短い未舗装の滑走路にも着陸するよう設計され、遠隔地でのギガワット規模の新しい風力発電所の建設を容易にする。\n\n【英訳文】A Colorado-based energy startup is developing the biggest aircraft in aviation history. It will have 12 times the cargo bay [ア] of a Boeing747 and will be as wide as a New York City block. Its primary mission is to carry massive wind turbine blades that are too large to be [イ] by road. The plane is being designed to land on short, [ウ] runways, [エ] the construction of new, gigawatt-scale wind farms in [オ] areas.",
+      "figure": null,
+      "options": ["complicating", "facilitating", "quantity", "remote", "rural", "transformed", "transported", "unpaved", "volume"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 9 }, { "label": "イ", "answer": 7 },
+        { "label": "ウ", "answer": 8 }, { "label": "エ", "answer": 2 }, { "label": "オ", "answer": 4 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R7-02-eigo-B2", "subject": "英語", "no": "B-2", "type": "fill_blanks",
+      "instruction": "問4・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】ダウンバースト段階はマイクロバーストやマクロバーストの最初の段階であり、地面に向かって急激に空気が下降することによって発生する。この段階では、下降する空気の速度が時速150マイルまで達することがある。ダウンバースト段階は、高度と対気速度の急激な低下を引き起こす可能性があるため、航空機にとって最も危険な段階である。パイロットは、この段階において特に警戒し、航空機の制御維持のための迅速な行動を取る必要がある。\n\n【英訳文】The downburst stage is the first stage of a microburst or macroburst, caused by a sudden descent of air towards the ground. During this stage, the descending air can reach speeds of [ア] 150 mph. The downburst stage is the most dangerous [イ] for aircraft, because it can cause a sudden [ウ] of [エ] and airspeed. Pilots need to be especially vigilant during this stage and take quick action to [オ] control of their aircraft.",
+      "figure": null,
+      "options": ["abandon", "altitude", "latitude", "loss", "lost", "maintain", "more than", "one", "up to"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 9 }, { "label": "イ", "answer": 8 },
+        { "label": "ウ", "answer": 4 }, { "label": "エ", "answer": 2 }, { "label": "オ", "answer": 6 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R7-02-eigo-B3", "subject": "英語", "no": "B-3", "type": "fill_blanks",
+      "instruction": "問5・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】SELCALとして知られる選択呼出システムを用いることにより、音声による呼出しは無線電話チャネルで航空機に向けられる符号化されたトーンの送信によって置き換えられる。一の選択呼出しは、その送信に約2秒を要する4個の事前に選択された可聴トーンの組合せで構成される。トーンは、航空局のコーダーで発生し、機上装置の受信機の可聴出力に接続されたデコーダーで受信される。\n\n【英訳文】With the selective calling system known as SELCAL, the voice calling is [ア] by the transmission of coded tones to the aircraft over the radiotelephony channels. A single selective call [イ] of a combination of four pre-selected audio tones [ウ] transmission requires [エ] 2 seconds. The tones are [オ] in the aeronautical station coder and are received by a decoder connected to the audio output of the airborne receiver.",
+      "figure": null,
+      "options": ["appropriately", "approximately", "changed", "consists", "generalized", "generated", "insists", "replaced", "whose"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 8 }, { "label": "イ", "answer": 4 },
+        { "label": "ウ", "answer": 9 }, { "label": "エ", "answer": 2 }, { "label": "オ", "answer": 6 }
+      ],
+      "explanation": ""
     }
   ]
 }

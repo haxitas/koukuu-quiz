@@ -488,6 +488,165 @@
         { "label": "ウ", "answer": 8 }, { "label": "エ", "answer": 4 }, { "label": "オ", "answer": 10 }
       ],
       "explanation": ""
+    },
+    {
+      "id": "R4-02-eigo-A1", "subject": "英語", "no": "A-1", "type": "single",
+      "instruction": "問1・英文解釈:次の英文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "A German lab is hoping to cut the time it takes to send coronavirus test samples across Berlin by using drones, thereby avoiding the capital's clogged roads. A California-based company is currently testing drone deliveries between a hospital and Labor Berlin, one of the largest laboratories in Europe. The route from hospital to lab is about 11 kilometers as the drone flies, and officials expect to cut standard delivery times from about an hour to around 10 minutes when service on the route begins. Eventually, the hope is that drones will provide regular deliveries to the lab from six points around Berlin, shaving vital minutes off the turnaround time for COVID tests.\n\n\"The whole topic of 'time to the result' is really important, especially when there is the suspicion of an infection,\" said Klaus Tenning, who is leading the project for Labor Berlin. \"You want to identify the person and get the result as soon as possible so that the person can self-isolate or be able to just continue with normal daily life.\" Each route will be served by two drones in order to have each served 24 hours a day. The batteries in the drone simply get replaced when they are running low, eliminating charging time. Each drone can carry about 40 samples. It won't just be COVID tests that are transported, but any samples that need to be examined in a lab. \"We said from the start that this would be a working project,\" said Tenning.\n\nAccording to Germany's disease control agency, the Robert Koch Institute, 175 laboratories in Germany have a combined COVID-19 test capacity of 307,000 tests per day. Each week over a million standard PCR tests for COVID-19 are carried out, some at designated test centers but also in doctors' practices and at hospitals. Tenning thinks there's room for improvement when it comes to delivering samples from some testing sites to the labs. \"An emergency situation like a pandemic can bring about faster change and innovation,\" he said.\n\nThe Californian company is already running similar drone delivery systems in Switzerland and the United States, but Berlin will have the first such system in the European Union. The company is waiting for new drone regulations to come into effect on Dec. 30 before starting regular operations. Should an engine unexpectedly fail, the drones have a parachute. They can also detect other aircraft, such as helicopters, and the control center will be connected to helicopter operations to avoid a drone flying in the same area. But for the most part the drones are fully autonomous. \"They start themselves and follow a pre-defined route and then they land autonomously at the destination,\" said Alex Norman, the company's project manager.\n\n<注> lab:laboratory / turnaround time:全所要時間 / working project:実用的なプロジェクト",
+      "text": "Which of the following correctly describes the drone delivery service referred in the above article?", "figure": null,
+      "options": [
+        "It will run in Berlin, California, and be operated by a German company.",
+        "It was run by a Californian company, but will now be replaced by a German one.",
+        "It is being piloted between one of Europe's biggest testing facilities and a hospital."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R4-02-eigo-A2", "subject": "英語", "no": "A-2", "type": "single",
+      "instruction": "問1・英文解釈:(A-1と同じ英文について)設問に対して最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "Which is NOT true of the new COVID test drone service?", "figure": null,
+      "options": [
+        "Unfortunately, it will not improve the delivery time at all.",
+        "It can fly 11 kilometers in roughly 10 minutes.",
+        "It is expected eventually to deliver the samples from six points around Berlin."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R4-02-eigo-A3", "subject": "英語", "no": "A-3", "type": "single",
+      "instruction": "問1・英文解釈:(A-1と同じ英文について)設問に対して最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What is the purpose of assigning two battery-replaceable drones to each route?", "figure": null,
+      "options": [
+        "To enable round-the-clock operation",
+        "To enable 40 samples to be carried every time",
+        "To enable as many different types of disease to be dealt with as possible"
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R4-02-eigo-A4", "subject": "英語", "no": "A-4", "type": "single",
+      "instruction": "問1・英文解釈:(A-1と同じ英文について)設問に対して最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "According to the article, what is special about times of emergency?", "figure": null,
+      "options": [
+        "The pandemic provides us with funds for preserving laboratories.",
+        "More and more places for PCR testing open up for general use.",
+        "They speed up the generation of new ideas and methods."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R4-02-eigo-A5", "subject": "英語", "no": "A-5", "type": "single",
+      "instruction": "問1・英文解釈:(A-1と同じ英文について)設問に対して最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What is expected to happen if the drone engines break down?", "figure": null,
+      "options": [
+        "The control center will send a helicopter to the rescue.",
+        "They will drop from the sky in a controlled manner.",
+        "They will fly back home autonomously under the new drone regulations."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R4-02-eigo-A6", "subject": "英語", "no": "A-6", "type": "single",
+      "instruction": "問2・英文解釈:次の英文(航空通信に関する国際文書の規定文の趣旨に沿って述べたもの)を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Aeronautical stations should record messages at the time of their receipt, except that, if during an emergency the continued manual recording would result in delays in communication, the recording of messages may be temporarily interrupted and completed at the earliest opportunity. In the case of radiotelephony operation it would be desirable if voice recording were provided for use during interruption in manual recording.",
+      "text": "When can aeronautical stations interrupt their manual recording of messages?", "figure": null,
+      "options": [
+        "When voice recording will result in a clearer message during an emergency",
+        "When delays could result from the use of manual input during an emergency",
+        "When it is easier to record voices during an emergency"
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R4-02-eigo-A7", "subject": "英語", "no": "A-7", "type": "single",
+      "instruction": "問2・英文解釈:次の英文(航空通信に関する国際文書の規定文の趣旨に沿って述べたもの)を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "The originator of messages addressed to an aircraft in distress or urgency condition shall restrict to the minimum the number and volume and content of such messages as required by the condition.",
+      "text": "What is true of messages to aircraft in distress or urgency situations?", "figure": null,
+      "options": [
+        "Only relevant messages, and as few as possible, should be sent.",
+        "Messages should be sent quietly, and with minimum fuss.",
+        "Messages and their content should be frequent, clear, and thorough."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R4-02-eigo-A8", "subject": "英語", "no": "A-8", "type": "single",
+      "instruction": "問2・英文解釈:次の英文(航空通信に関する国際文書の規定文の趣旨に沿って述べたもの)を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "It is permissible for verification for the receiving station to read back the message as an additional acknowledgement of receipt. In such instances, the station to which the information is read back should acknowledge the correctness of readback by transmitting its call sign.",
+      "text": "In circumstances where the received message is read back, what is required of the station that originated the message to acknowledge its correctness?", "figure": null,
+      "options": [
+        "It must reply with its own call sign.",
+        "A full read back of the message received is required.",
+        "No additional acknowledgement of receipt is needed."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R4-02-eigo-A9", "subject": "英語", "no": "A-9", "type": "single",
+      "instruction": "問2・英文解釈:次の英文(航空通信に関する国際文書の規定文の趣旨に沿って述べたもの)を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "An aeronautical station having traffic for an aircraft station may call this station if it has reason to believe that the aircraft station is keeping watch and is within the designated operational coverage area of the aeronautical station.",
+      "text": "In what circumstances is it acceptable for an aeronautical station to call an aircraft station in relation to traffic for that station?", "figure": null,
+      "options": [
+        "It is reasonable to call the aircraft at any time the aeronautical station feels necessary.",
+        "It is acceptable only if the aircraft has visual contact inside the designated operational coverage area.",
+        "It is acceptable if the aeronautical station thinks the aircraft station is keeping watch inside its designated operational coverage area."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R4-02-eigo-B1", "subject": "英語", "no": "B-1", "type": "fill_blanks",
+      "instruction": "問3・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】オマハのエプリー飛行場のセキュリティチェックポイントでは、運転免許証やパスポートを含む数千種類の旅行者のIDを確認するために新しいID認証技術が使用されている。そのシステムにはまた、乗客のフライトステータスをほぼリアルタイムで確認する機能も加えられている。それによって不正なIDを識別する能力が強化され、また乗客の身元が自動的に確認されることにより効率が改善される。\n\n【英訳文】A new ID authentication technology is being used at security checkpoints on Omaha's Eppley Airfield to confirm several thousand types of traveler ID, [ア] driving licenses and passports. The system also has the added capability to confirm the passenger's flight status in [イ] real time. It [ウ] the capability to identify fraudulent IDs and improves [エ] by [オ] passenger identities automatically.",
+      "figure": null,
+      "options": [
+        "effects", "efficiency", "enforces",
+        "enhances", "ensuring", "included",
+        "including", "near", "verifying"
+      ],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 7 }, { "label": "イ", "answer": 8 },
+        { "label": "ウ", "answer": 4 }, { "label": "エ", "answer": 2 }, { "label": "オ", "answer": 9 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R4-02-eigo-B2", "subject": "英語", "no": "B-2", "type": "fill_blanks",
+      "instruction": "問4・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】航空機のエンジン音を低減し乗客の快適性を向上させることができる、信じられないほど軽い新素材がバース大学で開発された。それは新しいエアロゲルであり、そのメレンゲのような構造によって極めて軽量となる、つまり、それは全体重量をほとんど増加させないで航空機のエンジンナセル内で遮音材として機能することが可能であることを意味している。この材料は現在、安全性向上のためにさらに最適化されているところである。\n\n【英訳文】An [ア] light new material that can reduce aircraft engine noise and improve passenger [イ] has been developed at the University of Bath. It is a new aerogel and its meringue-like structure [ウ] it extremely light, meaning it could act as an insulator within aircraft engine nacelles, with almost no increase in [エ] weight. The material is currently being [オ] optimized to improve safety.",
+      "figure": null,
+      "options": [
+        "authentic", "becomes", "comfort",
+        "further", "incredibly", "integral",
+        "makes", "overall", "relief"
+      ],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 5 }, { "label": "イ", "answer": 3 },
+        { "label": "ウ", "answer": 7 }, { "label": "エ", "answer": 8 }, { "label": "オ", "answer": 4 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R4-02-eigo-B3", "subject": "英語", "no": "B-3", "type": "fill_blanks",
+      "instruction": "問5・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ(本文中の同じ記号は同じ語句を示す)",
+      "text": "【日本文】航空移動業務の局が呼出しをする前の送信機の調整のため、又は受信機の調整のために試験信号を送信する必要がある場合には、このような信号は、10秒間を超えて継続してはならず、無線電話で音声の数字(ONE、TWO、THREE等)及びこれに続いて試験信号を送信する局の無線呼出符号で構成しなければならない。\n\n【英訳文】When it is necessary for a station in the aeronautical mobile service to make test signals, [ア] for the [イ] of a transmitter before making a call or for the [イ] of a receiver, such signals shall not continue for more than 10 seconds and shall be [ウ] of spoken [エ] (ONE, TWO, THREE, etc.) in radiotelephony, [オ] by the radio call sign of the station transmitting the test signals.",
+      "figure": null,
+      "options": [
+        "adjustment", "composed", "each",
+        "either", "followed", "following",
+        "justification", "letters", "numerals"
+      ],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 4 }, { "label": "イ", "answer": 1 },
+        { "label": "ウ", "answer": 2 }, { "label": "エ", "answer": 9 }, { "label": "オ", "answer": 5 }
+      ],
+      "explanation": ""
     }
   ]
 }

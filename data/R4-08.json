@@ -489,6 +489,300 @@
         { "label": "オ", "text": "波長が長い。", "answer": 2 }
       ],
       "explanation": "SHF帯は電離層を突き抜けるため反射伝搬しない(ア誤)。10GHz以上は降雨減衰の影響を受けやすい(イ誤)。VHFよりSHFの波長は短い(オ誤)。"
+    },
+    {
+      "id": "R4-08-eigo-A1",
+      "subject": "英語",
+      "no": "A-1",
+      "type": "single",
+      "instruction": "問1・英文解釈：次の英文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "NASA's new space telescope opened its huge, gold-plated, flower-shaped mirror Saturday, the final step in the observatory's dramatic unfurling. The last portion of the 6.5-meter mirror swung into place at flight controllers' command, completing the unfolding of the James Webb Space Telescope. \"I'm emotional about it. What an amazing milestone. We see that beautiful pattern out there in the sky now,\" said Thomas Zurbuchen, chief of NASA's science missions. More powerful than the Hubble Space Telescope, the $10 billion Webb will scan the cosmos for light streaming from the first stars and galaxies formed 13.7 billion years ago. To accomplish this, NASA had to outfit Webb with the largest and most sensitive mirror ever launched — its \"golden eye,\" as scientists call it. Webb is so big that it had to be folded origami-style to fit in the rocket that soared from South America two weeks ago. The riskiest operation occurred earlier in the week, when the tennis court-size sunshield unfurled, providing shade for the mirror and infrared detectors.\n\nFlight controllers in Baltimore began opening the primary mirror Friday, unfolding the left side like a drop-leaf table. The mood was even more upbeat Saturday, with peppy music filling the control room as the right side snapped into place. After applauding, the controllers immediately got back to work.\n\nWebb's main mirror is made of beryllium, a lightweight yet sturdy and cold-resistant metal. Each of its 18 segments is coated with an ultra-thin layer of gold, highly reflective of infrared light. The hexagonal, coffee table-size segments must be adjusted in the weeks ahead so they can focus as one on stars, galaxies and alien worlds that might hold atmospheric signs of life. \"It's like we have 18 mirrors that are right now little prima donnas all doing their own thing, singing their own tune in whatever key they're in, and we have to make them work like a chorus and that is a methodical, laborious process,\" operations project scientist Jane Rigby told reporters.\n\nWebb should reach its destination 1.6 million kilometers away in another two weeks; it's already more than 1 million kilometers from Earth since its Christmas Day launch. If all continues to go well, science observations will begin this summer. Astronomers hope to peer back to within 100 million years of the universe-forming Big Bang, closer than Hubble has achieved. Project manager Bill Ochs stressed the team isn't letting its guard down, despite the unprecedented successes of the past two weeks. \"It's not downhill from here. It's all kind of a level playing field,\" he said.\n\n<注> observatory:観測所 / unfurl:広げる / milestone:画期的な出来事 / infrared:赤外線の / drop-leaf table:垂れ板の付いたテーブル / peppy:元気いっぱいの / hexagonal:六角形の / methodical:順序だった / laborious:骨の折れる",
+      "text": "What made Thomas Zurbuchen feel emotional?",
+      "figure": null,
+      "options": [
+        "The naming of the gigantic space telescope after James Webb",
+        "The beauty of the gold-plated, flower-like mirror of the space telescope",
+        "Completion of the unfolding process of the telescope, marking a great milestone"
+      ],
+      "answer": 3,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R4-08-eigo-A2",
+      "subject": "英語",
+      "no": "A-2",
+      "type": "single",
+      "instruction": "問1・英文解釈（A-1と同じ英文について）：最も適切なものを一つ選べ",
+      "passage": "（問1の英文はA-1を参照）",
+      "text": "Which of the following describes the telescope correctly?",
+      "figure": null,
+      "options": [
+        "The telescope's mirror is the second largest ever next to that of the Hubble Space Telescope.",
+        "The telescope should have the power to detect light from the first stars and galaxies of the cosmos.",
+        "The mirror-protecting sunshield was folded down to the size of a tennis court using an origami technique."
+      ],
+      "answer": 2,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R4-08-eigo-A3",
+      "subject": "英語",
+      "no": "A-3",
+      "type": "single",
+      "instruction": "問1・英文解釈（A-1と同じ英文について）：最も適切なものを一つ選べ",
+      "passage": "（問1の英文はA-1を参照）",
+      "text": "From where was the rocket that delivered NASA's new telescope into space launched?",
+      "figure": null,
+      "options": [
+        "A launch site in the southern part of the USA",
+        "A launch site in the Republic of South Africa",
+        "A launch site on the continent of South America"
+      ],
+      "answer": 3,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R4-08-eigo-A4",
+      "subject": "英語",
+      "no": "A-4",
+      "type": "single",
+      "instruction": "問1・英文解釈（A-1と同じ英文について）：最も適切なものを一つ選べ",
+      "passage": "（問1の英文はA-1を参照）",
+      "text": "According to the article, what is the next stage for establishing the full operational power of the telescope?",
+      "figure": null,
+      "options": [
+        "Coating the segments with ultra-thin gold",
+        "Enabling the segmented mirrors to work as one",
+        "Refocusing each segmented mirror to watch different sectors of the universe"
+      ],
+      "answer": 2,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R4-08-eigo-A5",
+      "subject": "英語",
+      "no": "A-5",
+      "type": "single",
+      "instruction": "問1・英文解釈（A-1と同じ英文について）：最も適切なものを一つ選べ",
+      "passage": "（問1の英文はA-1を参照）",
+      "text": "What are scientists going to do after they have completed the deployment of the telescope?",
+      "figure": null,
+      "options": [
+        "They will move the telescope to its final position for viewing the universe as it was less than 100 million years after its birth.",
+        "They are relocating the gigantic space telescope to a position 1 million kilometers away from Earth in the next two weeks.",
+        "They will need to concentrate less during the next step of the operation because the deployment of the telescope has now been completed."
+      ],
+      "answer": 1,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R4-08-eigo-A6",
+      "subject": "英語",
+      "no": "A-6",
+      "type": "single",
+      "instruction": "問2・英文解釈：次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Distress and urgency traffic shall normally be maintained on the frequency on which such traffic was initiated from the aircraft until it is considered that better assistance can be provided by transferring that traffic to another frequency.",
+      "text": "What frequency should normally be used for distress and urgency traffic?",
+      "figure": null,
+      "options": [
+        "The traffic should be moved immediately to a frequency which might provide better public correspondence for the aircraft.",
+        "The traffic should generally be carried on the frequency used by the aircraft making the distress or urgency call.",
+        "The frequency on which the distress or urgency call has been made should always be maintained under any circumstance."
+      ],
+      "answer": 2,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R4-08-eigo-A7",
+      "subject": "英語",
+      "no": "A-7",
+      "type": "single",
+      "instruction": "問2・英文解釈：次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Messages accepted for transmission should be transmitted in plain language or ICAO phraseologies without altering the sense of the message in any way.\n\n<注> phraseology:用語",
+      "text": "What does the above provision require when transmitting messages accepted for transmission?",
+      "figure": null,
+      "options": [
+        "Messages containing ICAO phraseologies may be transmitted with altered meanings if they are in plain language.",
+        "Messages should be transmitted in either plain language or ICAO phraseologies without changing the meaning.",
+        "It is the duty of the transmitting operator to change ICAO phraseologies used in the transmitted messages to plain language."
+      ],
+      "answer": 2,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R4-08-eigo-A8",
+      "subject": "英語",
+      "no": "A-8",
+      "type": "single",
+      "instruction": "問2・英文解釈：次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Messages having the same priority should, in general, be transmitted in the order in which they are received by the aeronautical station for transmission.",
+      "text": "What does the above provision say about the order of message transmission by the aeronautical station?",
+      "figure": null,
+      "options": [
+        "If there is no difference in priority, the order of reception should be maintained.",
+        "As there is no particular order to be maintained, the aeronautical station can transmit messages in any order it likes.",
+        "The priority of messages is defined by the relevant regulations, but the aeronautical station does not always have to comply with it."
+      ],
+      "answer": 1,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R4-08-eigo-A9",
+      "subject": "英語",
+      "no": "A-9",
+      "type": "single",
+      "instruction": "問2・英文解釈：次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Having regard to interference which may be caused by aircraft stations at high altitude, frequencies in the maritime mobile bands above 30 MHz shall not be used by aircraft stations, with some exceptions. The frequency 156.3 MHz may be used by stations on board aircraft for safety purposes. It may also be used for communication between ship stations and stations on board aircraft engaged in coordinated search and rescue operations.",
+      "text": "In which of the following cases should an aircraft station refrain from using frequencies in the maritime mobile bands above 30 MHz?",
+      "figure": null,
+      "options": [
+        "When an aircraft station needs to communicate for safety purposes using 156.3 MHz",
+        "When an aircraft station is engaged in search and rescue operations with ship stations using 156.3 MHz",
+        "When an aircraft station is engaged in normal radio communication with an aeronautical station for navigation"
+      ],
+      "answer": 3,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R4-08-eigo-B1",
+      "subject": "英語",
+      "no": "B-1",
+      "type": "fill_blanks",
+      "instruction": "問3・和文英訳：日本文に対応する英訳文の空欄（ア）～（オ）に入る最も適切な語句を1～9からそれぞれ一つ選べ",
+      "text": "【日本文】飛行機が墜落した時に最初に求められる事のひとつは何が事故の原因だったかである。この時に事故を調べる調査官が頼るのがブラックボックスで、それはフライトデータレコーダーとコックピットボイスレコーダーで成り立っている。安全性の観点から、それは一般的に機体の後部に収められている。ブラックボックスは事故の直前に起こった出来事の詳細を明らかにすることができる。\n\n【英訳文】One of the first things asked when any airplane crashes is what [ア] the accident. This is when investigators [イ] the accident turn to the black box, which is [ウ] a flight data recorder and cockpit voice recorder. From the security point of [エ], it is generally kept at the rear of the airplane. The black box is able to reveal [オ] of events happening just before the accident.",
+      "figure": null,
+      "options": [
+        "caused",
+        "details",
+        "happened",
+        "looking into",
+        "made up of",
+        "searching for",
+        "sight",
+        "trifles",
+        "view"
+      ],
+      "answer": null,
+      "blanks": [
+        {
+          "label": "ア",
+          "answer": 1
+        },
+        {
+          "label": "イ",
+          "answer": 4
+        },
+        {
+          "label": "ウ",
+          "answer": 5
+        },
+        {
+          "label": "エ",
+          "answer": 9
+        },
+        {
+          "label": "オ",
+          "answer": 2
+        }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R4-08-eigo-B2",
+      "subject": "英語",
+      "no": "B-2",
+      "type": "fill_blanks",
+      "instruction": "問4・和文英訳：日本文に対応する英訳文の空欄（ア）～（オ）に入る最も適切な語句を1～9からそれぞれ一つ選べ",
+      "text": "【日本文】ACARSとよく略される航空機空地データ通信システムとは、航空機と地上局との間で短い通信文を航空バンドや衛星リンクを経由して伝送するためのデジタルデータリンクシステムのことである。その通信文は内容から、クリアランスの要求や提供に使われる航空管制通信メッセージ、運航管理通信メッセージ、航空業務通信メッセージの三つに分類することができる。\n\n【英訳文】Aircraft Communications Addressing and Reporting System, commonly [ア] as ACARS, is a digital datalink system for [イ] of short messages between aircraft and ground stations via air-band radio, or satellite links. Its messages may be classified [ウ] three types based on their [エ], air traffic control messages used to request or provide clearances, aeronautical [オ] control and airline administrative control messages.",
+      "figure": null,
+      "options": [
+        "abbreviated",
+        "consent",
+        "content",
+        "capitalized",
+        "intermission",
+        "into",
+        "operational",
+        "over",
+        "transmission"
+      ],
+      "answer": null,
+      "blanks": [
+        {
+          "label": "ア",
+          "answer": 1
+        },
+        {
+          "label": "イ",
+          "answer": 9
+        },
+        {
+          "label": "ウ",
+          "answer": 6
+        },
+        {
+          "label": "エ",
+          "answer": 3
+        },
+        {
+          "label": "オ",
+          "answer": 7
+        }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R4-08-eigo-B3",
+      "subject": "英語",
+      "no": "B-3",
+      "type": "fill_blanks",
+      "instruction": "問5・和文英訳：日本文に対応する英訳文の空欄（ア）～（オ）に入る最も適切な語句を1～9からそれぞれ一つ選べ",
+      "text": "【日本文】航空通信業務のすべての局は、協定世界時（UTC）を使用しなければならない。真夜中はその日の終わりの2400とし、及びその日の始まりを0000としなければならない。日時の集合は、6桁の数字で構成しなければならず、最初の、2桁の数字はその月の日を、また最後の4桁の数字は、UTCの時及び分を示す。\n\n【英訳文】[ア] Universal Time (UTC) shall be used by all stations in the aeronautical telecommunication service. Midnight shall be [イ] as 2400 for the end of the day and 0000 for the [ウ] of the day. A date-time group shall [エ] six figures, the first two figures [オ] the date of the month and the last four figures the hours and minutes in UTC.",
+      "figure": null,
+      "options": [
+        "beginning",
+        "build",
+        "consist of",
+        "Cooperated",
+        "Coordinated",
+        "designated",
+        "first",
+        "illustrated",
+        "representing"
+      ],
+      "answer": null,
+      "blanks": [
+        {
+          "label": "ア",
+          "answer": 5
+        },
+        {
+          "label": "イ",
+          "answer": 6
+        },
+        {
+          "label": "ウ",
+          "answer": 1
+        },
+        {
+          "label": "エ",
+          "answer": 3
+        },
+        {
+          "label": "オ",
+          "answer": 9
+        }
+      ],
+      "explanation": ""
     }
   ]
 }

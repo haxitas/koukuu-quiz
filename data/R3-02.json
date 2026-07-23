@@ -491,6 +491,162 @@
         { "label": "ウ", "answer": 3 }, { "label": "エ", "answer": 9 }, { "label": "オ", "answer": 10 }
       ],
       "explanation": ""
+    },
+    {
+      "id": "R3-02-eigo-A1", "subject": "英語", "no": "A-1", "type": "single",
+      "instruction": "問1・英文解釈:次の英文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Three countries - the United States, China and the United Arab Emirates sending unmanned spacecraft to Mars in quick succession beginning this week. This is being seen as the most sweeping effort yet to seek signs of ancient microscopic life while scouting out the place for future astronauts. The three nearly simultaneous launches are no coincidence: The timing is dictated by the opening of a one-month window in which Mars and Earth are in ideal alignment on the same side of the sun, which minimizes travel time and fuel use. Such a window opens only once every 26 months.\n\nThe U.S., for its part, is dispatching a six-wheeled rover the size of a car, named Perseverance, to collect rock samples that will be brought back to Earth for analysis in about a decade. Scientists want to know what Mars was like billions of years ago when it had rivers, lakes and oceans that may have allowed simple, tiny organisms to flourish before the planet morphed into the barren, wintry desert world it is today. \"Trying to confirm that life existed on another planet, it's a tall order. It has a very high burden of proof,\" said Perseverance's project scientist, Ken Farley of Caltech in Pasadena, California.\n\nPerseverance is set to touch down in an ancient river delta and lake known as Jezero Crater, not quite as big as Florida's Lake Okeechobee. Jezero Crater is full of boulders, cliffs, sand dunes and depressions, any one of which could end Perseverance's mission. Jezero Crater is, however, worth the risks, according to scientists who chose it over 60 other potential sites. Where there was water - and Jezero was apparently flush with it 3.5 billion years ago there may have been life, though it was probably only simple microbial life, existing perhaps in a slimy film at the bottom of the crater. But those microbes may have left telltale marks in the sediment layers. Perseverance will hunt for rocks containing such biological signatures, if they exist. It will drill into the most promising rocks and store a half-kilogram of samples in dozens of titanium tubes that will eventually be fetched by another rover. To prevent Earth microbes from contaminating the samples, the tubes are super-sterilized, guaranteed germ-free by the chief engineer for the mission at NASA's Jet Propulsion Laboratory in Pasadena.\n\nPerseverance's mission is seen by NASA as a comparatively low-risk way of testing out some of the technology that will be needed to send humans to the red planet and bring them home safely. \"Sort of crazy for me to call it low risk because there's a lot of hard work in it and there are billions of dollars in it,\" Farley said. \"But compared to humans, if something goes wrong, you will be very glad you tested it out on a half-kilogram of rock instead of on the astronauts.\"\n\n<注> microscopic:微小な / alignment:一直線 / wintry:寒い / morph:変身する / boulder:巨礫(大きな石) / sand dune:砂丘 / microbe:微生物 / telltale:見誤りようのない / sediment:堆積物 / sterilize:殺菌する",
+      "text": "What does the article say about the timing of the three separate missions to Mars?",
+      "figure": null,
+      "options": [
+        "It is an amazing coincidence that the three countries have decided to send spacecraft at the same time.",
+        "In fact, they are not three separate missions as they have been planned together under U.S. leadership.",
+        "The timing is not really surprising as one of the main points to consider in planning such a launch is Mars's position in relation to Earth."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R3-02-eigo-A2", "subject": "英語", "no": "A-2", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What are the U.S. scientists hoping to find out?",
+      "figure": null,
+      "options": [
+        "They are researching the winter climate on Mars.",
+        "They are looking to map the deserts on Mars where no life exists.",
+        "They hope to be able to understand more about conditions on Mars in the distant past."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R3-02-eigo-A3", "subject": "英語", "no": "A-3", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What is known about the area where Perseverance is scheduled to land?",
+      "figure": null,
+      "options": [
+        "The area was chosen as a landing site because it is considered very low risk.",
+        "There are many potential hazards in the area that make the landing dangerous.",
+        "It is a watery area, with rivers and lakes which make it relatively safe for landing."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R3-02-eigo-A4", "subject": "英語", "no": "A-4", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What are they planning to bring back from Mars?",
+      "figure": null,
+      "options": [
+        "Microbial life from Mars.",
+        "Small samples of rocks in sterilized containers.",
+        "The slimy film found at the bottom of the existing lakes on Mars."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R3-02-eigo-A5", "subject": "英語", "no": "A-5", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What does the Perseverance's project scientist say about the risks associated with the mission?",
+      "figure": null,
+      "options": [
+        "Even though there are many dangers, it is far less problematic than a manned journey.",
+        "He is confident the mission is safe because it has been thoroughly tested with humans.",
+        "It is a high-risk mission because there may be human casualties."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R3-02-eigo-A6", "subject": "英語", "no": "A-6", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Stations of the international aeronautical telecommunication service shall extend their normal hours of service as required to provide for traffic necessary for flight operation.",
+      "text": "How should stations of the international aeronautical telecommunication service manage their hours of service?",
+      "figure": null,
+      "options": [
+        "Stations are not obliged to extend their normal hours of service at any time.",
+        "Stations must be prepared to stay open beyond their normal service hours when necessary.",
+        "Stations of the international aeronautical telecommunication must remain open at all times."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R3-02-eigo-A7", "subject": "英語", "no": "A-7", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "When it is desired to verify the accurate reception of numbers, the person transmitting the message shall request the person receiving the message to read back the numbers.",
+      "text": "What is the correct procedure to be followed by the receiver when confirming numbers included in a transmission?",
+      "figure": null,
+      "options": [
+        "The receiver should ask the transmitter to read back all numbers carefully.",
+        "The receiver should request the person transmitting to repeat the whole message.",
+        "The receiver should repeat the numbers when asked to do so by the person transmitting the message."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R3-02-eigo-A8", "subject": "英語", "no": "A-8", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Communications shall commence with a call and a reply when it is desired to establish contact, except that, when it is certain that the station called will receive the call, the calling station may transmit the message, without waiting for a reply from the station called.",
+      "text": "How are calling stations supposed to establish contact for a new communication?",
+      "figure": null,
+      "options": [
+        "Communication can only begin when the calling station has received a reply from the station called.",
+        "The station being called does not need to reply to a calling station but should wait for the calling station to establish contact.",
+        "Normally, a calling station will wait for a reply but this is not necessary if the calling station is sure the call is being received."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R3-02-eigo-A9", "subject": "英語", "no": "A-9", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "If an aeronautical station finds it necessary to intervene in communications between aircraft stations, these stations shall comply with the instructions given by the aeronautical station.",
+      "text": "What is the appropriate response for an aircraft station when communication is interrupted by an aeronautical station?",
+      "figure": null,
+      "options": [
+        "The aircraft station should follow the instructions provided by the aeronautical station.",
+        "The aircraft station may intervene and provide new instructions to the aeronautical station.",
+        "The aircraft station must immediately stop all communications with the aeronautical station or other aircraft stations."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R3-02-eigo-B1", "subject": "英語", "no": "B-1", "type": "fill_blanks",
+      "instruction": "問3・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】日本の主要な空港の周りにあるターミナル・コントロール・エリア(TCA)と称される指定された管制空域では、VFR(有視界飛行方式)飛行の交通量が多く、レーダー識別されるVFR機に対してTCAアドバイザリー業務が提供される。その業務には、レーダー交通情報の提供、要求に基づくレーダー誘導、進入順位及び待機の助言が含まれる。\n\n【英訳文】The [ア] areas of controlled [イ] known as terminal control areas (TCA) surrounding major airports in Japan have congested VFR (visual flight rule) traffic and TCA advisory services for radar [ウ] VFR aircraft. The services [エ] provision of radar traffic information, vectoring on a request basis and advisory of approach [オ] and holding.",
+      "figure": null,
+      "options": ["airline", "airspace", "designated", "exclude", "identified", "include", "introduced", "rotation", "sequence"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 3 }, { "label": "イ", "answer": 2 },
+        { "label": "ウ", "answer": 5 }, { "label": "エ", "answer": 6 }, { "label": "オ", "answer": 9 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R3-02-eigo-B2", "subject": "英語", "no": "B-2", "type": "fill_blanks",
+      "instruction": "問4・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】英国のある企業が、既存のジェットエンジンを溶かすような目もくらむ速度を発生できるエンジンを作っている。その会社は音速の5倍を超える極超音速の速度を達成することを望んでいる。その目的は2030年代までに高速旅客輸送機関を作りあげることにある。そのような速度だと、ロサンゼルスから東京まで2時間で飛ぶことができるだろう。\n\n【英訳文】A British company is building engines that can [ア] dizzying speeds that would melt existing jet engines. The firm wants to reach hypersonic [イ], beyond five [ウ] the speed of sound. The aim is to build a high-speed passenger [エ] system by the 2030's. Such speeds would [オ] us to fly from Los Angeles to Tokyo in two hours.",
+      "figure": null,
+      "options": ["capable", "enable", "generate", "multiples", "times", "transmission", "transportation", "power", "velocity"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 3 }, { "label": "イ", "answer": 9 },
+        { "label": "ウ", "answer": 5 }, { "label": "エ", "answer": 7 }, { "label": "オ", "answer": 2 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R3-02-eigo-B3", "subject": "英語", "no": "B-3", "type": "fill_blanks",
+      "instruction": "問5・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】航空機上の局は、海上移動業務又は海上移動衛星業務の局と通信することができる。これらの局は、これらの業務に関する無線通信規則の規定に従わなければならない。\n\n【英訳文】Stations on [ア] aircraft may communicate [イ] stations of the maritime mobile or maritime mobile-satellite services. They shall [ウ] to those [エ] of the Radio Regulations which [オ] these services.",
+      "figure": null,
+      "options": ["aboard", "against", "board", "concerning", "conform", "provisions", "relate to", "sustain", "with"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 3 }, { "label": "イ", "answer": 9 },
+        { "label": "ウ", "answer": 5 }, { "label": "エ", "answer": 6 }, { "label": "オ", "answer": 7 }
+      ],
+      "explanation": ""
     }
   ]
 }

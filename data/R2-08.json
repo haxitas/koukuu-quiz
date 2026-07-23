@@ -1,5 +1,5 @@
 {
-  "meta": { "era": "令和2年8月期", "code": "R2-08", "note": "法規(EY208)全20問を先行投入。無線工学(EZ208)全14問を追加(正答PDFで確認)。英語・英会話は未投入。" },
+  "meta": { "era": "令和2年8月期", "code": "R2-08", "note": "法規(EY208)全20問・無線工学(EZ208)全14問・英語(ERA208)全12問すべて投入済み。英会話は対象外。" },
   "questions": [
     {
       "id": "R2-08-houki-A1", "subject": "法規", "no": "A-1", "type": "single",
@@ -486,6 +486,162 @@
       "blanks": [
         { "label": "ア", "answer": 6 }, { "label": "イ", "answer": 2 },
         { "label": "ウ", "answer": 8 }, { "label": "エ", "answer": 9 }, { "label": "オ", "answer": 10 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R2-08-eigo-A1", "subject": "英語", "no": "A-1", "type": "single",
+      "instruction": "問1・英文解釈:次の英文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "The days of passengers bringing their pets on airplanes as emotional-support animals could be ending in the U.S. The U.S. Department of Transportation on Wednesday proposed that only specially trained dogs qualify as service animals, which must be allowed in the cabin at no charge. Airlines could ban emotional-support animals including untrained dogs, cats and more unusual pets such as pigs, rabbits and snakes.\nAirlines say the number of support animals has grown dramatically in recent years. They lobbied the Transportation Department to crack down on what they consider a scam passengers who call their pets emotional-support animals to avoid pet fees that generally run more than $100 each way.\n\"This is a wonderful step in the right direction for people like myself who are dependent on and reliant on legitimate service animals,\" said Albert Rizzi, founder of My Blind Spot, an advocacy group for people with disabilities. He said some people \"want to have the benefits of having a disability without actually losing the use of their limbs or senses just so they can take their pet with them.\" The main trade group for large U.S. airlines praised the proposal. Flight attendants had pushed to rein in support animals, and they too were pleased. \"The days of Noah's Ark in the air are hopefully coming to an end,\" said Sara Nelson, president of the Association of Flight Attendants. She said some of her union's members were hurt by untrained pets. On the other side are people who say that an emotional-support animal helps them with anxiety or other issues that would prevent them from traveling or make it more stressful. They aren't a very organized group, but there are lots of them.\nTransportation Department officials said in a briefing with reporters that they proposed the changes to improve safety on flights. Some passengers have been bitten by support animals, and airlines complain that they relieve themselves on planes and in airports. The Department proposes a narrow definition in which a service animal could only be a dog that is trained to help a person with a physical or other disability. Passengers with a service dog would have to fill out a federal form on which they swear that the dog is trained to help them. A dog trained to help with psychiatric needs would qualify as a service animal. Current rules do not require any training for emotional-support animals. However, airlines can demand that the animal's owner show them a medical professional's note saying they need the animal for support. The proposed rules would prohibit airlines from banning particular types of dog breeds if the animal qualifies as a service dog, although they could refuse to board an individual dog they deem a threat.\n\n<注> scam:詐欺 / relieve oneself:排泄する / reliant on:~に依存している / advocacy:支持 / psychiatric:精神医学の",
+      "text": "According to the article, why are the airlines negotiating to change the rules concerning emotional-support animals on planes?",
+      "figure": null,
+      "options": [
+        "There are growing concerns about health issues caused by animals flying with passengers.",
+        "There have been a lot of complaints from passengers about the number of animals on aircraft.",
+        "The airlines believe that some passengers have been cheating in order to avoid paying to carry pets on board."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-08-eigo-A2", "subject": "英語", "no": "A-2", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "How does the spokesperson from the group for people with disabilities feel about the proposed changes?",
+      "figure": null,
+      "options": [
+        "He is quite shocked because the new rules discriminate against passengers with disabilities.",
+        "He is very angry because the changes will make it impossible for many people with disabilities to fly.",
+        "He is pleased because the changes would stop people with no disabilities from taking advantage of the rules."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-08-eigo-A3", "subject": "英語", "no": "A-3", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "How have the airlines and the people who work on board aircraft reacted to the changes?",
+      "figure": null,
+      "options": [
+        "Both airlines and cabin crew members have expressed their support for the new measures.",
+        "Although the airlines welcome the changes, cabin crew are mostly opposed to the new rules.",
+        "Representatives of the airlines say the changes could be bad for business, but crew are generally positive about the proposal."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-08-eigo-A4", "subject": "英語", "no": "A-4", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What do government officials mention as a reason for the new regulations?",
+      "figure": null,
+      "options": [
+        "Safety concerns for passengers are the main reason behind the changes.",
+        "Reports of stress caused to animals traveling by air have prompted the move.",
+        "There is now strong evidence that emotional-support animals do not provide any relief on board aircraft."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-08-eigo-A5", "subject": "英語", "no": "A-5", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What do the proposed rules require passengers to do if they wish to be accompanied by a service animal?",
+      "figure": null,
+      "options": [
+        "Any qualified animal will be permitted to give onboard support, not only dogs.",
+        "Passengers must submit a document confirming their dog has been properly trained.",
+        "It is now necessary for all animals to have psychological training before boarding an aircraft."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-08-eigo-A6", "subject": "英語", "no": "A-6", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "If a message has not been completely transmitted when instructions to cancel are received, the station transmitting the message shall instruct the receiving station to disregard the incomplete transmission. This shall be effected in radiotelephony by use of an appropriate phrase.",
+      "text": "What is the correct procedure when instructions to cancel are received for a message that has not been completely transmitted?",
+      "figure": null,
+      "options": [
+        "It is necessary for the transmitting station to complete the message before the cancellation can be confirmed.",
+        "The receiving station must instruct the transmitting station with the appropriate phrase for confirming the message.",
+        "The transmitting station should use radiotelephony to tell the receiving station to ignore the unfinished message by means of a designated phrase."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-08-eigo-A7", "subject": "英語", "no": "A-7", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "The user of the air-to-air VHF communications channel shall ensure that adequate watch is maintained on designated ATS frequencies, the frequency of the aeronautical emergency channel, and any other mandatory watch frequencies.",
+      "text": "On which frequencies must the user of the air-to-air VHF communications channel ensure an adequate watch?",
+      "figure": null,
+      "options": [
+        "An adequate watch needs to be maintained on all frequencies at all times.",
+        "The user needs to guarantee that a watch is maintained only on certain designated ATS frequencies",
+        "Every user of the air-to-air VHF communications channel is obliged to monitor all of the specified frequencies."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-08-eigo-A8", "subject": "英語", "no": "A-8", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "As a general rule, it rests with the aircraft station to establish communication with the aeronautical station. For this purpose, the aircraft station may call the aeronautical station only when it comes within the designated operational coverage area of the latter.",
+      "text": "Under normal circumstances, when and how is contact between an aircraft station and an aeronautical station established?",
+      "figure": null,
+      "options": [
+        "Usually an aircraft station calls an aeronautical station upon entering the aeronautical station's operational coverage area.",
+        "Generally, an aircraft station should establish contact before it enters the operational coverage area of an aeronautical station.",
+        "It is normal for an aircraft station entering a new coverage area to wait for the aeronautical station responsible to establish communication."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-08-eigo-A9", "subject": "英語", "no": "A-9", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Having regard to interference which may be caused by aircraft stations at high altitudes, frequencies in the maritime mobile bands above 30 MHz shall not be used by aircraft stations, with the exception specified in the relevant article of the Radio Regulations.",
+      "text": "What is the main reason for the restrictions on the use of frequencies by high-altitude aircraft stations in the maritime mobile bands above 30 MHz?",
+      "figure": null,
+      "options": [
+        "High-flying aircraft stations can obstruct the frequencies used in maritime mobile services.",
+        "Use of these frequencies may interfere with the safe operation of aircraft flying at high altitudes.",
+        "The relevant articles permit no exceptions to the restrictions on the use of frequencies above 30 MHz."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R2-08-eigo-B1", "subject": "英語", "no": "B-1", "type": "fill_blanks",
+      "instruction": "問3・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】JAXA は新しい共同プロジェクトにおいて、国連食糧農業機関(FAO)と、自分たちの地球観測衛星のデータをFAOのツールキットに追加させることに合意した。世界中の森林やマングローブは JAXAのLバンド合成開口レーダ(SAR)によってあらゆる時間すべての天候下において観測されている。SARは、光学的な衛星のカメラとは違い、雲を通し、暗い中でも地表を観測できる。\n\n【英訳文】In a new [ア] project, JAXA has [イ] the U.N. Food and Agriculture Organization (FAO) to [ウ] the FAO add its Earth observation satellite data to the FAO tool kit. Forests and mangroves around the world are [エ] at all times and in all weathers by JAXA's L-band Synthetic Aperture Radar (SAR). Unlike optical satellite cameras, SAR can observe the Earth's [オ] through cloud and in darkness.",
+      "figure": null,
+      "options": ["agreed with", "agreement", "being observed", "entire", "globe", "joint", "let", "mechanical", "surface"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 6 }, { "label": "イ", "answer": 1 }, { "label": "ウ", "answer": 7 },
+        { "label": "エ", "answer": 3 }, { "label": "オ", "answer": 9 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R2-08-eigo-B2", "subject": "英語", "no": "B-2", "type": "fill_blanks",
+      "instruction": "問4・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】ロシアによる無人ロケットで打ち上げられた等身大のヒト型ロボットのヒョードルは、国際宇宙ステーションに 10日間滞在して宇宙飛行士の補佐を学んだ。ヒョードルという名前は、Final Experimental Demonstration Object Research の頭文字をとったもので、そのプロジェクトの略語でもある。それはコントロール・スーツを着た宇宙飛行士や地上の人間の動作を模倣して動くのだ。\n\n【英訳文】Fedor, the life-size humanoid robot launched on an [ア] rocket by Russia, [イ] 10 days learning to assist astronauts on the International Space Station. Fedor [ウ] Final Experimental Demonstration Object Research, and as such is also an [エ] of the project's title. It works [オ] the physical movements of astronauts or people on Earth who wear control suits.",
+      "figure": null,
+      "options": ["abbreviation", "by copying", "empty", "has accommodated", "has spent", "imitation", "makes up", "stands for", "unmanned"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 9 }, { "label": "イ", "answer": 5 }, { "label": "ウ", "answer": 8 },
+        { "label": "エ", "answer": 1 }, { "label": "オ", "answer": 2 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R2-08-eigo-B3", "subject": "英語", "no": "B-3", "type": "fill_blanks",
+      "instruction": "問5・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】飛行中、航空機局は、適切な当局の要求に応じて聴守を維持しなければならず、関係航空局に通報することなくこれを中止してはならない。ただし、安全目的の場合を除く。\n\n【英訳文】During flight, aircraft stations shall maintain watch as [ア] by the appropriate Authority and shall not [イ] watch, [ウ] reasons of safety, [エ] informing the aeronautical stations [オ].",
+      "figure": null,
+      "options": ["after", "cease", "concerned", "concerning", "connected", "except for", "request", "required", "without"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 8 }, { "label": "イ", "answer": 2 }, { "label": "ウ", "answer": 6 },
+        { "label": "エ", "answer": 9 }, { "label": "オ", "answer": 3 }
       ],
       "explanation": ""
     }

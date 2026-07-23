@@ -1,5 +1,5 @@
 {
-  "meta": { "era": "令和5年2月期", "code": "R5-02", "note": "法規(EY502)全20問を先行投入。無線工学(EZ502)=全14問を追加(正答PDFで確認)。英語・英会話は未投入。" },
+  "meta": { "era": "令和5年2月期", "code": "R5-02", "note": "法規(EY502)全20問・無線工学(EZ502)全14問・英語(ERA502)全12問すべて投入済み。英会話は対象外。" },
   "questions": [
     {
       "id": "R5-02-houki-A1", "subject": "法規", "no": "A-1", "type": "single",
@@ -481,6 +481,198 @@
         { "label": "オ", "text": "一般に、直接波と電離層反射波との合成波が受信される。", "answer": 2 }
       ],
       "explanation": "イ:VHF帯の地表波は中波帯に比べ著しく減衰が大きいため誤り。オ:VHF帯は電離層を突き抜けるため直接波が主で、電離層反射波との合成波にはならず誤り。"
+    },
+    {
+      "id": "R5-02-eigo-A1",
+      "subject": "英語",
+      "no": "A-1",
+      "type": "single",
+      "instruction": "問1・英文解釈:次の英文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Airplanes are a minor contributor to global greenhouse-gas emissions, but their share is sure to grow as more people travel in coming years after the pandemic has ceased — and that has the aviation industry facing the prospect of tighter environmental regulations and higher costs. The industry has embraced a goal of reaching net-zero greenhouse-gas emissions by 2050. Experts who track the issue are skeptical.\nLast September, airline leaders touted an agreement to cut aircraft emissions 20% by 2030 by producing 3 billion gallons of SAF (sustainable aviation fuel) by then and replace all conventional jet fuel by 2050. Climate experts praised the idea but said the voluntary targets are overly optimistic. Current SAF production is around 5 million gallons per year. Sustainable fuel is biofuel made from cooking oil, animal fats, municipal waste or other feedstocks. Its chief advantage is that it can be blended with conventional fuel to power jet engines. It has been used many times on test flights and even regular flights with passengers on board. Among SAF's drawbacks is the high cost — about three times more than conventional jet fuel. As airlines seek to buy and use more of it, the price will rise further. Advocates are lobbying for tax breaks and other incentives to boost production.\nPolicymakers see SAF as a bridge fuel — a way to reduce emissions until more dramatic breakthroughs, such as electric- or hydrogen-powered planes, are ready. Those technologies might not be widely available for airline-size planes for two or three decades. Several companies are designing and starting to build electric-powered planes, but most are small aircraft that take off and land vertically, like helicopters, and they are about the same size — with room for only a few passengers. Electric-powered planes big enough to carry around 200 passengers — a medium-size jet by airline standards — would require much bigger batteries for longer flights. The batteries would weigh about 40 times more than jet fuel to produce the same amount of power, making electric airliners impractical without huge leaps in battery technology. Hydrogen, on the other hand, is \"a very light fuel,\" says Dan Rutherford, who leads the study of decarbonizing cars and planes for an environmental group, the International Council on Clean Transportation. \"But you need a lot of volume to store it, and the fuel tanks themselves are heavy.\" Despite that, Rutherford remains \"cautiously optimistic\" about hydrogen. His group believes that by 2035, there could be hydrogen-powered planes capable of flying about 2,100 miles.\n\n<注> skeptical:懐疑的な / tout:大きく宣伝する / overly:過度に / feedstock:(工業用の)原材料 / vertically:垂直に",
+      "text": "How has the aviation industry agreed to fight greenhouse gas emissions in the future?",
+      "figure": null,
+      "options": [
+        "As aircraft are only minor emitters, and SAF is expensive, it has not reached any agreeable plan.",
+        "It plans to produce reasonable usable alternatives to replace all present-day fuels by 2050.",
+        "It plans to introduce electric-powered planes by 2030 to meet zero carbon emission targets by 2050."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R5-02-eigo-A2",
+      "subject": "英語",
+      "no": "A-2",
+      "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What is the main disadvantage of SAF when compared to traditional jet fuel?",
+      "figure": null,
+      "options": [
+        "The materials from which it is made are hard to find.",
+        "Sustainable aviation fuel is not clean because it is made from waste products.",
+        "The cost is high and its price is likely to go up in the future as demand increases."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R5-02-eigo-A3",
+      "subject": "英語",
+      "no": "A-3",
+      "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What do policymakers think will happen to the aviation industry when SAF use is no longer needed?",
+      "figure": null,
+      "options": [
+        "New types of fuels or engines will be used to power aircraft in flight.",
+        "In the future, all aircraft will need to take off and land in a similar way to helicopters.",
+        "Large- and medium-class aircraft will cease to be made, and fewer passengers will travel on each flight."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R5-02-eigo-A4",
+      "subject": "英語",
+      "no": "A-4",
+      "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What does the above article say the main problem is with using batteries to power aircraft at the moment?",
+      "figure": null,
+      "options": [
+        "The batteries are not easy to charge with current technology.",
+        "Electric airplanes are somewhat dangerous because their large batteries are explosive.",
+        "The batteries themselves weigh far more than the amount of jet fuel needed to produce the same amount of power."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R5-02-eigo-A5",
+      "subject": "英語",
+      "no": "A-5",
+      "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What does Dan Rutherford of the International Council on Clean Transportation say about hydrogen power?",
+      "figure": null,
+      "options": [
+        "Although hydrogen is not heavy, the storage devices needed to contain it are.",
+        "Because of the low cost of production and its low weight, it will completely replace conventional jet fuel soon.",
+        "It is far too heavy to be used as a practical alternative to conventional fuels today, and will remain so in the future."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R5-02-eigo-A6",
+      "subject": "英語",
+      "no": "A-6",
+      "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Messages without specific address containing meteorological information received from an aircraft in flight shall be forwarded without delay to the meteorological office associated with the point of reception.",
+      "text": "What should be done when unaddressed meteorological messages are received from a flying aircraft?",
+      "figure": null,
+      "options": [
+        "They should be sent speedily to the meteorological office associated with the receiver.",
+        "They should be discarded as an aircraft in flight cannot send reliable weather information.",
+        "They should be sent immediately to the local meteorological office for the aircraft's point of origin."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R5-02-eigo-A7",
+      "subject": "英語",
+      "no": "A-7",
+      "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "In order to avoid any possible confusion, when issuing ATC clearances and reading back such clearances, controllers and pilots shall always add the call sign of the aircraft to which the clearance applies.",
+      "text": "What must be done when issuing and reading back ATC clearance messages?",
+      "figure": null,
+      "options": [
+        "A call sign is only to be added in an emergency.",
+        "The call sign of the ATC station must always be added.",
+        "The call sign of the aircraft station must always be included."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R5-02-eigo-A8",
+      "subject": "英語",
+      "no": "A-8",
+      "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "The inspectors of governments or appropriate administrations of countries who visit an aircraft station or aircraft earth station may require the production of the license for examination. The operator of the station, or the person responsible for the station, shall facilitate this examination.",
+      "text": "What must the operator of an aircraft station or aircraft earth station do at the time of the inspection of the station?",
+      "figure": null,
+      "options": [
+        "The operator must produce the license if so requested.",
+        "The operator must make a copy of the license before the inspection starts.",
+        "The operator must ask the inspector to show his license and help him reproduce the license if it has been lost."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R5-02-eigo-A9",
+      "subject": "英語",
+      "no": "A-9",
+      "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "The service of a mobile station is placed under the supreme authority of the person responsible for the aircraft or other vehicle carrying the mobile station. The person holding this authority shall require that each operator should comply with the Radio Regulations and that the mobile station for which the operator is responsible should be used, at all times, in accordance with the Radio Regulations.",
+      "text": "Who is ultimately responsible for command of a mobile station?",
+      "figure": null,
+      "options": [
+        "The Radio Regulations state that different people are in command at different times.",
+        "The person in charge of the vehicle on which the mobile station is mounted or carried",
+        "The radio operator of the mobile station certified in accordance with the Radio Regulations"
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R5-02-eigo-B1",
+      "subject": "英語",
+      "no": "B-1",
+      "type": "fill_blanks",
+      "instruction": "問3・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】日本の航空会社が、機体にサメ肌のようなフィルムを貼り付けることによって、燃料消費と炭素排出量を抑えようと試みている。そのフィルムの表面には、空気との接触面積を減らす約百分の1ミリの深さの溝が平行に並んでおり、それが抗力を減らすことになる。その会社は、そのようなフィルムを自社の全機材の機体表面の80%に貼れば、年間で124,000リットルの燃料を節約できると見積もっている。\n\n【英訳文】A Japanese airline company is trying to reduce fuel consumption and carbon emissions by attaching sharkskin-like film to its aircraft. The film's surface has parallel [ア] measuring about one-hundredth of a millimeter in depth that reduce the area of [イ] with air, resulting in [ウ] drag. The company [エ] that if such film is attached to 80 percent of the surfaces of all its aircraft, they could [オ] 124,000 liters of fuel a year.",
+      "figure": null,
+      "options": ["compound", "contact", "estimates", "exaggerates", "graves", "grooves", "less", "recycle", "save"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 6 }, { "label": "イ", "answer": 2 }, { "label": "ウ", "answer": 7 },
+        { "label": "エ", "answer": 3 }, { "label": "オ", "answer": 9 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R5-02-eigo-B2",
+      "subject": "英語",
+      "no": "B-2",
+      "type": "fill_blanks",
+      "instruction": "問4・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】混雑した空港では通常、航空機がより高速で滑走路を離れることができるように、高速離脱用誘導路が建設される。これにより航空機は滑走路をより迅速に空けることができ、次の航空機がより短い間隔で離着陸できるようにする。これは、離脱用誘導路が滑走路につながる角度を約30度に減らすことによって達成される。これにより航空機が滑走路を出て誘導路上に入る速度を上げられる。\n\n【英訳文】Busy airports typically construct rapid-exit taxiways to allow aircraft to leave the runway at higher speeds. These allow the aircraft to vacate the runway more quickly, [ア] the next ones to land or take off in shorter [イ]. This is [ウ] by reducing the angles [エ] the exit taxiways join the runway to about 30 degrees. This increases the speed [エ] the aircraft can exit the runway [オ] the taxiway.",
+      "figure": null,
+      "options": ["accompanied", "accomplished", "at which", "enables", "internals", "intervals", "onto", "permitting", "what"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 8 }, { "label": "イ", "answer": 6 }, { "label": "ウ", "answer": 2 },
+        { "label": "エ", "answer": 3 }, { "label": "オ", "answer": 7 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R5-02-eigo-B3",
+      "subject": "英語",
+      "no": "B-3",
+      "type": "fill_blanks",
+      "instruction": "問5・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】各主管庁は、いかなる局における試験及び実験であっても、それを許可する前において、有害な混信を避けるため、周波数及び時刻の選択、輻射の低減ないし、可能な場合には、その抑圧等、すべての可能な予防措置を執ることを指示しなければならない。\n\n【英訳文】Before [ア] tests and experiments in any station, each Administration, in order to avoid harmful [イ], shall [ウ] the taking of all possible [エ], such as the choice of frequency and of time, and the reduction or, if possible, the [オ] of radiation.",
+      "figure": null,
+      "options": ["authorizing", "depression", "ignoring", "interference", "precautions", "prescribe", "promotions", "subscribe", "suppression"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 1 }, { "label": "イ", "answer": 4 }, { "label": "ウ", "answer": 6 },
+        { "label": "エ", "answer": 5 }, { "label": "オ", "answer": 9 }
+      ],
+      "explanation": ""
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "meta": { "era": "令和7年8月期", "code": "R7-08", "note": "法規(EY708)全20問を先行投入。無線工学=全14問(EZ708より転記・正答PDFで確認)を追加。英語・英会話は未投入。" },
+  "meta": { "era": "令和7年8月期", "code": "R7-08", "note": "法規(EY708)全20問を先行投入。無線工学=全14問(EZ708より転記・正答PDFで確認)を追加。英語=全12問(ERA708より転記・正答PDFで確認)を追加。英会話は未投入。" },
   "questions": [
     {
       "id": "R7-08-houki-A1", "subject": "法規", "no": "A-1", "type": "single",
@@ -488,6 +488,163 @@
         { "label": "オ", "text": "地球局から見た人工衛星局の仰角が低くなるほど、大気や降雨による電波の減衰の影響を受けやすくなる。", "answer": 1 }
       ],
       "explanation": "アはSHF帯では対流圏(降雨等)の方が減衰への影響が大きいため誤り。イは周波数が高いほど降雨減衰を受けやすいため誤り。"
+    },
+
+    {
+      "id": "R7-08-eigo-A1", "subject": "英語", "no": "A-1", "type": "single",
+      "instruction": "問1・英文解釈:次の英文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Climate change is already causing all sorts of problems on Earth, but soon it will be making a mess in orbit around the planet too, a new study finds. Researchers at the Massachusetts Institute of Technology (MIT) calculated that as global warming continues, it may reduce the available space for satellites in low Earth orbit by anywhere from one-third to 82% by the end of the century, depending on how much carbon pollution is emitted. That's because space will become more littered with space debris as climate change lessens nature's way of cleaning it up.\n\nPart of the greenhouse effect that warms the air near Earth's surface also cools the upper parts of the atmosphere where space starts and satellites zip around in low orbit. A consequence of this cooling is a contraction of the global thermosphere, which leads to reductions in mass density at constant altitude over time. This reduced density decreases the drag on the millions of pieces of human-made debris and satellites. It is the drag that pulls space junk down to Earth, burning up on the way. But a less dense upper atmosphere means less space cleaning itself. That means that space gets more crowded, according to a study in a scientific journal.\n\n\"We rely on the atmosphere to clean up our debris. There's no other way to remove debris,\" said study lead author Will Parker, an astrodynamics researcher at MIT. Circling Earth are millions of pieces of debris about 3 millimeters and larger and tens of thousands of plum-sized pieces of space junk, according to The Aerospace Corporation. That junk includes results of old space crashes and parts of rockets with most of it too small to be tracked.\n\n\"There used to be this mantra that space is big. And so we can sort of not necessarily be good stewards of the environment because the environment is basically unlimited,\" Parker said. But a 2009 crash of two satellites created thousands of pieces of space junk. Also NASA measurements are showing a measurable reduction of drag, so scientists now realize that \"the climate change component is really important,\" Parker said.\n\nThe density at 400 kilometers above Earth is decreasing by about 2% a decade and this decrease is also likely to intensify as society pumps more greenhouse gas into the atmosphere, said Ingrid Cnossen, a space weather scientist at the British Antarctic Survey who was not part of the research. Cnossen said in an email that the new study makes \"perfect sense\" and is why scientists have to be aware of climate change's orbital effects \"so that appropriate measures can be taken to ensure its long-term sustainability.\"\n\n<注> space debris:宇宙ゴミ / contraction:収縮 / thermosphere:熱圏 / astrodynamics:宇宙力学 / mantra:繰り返し使われる言葉 / steward:管理人",
+      "text": "What might happen to the space available for satellites in low Earth orbit as global warming continues, according to the MIT researchers?",
+      "figure": null,
+      "options": [
+        "It could be reduced by one-third to 82% by the end of the century.",
+        "It will expand due to an increase in the number of atmospheric layers for low Earth orbit satellites.",
+        "It will remain unchanged regardless of carbon pollution because the space is already filled up."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-08-eigo-A2", "subject": "英語", "no": "A-2", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "How does the cooling of the upper atmosphere affect space debris?",
+      "figure": null,
+      "options": [
+        "It increases drag at the height where space starts, pulling debris down to Earth faster.",
+        "It expands the thermosphere with high mass density, clearing debris more efficiently.",
+        "It reduces density higher up, and consequently drag as well, and allows debris to stay in orbit longer."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-08-eigo-A3", "subject": "英語", "no": "A-3", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "Why does Will Parker emphasize the role of the atmosphere in managing space debris?",
+      "figure": null,
+      "options": [
+        "It is the only mechanism that removes debris from orbit.",
+        "It prevents the creation of space junk by reducing satellite collisions.",
+        "It reduces the quantity of space junk by combining old pieces of debris."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-08-eigo-A4", "subject": "英語", "no": "A-4", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "Why do scientists no longer think of space as an unlimited environment?",
+      "figure": null,
+      "options": [
+        "Because of a sudden increase in the density of the thermosphere",
+        "Because of the launch of a new rocket with an advanced debris tracking system",
+        "Because considerable amounts of space junk and reduced drag have been observed"
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-08-eigo-A5", "subject": "英語", "no": "A-5", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What does Ingrid Cnossen predict about the atmospheric density at 400 kilometers above Earth?",
+      "figure": null,
+      "options": [
+        "It is increasing as the low atmospheric layer expands with more particles reaching the upper layers.",
+        "It is decreasing by about 2% per decade and may accelerate as greenhouse gas emissions increase.",
+        "It is stabilizing due to the balance between lower atmosphere expansion and contraction of the higher atmosphere."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-08-eigo-A6", "subject": "英語", "no": "A-6", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "A telecommunication log, written or automatic, shall be maintained in each station of the aeronautical telecommunication service except that an aircraft station, when using radiotelephony in direct communication with an aeronautical station, need not maintain a telecommunication log.",
+      "text": "Which of the following satisfies the requirement defined by the above provision?",
+      "figure": null,
+      "options": [
+        "Both aeronautical stations and aircraft stations must maintain their logs under all circumstances.",
+        "Neither aeronautical stations nor aircraft stations are required to maintain written logs while engaged in radiotelephony, but aeronautical stations must keep automatic logs when available.",
+        "While aeronautical stations must maintain their telecommunication logs all the time, aircraft stations are not required to maintain their logs during radiotelephonic communication with an aeronautical station."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-08-eigo-A7", "subject": "英語", "no": "A-7", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "An aircraft shall not change the type of its radiotelephony call sign during flight, except temporarily on the instruction of an air traffic control unit in the interests of safety.",
+      "text": "Under what condition can an aircraft temporarily alter its radiotelephony call sign during flight?",
+      "figure": null,
+      "options": [
+        "When instructed to do so by an air traffic control unit for safety reasons",
+        "Whenever an aircraft decides that the alteration of its call sign will not cause any confusion",
+        "When an aircraft considers continuing with the original call sign will cause safety problems"
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-08-eigo-A8", "subject": "英語", "no": "A-8", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "The transmission of long messages should be interrupted momentarily from time to time to permit the transmitting operator to confirm that the frequency in use is clear and, if necessary, to permit the receiving operator to request repetition of parts not received.",
+      "text": "Why should the transmission of long messages be momentarily paused several times according to the above provision?",
+      "figure": null,
+      "options": [
+        "To give other stations the chance to initiate calls on the frequency in use",
+        "To allow the transmitting operator to rest and double check the correctness of the text to be sent",
+        "To ensure the frequency has no interference and to allow the receiving operator to request repetition if needed"
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-08-eigo-A9", "subject": "英語", "no": "A-9", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "If, in checking the correctness of a readback, an operator notices incorrect items, he shall transmit the words \"NEGATIVE I SAY AGAIN\" at the conclusion of the readback followed by the correct version of the items concerned.",
+      "text": "What must an operator do if he identifies errors during a readback check, based on the above provision?",
+      "figure": null,
+      "options": [
+        "Say \"NEGATIVE I SAY AGAIN\" when the readback has finished and transmit the entire text again",
+        "Say \"NEGATIVE I SAY AGAIN\" when the readback has finished and add the correct version of the relevant items",
+        "Say \"NEGATIVE I SAY AGAIN\" at the conclusion of the readback and request the other to read back again"
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-08-eigo-B1", "subject": "英語", "no": "B-1", "type": "fill_blanks",
+      "instruction": "問3・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】飛行機雲は、ジェットエンジンからの汚染物質を核として水蒸気が凝結して発生するもので、気候変動の一因となっている。気候変動に関する国連の委員会は、飛行機雲から発生する雲は航空による地球温暖化への影響の約57%を占めると報告している。アメリカの大手テクノロジー企業の経営者は、AIと衛星画像を用いて飛行機雲の形成を特定することで、航空会社は飛行機雲が通常発生する場所を避ける航路を計画できるようになるだろうと語っている。\n\n【英訳文】Contrails, which form when water vapor [ア] around jet-engine [イ], have been contributing to climate change. The UN's panel on climate change has reported that clouds formed from contrails [ウ] for about 57% of aviation's global warming [エ]. A major American tech company manager says that by using AI and satellite imagery to [オ] contrail formation, airlines should be able to plan routes that avoid where contrails usually form.",
+      "figure": null,
+      "options": ["account", "apply", "condenses", "confirms", "dirtiness", "identify", "impact", "pollutants", "specify"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 3 }, { "label": "イ", "answer": 8 },
+        { "label": "ウ", "answer": 1 }, { "label": "エ", "answer": 7 }, { "label": "オ", "answer": 6 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R7-08-eigo-B2", "subject": "英語", "no": "B-2", "type": "fill_blanks",
+      "instruction": "問4・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】国際宇宙ステーションに滞在中の宇宙飛行士たちは、しつこい発疹、珍しいアレルギー、そして真菌、口唇ヘルペス、帯状疱疹を含む様々な感染症に悩まされている。研究者たちは今、その理由が分かったと考えている。それは軌道上を周回する実験室には、十分な細菌が存在していないからだ。ある研究者は、我々の免疫システムは土壌、健康な動物や植物からの幅広い有益な微生物にさらされる必要があると言っている。\n\n【英訳文】Astronauts aboard the International Space Station are [ア] by [イ] rashes, unusual allergies and a variety of [ウ], including fungi, cold sores and shingles. Researchers now think they know why: The [エ] lab doesn't have enough germs. A researcher says that our immune system needs exposure to a wide range of beneficial microbes from [オ], healthy animals or healthy plants.",
+      "figure": null,
+      "options": ["addicted", "infections", "inspections", "orbiting", "persistent", "plagued", "rotating", "soil", "sporadic"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 6 }, { "label": "イ", "answer": 5 },
+        { "label": "ウ", "answer": 2 }, { "label": "エ", "answer": 4 }, { "label": "オ", "answer": 8 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R7-08-eigo-B3", "subject": "英語", "no": "B-3", "type": "fill_blanks",
+      "instruction": "問5・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ(本文中の同じ記号は同じ語句)",
+      "text": "【日本文】通則として、航空機局が航空局との通信を確立する役割を持つ。このために、航空機局は、航空局の指定運用区域内に入った場合に限り、その航空局を呼び出すことができる。指定運用区域とは、その区域での業務を提供するために運用上必要とされ、そこで使われる設備について周波数保護が与えられる空間である。\n\n【英訳文】As a [ア] rule, it rests with the aircraft station to [イ] communication with the aeronautical station. For this purpose, the aircraft station may call the aeronautical station only when it comes [ウ] the designated operational coverage area of the latter. Designated operational coverage is that volume of airspace needed operationally in order to [エ] a particular service and [ウ] which the facility is [オ] frequency protection.",
+      "figure": null,
+      "options": ["affordable", "afforded", "beyond", "connect", "establish", "general", "provide", "traffic", "within"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 6 }, { "label": "イ", "answer": 5 },
+        { "label": "ウ", "answer": 9 }, { "label": "エ", "answer": 7 }, { "label": "オ", "answer": 2 }
+      ],
+      "explanation": ""
     }
   ]
 }

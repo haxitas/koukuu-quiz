@@ -647,6 +647,305 @@
         }
       ],
       "explanation": ""
+    },
+
+
+    {
+      "id": "R6-08-eigo-A1",
+      "subject": "英語",
+      "no": "A-1",
+      "type": "single",
+      "instruction": "問1・英文解釈:次の英文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Fewer planes and helicopters will be flying tourists over Mount Rushmore and other national monuments and parks as new regulations take effect that are intended to protect the serenity of some of the most beloved natural areas in the United States.\n\nThe air tours have pitted tour operators against visitors frustrated with the noise for decades, but it has come to a head as new management plans are rolled out at nearly two dozen national parks and monuments. One of the strictest yet was recently announced at Mount Rushmore and Badlands National Park, where tour flights will essentially be banned from getting within a half mile of the South Dakota sites starting in April.\n\nThe regulations are the result of a federal appeals court finding, in 2020, that the National Park Service and the Federal Aviation Administration failed to enforce a 2000 law governing commercial air tours over the parks and some tribal lands. A schedule was crafted for setting rules, and many are wrapping up now. But now an industry group is eyeing litigation, and an environmental coalition has already sued over one plan. The issue has grown so contentious that a congressional oversight hearing is planned for Tuesday. Kristen Brengel of the National Parks Conservation Association notes that the aircraft are noisy and disrupt the experience of visitors on the ground who outnumber those overhead. The air operators argue they provide unrivaled access, particularly to the elderly and disabled.\n\nCongress passed another round of legislation in 2000 with a goal of setting rules in other national parks. But bureaucratic difficulties and delays stalled compliance. As of this month, plans or voluntary agreements have been adopted for most of the parks, although not all of them have taken effect. Parks exempted from developing plans include those with few flights and those in Alaska, where small planes are often the only way to get around.\n\nThen came last month's announcement about restrictions over Mount Rushmore and the Badlands. Bailey Wood, a spokesman for the Helicopter Association International, said the process has been \"broken and rushed\" and threatens to put some operators out of business. \"Litigation is one tool that is definitely under consideration,\" he said. But Brengel said the resistance doesn't have much traction. An amendment to the FAA reauthorization bill that would have required the agency to factor in the economics of commercial air tours over national parks failed in July.\n\n<注> serenity:静けさ / pit:戦わせる / come to a head:頂点に達する / finding:事実認定 / litigation:訴訟 / contentious:議論のある / outnumber:数で勝る / unrivaled:比類のない / bureaucratic:官僚的な / exempt:免除する / traction:牽引力",
+      "text": "Which parties are disputing the skies around national parks and monuments in the U.S.?",
+      "figure": null,
+      "options": [
+        "The conflict is between the air tour operators and groups opposed to noise pollution.",
+        "The conflict is between the National Park Service and the Federal Aviation Administration.",
+        "The conflict is between the elderly or disabled and young visitors to the national parks and monuments."
+      ],
+      "answer": 1,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R6-08-eigo-A2",
+      "subject": "英語",
+      "no": "A-2",
+      "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "Which pressure groups are preparing to take, or in the process of taking, court action?",
+      "figure": null,
+      "options": [
+        "There have been no court actions, only congressional oversight hearings.",
+        "Those representing the air tour service industry, and those working for environmental conservation.",
+        "Environmentalists who campaign for freedom of the skies, and those who do not like having planes flown over them."
+      ],
+      "answer": 2,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R6-08-eigo-A3",
+      "subject": "英語",
+      "no": "A-3",
+      "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "Which group claims to assist elderly and disabled visitors who wish to visit national parks and monuments?",
+      "figure": null,
+      "options": [
+        "The environmental coalition claims to assist such large donors as the elderly and disabled.",
+        "The air tour operators claim that they provide the elderly and disabled with access to national parks and monuments.",
+        "The National Park Service claims that air tours are best because elderly and disabled tourists care more about the environment."
+      ],
+      "answer": 2,
+      "blanks": null,
+      "explanation": ""
+    },
+
+    {
+      "id": "R6-08-eigo-A4",
+      "subject": "英語",
+      "no": "A-4",
+      "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "Why has the protective legislation passed by Congress in 2000 not been fully enforced?",
+      "figure": null,
+      "options": [
+        "The legislation has not been effectively implemented due to bureaucratic issues.",
+        "The plans that have been adopted are effective and being observed by all parties for all parks and monuments.",
+        "It is only in Alaska that no agreements have been reached because small planes are essential for transport there."
+      ],
+      "answer": 1,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R6-08-eigo-A5",
+      "subject": "英語",
+      "no": "A-5",
+      "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "Which of the two groups seems to be winning in the legislation so far?",
+      "figure": null,
+      "options": [
+        "So far, both sides are totally confident of positive outcomes for themselves.",
+        "The air tour operators, who have their profits protected by law, have been favored so far.",
+        "The group advocating protection of the national parks seems to be in the more favorable position right now."
+      ],
+      "answer": 3,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R6-08-eigo-A6",
+      "subject": "英語",
+      "no": "A-6",
+      "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "In communications between aircraft stations, the duration of communication shall be controlled by the aircraft station which is receiving, subject to the intervention of an aeronautical station. If such communications take place on an ATS frequency, prior permission of the aeronautical station shall be obtained. Such requests for permission are not required for brief exchanges.",
+      "text": "According to the above provision, what should aircraft stations do when an aeronautical station intervenes during communications?",
+      "figure": null,
+      "options": [
+        "If they have prior permission from the aeronautical station, they can continue their communication.",
+        "They should stop their communication and follow the instructions given by the aeronautical station.",
+        "They can continue their communication after having changed the frequency to a non-ATC frequency."
+      ],
+      "answer": 2,
+      "blanks": null,
+      "explanation": ""
+    },
+
+    {
+      "id": "R6-08-eigo-A7",
+      "subject": "英語",
+      "no": "A-7",
+      "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "When an aircraft station is unable to establish communication due to receiver failure, it shall transmit reports at the scheduled times, or positions, on the channel in use, preceded by the phrase \"TRANSMITTING BLIND DUE TO RECEIVER FAILURE.\" The aircraft station shall transmit the intended message, following this by a complete repetition. During this procedure, the aircraft shall also advise the time of its next intended transmission.",
+      "text": "In the case of aircraft receiver failure, which of the following is the correct procedure according to the above provision?",
+      "figure": null,
+      "options": [
+        "The aircraft station should report its status at the scheduled times or positions preceded by the specified phrase.",
+        "The aeronautical station, when it acknowledges the aircraft's receiver failure, should advise the aircraft station of the time and location of the next transmission.",
+        "The aircraft station should notify the aeronautical station of its status as many times as possible, saying TRANSMITTING BLIND DUE TO RECEIVER FAILURE on all available channels."
+      ],
+      "answer": 1,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R6-08-eigo-A8",
+      "subject": "英語",
+      "no": "A-8",
+      "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "In order to reduce interference, aircraft stations shall, within the means at their disposal, endeavor to select for calling the band with the most favorable propagational characteristics for effecting reliable communication.",
+      "text": "What frequency band should aircraft stations use for calling in order to reduce interference?",
+      "figure": null,
+      "options": [
+        "Aircraft stations should select the most reliable equipment and the associated radio band.",
+        "The band which is generally used must be chosen as often as possible, regardless of the propagation conditions.",
+        "They should try to select the band the propagational characteristics of which are best for reliable communication."
+      ],
+      "answer": 3,
+      "blanks": null,
+      "explanation": ""
+    },
+    {
+      "id": "R6-08-eigo-A9",
+      "subject": "英語",
+      "no": "A-9",
+      "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "In the aeronautical mobile service, after communication has been established by means of the complete call sign, the aircraft station may use, if confusion is unlikely to arise, an abbreviated call sign or identification.",
+      "text": "Which of the following is the correct procedure when using call signs for aeronautical radio communications?",
+      "figure": null,
+      "options": [
+        "The complete call sign must always be used even if abbreviation is unlikely to cause any confusion.",
+        "Shortened versions of call signs are always acceptable, in every case, as long as everyone understands them.",
+        "It is not acceptable to establish communication using the abbreviated call sign even if this is unlikely to cause confusion."
+      ],
+      "answer": 3,
+      "blanks": null,
+      "explanation": ""
+    },
+
+    {
+      "id": "R6-08-eigo-B1",
+      "subject": "英語",
+      "no": "B-1",
+      "type": "fill_blanks",
+      "instruction": "問3・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】アメリカの航空機製造スタートアップ企業が、カリフォルニア州のモハーベ航空宇宙港で超音速デモ機の初飛行を行った。コンコルドの退役から20年後、この初飛行は民間超音速航空機が空に戻ってきたことを印付け、超音速旅行の復活への道を切り開いた。同社は日米の航空会社3社との契約を確保している。\n\n【英訳文】An aviation manufacturing startup in America has [ア] its first flight of a supersonic demonstrator aircraft at the Mojave Air and Space Port in California. Two [イ] after Concorde's retirement, this first flight marks the return of a civil supersonic aircraft to the skies and [ウ] the way for the [エ] of supersonic travel. The company has [オ] contracts with three airlines in Japan and America.",
+      "figure": null,
+      "options": [
+        "conducted",
+        "confined",
+        "constructed",
+        "cultivates",
+        "decades",
+        "paves",
+        "revenue",
+        "revival",
+        "secured"
+      ],
+      "answer": null,
+      "blanks": [
+        {
+          "label": "ア",
+          "answer": 1
+        },
+        {
+          "label": "イ",
+          "answer": 5
+        },
+        {
+          "label": "ウ",
+          "answer": 6
+        },
+        {
+          "label": "エ",
+          "answer": 8
+        },
+        {
+          "label": "オ",
+          "answer": 9
+        }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R6-08-eigo-B2",
+      "subject": "英語",
+      "no": "B-2",
+      "type": "fill_blanks",
+      "instruction": "問4・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】ライトガン信号とは、ATCによるライトガンの使用を通じてパイロットに送信される視覚メッセージである。これらの信号は無線設備が機能しないときに利用される。ライトガン信号は、そのように無線通信がない場合に航空機を誘導する。ライトガンは赤、白、緑の3色の明るい光線を放射する。これらの色には特定の意味があり、澄んだ日中であれば4マイルまでのかなりの距離からでも見える。\n\n【英訳文】Light gun signals are visual messages transmitted by ATC to pilots by using light guns. These signals are [ア] when radio equipment fails. Light gun signals guide and direct aircraft in the [イ] of radio communication. Light guns [ウ] bright beams of three different colors: red, white, and green. These colors have [エ] meanings and are visible from [オ] distances of up to 4 miles in clear daylight.",
+      "figure": null,
+      "options": [
+        "absence",
+        "considerable",
+        "considerate",
+        "emit",
+        "middle",
+        "omit",
+        "specific",
+        "stabilized",
+        "utilized"
+      ],
+      "answer": null,
+      "blanks": [
+        {
+          "label": "ア",
+          "answer": 9
+        },
+        {
+          "label": "イ",
+          "answer": 1
+        },
+        {
+          "label": "ウ",
+          "answer": 4
+        },
+        {
+          "label": "エ",
+          "answer": 7
+        },
+        {
+          "label": "オ",
+          "answer": 2
+        }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R6-08-eigo-B3",
+      "subject": "英語",
+      "no": "B-3",
+      "type": "fill_blanks",
+      "instruction": "問5・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】飛行中において、通信士が全く業務を果たせない場合、航空機局の責任者は、臨時の措置として行う場合に限り、他の構成国の政府が発給した証明書を有する通信士が無線通信業務を行うことを許可してよい。\n\n【英訳文】In the case of complete unavailability of the operator in the [ア] of a flight, and [イ] as a [ウ] measure, the person responsible for the aircraft station may [エ] an operator holding a certificate [オ] by the government of another Member State to perform the radiocommunication service.",
+      "figure": null,
+      "options": [
+        "authorize",
+        "course",
+        "handed",
+        "inclusively",
+        "issued",
+        "literary",
+        "solely",
+        "temporary",
+        "way"
+      ],
+      "answer": null,
+      "blanks": [
+        {
+          "label": "ア",
+          "answer": 2
+        },
+        {
+          "label": "イ",
+          "answer": 7
+        },
+        {
+          "label": "ウ",
+          "answer": 8
+        },
+        {
+          "label": "エ",
+          "answer": 1
+        },
+        {
+          "label": "オ",
+          "answer": 5
+        }
+      ],
+      "explanation": ""
     }
   ]
 }

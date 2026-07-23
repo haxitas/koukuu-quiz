@@ -1,5 +1,5 @@
 {
-  "meta": { "era": "令和6年2月期", "code": "R6-02", "note": "法規(EY602)全20問を先行投入。無線工学(EZ602)全14問を追加(正答PDFで確認)。英語・英会話は未投入。" },
+  "meta": { "era": "令和6年2月期", "code": "R6-02", "note": "法規(EY602)全20問を先行投入。無線工学(EZ602)全14問を追加(正答PDFで確認)。英語(ERA602)全12問を追加(正答PDFで確認)。英会話は未投入。" },
   "questions": [
     {
       "id": "R6-02-houki-A1", "subject": "法規", "no": "A-1", "type": "single",
@@ -485,6 +485,163 @@
       "blanks": [
         { "label": "ア", "answer": 7 }, { "label": "イ", "answer": 1 },
         { "label": "ウ", "answer": 9 }, { "label": "エ", "answer": 8 }, { "label": "オ", "answer": 5 }
+      ],
+      "explanation": ""
+    },
+
+    {
+      "id": "R6-02-eigo-A1", "subject": "英語", "no": "A-1", "type": "single",
+      "instruction": "問1・英文解釈:次の英文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Two NASA spacecraft at Mars — one on the surface and the other in orbit — have recorded the two biggest meteor strikes yet, one in September and the other in December, and identified their impact craters. The high-speed impacts in 2021 sent seismic waves rippling thousands of miles across Mars, the first ever detected near the surface of another planet, and carved out craters nearly 150 meters across, scientists reported Thursday in a scientific journal.\n\nThe larger of the two strikes churned out boulder-size slabs of ice, which may help researchers look for ways future astronauts can tap into Mars' natural resources. The InSight lander measured the seismic shocks, while the Mars Reconnaissance Orbiter provided stunning pictures of the resulting craters. Imaging the craters \"would have been huge already,\" but matching it to the seismic ripples was a bonus, said co-author Liliya Posiolova of Malin Space Science Systems in San Diego. \"We were so lucky.\"\n\nMars' atmosphere is thin, unlike on Earth where the thick atmosphere prevents most space rocks from reaching the ground, instead breaking and incinerating them. The incoming space rocks were between 5 meters and 12 meters in diameter, said Posiolova. The impacts registered about magnitude 4. The larger of the two struck some 3,500 kilometers from InSight, creating a crater roughly 21 meters deep. The orbiter's cameras showed debris hurled up to 40 kilometers from the impact, as well as white patches of ice around the crater, the most frozen water observed at such low latitudes, Posiolova said. Posiolova spotted the crater earlier this year after obtaining extra pictures of the region from orbit. The crater was missing from earlier photos and, after poring through the archives, she pinpointed the impact to late December. She remembered a large seismic event recorded by InSight around that time and, with help from the InSight Science Team, matched the fresh hole to what was undoubtedly a meteoroid strike. The blast wave was clearly visible.\n\nScientists also learned the lander and orbiter teamed up for an earlier meteoroid strike in September, more than double the distance of the December one from the lander and slightly smaller. \"Everybody was just shocked and amazed. Another one? Yep,\" she recalled. The seismic readings from the two impacts indicate a denser Martian crust beyond InSight's location. \"We still have a long way to go to understanding the interior structure and dynamics of Mars, which remain largely enigmatic,\" said Doyeon Kim of ETH Zurich's Institute of Geophysics, who was part of the research.\n\n<注> meteor:隕石 / seismic:地震の / churn out:大量に飛び散らす / boulder:巨礫(岩) / slab:厚板 / Mars Reconnaissance Orbiter:火星偵察軌道機 / incinerate:焼却する / pore:詳細に調べる / meteoroid:隕星体(宇宙を浮遊する隕石) / enigmatic:謎の / geophysics:地球物理学",
+      "text": "What does the above article report as noteworthy about the recent measurements at Mars?",
+      "figure": null,
+      "options": [
+        "They recorded the largest meteor strikes yet observed.",
+        "The measured speed of the meteor strikes was unusually high.",
+        "Never before have impact craters been so easily observed from the earth."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-02-eigo-A2", "subject": "英語", "no": "A-2", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "Why does Liliya Posiolova believe that the scientists were lucky?",
+      "figure": null,
+      "options": [
+        "Even though the seismic activity occurred, the lander was not damaged.",
+        "They have now found ways to access natural resources that could be usable by humans in the future.",
+        "They observed not only the craters but also the seismic activity produced by the impacts that made them."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-02-eigo-A3", "subject": "英語", "no": "A-3", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "Which of the following correctly describes the crater created by the meteor strike in December?",
+      "figure": null,
+      "options": [
+        "The scientists observed the blast creating the crater in real time through the camera of the orbiter.",
+        "The debris was hurled as far as 40 kilometers from the impact site and patches of ice could be seen around the crater.",
+        "The meteor strike which created the crater was more than double the distance of the September one from the lander."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-02-eigo-A4", "subject": "英語", "no": "A-4", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "How did Posiolova determine that the creation of the crater photographed by the orbiter and the seismic waves measured by the InSight lander were caused by the same meteor impact in December?",
+      "figure": null,
+      "options": [
+        "She did this by measuring the amount of debris with the help of the InSight lander as well as the orbiter.",
+        "She knew because the lander itself was able to provide distant photographs while measuring the impact's magnitude.",
+        "She found the time of the crater's creation using pictures, and worked with the team to match this with a seismic event recorded by the InSight lander."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-02-eigo-A5", "subject": "英語", "no": "A-5", "type": "single",
+      "instruction": "問1・英文解釈(A-1と同じ英文について):最も適切なものを一つ選べ",
+      "passage": "(問1の英文はA-1を参照)",
+      "text": "What was the further discovery that was made through this research?",
+      "figure": null,
+      "options": [
+        "They learned more about the density variation of the Martian crust.",
+        "Doyeon Kim believes that they have unveiled the interior structure of the planet.",
+        "There were no other discoveries, but Doyeon Kim hopes there might be in the future."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-02-eigo-A6", "subject": "英語", "no": "A-6", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "Distress messages shall comprise those messages sent by mobile stations reporting that they are threatened by grave and imminent danger and all other messages relative to the immediate assistance required by the mobile station in distress.",
+      "text": "What sort of texts may be included in distress messages sent by mobile stations?",
+      "figure": null,
+      "options": [
+        "Only messages which the mobile station judges to be irrelevant to the approaching danger",
+        "Any texts which are related to the immediate assistance required by the mobile station in distress",
+        "Only messages reporting issues of immediate concern for aircraft preparing to depart or in landing roll"
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-02-eigo-A7", "subject": "英語", "no": "A-7", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "As an aeronautical radio telephony transmitting technique, each written message should be read prior to commencement of transmission in order to eliminate unnecessary delays in communications.",
+      "text": "Why does the above provision recommend that written messages be read prior to commencement of radio transmissions?",
+      "figure": null,
+      "options": [
+        "Reading messages out loud ensures that grammatical mistakes are eliminated.",
+        "There is no particular reason for this, but it is done as a courtesy to the captain.",
+        "Because doing so will facilitate smoother communication and eliminate unnecessary delays."
+      ],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-02-eigo-A8", "subject": "英語", "no": "A-8", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "As soon as the aircraft station has received the bearing, heading or position from the aeronautical station or direction-finding control station, it shall repeat back the message for confirmation or correction.",
+      "text": "Why does the above provision require the aircraft station to repeat back the information received on bearing, heading and position immediately?",
+      "figure": null,
+      "options": [
+        "This is to prevent the further transmission of information.",
+        "This ensures that the station has received it correctly and enables the sender to correct it if necessary.",
+        "By doing so, aircraft stations can facilitate the calculations performed by the direction-finding control station."
+      ],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-02-eigo-A9", "subject": "英語", "no": "A-9", "type": "single",
+      "instruction": "問2・英文解釈:次の規定文を読み、設問に対して最も適切なものを一つ選べ",
+      "passage": "In the aeronautical radionavigation service, it is undesirable, for safety reasons, to transmit the normal identification during emissions conducted to check or adjust equipment already in service. Unidentified emissions should however be restricted to a minimum.",
+      "text": "When checking and adjusting radio equipment providing the aeronautical navigation service, what should be borne in mind?",
+      "figure": null,
+      "options": [
+        "The transmission of normal identification may be unsafe and should be avoided.",
+        "The use of normal identification is recommended when checking or adjusting the equipment.",
+        "Transmission without identification is prohibited even when checking or adjusting the equipment."
+      ],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-02-eigo-B1", "subject": "英語", "no": "B-1", "type": "fill_blanks",
+      "instruction": "問3・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】天文学者らはブラックホールが自転していることを示す最初の直接的な証拠を発見した。その発見は、M87銀河の中心にある超巨大ブラックホールから発せられる強力なエネルギーのジェット噴射を研究することによってなされた。2000年から2022年に観測されたデータの広範囲にわたる解析を通して、研究チームはアインシュタインの一般相対性理論によって予測されていた、11年周期で繰り返されるジェットの歳差運動を見い出した。\n\n【英訳文】Astronomers have found the first direct evidence of a black hole spinning. The discovery was made by studying powerful jets of energy [ア] from the super [イ] black hole at the center of the M87 galaxy. Through [ウ] analysis of data observed from 2000 to 2022, the research team discovered a [エ] 11-year cycle in the precessional motion of the jet, as [オ] by Einstein's general theory of relativity.",
+      "figure": null,
+      "options": ["addicted", "beamed", "extensive", "intensive", "massive", "multiple", "predicted", "recurring", "reflected"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 2 }, { "label": "イ", "answer": 5 },
+        { "label": "ウ", "answer": 3 }, { "label": "エ", "answer": 8 }, { "label": "オ", "answer": 7 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R6-02-eigo-B2", "subject": "英語", "no": "B-2", "type": "fill_blanks",
+      "instruction": "問4・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】日本の石油会社と油脂を供給する商社が、持続可能な航空燃料(SAF)生産のための原料調達に焦点を当てた共同研究を実施する計画を発表した。両社は2020年代後半までに、日本各地から使用済み食用油を含むSAF原料を調達する安定した原料サプライチェーンの構築を目指す。\n\n【英訳文】A Japanese [ア] company and a Japanese trading company that supplies oil and fats announced plans to conduct a joint study [イ] the procurement of feedstocks for sustainable aviation fuel (SAF) production. The two companies aim to establish a [ウ] feedstocks supply chain to [エ] SAF feedstocks, including used cooking oil, from various regions of Japan by the [オ] 2020s.",
+      "figure": null,
+      "options": ["contracted with", "deliver", "focused on", "last", "late", "petroleum", "procure", "rigid", "stable"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 6 }, { "label": "イ", "answer": 3 },
+        { "label": "ウ", "answer": 9 }, { "label": "エ", "answer": 7 }, { "label": "オ", "answer": 5 }
+      ],
+      "explanation": ""
+    },
+    {
+      "id": "R6-02-eigo-B3", "subject": "英語", "no": "B-3", "type": "fill_blanks",
+      "instruction": "問5・和文英訳:日本文に対応する英訳文の空欄(ア)〜(オ)に入る最も適切な語句を1〜9からそれぞれ一つ選べ",
+      "text": "【日本文】パイロット間空対空通信は、VHF地上局の通達距離外である遠隔及び大洋地域の飛行に従事する航空機が、必要な運航情報を交換し運航上の問題の解決を容易にすることができるように指定された空対空チャネルで行われる双方向通信である。\n\n【英訳文】Interpilot air-to-air communication is two-way communication on the [ア] air-to-air channel to [イ] aircraft engaged in flights over remote and [ウ] areas out of range of VHF ground stations to [エ] necessary operational information and to [オ] the resolution of operational problems.",
+      "figure": null,
+      "options": ["coastal", "designated", "disable", "distinguished", "enable", "exchange", "facilitate", "oceanic", "replace"],
+      "answer": null,
+      "blanks": [
+        { "label": "ア", "answer": 2 }, { "label": "イ", "answer": 5 },
+        { "label": "ウ", "answer": 8 }, { "label": "エ", "answer": 6 }, { "label": "オ", "answer": 7 }
       ],
       "explanation": ""
     }
