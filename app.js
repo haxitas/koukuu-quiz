@@ -2,7 +2,7 @@
 import {
   gradeExam, appendResult, statsForKey, isComposite,
   currentMistakes, pickReviewQuestions, splitAttemptsByKey,
-  searchQuestions,
+  searchQuestions, mistakeCounts, pickRandomQuestions, quizSizeOptions,
 } from './quiz-core.mjs';
 
 const STORE_KEY = 'aviation_quiz_results';
@@ -14,12 +14,14 @@ const state = {
   exams: [],
   exam: null,      // 選択中の試験(index.jsonのentry)
   subject: null,   // 選択中の科目名
-  mode: 'normal',  // 'normal'(全問) | 'review'(誤答バンクからの復習)
+  mode: 'normal',  // 'normal'(全問) | 'review'(誤答バンクからの復習) | 'search'(検索結果からの出題)
   reviewSubject: null, // 復習回の科目フィルタ。null=全分野横断、文字列=その科目のみ
+  searchQuery: '', // 検索出題回の検索語(出題画面の見出し表示用)
   questions: [],   // 出題(科目でフィルタ済み、復習モードは誤答のみ)
   responses: {},   // { questionId: response }
   qi: 0,           // 現在の問番号(0始まり)
   prevWrong: null, // Set<questionId> 出題時点で誤答バンクに入っていたid(バッジ表示用)
+  mistakeCounts: {}, // { questionId: 通算誤答回数 } 出題時点のスナップショット(バッジ表示用)
   allQuestionsCache: [], // 全期間・全科目の問題(出典タグ付き)。initSelect で作り、復習開始時に使い回す
 };
 
@@ -161,11 +163,49 @@ function renderSearchResults(rawQuery) {
     : `${hits.length}件`;
   resultsEl.appendChild(count);
 
-  for (const hit of shown) resultsEl.appendChild(makeSearchResultCard(hit));
+  // 出題ボタンはヒット全件を母集団にする(カードの表示上限とは別)。
+  resultsEl.appendChild(makeSearchQuizBar(hits.map((h) => h.question), query));
+
+  const counts = mistakeCounts(loadStore());
+  for (const hit of shown) resultsEl.appendChild(makeSearchResultCard(hit, counts));
+}
+
+// 「この結果から出題」ボタン群。件数に応じて 5問 / 10問 / 全件 を出し分ける。
+function makeSearchQuizBar(questions, query) {
+  const bar = document.createElement('div');
+  bar.className = 'search-quiz-bar';
+  for (const n of quizSizeOptions(questions.length)) {
+    const btn = document.createElement('button');
+    btn.className = 'search-quiz-btn';
+    btn.textContent = n === questions.length
+      ? `この結果から出題（全${n}問）`
+      : `この結果から出題（ランダム${n}問）`;
+    btn.addEventListener('click', () => startSearchQuiz(questions, n, query));
+    bar.appendChild(btn);
+  }
+  return bar;
+}
+
+// ---- 出題開始(検索結果からの出題: ヒットした問題からランダムに n 問) ----
+function startSearchQuiz(questions, n, query) {
+  const picked = pickRandomQuestions(questions, n);
+  if (picked.length === 0) return;
+  const store = loadStore();
+  state.exam = null;
+  state.subject = null;
+  state.mode = 'search';
+  state.searchQuery = query;
+  state.questions = picked;
+  state.responses = {};
+  state.qi = 0;
+  state.prevWrong = new Set(currentMistakes(store));
+  state.mistakeCounts = mistakeCounts(store);
+  renderQuestion();
+  show('screen-quiz');
 }
 
 // 検索結果1件のカード(要約行 + クリックで開閉する詳細)を作る。
-function makeSearchResultCard(hit) {
+function makeSearchResultCard(hit, counts) {
   const q = hit.question;
   const card = document.createElement('div');
   card.className = 'search-result';
@@ -175,6 +215,14 @@ function makeSearchResultCard(hit) {
   const tag = document.createElement('span');
   tag.className = 'source-tag';
   tag.textContent = `${q.era} ／ ${q.subject} ／ ${q.no}`;
+  summary.appendChild(tag);
+  const wrongCount = (counts && counts[q.id]) || 0;
+  if (wrongCount > 0) {
+    const badge = document.createElement('span');
+    badge.className = 'past-wrong-badge';
+    badge.textContent = `過去${wrongCount}回まちがえた`;
+    summary.appendChild(badge);
+  }
   const snip = document.createElement('div');
   snip.className = 'snippet';
   const { before, match, after, truncatedStart, truncatedEnd } = hit.snippet;
@@ -182,7 +230,7 @@ function makeSearchResultCard(hit) {
     (truncatedStart ? '…' : '') + escapeHtml(before) +
     '<mark>' + escapeHtml(match) + '</mark>' +
     escapeHtml(after) + (truncatedEnd ? '…' : '');
-  summary.append(tag, snip);
+  summary.appendChild(snip);
   card.appendChild(summary);
 
   const detail = document.createElement('div');
@@ -219,7 +267,9 @@ async function startQuiz(exam, subject) {
   state.qi = 0;
   // 誤答バンクに入っている問題は出題画面で「前回まちがえた」バッジを出す
   // (グローバル判定だが、他科目のidはこの科目の問題リストに現れないので結果は従来と同じ)。
-  state.prevWrong = new Set(currentMistakes(loadStore()));
+  const store = loadStore();
+  state.prevWrong = new Set(currentMistakes(store));
+  state.mistakeCounts = mistakeCounts(store);
   renderQuestion();
   show('screen-quiz');
 }
@@ -253,8 +303,10 @@ async function startMistakeReview(subjectFilter) {
   state.questions = picked;
   state.responses = {};
   state.qi = 0;
-  // 復習回は出題されている問題が全て「バンク入り」で自明なため、個別バッジは出さない。
+  // 復習回は出題されている問題が全て「バンク入り」で自明なため、個別バッジは出さない
+  // (通算回数だけは問題ごとに違うので mistakeCounts 側で表示する)。
   state.prevWrong = new Set();
+  state.mistakeCounts = mistakeCounts(loadStore());
   renderQuestion();
   show('screen-quiz');
 }
@@ -267,12 +319,22 @@ function remainingMistakeCount(subjectFilter) {
   return mistakes.filter((id) => idSubject.get(id) === subjectFilter).length;
 }
 
+// 出題回の見出し(出題画面・結果画面で共用)。通常回だけ state.exam を持つ。
+function sessionLabel() {
+  if (state.mode === 'review') return `過去に間違えた問題集（${state.reviewSubject || '全分野'}・復習）`;
+  if (state.mode === 'search') return `検索「${state.searchQuery}」から${state.questions.length}問`;
+  return `${state.exam.era} ／ ${state.subject}`;
+}
+
+// 期・科目をまたぐ回(復習・検索)は問題ごとに出典が異なり得るので明示する。
+function isCrossExamMode() {
+  return state.mode === 'review' || state.mode === 'search';
+}
+
 // ---- 1問描画 ----
 function renderQuestion() {
   const q = state.questions[state.qi];
-  document.getElementById('quiz-meta').textContent = state.mode === 'review'
-    ? `過去に間違えた問題集（${state.reviewSubject || '全分野'}・復習）`
-    : `${state.exam.era} ／ ${state.subject}`;
+  document.getElementById('quiz-meta').textContent = sessionLabel();
   document.getElementById('progress').textContent = `第 ${state.qi + 1} / ${state.questions.length} 問`;
 
   const art = document.getElementById('question');
@@ -281,17 +343,23 @@ function renderQuestion() {
   const no = document.createElement('div');
   no.className = 'q-no';
   no.textContent = q.no;
-  if (state.mode === 'review') {
-    // 全期間横断の復習は問題ごとに出典(期・科目)が異なり得るので明示する。
+  if (isCrossExamMode()) {
     const src = document.createElement('span');
     src.className = 'source-tag';
     src.textContent = `${q.era} ／ ${q.subject}`;
     no.appendChild(src);
   }
+  // 直近で誤答なら「前回まちがえた」、直近は正解でも過去に誤答があれば通算回数だけ出す。
+  const wrongCount = state.mistakeCounts[q.id] || 0;
   if (state.prevWrong && state.prevWrong.has(q.id)) {
     const badge = document.createElement('span');
     badge.className = 'prev-wrong-badge';
-    badge.textContent = '前回まちがえた';
+    badge.textContent = wrongCount > 0 ? `前回まちがえた（通算${wrongCount}回）` : '前回まちがえた';
+    no.appendChild(badge);
+  } else if (wrongCount > 0) {
+    const badge = document.createElement('span');
+    badge.className = 'past-wrong-badge';
+    badge.textContent = `過去${wrongCount}回まちがえた`;
     no.appendChild(badge);
   }
   art.appendChild(no);
@@ -528,9 +596,7 @@ function correctText(q) {
 
 function renderResult(result, remainingMistakes, scopeSubject) {
   const rate = result.total > 0 ? result.score / result.total : 0;
-  const headerLine = state.mode === 'review'
-    ? `過去に間違えた問題集（${state.reviewSubject || '全分野'}・復習）`
-    : `${state.exam.era} ／ ${state.subject}`;
+  const headerLine = sessionLabel();
   const scopeLabel = scopeSubject || '全分野';
   const resolved = remainingMistakes === 0;
   const bankLine = resolved
@@ -554,7 +620,7 @@ function renderResult(result, remainingMistakes, scopeSubject) {
     if (!q) continue;
     const item = document.createElement('div');
     item.className = 'wrong-item';
-    const sourceTag = state.mode === 'review'
+    const sourceTag = isCrossExamMode()
       ? ` <span class="source-tag">${escapeHtml(q.era)}／${escapeHtml(q.subject)}</span>`
       : '';
     const parts = [

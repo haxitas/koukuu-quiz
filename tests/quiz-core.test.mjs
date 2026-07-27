@@ -14,6 +14,9 @@ import {
   matchQuestion,
   snippetFor,
   searchQuestions,
+  mistakeCounts,
+  pickRandomQuestions,
+  quizSizeOptions,
 } from '../quiz-core.mjs';
 
 // --- 最小アサートハーネス -------------------------------------------------
@@ -313,6 +316,58 @@ check('searchQuestions ユーザー実例クエリが一致する', () => {
   const hits = searchQuestions([qLaw1], '第52条から第55条');
   assert(hits.length === 1 && hits[0].field === 'instruction');
 });
+
+// --- mistakeCounts: 通算の誤答回数を attempts から数える ---
+check('mistakeCounts 記録なしは空', () => {
+  eq(mistakeCounts({ attempts: [] }), {});
+  eq(mistakeCounts(null), {});
+});
+check('mistakeCounts 同じ問題を複数回間違えたら加算される', () => {
+  const store = { attempts: [
+    { key: 'K', date: '2026-07-20', score: 0, total: 2, wrong: ['q1', 'q2'], presented: ['q1', 'q2'] },
+    { key: 'K', date: '2026-07-21', score: 1, total: 2, wrong: ['q1'], presented: ['q1', 'q2'] },
+  ] };
+  eq(mistakeCounts(store), { q1: 2, q2: 1 });
+});
+check('mistakeCounts 正解しても過去の回数は減らない(累計なので)', () => {
+  const store = { attempts: [
+    { key: 'K', date: '2026-07-20', score: 0, total: 1, wrong: ['q1'], presented: ['q1'] },
+    { key: 'K', date: '2026-07-21', score: 1, total: 1, wrong: [], presented: ['q1'] },
+  ] };
+  eq(mistakeCounts(store), { q1: 1 }, '誤答バンクからは消えても通算回数は残る');
+});
+
+// --- pickRandomQuestions: ランダムに選ぶが並びは元のまま ---
+check('pickRandomQuestions 件数がmax以下ならそのまま全部返す', () => {
+  const qs = [{ id: 'a' }, { id: 'b' }];
+  eq(pickRandomQuestions(qs, 5).map((q) => q.id), ['a', 'b']);
+});
+check('pickRandomQuestions max件だけ返し、元の並び順を保つ', () => {
+  const qs = [{ id: 'a' }, { id: 'b' }, { id: 'c' }, { id: 'd' }, { id: 'e' }];
+  const rng = () => 0.99; // 決定的にするための差し替え
+  const picked = pickRandomQuestions(qs, 3, rng);
+  eq(picked.length, 3);
+  const order = picked.map((q) => qs.findIndex((x) => x.id === q.id));
+  eq(order, [...order].sort((a, b) => a - b), '選ばれた問題は元の順序で並ぶ');
+});
+check('pickRandomQuestions rngを変えると選ばれる組が変わりうる', () => {
+  const qs = Array.from({ length: 10 }, (_, i) => ({ id: `q${i}` }));
+  const a = pickRandomQuestions(qs, 3, () => 0).map((q) => q.id);
+  const b = pickRandomQuestions(qs, 3, () => 0.99).map((q) => q.id);
+  assert(JSON.stringify(a) !== JSON.stringify(b), 'rng次第で別の組が選ばれる');
+});
+check('pickRandomQuestions 空配列やmax=0は空', () => {
+  eq(pickRandomQuestions([], 5), []);
+  eq(pickRandomQuestions([{ id: 'a' }], 0), []);
+});
+
+// --- quizSizeOptions: 検索結果から出題するときの選択肢 ---
+check('quizSizeOptions 5問未満はあるだけ', () => eq(quizSizeOptions(3), [3]));
+check('quizSizeOptions ちょうど5問は全件のみ(5問=あるだけ)', () => eq(quizSizeOptions(5), [5]));
+check('quizSizeOptions 5問超10問未満は5問と全件', () => eq(quizSizeOptions(7), [5, 7]));
+check('quizSizeOptions ちょうど10問は5問と全件(10問=あるだけ)', () => eq(quizSizeOptions(10), [5, 10]));
+check('quizSizeOptions 10問超は5問・10問・全件', () => eq(quizSizeOptions(15), [5, 10, 15]));
+check('quizSizeOptions 0件は空', () => eq(quizSizeOptions(0), []));
 
 export function runTests() {
   return results;

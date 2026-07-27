@@ -104,6 +104,38 @@ export function pickReviewQuestions(questions, mistakeIds, max = 10) {
   return picked.slice(0, max);
 }
 
+// 各問題を通算で何回間違えたかを attempts から集計する({ id: 回数 })。
+// 誤答バンク(currentMistakes)が「今まちがえた状態か」を見るのに対し、こちらは履歴の累計。
+// 記録は append-only なので、この関数は既存の attempts を読むだけで新しい保存項目を要らない。
+export function mistakeCounts(store) {
+  const all = store && Array.isArray(store.attempts) ? store.attempts : [];
+  const counts = {};
+  for (const a of all) {
+    for (const id of (a.wrong || [])) counts[id] = (counts[id] || 0) + 1;
+  }
+  return counts;
+}
+
+// questions から最大 max 問をランダムに選ぶ。選ぶ対象はランダムだが、
+// 並びは元の順序(期・問番号順)を保つ。rng はテストから差し替えられるようにしてある。
+export function pickRandomQuestions(questions, max, rng = Math.random) {
+  if (!Array.isArray(questions) || questions.length === 0 || !(max > 0)) return [];
+  if (questions.length <= max) return [...questions];
+  const idx = questions.map((_, i) => i);
+  for (let i = idx.length - 1; i > 0; i--) { // Fisher-Yates
+    const j = Math.floor(rng() * (i + 1));
+    [idx[i], idx[j]] = [idx[j], idx[i]];
+  }
+  return idx.slice(0, max).sort((a, b) => a - b).map((i) => questions[i]);
+}
+
+// 検索結果から出題するときに選べる問題数を返す。全件は常に末尾に入り、重複はしない。
+// 例: 3件→[3] / 7件→[5,7] / 10件→[5,10] / 15件→[5,10,15]。
+export function quizSizeOptions(total, steps = [5, 10]) {
+  if (!(total > 0)) return [];
+  return [...steps.filter((n) => n < total), total];
+}
+
 // gradeExam の結果(examResult)を questions の並びに沿ってキーごとに束ね直し、
 // キー1つにつき Attempt を1件作る(= grade() が保存すべきレコード列)。
 // 全期間横断の復習セッションは科目・期をまたぎ得るため、1回の採点でも
