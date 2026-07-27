@@ -1,5 +1,5 @@
 {
-  "meta": { "era": "令和7年8月期", "code": "R7-08", "note": "法規(EY708)全20問を先行投入。無線工学=全14問(EZ708より転記・正答PDFで確認)を追加。英語=全12問(ERA708より転記・正答PDFで確認)を追加。英会話は未投入。" },
+  "meta": { "era": "令和7年8月期", "code": "R7-08", "note": "法規(EY708)全20問・無線工学(EZ708)全14問・英語(ERA708)全12問・英会話(ERB708)全7問すべて投入済み(正答はeigo-kaitou.pdf内の英会話表で確認)。" },
   "questions": [
     {
       "id": "R7-08-houki-A1", "subject": "法規", "no": "A-1", "type": "single",
@@ -645,6 +645,62 @@
         { "label": "ウ", "answer": 9 }, { "label": "エ", "answer": 7 }, { "label": "オ", "answer": 2 }
       ],
       "explanation": ""
+    },
+    {
+      "id": "R7-08-eikaiwa-Q1", "subject": "英会話", "no": "Q-1", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "A parcel labelled \"Fragile\" has arrived. How should you handle the parcel?",
+      "figure": null,
+      "options": ["I should warm it up.", "I should handle it gently.", "I should store it in the refrigerator.", "I should throw it into the container."],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-08-eikaiwa-Q2", "subject": "英会話", "no": "Q-2", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "Before going out in the morning, I heard the weather forecast say that it would be cloudy during the day but no precipitation was expected. What sort of weather was expected?",
+      "figure": null,
+      "options": ["Cloudy with no rain", "Cloudy followed by rain", "Cloudy with occasional rain", "Cloudy with thunderstorms later"],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-08-eikaiwa-Q3", "subject": "英会話", "no": "Q-3", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "At the explanatory meeting on the business software we are going to use, the system engineer told us to feel free to contact him with any questions. What did the engineer mean by that?",
+      "figure": null,
+      "options": ["He will give us a free lunch on any day we ask.", "He is willing to help us if we are in trouble.", "He will make us feel like meeting him every day.", "Asking questions about the software is free of charge."],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-08-eikaiwa-Q4", "subject": "英会話", "no": "Q-4", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "We sometimes experience sleeping difficulty and confusion after a long flight to a place in a very different time zone. What is this phenomenon called?",
+      "figure": null,
+      "options": ["Jet lag", "Airsickness", "Fear of flying", "Fear of heights"],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-08-eikaiwa-Q5", "subject": "英会話", "no": "Q-5", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "You are the pilot of an airplane. You are descending to the runway. The ATC controller says, \"Continue approach. Preceding traffic, 5 miles ahead.\" In this case what does \"traffic\" mean?",
+      "figure": null,
+      "options": ["A runway", "A taxiway", "An airplane", "A traffic light"],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-08-eikaiwa-Q6", "subject": "英会話", "no": "Q-6", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "SAF stands for sustainable aviation fuel and is produced mainly from materials such as biomass or waste cooking oil. It is expected to be better for reducing greenhouse gas emissions than conventional fuel. What merit is expected from using SAF?",
+      "figure": null,
+      "options": ["Low fuel costs", "A simpler production process", "Decreased combustion efficiency", "Better environmental performance"],
+      "answer": 4, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-08-eikaiwa-Q7", "subject": "英会話", "no": "Q-7", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "You are the pilot of an airplane approaching from the south. The ATC controller gives you the clearance to land on Runway 34 (three four), saying, \"Wind 070 (zero seven zero) at 4 (four).\" In this case, what is the wind condition for your airplane on the runway?",
+      "figure": null,
+      "options": ["A tailwind", "A headwind", "A crosswind from the left", "A crosswind from the right"],
+      "answer": 4, "blanks": null, "explanation": ""
     }
   ]
 }

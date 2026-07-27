@@ -1,5 +1,5 @@
 {
-  "meta": { "era": "令和6年2月期", "code": "R6-02", "note": "法規(EY602)全20問を先行投入。無線工学(EZ602)全14問を追加(正答PDFで確認)。英語(ERA602)全12問を追加(正答PDFで確認)。英会話は未投入。" },
+  "meta": { "era": "令和6年2月期", "code": "R6-02", "note": "法規(EY602)全20問・無線工学(EZ602)全14問・英語(ERA602)全12問・英会話(ERB602)全7問すべて投入済み(正答はeigo-kaitou.pdf内の英会話表で確認)。" },
   "questions": [
     {
       "id": "R6-02-houki-A1", "subject": "法規", "no": "A-1", "type": "single",
@@ -644,6 +644,62 @@
         { "label": "ウ", "answer": 8 }, { "label": "エ", "answer": 6 }, { "label": "オ", "answer": 7 }
       ],
       "explanation": ""
+    },
+    {
+      "id": "R6-02-eikaiwa-Q1", "subject": "英会話", "no": "Q-1", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "He wants to study abroad in France but cannot read French let alone speak it. Which of the following describes his level of competence in French?",
+      "figure": null,
+      "options": ["He cannot read French but can speak it.", "He can neither read nor speak French.", "He can read it but cannot understand the spoken language.", "He cannot read it but can understand the spoken language."],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-02-eikaiwa-Q2", "subject": "英会話", "no": "Q-2", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "This is a very important festival for Christians, commemorating when Jesus Christ died and returned from the dead. It is held in March or April. The festival is often associated with decorative eggs. Which festival is this?",
+      "figure": null,
+      "options": ["Easter", "Halloween", "Thanksgiving", "St. Patrick's Day"],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-02-eikaiwa-Q3", "subject": "英会話", "no": "Q-3", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "Latitude measures the distance of a location north or south from the equator. Different latitudes receive different amounts of light and heat per unit area from the sun. Which of the following statements about latitude is correct?",
+      "figure": null,
+      "options": ["Temperature is unrelated to latitude.", "Higher latitudes tend to be warmer and lower latitudes are generally colder.", "Higher latitudes tend to be colder and lower latitudes are generally warmer.", "Each unit area of the ground receives the same amount of light and heat from the sun regardless of its latitude."],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-02-eikaiwa-Q4", "subject": "英会話", "no": "Q-4", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "Which of the following best describes the role of an aircraft dispatcher?",
+      "figure": null,
+      "options": ["To provide security checks at the airport", "To check passports and issue boarding passes", "To provide flight plans and other necessary information to pilots", "To assist the PF (Pilot-Flying) sitting next to him in the cockpit"],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-02-eikaiwa-Q5", "subject": "英会話", "no": "Q-5", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "What is the official industry name for the enclosed movable corridor which connects the airport terminal gate to the airplane?",
+      "figure": null,
+      "options": ["The airport apron", "The airport observation deck", "The passenger boarding gate", "The passenger boarding bridge"],
+      "answer": 4, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-02-eikaiwa-Q6", "subject": "英会話", "no": "Q-6", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "After making the decision not to continue an approach or a landing, a pilot adds full power, retracts the flaps and landing gear, and climbs back to a safe altitude. What is such an aborted landing attempt called?",
+      "figure": null,
+      "options": ["A go-around", "A touch-and-go", "A holding pattern", "A crosswind landing"],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-02-eikaiwa-Q7", "subject": "英会話", "no": "Q-7", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "Wake turbulence is usually caused behind a large aircraft. Suppose you are the approach control near a large airport. How will you set the distance between landing aircraft, taking wake turbulence into account?",
+      "figure": null,
+      "options": ["The interval is longer behind a small aircraft than a large one.", "The interval is longer behind a large aircraft than a small one.", "The interval is always the same regardless of the size of the aircraft.", "The landing sequence prohibits the mixing of different sizes of aircraft."],
+      "answer": 2, "blanks": null, "explanation": ""
     }
   ]
 }

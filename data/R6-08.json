@@ -1,5 +1,5 @@
 {
-  "meta": { "era": "令和6年8月期", "code": "R6-08", "note": "法規(EY608)全20問を先行投入。無線工学=全14問を追加(EZ608・正答PDFで確認)。英語・英会話は未投入。" },
+  "meta": { "era": "令和6年8月期", "code": "R6-08", "note": "法規(EY608)全20問・無線工学(EZ608)全14問・英語(ERA608)全12問・英会話(ERB608)全7問すべて投入済み(正答はeigo-kaitou.pdf内の英会話表で確認)。" },
   "questions": [
     {
       "id": "R6-08-houki-A1", "subject": "法規", "no": "A-1", "type": "single",
@@ -946,6 +946,62 @@
         }
       ],
       "explanation": ""
+    },
+    {
+      "id": "R6-08-eikaiwa-Q1", "subject": "英会話", "no": "Q-1", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "Our new operation didn't go well and my boss told me I was to blame. What does he think of the failure?",
+      "figure": null,
+      "options": ["He thinks the failure was my fault.", "He thinks the failure was nobody's fault.", "He thinks the failure was entirely his own fault.", "He thinks every member of the group is to blame."],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-08-eikaiwa-Q2", "subject": "英会話", "no": "Q-2", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "His company has beefed up cyber security due to an increase in the number of network crimes. What does 'beef up' mean in this case?",
+      "figure": null,
+      "options": ["The company has expanded its network to engage in more crimes.", "The company has raised the food allowance for its security guards.", "The company has strengthened its security measures against network crime.", "The company has given up strengthening security because of its very high cost."],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-08-eikaiwa-Q3", "subject": "英会話", "no": "Q-3", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "On my college website, I have found a notice stating, \"Mr. Brown will be the acting dean of the college for the time being.\" How long will Mr. Brown stay in this position?",
+      "figure": null,
+      "options": ["He will serve as the acting dean for the rest of his life.", "As he has become the dean, he now has to serve a full term.", "It solely depends on him how long he will continue to work as the dean.", "It is a temporary assignment until a new dean has been formally elected."],
+      "answer": 4, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-08-eikaiwa-Q4", "subject": "英会話", "no": "Q-4", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "Airplanes sometimes suffer engine trouble. Which of the following is a possible cause?",
+      "figure": null,
+      "options": ["Dense fog", "Bird strikes", "Wake turbulence", "Thin ice on the wings"],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-08-eikaiwa-Q5", "subject": "英会話", "no": "Q-5", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "When the ATC controller says, \"Climb and maintain 370,\" what has to be maintained?",
+      "figure": null,
+      "options": ["Bearing", "Flight level", "Destination", "Ground speed"],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-08-eikaiwa-Q6", "subject": "英会話", "no": "Q-6", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "You are the pilot of an airplane. During a landing rollout, the controller says, \"Taxi to Taxiway-Bravo and clear the active.\" What will you do?",
+      "figure": null,
+      "options": ["Go to Taxiway-B and wait for further instructions", "Go to Taxiway-B and turn off the engines", "Go to Taxiway-B and exit the runway", "Leave the runway as soon as possible before reaching Taxiway-B"],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R6-08-eikaiwa-Q7", "subject": "英会話", "no": "Q-7", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "Haneda Airport has 34R, 34L, 16L and 16R runways. Why does it have runways with such similar names?",
+      "figure": null,
+      "options": ["Because there is a pair of parallel runways", "So that the air traffic controllers can easily identify them", "Because there are four runways of different orientations, A to D", "Because two of the runways are longer than any others in Japan"],
+      "answer": 1, "blanks": null, "explanation": ""
     }
   ]
 }

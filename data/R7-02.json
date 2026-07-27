@@ -1,5 +1,5 @@
 {
-  "meta": { "era": "令和7年2月期", "code": "R7-02", "note": "法規(EY702)全20問を先行投入。無線工学(EZ702)全14問を追加(正答PDFで確認)。英語・英会話は未投入。" },
+  "meta": { "era": "令和7年2月期", "code": "R7-02", "note": "法規(EY702)全20問・無線工学(EZ702)全14問・英語(ERA702)全12問・英会話(ERB702)全7問すべて投入済み(正答はeigo-kaitou.pdf内の英会話表で確認)。" },
   "questions": [
     {
       "id": "R7-02-houki-A1", "subject": "法規", "no": "A-1", "type": "single",
@@ -639,6 +639,62 @@
         { "label": "ウ", "answer": 9 }, { "label": "エ", "answer": 2 }, { "label": "オ", "answer": 6 }
       ],
       "explanation": ""
+    },
+    {
+      "id": "R7-02-eikaiwa-Q1", "subject": "英会話", "no": "Q-1", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "As interest rates have risen, people may now want to earn interest on their bank accounts. What kind of bank account might they apply for?",
+      "figure": null,
+      "options": ["A bank loan", "A savings account", "A credit card account", "A housing loan account"],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-02-eikaiwa-Q2", "subject": "英会話", "no": "Q-2", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "A prime number is an integer that cannot be divided except by one or the number itself. Which of the following is a prime number?",
+      "figure": null,
+      "options": ["13", "14", "15", "16"],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-02-eikaiwa-Q3", "subject": "英会話", "no": "Q-3", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "My friend wasn't able to keep up with his classes in many compulsory subjects, and was forced to drop out from university. What is his status at the university now?",
+      "figure": null,
+      "options": ["He no longer attends the university.", "He needs to work part-time to pay his academic fees.", "He is now engaged in his graduate thesis at the university.", "He attends the same university as during the last semester."],
+      "answer": 1, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-02-eikaiwa-Q4", "subject": "英会話", "no": "Q-4", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "You are departing from Narita to Los Angeles. At the airport, after check-in and the security check, you must proceed to the immigration control. Which of the following must you present there?",
+      "figure": null,
+      "options": ["Your visa", "Your passport", "Electric devices and mobile batteries", "Money in the currency of your destination"],
+      "answer": 2, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-02-eikaiwa-Q5", "subject": "英会話", "no": "Q-5", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "You are the pilot of an airplane. When the ATC controller tells you to line up and wait at Runway 34, what notification is expected just after that?",
+      "figure": null,
+      "options": ["Cleared to land", "Taxi to Runway 34", "Cleared for takeoff", "Climb and maintain FL340"],
+      "answer": 3, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-02-eikaiwa-Q6", "subject": "英会話", "no": "Q-6", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "You are the pilot of an airplane flying from Haneda to Chitose. Once Departure has told you to contact Tokyo control, what is the status of your airplane?",
+      "figure": null,
+      "options": ["It is waiting for take-off clearance.", "It is waiting for the taxiing clearance on the apron.", "It is approaching Tokyo and preparing to descend and land.", "It is entering the airspace controlled by Tokyo ACC (Area Control Center)."],
+      "answer": 4, "blanks": null, "explanation": ""
+    },
+    {
+      "id": "R7-02-eikaiwa-Q7", "subject": "英会話", "no": "Q-7", "type": "single",
+      "instruction": "読み上げられた英文に対して、最も適切な応答を選べ",
+      "text": "Rolling takeoff is a takeoff method often used at busy airports by which an airplane enters the runway from the taxiway, sets the engine to takeoff power, and starts takeoff without stopping. What is the merit of this takeoff method?",
+      "figure": null,
+      "options": ["It is a safer takeoff method for pilots.", "It avoids any influence from wake turbulence.", "It saves takeoff time.", "It enables pilots to take off without ATC clearance."],
+      "answer": 3, "blanks": null, "explanation": ""
     }
   ]
 }
