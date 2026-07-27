@@ -3,6 +3,7 @@ import {
   gradeExam, appendResult, statsForKey, isComposite,
   currentMistakes, pickReviewQuestions, splitAttemptsByKey,
   searchQuestions, mistakeCounts, pickRandomQuestions, quizSizeOptions,
+  unattemptedQuestions, progressSummary, mistakeRanking, scoreExam, passJudgement,
 } from './quiz-core.mjs';
 
 const STORE_KEY = 'aviation_quiz_results';
@@ -14,9 +15,10 @@ const state = {
   exams: [],
   exam: null,      // 選択中の試験(index.jsonのentry)
   subject: null,   // 選択中の科目名
-  mode: 'normal',  // 'normal'(全問) | 'review'(誤答バンクからの復習) | 'search'(検索結果からの出題)
+  mode: 'normal',  // 'normal'(全問) | 'review'(誤答バンクからの復習) | 'search'(検索結果からの出題) | 'fresh'(未挑戦から出題)
   reviewSubject: null, // 復習回の科目フィルタ。null=全分野横断、文字列=その科目のみ
   searchQuery: '', // 検索出題回の検索語(出題画面の見出し表示用)
+  freshSubject: null, // 未挑戦回の科目フィルタ。null=全分野横断
   questions: [],   // 出題(科目でフィルタ済み、復習モードは誤答のみ)
   responses: {},   // { questionId: response }
   qi: 0,           // 現在の問番号(0始まり)
@@ -55,6 +57,59 @@ function sortedSubjects(questions) {
   return [...known, ...unknown];
 }
 
+// 学習の進みぐあいカード。全体の消化率と、科目ごとの未挑戦数を出す。
+// 科目の行はそのままボタンで、押すとその科目の未挑戦からランダム出題する。
+function makeProgressCard(questions, store) {
+  const p = progressSummary(questions, store);
+  const card = document.createElement('div');
+  card.className = 'progress-card';
+
+  const h = document.createElement('h2');
+  h.textContent = '学習の進みぐあい';
+  card.appendChild(h);
+
+  const line = document.createElement('div');
+  line.className = 'progress-line';
+  const rate = p.total > 0 ? Math.round((p.attempted / p.total) * 100) : 0;
+  line.textContent = `全${p.total}問中 ${p.attempted}問に挑戦済み（${rate}%）／ 未挑戦 ${p.unattempted}問`;
+  card.appendChild(line);
+
+  const bar = document.createElement('div');
+  bar.className = 'progress-bar';
+  const fill = document.createElement('span');
+  fill.style.width = `${rate}%`;
+  bar.appendChild(fill);
+  card.appendChild(bar);
+
+  // 科目行(未挑戦が残っている科目のみボタンにする)
+  const order = sortedSubjects(questions);
+  const bySubject = new Map(p.bySubject.map((s) => [s.subject, s]));
+  for (const subject of order) {
+    const s = bySubject.get(subject);
+    if (!s) continue;
+    const row = document.createElement('button');
+    row.className = 'progress-row';
+    row.disabled = (s.unattempted === 0);
+    const label = s.unattempted === 0 ? '全部やった' : `未挑戦 ${s.unattempted}問`;
+    row.innerHTML = `<span class="ps-name">${escapeHtml(subject)}</span>` +
+      `<span class="ps-count">${s.attempted}/${s.total}</span>` +
+      `<span class="ps-rest">${label}</span>`;
+    if (s.unattempted > 0) row.addEventListener('click', () => startFreshQuiz(subject));
+    card.appendChild(row);
+  }
+
+  if (p.unattempted > 0) {
+    const gbtn = document.createElement('button');
+    gbtn.className = 'fresh-quiz-btn';
+    gbtn.textContent = p.unattempted > REVIEW_MAX
+      ? `まだ解いていない問題（全分野・${p.unattempted}問中${REVIEW_MAX}問）`
+      : `まだ解いていない問題（全分野・${p.unattempted}問）`;
+    gbtn.addEventListener('click', () => startFreshQuiz(null));
+    card.appendChild(gbtn);
+  }
+  return card;
+}
+
 // 誤答バンク入口ボタンを1個作る(全分野 or 特定科目)。
 function makeMistakeReviewButton(label, count) {
   const btn = document.createElement('button');
@@ -84,6 +139,19 @@ async function initSelect() {
     for (const q of data.questions) combined.push(tagQuestion(q, exam));
   }
   state.allQuestionsCache = combined;
+
+  // ---- 学習の進みぐあい(最上部): 全体の消化率と、科目ごとの未挑戦から出題する入口 ----
+  list.appendChild(makeProgressCard(combined, store));
+
+  // ---- よく間違える問題ランキングの入口 ----
+  const ranked = mistakeRanking(combined, store);
+  if (ranked.length > 0) {
+    const rbtn = document.createElement('button');
+    rbtn.className = 'ranking-entry-btn';
+    rbtn.textContent = `よく間違える問題（${ranked.length}問）`;
+    rbtn.addEventListener('click', showRanking);
+    list.appendChild(rbtn);
+  }
 
   // ---- 誤答バンク入口(最上部にまとめる): 全分野1つ + 科目ごとに1つずつ ----
   const globalMistakes = currentMistakes(store);
@@ -164,23 +232,25 @@ function renderSearchResults(rawQuery) {
   resultsEl.appendChild(count);
 
   // 出題ボタンはヒット全件を母集団にする(カードの表示上限とは別)。
-  resultsEl.appendChild(makeSearchQuizBar(hits.map((h) => h.question), query));
+  resultsEl.appendChild(makeQuizBar(hits.map((h) => h.question), (questions, n) =>
+    startSearchQuiz(questions, n, query)));
 
   const counts = mistakeCounts(loadStore());
   for (const hit of shown) resultsEl.appendChild(makeSearchResultCard(hit, counts));
 }
 
-// 「この結果から出題」ボタン群。件数に応じて 5問 / 10問 / 全件 を出し分ける。
-function makeSearchQuizBar(questions, query) {
+// 「この一覧から出題」ボタン群。件数に応じて 5問 / 10問 / 全件 を出し分ける。
+// 検索結果とランキングの両方から使う(onStart で開始処理だけ差し替える)。
+function makeQuizBar(questions, onStart) {
   const bar = document.createElement('div');
   bar.className = 'search-quiz-bar';
   for (const n of quizSizeOptions(questions.length)) {
     const btn = document.createElement('button');
     btn.className = 'search-quiz-btn';
     btn.textContent = n === questions.length
-      ? `この結果から出題（全${n}問）`
-      : `この結果から出題（ランダム${n}問）`;
-    btn.addEventListener('click', () => startSearchQuiz(questions, n, query));
+      ? `この一覧から出題（全${n}問）`
+      : `この一覧から出題（ランダム${n}問）`;
+    btn.addEventListener('click', () => onStart(questions, n));
     bar.appendChild(btn);
   }
   return bar;
@@ -254,6 +324,92 @@ function renderSearchDetail(container, q) {
   container.innerHTML = parts.join('');
 }
 
+// ---- よく間違える問題ランキング(見るだけの画面。出題は下のボタンから) ----
+function showRanking() {
+  const store = loadStore();
+  const ranked = mistakeRanking(state.allQuestionsCache, store);
+  const listEl = document.getElementById('ranking-list');
+  listEl.innerHTML = '';
+  if (ranked.length === 0) {
+    listEl.innerHTML = '<p class="search-no-results">まだ誤答の記録がありません。</p>';
+    show('screen-ranking');
+    return;
+  }
+
+  listEl.appendChild(makeQuizBar(ranked.map((r) => r.question), (questions, n) =>
+    startRankingQuiz(questions, n)));
+
+  for (const { question, count } of ranked) {
+    const card = document.createElement('div');
+    card.className = 'search-result';
+
+    const summary = document.createElement('div');
+    summary.className = 'search-result-summary';
+    const tag = document.createElement('span');
+    tag.className = 'source-tag';
+    tag.textContent = `${question.era} ／ ${question.subject} ／ ${question.no}`;
+    const badge = document.createElement('span');
+    badge.className = 'past-wrong-badge';
+    badge.textContent = `${count}回`;
+    const snip = document.createElement('div');
+    snip.className = 'snippet';
+    snip.textContent = question.text;
+    summary.append(tag, badge, snip);
+    card.appendChild(summary);
+
+    const detail = document.createElement('div');
+    detail.className = 'search-result-detail';
+    detail.hidden = true;
+    renderSearchDetail(detail, question);
+    card.appendChild(detail);
+
+    summary.addEventListener('click', () => { detail.hidden = !detail.hidden; });
+    listEl.appendChild(card);
+  }
+  show('screen-ranking');
+}
+
+// ---- 出題開始(未挑戦回: まだ一度も出題されていない問題からランダム) ----
+function startFreshQuiz(subjectFilter) {
+  const store = loadStore();
+  const pool = subjectFilter
+    ? state.allQuestionsCache.filter((q) => q.subject === subjectFilter)
+    : state.allQuestionsCache;
+  const fresh = unattemptedQuestions(pool, store);
+  const picked = pickRandomQuestions(fresh, REVIEW_MAX);
+  if (picked.length === 0) return;
+
+  state.exam = null;
+  state.subject = null;
+  state.mode = 'fresh';
+  state.freshSubject = subjectFilter;
+  state.questions = picked;
+  state.responses = {};
+  state.qi = 0;
+  // 未挑戦の問題なので誤答バンクには入っていないが、判定は共通処理に任せる。
+  state.prevWrong = new Set(currentMistakes(store));
+  state.mistakeCounts = mistakeCounts(store);
+  renderQuestion();
+  show('screen-quiz');
+}
+
+// ---- 出題開始(ランキングからの出題) ----
+function startRankingQuiz(questions, n) {
+  const picked = pickRandomQuestions(questions, n);
+  if (picked.length === 0) return;
+  const store = loadStore();
+  state.exam = null;
+  state.subject = null;
+  state.mode = 'ranking';
+  state.questions = picked;
+  state.responses = {};
+  state.qi = 0;
+  state.prevWrong = new Set(currentMistakes(store));
+  state.mistakeCounts = mistakeCounts(store);
+  renderQuestion();
+  show('screen-quiz');
+}
+
 // ---- 出題開始(通常回: 科目の全問) ----
 async function startQuiz(exam, subject) {
   const data = await (await fetch(`data/${exam.file}`)).json();
@@ -323,12 +479,14 @@ function remainingMistakeCount(subjectFilter) {
 function sessionLabel() {
   if (state.mode === 'review') return `過去に間違えた問題集（${state.reviewSubject || '全分野'}・復習）`;
   if (state.mode === 'search') return `検索「${state.searchQuery}」から${state.questions.length}問`;
+  if (state.mode === 'fresh') return `まだ解いていない問題（${state.freshSubject || '全分野'}・${state.questions.length}問）`;
+  if (state.mode === 'ranking') return `よく間違える問題から${state.questions.length}問`;
   return `${state.exam.era} ／ ${state.subject}`;
 }
 
-// 期・科目をまたぐ回(復習・検索)は問題ごとに出典が異なり得るので明示する。
+// 期・科目をまたぐ回は問題ごとに出典が異なり得るので明示する(通常回だけが単一の期・科目)。
 function isCrossExamMode() {
-  return state.mode === 'review' || state.mode === 'search';
+  return state.mode !== 'normal';
 }
 
 // ---- 1問描画 ----
@@ -571,10 +729,42 @@ function grade() {
   for (const attempt of attempts) saveAttempt(attempt);
   // 採点直後の誤答バンク残数(正解した問題はここで自動的に消えている)。
   // 通常回はその科目のスコープ、復習回は復習時に選んだスコープ(全分野 or 特定科目)で数える。
-  const scopeSubject = state.mode === 'review' ? state.reviewSubject : state.subject;
+  const scopeSubject = state.mode === 'review' ? state.reviewSubject
+    : state.mode === 'fresh' ? state.freshSubject
+    : state.subject;
   const remaining = remainingMistakeCount(scopeSubject);
   renderResult(result, remaining, scopeSubject);
   show('screen-result');
+}
+
+// 合格判定の1行。本番と同じ配点で採点し直して出す。
+// 科目の全問をそのまま解いた通常回でしか意味がないので、他のモードでは呼ばない。
+function passLine() {
+  const { earned } = scoreExam(state.questions, state.responses);
+  const j = passJudgement(state.subject, earned);
+  if (!j) return '';
+  const pts = Number.isInteger(earned) ? earned : earned.toFixed(1);
+  if (j.kind === 'standalone') {
+    const diff = j.pass - earned;
+    const verdict = j.passed
+      ? `合格ライン${j.pass}点に対して <b>${pts}点</b>（+${(earned - j.pass).toFixed(0)}点）`
+      : `合格ライン${j.pass}点に対して <b>${pts}点</b>（あと${diff.toFixed(0)}点）`;
+    return `<div class="pass-line${j.passed ? ' ok' : ' ng'}">` +
+      `${j.passed ? '合格ライン到達' : '合格ラインに届いていません'}<br>${verdict} ／ 満点${j.total}点</div>`;
+  }
+  // 英語・英会話は相方と合計105点中60点で判定するため、単独では確定しない。
+  if (j.disqualified) {
+    return `<div class="pass-line ng">${pts}点 ／ 満点${j.total}点<br>` +
+      `英会話は${j.min}点未満だと合計点に関わらず不合格です。</div>`;
+  }
+  const reach = j.needFromPartner <= 0;
+  return `<div class="pass-line${reach ? ' ok' : ''}">` +
+    `${pts}点 ／ 満点${j.total}点<br>` +
+    `合格は${j.partner}との合計${j.combinedPass}点以上（満点${j.combinedTotal}点）。` +
+    (j.impossible
+      ? `${j.partner}が満点でも届きません。`
+      : `${j.partner}で<b>${j.needFromPartner}点以上</b>必要です。`) +
+    `</div>`;
 }
 
 function answerText(q, resp) {
@@ -603,10 +793,14 @@ function renderResult(result, remainingMistakes, scopeSubject) {
     ? `${scopeLabel}の誤答バンク: 0問(すべて解消)`
     : `${scopeLabel}の誤答バンク: ${remainingMistakes}問` +
       (remainingMistakes > REVIEW_MAX ? `(次の復習は${REVIEW_MAX}問まで)` : '');
+  // 合格判定は「その期・科目の全問を通しで解いた」通常回だけに出す
+  // (抜粋の復習・検索・未挑戦回では本番の点数として意味を持たないため)。
+  const passHtml = state.mode === 'normal' ? passLine() : '';
   document.getElementById('result-summary').innerHTML =
     `<div>${headerLine}</div>` +
     `<div class="score-big">${result.score} / ${result.total}</div>` +
     `<div class="rate">正答率 ${Math.round(rate * 100)}%</div>` +
+    passHtml +
     `<div class="bank-status${resolved ? ' resolved' : ''}">${bankLine}</div>`;
 
   const wl = document.getElementById('wrong-list');

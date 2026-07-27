@@ -47,6 +47,42 @@ header h1 { font-size: 1.05rem; margin: 0; }
   .mistake-review-btn:hover { background: rgba(232, 137, 74, 0.12); }
 }
 
+/* 学習の進みぐあい */
+.progress-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1rem; margin-bottom: 1rem; }
+.progress-card h2 { margin: 0 0 .5rem; font-size: 1.05rem; }
+.progress-line { font-size: .9rem; color: var(--muted); }
+.progress-bar { height: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; margin: .5rem 0 .8rem; }
+.progress-bar span { display: block; height: 100%; background: var(--accent); }
+.progress-row {
+  display: flex; align-items: baseline; gap: .6rem; width: 100%; text-align: left;
+  background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+  padding: .6rem .8rem; margin: .35rem 0; color: var(--ink); cursor: pointer; font-size: .95rem;
+}
+.progress-row:hover:not(:disabled) { border-color: var(--accent); }
+.progress-row:disabled { opacity: .5; cursor: default; }
+.progress-row .ps-name { font-weight: 700; flex: 1; }
+.progress-row .ps-count { color: var(--muted); font-size: .85rem; }
+.progress-row .ps-rest { color: var(--accent); font-size: .82rem; font-weight: 700; }
+.progress-row:disabled .ps-rest { color: var(--ok); }
+.fresh-quiz-btn {
+  display: block; width: 100%; text-align: left; margin: .7rem 0 0; padding: .8rem 1.1rem;
+  background: var(--accent); border: 1.5px solid var(--accent); border-radius: 12px;
+  color: #fff; font-size: .95rem; font-weight: 700; cursor: pointer;
+}
+.ranking-entry-btn {
+  display: block; width: 100%; text-align: left; margin: 0 0 .6rem; padding: .8rem 1.1rem;
+  background: transparent; border: 1.5px dashed var(--muted); border-radius: 12px;
+  color: var(--ink); font-size: .95rem; font-weight: 700; cursor: pointer;
+}
+.ranking-entry-btn:hover { border-color: var(--accent); color: var(--accent); }
+.ranking-title { margin: 0 0 .3rem; font-size: 1.1rem; }
+
+/* 合格判定 */
+.pass-line { margin-top: .7rem; padding: .6rem .8rem; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); font-size: .85rem; line-height: 1.7; }
+.pass-line b { font-size: 1.1rem; }
+.pass-line.ok { border-color: var(--ok); color: var(--ok); }
+.pass-line.ng { border-color: var(--ng); color: var(--ng); }
+
 /* 検索 */
 #search-box { margin-bottom: 1rem; }
 #search-input {

@@ -136,6 +136,144 @@ export function quizSizeOptions(total, steps = [5, 10]) {
   return [...steps.filter((n) => n < total), total];
 }
 
+// ---- 学習の進みぐあい(未挑戦の把握) ----
+
+// 一度でも出題された問題の id 集合。presented を持たない旧形式の記録は無視する。
+export function attemptedIds(store) {
+  const all = store && Array.isArray(store.attempts) ? store.attempts : [];
+  const seen = new Set();
+  for (const a of all) {
+    if (!Array.isArray(a.presented)) continue;
+    for (const id of a.presented) seen.add(id);
+  }
+  return seen;
+}
+
+// まだ一度も出題されていない問題を、元の並び順のまま返す。
+export function unattemptedQuestions(questions, store) {
+  const done = attemptedIds(store);
+  return questions.filter((q) => !done.has(q.id));
+}
+
+// 全体と科目別の「何問中何問に手をつけたか」。bySubject は questions に現れた順。
+export function progressSummary(questions, store) {
+  const done = attemptedIds(store);
+  const bySubject = new Map();
+  let attempted = 0;
+  for (const q of questions) {
+    const hit = done.has(q.id);
+    if (hit) attempted += 1;
+    if (!bySubject.has(q.subject)) bySubject.set(q.subject, { subject: q.subject, total: 0, attempted: 0 });
+    const s = bySubject.get(q.subject);
+    s.total += 1;
+    if (hit) s.attempted += 1;
+  }
+  for (const s of bySubject.values()) s.unattempted = s.total - s.attempted;
+  return {
+    total: questions.length,
+    attempted,
+    unattempted: questions.length - attempted,
+    bySubject: [...bySubject.values()],
+  };
+}
+
+// 通算誤答回数の多い順に並べる(min回以上のみ)。同数なら questions の元の並びを保つ。
+export function mistakeRanking(questions, store, min = 1) {
+  const counts = mistakeCounts(store);
+  const rows = [];
+  questions.forEach((question, i) => {
+    const count = counts[question.id] || 0;
+    if (count >= min) rows.push({ question, count, i });
+  });
+  rows.sort((a, b) => b.count - a.count || a.i - b.i);
+  return rows.map(({ question, count }) => ({ question, count }));
+}
+
+// ---- 配点と合格判定(公式の「合格基準及び正答」PDFに準拠) ----
+//  法規    : 満点100点・合格70点。A問題1問5点、B問題1問5点(小設問各1点)。
+//  無線工学: 満点 70点・合格49点。A問題1問5点、B問題1問5点(小設問各1点)。
+//  英語    : 筆記70点(A-1〜A-5各4点/A-6〜A-9各5点/B問題1問10点(小設問各2点))。
+//  英会話  : 35点(1問5点)。
+//  英語と英会話は合わせて105点満点・合格60点。ただし英会話が15点未満なら不合格。
+// B問題は小設問ごとに点が入る(全問一致を要求する gradeQuestion とは別物なので分けてある)。
+export const PASS_CRITERIA = {
+  '法規': { total: 100, pass: 70 },
+  '無線工学': { total: 70, pass: 49 },
+  '英語': { total: 70, partner: '英会話', combinedTotal: 105, combinedPass: 60 },
+  '英会話': { total: 35, partner: '英語', combinedTotal: 105, combinedPass: 60, min: 15 },
+};
+
+// 英会話の足切り(この点数に満たないと合計点に関わらず不合格)。
+const EIKAIWA_MIN = 15;
+
+// その問題の満点。
+export function questionPoints(q) {
+  const isB = String(q.no || '').startsWith('B');
+  const blanks = Array.isArray(q.blanks) ? q.blanks.length : 0;
+  const num = parseInt(String(q.no || '').replace(/[^0-9]/g, ''), 10);
+  switch (q.subject) {
+    case '法規':
+    case '無線工学':
+      return isB ? blanks * 1 : 5;
+    case '英語':
+      if (isB) return blanks * 2;
+      return num <= 5 ? 4 : 5; // 問1(A-1〜A-5)は各4点、問2(A-6〜A-9)は各5点
+    case '英会話':
+      return 5;
+    default:
+      return 0;
+  }
+}
+
+// その問題で実際に取れた点。B問題は正解した小設問の分だけ部分点が入る。
+export function earnedPoints(q, response) {
+  const max = questionPoints(q);
+  if (isComposite(q)) {
+    const n = Array.isArray(q.blanks) ? q.blanks.length : 0;
+    if (n === 0) return 0;
+    const per = max / n;
+    const r = (response && typeof response === 'object') ? response : {};
+    const hit = q.blanks.filter((b) => r[b.label] === b.answer).length;
+    return hit * per;
+  }
+  return response === q.answer ? max : 0;
+}
+
+// 出題分の得点合計(問題数ではなく配点ベース)。
+export function scoreExam(questions, responses) {
+  const src = responses || {};
+  let earned = 0;
+  let total = 0;
+  for (const q of questions) {
+    earned += earnedPoints(q, src[q.id]);
+    total += questionPoints(q);
+  }
+  return { earned, total };
+}
+
+// 科目の合格判定。法規・無線工学は単独で判定でき、英語と英会話は
+// 相方の点が要るため「あと何点必要か」を返す(needFromPartner)。
+export function passJudgement(subject, earned) {
+  const c = PASS_CRITERIA[subject];
+  if (!c) return null;
+  if (c.pass != null) {
+    return { kind: 'standalone', subject, total: c.total, pass: c.pass, earned, passed: earned >= c.pass };
+  }
+  const partnerMax = c.combinedTotal - c.total;
+  // 英会話が足切りに届いていない場合は、筆記が満点でも不合格が確定する。
+  if (c.min != null && earned < c.min) {
+    return { kind: 'combined', subject, total: c.total, earned, partner: c.partner, partnerMax, disqualified: true, min: c.min };
+  }
+  // 英語(筆記)を採点したときは、相方の英会話に足切り15点があるぶん必要点が下がりきらない。
+  const raw = c.combinedPass - earned;
+  const need = Math.max(raw, c.partner === '英会話' ? EIKAIWA_MIN : 0, 0);
+  return {
+    kind: 'combined', subject, total: c.total, earned, partner: c.partner, partnerMax,
+    combinedPass: c.combinedPass, combinedTotal: c.combinedTotal,
+    needFromPartner: need, impossible: need > partnerMax,
+  };
+}
+
 // gradeExam の結果(examResult)を questions の並びに沿ってキーごとに束ね直し、
 // キー1つにつき Attempt を1件作る(= grade() が保存すべきレコード列)。
 // 全期間横断の復習セッションは科目・期をまたぎ得るため、1回の採点でも

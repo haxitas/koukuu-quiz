@@ -17,6 +17,14 @@ import {
   mistakeCounts,
   pickRandomQuestions,
   quizSizeOptions,
+  attemptedIds,
+  unattemptedQuestions,
+  progressSummary,
+  mistakeRanking,
+  questionPoints,
+  earnedPoints,
+  scoreExam,
+  passJudgement,
 } from '../quiz-core.mjs';
 
 // --- 最小アサートハーネス -------------------------------------------------
@@ -368,6 +376,158 @@ check('quizSizeOptions 5問超10問未満は5問と全件', () => eq(quizSizeOpt
 check('quizSizeOptions ちょうど10問は5問と全件(10問=あるだけ)', () => eq(quizSizeOptions(10), [5, 10]));
 check('quizSizeOptions 10問超は5問・10問・全件', () => eq(quizSizeOptions(15), [5, 10, 15]));
 check('quizSizeOptions 0件は空', () => eq(quizSizeOptions(0), []));
+
+// --- 未挑戦の把握 -----------------------------------------------------
+const qsProgress = [
+  { id: 'k1', subject: '無線工学' }, { id: 'k2', subject: '無線工学' },
+  { id: 'h1', subject: '法規' }, { id: 'h2', subject: '法規' }, { id: 'h3', subject: '法規' },
+];
+const storeProgress = { attempts: [
+  { key: 'X-無線工学', date: '2026-07-20', score: 1, total: 2, wrong: ['k2'], presented: ['k1', 'k2'] },
+  { key: 'X-法規', date: '2026-07-21', score: 1, total: 1, wrong: [], presented: ['h1'] },
+] };
+
+check('attemptedIds 出題された問題だけ集める', () => {
+  eq([...attemptedIds(storeProgress)].sort(), ['h1', 'k1', 'k2']);
+});
+check('attemptedIds 記録なしは空', () => eq([...attemptedIds(null)], []));
+check('attemptedIds presented欠落の旧レコードは無視する', () => {
+  eq([...attemptedIds({ attempts: [{ key: 'X', wrong: ['q1'] }] })], []);
+});
+check('unattemptedQuestions 未出題だけを元の順で返す', () => {
+  eq(unattemptedQuestions(qsProgress, storeProgress).map((q) => q.id), ['h2', 'h3']);
+});
+check('unattemptedQuestions 記録なしなら全部が未挑戦', () => {
+  eq(unattemptedQuestions(qsProgress, { attempts: [] }).length, 5);
+});
+check('progressSummary 全体と科目別を数える', () => {
+  const p = progressSummary(qsProgress, storeProgress);
+  eq({ total: p.total, attempted: p.attempted, unattempted: p.unattempted }, { total: 5, attempted: 3, unattempted: 2 });
+  eq(p.bySubject, [
+    { subject: '無線工学', total: 2, attempted: 2, unattempted: 0 },
+    { subject: '法規', total: 3, attempted: 1, unattempted: 2 },
+  ]);
+});
+
+// --- 誤答ランキング ---------------------------------------------------
+check('mistakeRanking 回数の多い順、同数は元の並びを保つ', () => {
+  const qs = [{ id: 'a' }, { id: 'b' }, { id: 'c' }, { id: 'd' }];
+  const store = { attempts: [
+    { key: 'K', date: '1', score: 0, total: 3, wrong: ['a', 'b', 'c'], presented: ['a', 'b', 'c'] },
+    { key: 'K', date: '2', score: 0, total: 2, wrong: ['b', 'c'], presented: ['b', 'c'] },
+    { key: 'K', date: '3', score: 0, total: 1, wrong: ['c'], presented: ['c'] },
+  ] };
+  eq(mistakeRanking(qs, store).map((r) => [r.question.id, r.count]),
+    [['c', 3], ['b', 2], ['a', 1]], 'dは誤答0なので出ない');
+});
+check('mistakeRanking min指定で少ない回数を除外できる', () => {
+  const qs = [{ id: 'a' }, { id: 'b' }];
+  const store = { attempts: [
+    { key: 'K', date: '1', score: 0, total: 2, wrong: ['a', 'b'], presented: ['a', 'b'] },
+    { key: 'K', date: '2', score: 0, total: 1, wrong: ['b'], presented: ['b'] },
+  ] };
+  eq(mistakeRanking(qs, store, 2).map((r) => r.question.id), ['b']);
+});
+check('mistakeRanking 誤答なしは空', () => eq(mistakeRanking([{ id: 'a' }], { attempts: [] }), []));
+
+// --- 配点(公式PDFの配点内訳どおりか) ---------------------------------
+const b5 = [{ label: 'ア' }, { label: 'イ' }, { label: 'ウ' }, { label: 'エ' }, { label: 'オ' }];
+check('questionPoints 法規A問題は5点', () =>
+  eq(questionPoints({ subject: '法規', no: 'A-1' }), 5));
+check('questionPoints 法規B問題は小設問各1点で5点', () =>
+  eq(questionPoints({ subject: '法規', no: 'B-1', blanks: b5 }), 5));
+check('questionPoints 無線工学A問題は5点・B問題は5点', () => {
+  eq(questionPoints({ subject: '無線工学', no: 'A-1' }), 5);
+  eq(questionPoints({ subject: '無線工学', no: 'B-4', blanks: b5 }), 5);
+});
+check('questionPoints 英語は問1が4点・問2が5点・B問題が10点', () => {
+  eq(questionPoints({ subject: '英語', no: 'A-1' }), 4);
+  eq(questionPoints({ subject: '英語', no: 'A-5' }), 4);
+  eq(questionPoints({ subject: '英語', no: 'A-6' }), 5);
+  eq(questionPoints({ subject: '英語', no: 'A-9' }), 5);
+  eq(questionPoints({ subject: '英語', no: 'B-1', blanks: b5 }), 10);
+});
+check('questionPoints 英会話は1問5点', () =>
+  eq(questionPoints({ subject: '英会話', no: 'Q-1' }), 5));
+check('配点の合計が公式の満点と一致する(法規100/工学70/英語70/英会話35)', () => {
+  const sum = (qs) => qs.reduce((a, q) => a + questionPoints(q), 0);
+  const houki = [...Array(14)].map((_, i) => ({ subject: '法規', no: `A-${i + 1}` }))
+    .concat([...Array(6)].map((_, i) => ({ subject: '法規', no: `B-${i + 1}`, blanks: b5 })));
+  const kougaku = [...Array(10)].map((_, i) => ({ subject: '無線工学', no: `A-${i + 1}` }))
+    .concat([...Array(4)].map((_, i) => ({ subject: '無線工学', no: `B-${i + 1}`, blanks: b5 })));
+  const eigo = [...Array(9)].map((_, i) => ({ subject: '英語', no: `A-${i + 1}` }))
+    .concat([...Array(3)].map((_, i) => ({ subject: '英語', no: `B-${i + 1}`, blanks: b5 })));
+  const eikaiwa = [...Array(7)].map((_, i) => ({ subject: '英会話', no: `Q-${i + 1}` }));
+  eq([sum(houki), sum(kougaku), sum(eigo), sum(eikaiwa)], [100, 70, 70, 35]);
+});
+
+// --- 得点(B問題は小設問ごとの部分点が入る) ---------------------------
+const qHoukiA = { id: 'ha', subject: '法規', no: 'A-1', type: 'single', options: ['a', 'b'], answer: 2, blanks: null };
+const qHoukiB = {
+  id: 'hb', subject: '法規', no: 'B-1', type: 'truefalse_list', options: ['正', '誤'], answer: null,
+  blanks: [{ label: 'ア', answer: 1 }, { label: 'イ', answer: 2 }, { label: 'ウ', answer: 1 },
+    { label: 'エ', answer: 2 }, { label: 'オ', answer: 1 }],
+};
+check('earnedPoints single 正解で満点・不正解で0', () => {
+  eq(earnedPoints(qHoukiA, 2), 5);
+  eq(earnedPoints(qHoukiA, 1), 0);
+  eq(earnedPoints(qHoukiA, null), 0);
+});
+check('earnedPoints B問題は当たった小設問の数だけ部分点が入る', () => {
+  eq(earnedPoints(qHoukiB, { ア: 1, イ: 2, ウ: 1, エ: 2, オ: 1 }), 5, '全問一致で5点');
+  eq(earnedPoints(qHoukiB, { ア: 1, イ: 2, ウ: 1 }), 3, '3つ当たりで3点');
+  eq(earnedPoints(qHoukiB, {}), 0);
+  eq(earnedPoints(qHoukiB, null), 0);
+});
+check('earnedPoints 英語B問題は小設問各2点', () => {
+  const q = { subject: '英語', no: 'B-1', type: 'fill_blanks', answer: null,
+    blanks: [{ label: 'ア', answer: 1 }, { label: 'イ', answer: 2 }, { label: 'ウ', answer: 3 },
+      { label: 'エ', answer: 4 }, { label: 'オ', answer: 5 }] };
+  eq(earnedPoints(q, { ア: 1, イ: 2 }), 4, '2つ当たりで4点');
+});
+check('scoreExam 配点ベースで合計する(問題数ではない)', () => {
+  const r = scoreExam([qHoukiA, qHoukiB], { ha: 2, hb: { ア: 1, イ: 2, ウ: 1 } });
+  eq(r, { earned: 8, total: 10 });
+});
+
+// --- 合格判定 ---------------------------------------------------------
+check('passJudgement 法規は100点満点・合格70点', () => {
+  const j = passJudgement('法規', 70);
+  eq({ kind: j.kind, total: j.total, pass: j.pass, passed: j.passed },
+    { kind: 'standalone', total: 100, pass: 70, passed: true });
+  assert(passJudgement('法規', 69).passed === false);
+});
+check('passJudgement 無線工学は70点満点・合格49点', () => {
+  assert(passJudgement('無線工学', 49).passed === true);
+  assert(passJudgement('無線工学', 48).passed === false);
+  eq(passJudgement('無線工学', 49).total, 70);
+});
+check('passJudgement 英語は英会話との合計判定になる', () => {
+  const j = passJudgement('英語', 50);
+  eq(j.kind, 'combined');
+  eq(j.partner, '英会話');
+  eq(j.needFromPartner, 15, '合計60点まであと10点だが、英会話の足切り15点が優先される');
+});
+check('passJudgement 英語の点が低いと英会話に多く必要になる', () => {
+  eq(passJudgement('英語', 30).needFromPartner, 30);
+});
+check('passJudgement 英会話が満点でも届かないなら impossible', () => {
+  const j = passJudgement('英語', 20); // 合計60まであと40点だが英会話は35点満点
+  eq(j.needFromPartner, 40);
+  assert(j.impossible === true);
+});
+check('passJudgement 英会話は15点未満だと合計に関わらず不合格', () => {
+  const j = passJudgement('英会話', 10);
+  assert(j.disqualified === true);
+  eq(j.min, 15);
+});
+check('passJudgement 英会話15点以上なら筆記に必要な点を返す', () => {
+  const j = passJudgement('英会話', 25);
+  assert(!j.disqualified);
+  eq(j.needFromPartner, 35, '合計60点まであと35点');
+  eq(j.partnerMax, 70);
+});
+check('passJudgement 未知の科目はnull', () => eq(passJudgement('電気通信術', 10), null));
 
 export function runTests() {
   return results;
