@@ -10,6 +10,10 @@ import {
   currentMistakes,
   pickReviewQuestions,
   splitAttemptsByKey,
+  normalizeSearchText,
+  matchQuestion,
+  snippetFor,
+  searchQuestions,
 } from '../quiz-core.mjs';
 
 // --- 最小アサートハーネス -------------------------------------------------
@@ -226,6 +230,88 @@ check('splitAttemptsByKey 単一キーはmakeAttempt直呼びと同じ結果に�
 });
 check('splitAttemptsByKey 出題0件なら空配列', () => {
   eq(splitAttemptsByKey([], { score: 0, total: 0, wrong: [] }, '2026-07-22', (q) => q.key), []);
+});
+
+// --- 検索用フィクスチャ(実物 R2-02 の instruction を模したもの) -----------
+const qLaw1 = {
+  id: 'X-law-1', subject: '法規', type: 'single',
+  instruction: '航空移動業務の無線局における免許状に記載された事項の遵守について、電波法(第52条から第55条まで)の規定に照らし、',
+  text: '本文サンプル(52条とは無関係)', passage: null, options: ['a', 'b'], answer: 1, blanks: null, explanation: '',
+};
+const qEng1 = {
+  id: 'X-eng-1', subject: '英語', type: 'single',
+  instruction: '', text: 'Squawk 7700 means an emergency.', passage: null,
+  options: ['a'], answer: 1, blanks: null, explanation: '',
+};
+const qTFsearch = {
+  id: 'X-tf-1', subject: '法規', type: 'truefalse_list',
+  instruction: '', text: '', passage: null, options: ['該当する', '該当しない'], answer: null,
+  blanks: [{ label: 'ア', text: '第57条に定める遭難通信の内容である。', answer: 1 }],
+  explanation: '',
+};
+
+// --- normalizeSearchText ---------------------------------------------------
+check('normalizeSearchText 全角数字を半角に変換', () =>
+  assert(normalizeSearchText('第５２条') === '第52条'));
+check('normalizeSearchText 全角英字と大文字を正規化', () =>
+  assert(normalizeSearchText('ＳＱＵＡＷＫ') === 'squawk'));
+check('normalizeSearchText 日本語はそのまま', () =>
+  assert(normalizeSearchText('第52条から第55条') === '第52条から第55条'));
+
+// --- matchQuestion -----------------------------------------------------
+check('matchQuestion instructionフィールドでヒット', () => {
+  const m = matchQuestion(qLaw1, normalizeSearchText('第52条から第55条'));
+  assert(m && m.field === 'instruction');
+});
+check('matchQuestion 全角クエリが半角データにヒット', () => {
+  const m = matchQuestion(qLaw1, normalizeSearchText('第５２条から第５５条'));
+  assert(m !== null, '全角→半角の正規化を経てヒットするはず');
+});
+check('matchQuestion 大文字小文字を無視してヒット', () => {
+  const m = matchQuestion(qEng1, normalizeSearchText('squawk'));
+  assert(m && m.field === 'text');
+});
+check('matchQuestion blanksのtextでヒット', () => {
+  const m = matchQuestion(qTFsearch, normalizeSearchText('第57条'));
+  assert(m && m.field === 'blanks');
+});
+check('matchQuestion 一致なしはnull', () => {
+  assert(matchQuestion(qLaw1, normalizeSearchText('存在しない語句')) === null);
+});
+check('matchQuestion 特殊文字を含むクエリはリテラル一致(正規表現として解釈しない)', () => {
+  const q = { ...qLaw1, text: '第52条(目的外使用の禁止等)第1号' };
+  const m = matchQuestion(q, normalizeSearchText('条(目的外'));
+  assert(m !== null, '括弧を含むクエリでも文字通りマッチするはず');
+});
+
+// --- snippetFor --------------------------------------------------------
+check('snippetFor 前後を正しく切り出す', () => {
+  const s = snippetFor('0123456789', 4, 2, 3); // index4="4", len2="45", 前後3文字ずつ
+  eq(s, { before: '123', match: '45', after: '678', truncatedStart: true, truncatedEnd: true });
+});
+check('snippetFor 先頭付近は省略記号なし', () => {
+  const s = snippetFor('0123456789', 0, 1, 3);
+  eq(s.before, '');
+  assert(s.truncatedStart === false);
+});
+
+// --- searchQuestions -----------------------------------------------------
+check('searchQuestions 空queryは空配列', () => {
+  eq(searchQuestions([qLaw1], ''), []);
+});
+check('searchQuestions 空白のみのqueryは空配列', () => {
+  eq(searchQuestions([qLaw1], '   '), []);
+});
+check('searchQuestions ヒットなしは空配列', () => {
+  eq(searchQuestions([qLaw1], '存在しない語句'), []);
+});
+check('searchQuestions 出題順を保って複数件ヒット', () => {
+  const hits = searchQuestions([qEng1, qLaw1], '第52条から第55条');
+  eq(hits.map((h) => h.question.id), ['X-law-1']);
+});
+check('searchQuestions ユーザー実例クエリが一致する', () => {
+  const hits = searchQuestions([qLaw1], '第52条から第55条');
+  assert(hits.length === 1 && hits[0].field === 'instruction');
 });
 
 export function runTests() {

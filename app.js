@@ -2,10 +2,12 @@
 import {
   gradeExam, appendResult, statsForKey, isComposite,
   currentMistakes, pickReviewQuestions, splitAttemptsByKey,
+  searchQuestions,
 } from './quiz-core.mjs';
 
 const STORE_KEY = 'aviation_quiz_results';
 const REVIEW_MAX = 10; // 復習モードの1回あたりの最大出題数
+const SEARCH_RESULT_CAP = 50; // 検索結果の表示上限
 const SUBJECT_ORDER = ['無線工学', '法規', '英語', '英会話']; // ボタンの並び順の好み(未知の科目は末尾にアルファベット順で追加)
 
 const state = {
@@ -69,6 +71,9 @@ async function initSelect() {
   const store = loadStore();
   const list = document.getElementById('exam-list');
   list.innerHTML = '';
+  document.getElementById('search-input').value = '';
+  document.getElementById('search-results').hidden = true;
+  list.hidden = false;
 
   // 全期間・全科目の問題を結合してキャッシュ(誤答バンクの内訳表示・復習開始の両方で使う)。
   const combined = [];
@@ -124,6 +129,81 @@ async function initSelect() {
 // grade() のキー分割(splitAttemptsByKey)と、復習回の出典タグ表示の両方で使う。
 function tagQuestion(q, exam) {
   return { ...q, examCode: exam.code, era: exam.era };
+}
+
+// ---- 検索(選択画面内。参照用のカード一覧で、採点は行わない) ----
+
+// 検索欄の入力に応じて #search-results を組み立てる(空queryなら通常の一覧に戻す)。
+function renderSearchResults(rawQuery) {
+  const query = rawQuery.trim();
+  const resultsEl = document.getElementById('search-results');
+  const listEl = document.getElementById('exam-list');
+  if (!query) {
+    resultsEl.hidden = true;
+    listEl.hidden = false;
+    return;
+  }
+  listEl.hidden = true;
+  resultsEl.hidden = false;
+  resultsEl.innerHTML = '';
+
+  const hits = searchQuestions(state.allQuestionsCache, query);
+  if (hits.length === 0) {
+    resultsEl.innerHTML = '<p class="search-no-results">一致する問題は見つかりませんでした。</p>';
+    return;
+  }
+
+  const shown = hits.slice(0, SEARCH_RESULT_CAP);
+  const count = document.createElement('div');
+  count.className = 'search-result-count';
+  count.textContent = hits.length > SEARCH_RESULT_CAP
+    ? `${hits.length}件中${SEARCH_RESULT_CAP}件を表示`
+    : `${hits.length}件`;
+  resultsEl.appendChild(count);
+
+  for (const hit of shown) resultsEl.appendChild(makeSearchResultCard(hit));
+}
+
+// 検索結果1件のカード(要約行 + クリックで開閉する詳細)を作る。
+function makeSearchResultCard(hit) {
+  const q = hit.question;
+  const card = document.createElement('div');
+  card.className = 'search-result';
+
+  const summary = document.createElement('div');
+  summary.className = 'search-result-summary';
+  const tag = document.createElement('span');
+  tag.className = 'source-tag';
+  tag.textContent = `${q.era} ／ ${q.subject} ／ ${q.no}`;
+  const snip = document.createElement('div');
+  snip.className = 'snippet';
+  const { before, match, after, truncatedStart, truncatedEnd } = hit.snippet;
+  snip.innerHTML =
+    (truncatedStart ? '…' : '') + escapeHtml(before) +
+    '<mark>' + escapeHtml(match) + '</mark>' +
+    escapeHtml(after) + (truncatedEnd ? '…' : '');
+  summary.append(tag, snip);
+  card.appendChild(summary);
+
+  const detail = document.createElement('div');
+  detail.className = 'search-result-detail';
+  detail.hidden = true;
+  renderSearchDetail(detail, q);
+  card.appendChild(detail);
+
+  summary.addEventListener('click', () => { detail.hidden = !detail.hidden; });
+  return card;
+}
+
+// 検索結果の展開詳細: 参照用に全文+正解のみを表示する(採点はしないので「あなたの解答」欄は無い)。
+function renderSearchDetail(container, q) {
+  const parts = [`<div class="q-no">${escapeHtml(q.no)}</div>`];
+  if (q.passage) parts.push(`<div class="q-passage">${escapeHtml(q.passage)}</div>`);
+  if (q.instruction) parts.push(`<div class="q-instruction">${escapeHtml(q.instruction)}</div>`);
+  parts.push(`<div class="q-text">${escapeHtml(q.text)}</div>`);
+  parts.push(`<div class="correct">正解: ${escapeHtml(correctText(q))}</div>`);
+  if (q.explanation) parts.push(`<div class="explanation">${escapeHtml(q.explanation)}</div>`);
+  container.innerHTML = parts.join('');
 }
 
 // ---- 出題開始(通常回: 科目の全問) ----
@@ -500,5 +580,6 @@ document.getElementById('next-btn').addEventListener('click', () => go(1));
 document.getElementById('grade-btn').addEventListener('click', grade);
 document.getElementById('home-btn').addEventListener('click', initSelect);
 document.getElementById('result-home-btn').addEventListener('click', initSelect);
+document.getElementById('search-input').addEventListener('input', (e) => renderSearchResults(e.target.value));
 
 initSelect();

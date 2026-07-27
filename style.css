@@ -47,6 +47,25 @@ header h1 { font-size: 1.05rem; margin: 0; }
   .mistake-review-btn:hover { background: rgba(232, 137, 74, 0.12); }
 }
 
+/* 検索 */
+#search-box { margin-bottom: 1rem; }
+#search-input {
+  width: 100%; padding: .8rem 1rem; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--card); color: var(--ink); font-size: 1rem;
+}
+#search-input:focus { outline: none; border-color: var(--accent); }
+#search-results { margin-bottom: 1rem; }
+.search-result-count { color: var(--muted); font-size: .85rem; margin-bottom: .6rem; }
+.search-no-results { color: var(--muted); text-align: center; padding: 1.5rem; }
+.search-result { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: .8rem 1rem; margin: .6rem 0; }
+.search-result-summary { cursor: pointer; }
+.search-result-summary:hover .snippet { color: var(--accent); }
+.search-result .snippet { margin-top: .4rem; font-size: .9rem; white-space: pre-wrap; }
+.search-result mark { background: var(--pick); color: var(--ink); border-radius: 3px; padding: 0 .1rem; }
+.search-result-detail { margin-top: .8rem; padding-top: .8rem; border-top: 1px solid var(--line); }
+.search-result-detail .correct { color: var(--ok); }
+.search-result-detail .explanation { font-size: .9rem; color: var(--muted); margin-top: .5rem; }
+
 /* 出題画面 */
 #quiz-meta { color: var(--muted); font-size: .85rem; }
 #progress { font-size: .85rem; color: var(--muted); margin: .3rem 0 .8rem; }

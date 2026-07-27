@@ -129,3 +129,63 @@ export function splitAttemptsByKey(questions, examResult, date, keyOf) {
   }
   return attempts;
 }
+
+// ---- 検索(全問題を対象にした文言検索) ----
+
+// 全角英数字を半角に、大文字を小文字に正規化する(IME入力ゆれの吸収)。
+// 1文字→1文字の変換のみ行う(snippetForがnormalize後のindexをrawへそのまま流用するため、
+// 文字数がずれる変換は入れてはいけない)。
+export function normalizeSearchText(s) {
+  return String(s)
+    .replace(/[Ａ-Ｚａ-ｚ０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xFEE0))
+    .toLowerCase();
+}
+
+// 検索対象フィールド(優先順)。本文(text)を最優先にする: instructionは定型的な前置き、
+// passageは英語長文でヒットしても検索意図(条文番号などの本文検索)からは外れやすいため。
+const SEARCH_FIELDS = ['text', 'instruction', 'passage', 'options', 'blanks', 'explanation'];
+
+function fieldSearchableText(q, field) {
+  if (field === 'options') return (q.options || []).join(' ');
+  if (field === 'blanks') return (q.blanks || []).map((b) => b.text || '').join(' ');
+  return q[field] || '';
+}
+
+// 1問が正規化済みクエリを含むか判定する。含めば最初にヒットしたフィールドの情報を返す。
+// 正規表現としては扱わない(indexOfのみ)ため、クエリ中の括弧などの特殊文字もリテラル一致になる。
+export function matchQuestion(q, normalizedQuery) {
+  if (!normalizedQuery) return null;
+  for (const field of SEARCH_FIELDS) {
+    const raw = fieldSearchableText(q, field);
+    if (!raw) continue;
+    const index = normalizeSearchText(raw).indexOf(normalizedQuery);
+    if (index !== -1) return { field, index, matchLength: normalizedQuery.length, raw };
+  }
+  return null;
+}
+
+// マッチ位置の前後 contextChars 文字を切り出す(日本語は分かち書きされないため単純な文字数窓でよい)。
+export function snippetFor(raw, index, matchLength, contextChars = 40) {
+  const start = Math.max(0, index - contextChars);
+  const end = Math.min(raw.length, index + matchLength + contextChars);
+  return {
+    before: raw.slice(start, index),
+    match: raw.slice(index, index + matchLength),
+    after: raw.slice(index + matchLength, end),
+    truncatedStart: start > 0,
+    truncatedEnd: end < raw.length,
+  };
+}
+
+// questions 全体から検索語を含む問題を抽出する(出題順を保持)。空/空白のみのqueryは空配列。
+// 表示件数の上限はここでは持たせない(描画側の責務)。
+export function searchQuestions(questions, query, contextChars = 40) {
+  const nq = normalizeSearchText(String(query).trim());
+  if (!nq) return [];
+  const hits = [];
+  for (const question of questions) {
+    const m = matchQuestion(question, nq);
+    if (m) hits.push({ question, field: m.field, snippet: snippetFor(m.raw, m.index, m.matchLength, contextChars) });
+  }
+  return hits;
+}
