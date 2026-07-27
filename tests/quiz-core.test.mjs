@@ -25,6 +25,7 @@ import {
   earnedPoints,
   scoreExam,
   passJudgement,
+  resolvedPassage,
 } from '../quiz-core.mjs';
 
 // --- 最小アサートハーネス -------------------------------------------------
@@ -528,6 +529,34 @@ check('passJudgement 英会話15点以上なら筆記に必要な点を返す', 
   eq(j.partnerMax, 70);
 });
 check('passJudgement 未知の科目はnull', () => eq(passJudgement('電気通信術', 10), null));
+
+// --- passageの参照解決(英語A-2〜A-5の「A-1を参照」スタブ) -----------------
+const pA1 = { id: 'X-eigo-A1', examCode: 'X', subject: '英語', no: 'A-1', passage: '(本物の英文全文...)' };
+const pA2 = { id: 'X-eigo-A2', examCode: 'X', subject: '英語', no: 'A-2', passage: '(問1の英文はA-1を参照)' };
+const pA2fullwidth = { id: 'Y-eigo-A2', examCode: 'Y', subject: '英語', no: 'A-2', passage: '（問1の英文はA-1を参照）' };
+const pA6 = { id: 'X-eigo-A6', examCode: 'X', subject: '英語', no: 'A-6', passage: '(規定文そのもの)' };
+
+check('resolvedPassage スタブなら参照先の本文に解決する', () => {
+  eq(resolvedPassage(pA2, [pA1, pA2, pA6]), '(本物の英文全文...)');
+});
+check('resolvedPassage 全角括弧のスタブでも解決する', () => {
+  const pA1y = { examCode: 'Y', subject: '英語', no: 'A-1', passage: '(Yの本文)' };
+  eq(resolvedPassage(pA2fullwidth, [pA1y, pA2fullwidth]), '(Yの本文)');
+});
+check('resolvedPassage 実体を持つ問題(A-1やA-6)はそのまま', () => {
+  eq(resolvedPassage(pA1, [pA1, pA2]), '(本物の英文全文...)');
+  eq(resolvedPassage(pA6, [pA1, pA6]), '(規定文そのもの)');
+});
+check('resolvedPassage passageが無い問題(法規など)はnull/undefinedのまま', () => {
+  eq(resolvedPassage({ subject: '法規', no: 'A-1' }, []), undefined);
+});
+check('resolvedPassage 参照先が見つからない場合はスタブのまま返す(クラッシュしない)', () => {
+  eq(resolvedPassage(pA2, []), '(問1の英文はA-1を参照)');
+});
+check('resolvedPassage 期をまたいで誤爆しない(examCodeが違えば別物)', () => {
+  const otherExamA1 = { examCode: 'Z', subject: '英語', no: 'A-1', passage: '(Zの本文・無関係)' };
+  eq(resolvedPassage(pA2, [otherExamA1]), '(問1の英文はA-1を参照)', '同じ期のA-1が無いので解決できないはず');
+});
 
 export function runTests() {
   return results;

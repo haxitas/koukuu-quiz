@@ -136,6 +136,24 @@ export function quizSizeOptions(total, steps = [5, 10]) {
   return [...steps.filter((n) => n < total), total];
 }
 
+// ---- passageの参照解決(英語A-2〜A-5は「(問1の英文はA-1を参照)」というスタブを持つ) ----
+// 通常の出題(科目を頭から順に解く)ではA-1を先に読んでいるので問題にならないが、
+// 復習・検索・未挑戦・ランキングはその1問だけを単独で出しうるため、
+// スタブのままだと英文が無い状態で設問だけ表示されてしまう。
+// この関数は表示直前にスタブを実体化する(データ自体は書き換えない)。
+const PASSAGE_REF_RE = /([A-Z]-\d+)を参照/;
+
+// q.passage が「(問1の英文はA-1を参照)」のようなスタブなら、同じ期・同じ科目の
+// 参照先(例: A-1)のpassageを探して返す。参照先が見つからない/スタブでなければ
+// q.passageをそのまま返す(examCode/subjectを持たないテスト用オブジェクトでも安全)。
+export function resolvedPassage(q, pool) {
+  const m = q.passage && q.passage.match(PASSAGE_REF_RE);
+  if (!m) return q.passage;
+  const target = (pool || []).find((x) =>
+    x.examCode === q.examCode && x.subject === q.subject && x.no === m[1]);
+  return target ? target.passage : q.passage;
+}
+
 // ---- 学習の進みぐあい(未挑戦の把握) ----
 
 // 一度でも出題された問題の id 集合。presented を持たない旧形式の記録は無視する。

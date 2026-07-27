@@ -4,6 +4,7 @@ import {
   currentMistakes, pickReviewQuestions, splitAttemptsByKey,
   searchQuestions, mistakeCounts, pickRandomQuestions, quizSizeOptions,
   unattemptedQuestions, progressSummary, mistakeRanking, scoreExam, passJudgement,
+  resolvedPassage,
 } from './quiz-core.mjs';
 
 const STORE_KEY = 'aviation_quiz_results';
@@ -316,7 +317,8 @@ function makeSearchResultCard(hit, counts) {
 // 検索結果の展開詳細: 参照用に全文+正解のみを表示する(採点はしないので「あなたの解答」欄は無い)。
 function renderSearchDetail(container, q) {
   const parts = [`<div class="q-no">${escapeHtml(q.no)}</div>`];
-  if (q.passage) parts.push(`<div class="q-passage">${escapeHtml(q.passage)}</div>`);
+  const passage = resolvedPassage(q, state.allQuestionsCache);
+  if (passage) parts.push(`<div class="q-passage">${escapeHtml(passage)}</div>`);
   if (q.instruction) parts.push(`<div class="q-instruction">${escapeHtml(q.instruction)}</div>`);
   parts.push(`<div class="q-text">${escapeHtml(q.text)}</div>`);
   parts.push(`<div class="correct">正解: ${escapeHtml(correctText(q))}</div>`);
@@ -522,10 +524,11 @@ function renderQuestion() {
   }
   art.appendChild(no);
 
-  if (q.passage) {
+  const passage = resolvedPassage(q, state.allQuestionsCache);
+  if (passage) {
     const psg = document.createElement('div');
     psg.className = 'q-passage';
-    psg.textContent = q.passage;
+    psg.textContent = passage;
     art.appendChild(psg);
   }
 
