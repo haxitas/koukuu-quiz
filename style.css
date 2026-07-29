@@ -22,6 +22,15 @@ header {
 }
 header h1 { font-size: 1.05rem; margin: 0; }
 .link-btn { background: none; border: none; color: var(--accent); cursor: pointer; font-size: .9rem; }
+/* 同期アイコン(ヘッダー右端) */
+.icon-btn {
+  margin-left: auto; display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; padding: 0; flex: none;
+  background: none; border: none; border-radius: 10px;
+  color: var(--accent); cursor: pointer;
+}
+.icon-btn:hover { background: var(--pick); }
+.icon-btn:active { transform: scale(.92); }
 .screen { max-width: 720px; margin: 0 auto; padding: 1rem; }
 .hint { color: var(--muted); font-size: .9rem; }
 
@@ -42,9 +51,21 @@ header h1 { font-size: 1.05rem; margin: 0; }
   color: #d9730d; font-size: .95rem; font-weight: 700; cursor: pointer;
 }
 .mistake-review-btn:hover { background: rgba(217, 115, 13, 0.08); }
+/* 科目別の誤答バンク: 横1列に等分割 */
+.mistake-subject-row { display: flex; gap: .4rem; margin: 0 0 .6rem; }
+.mistake-subject-btn {
+  flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: .1rem;
+  padding: .5rem .2rem; background: transparent; border: 1.5px dashed #d9730d; border-radius: 10px;
+  color: #d9730d; cursor: pointer;
+}
+.mistake-subject-btn:hover { background: rgba(217, 115, 13, 0.08); }
+.mistake-subject-btn .ms-name { font-size: .78rem; font-weight: 700; white-space: nowrap; }
+.mistake-subject-btn .ms-count { font-size: .72rem; opacity: .85; }
 @media (prefers-color-scheme: dark) {
   .mistake-review-btn { color: #e8894a; border-color: #e8894a; }
   .mistake-review-btn:hover { background: rgba(232, 137, 74, 0.12); }
+  .mistake-subject-btn { color: #e8894a; border-color: #e8894a; }
+  .mistake-subject-btn:hover { background: rgba(232, 137, 74, 0.12); }
 }
 
 /* 学習の進みぐあい */
@@ -78,12 +99,6 @@ header h1 { font-size: 1.05rem; margin: 0; }
 .ranking-title { margin: 0 0 .3rem; font-size: 1.1rem; }
 
 /* 端末間の同期 */
-.sync-entry-btn {
-  display: block; width: 100%; text-align: left; margin: 0 0 .6rem; padding: .8rem 1.1rem;
-  background: transparent; border: 1.5px dashed var(--muted); border-radius: 12px;
-  color: var(--ink); font-size: .95rem; font-weight: 700; cursor: pointer;
-}
-.sync-entry-btn:hover { border-color: var(--accent); color: var(--accent); }
 .sync-block { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1rem; margin-bottom: 1rem; }
 .sync-block h3 { margin: 0 0 .5rem; font-size: 1rem; }
 .sync-info { color: var(--muted); font-size: .82rem; margin-bottom: .4rem; }
@@ -104,12 +119,22 @@ header h1 { font-size: 1.05rem; margin: 0; }
 .pass-line.ng { border-color: var(--ng); color: var(--ng); }
 
 /* 検索 */
-#search-box { margin-bottom: 1rem; }
+#search-box { position: relative; margin-bottom: 1rem; }
 #search-input {
-  width: 100%; padding: .8rem 1rem; border-radius: 10px; border: 1px solid var(--line);
+  width: 100%; padding: .8rem 2.6rem .8rem 1rem; border-radius: 10px; border: 1px solid var(--line);
   background: var(--card); color: var(--ink); font-size: 1rem;
 }
 #search-input:focus { outline: none; border-color: var(--accent); }
+/* 端末ごとに見た目が違う標準の×は隠し、自前のボタンに統一する */
+#search-input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+#search-clear-btn {
+  position: absolute; top: 50%; right: .5rem; transform: translateY(-50%);
+  display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; padding: 0; line-height: 1;
+  background: var(--line); border: none; border-radius: 999px;
+  color: var(--ink); font-size: 1rem; cursor: pointer;
+}
+#search-clear-btn:hover { background: var(--accent); color: #fff; }
 #search-results { margin-bottom: 1rem; }
 .search-result-count { color: var(--muted); font-size: .85rem; margin-bottom: .6rem; }
 .search-quiz-bar { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .8rem; }

@@ -46,7 +46,15 @@ function saveAttempt(attempt) {
 function show(id) {
   for (const s of document.querySelectorAll('.screen')) s.hidden = (s.id !== id);
   document.getElementById('home-btn').hidden = (id === 'screen-select');
+  // 同期ボタンは選択画面にいるときだけ出す(出題中に飛べてしまうと解答が消えるため)。
+  document.getElementById('sync-btn').hidden = (id !== 'screen-select');
   window.scrollTo(0, 0);
+}
+
+// 検索欄の×ボタンは、何か入力されているときだけ出す。
+function syncSearchClearBtn() {
+  const input = document.getElementById('search-input');
+  document.getElementById('search-clear-btn').hidden = (input.value === '');
 }
 const pct = (r) => (r === null ? '—' : Math.round(r * 100) + '%');
 
@@ -111,13 +119,25 @@ function makeProgressCard(questions, store) {
   return card;
 }
 
-// 誤答バンク入口ボタンを1個作る(全分野 or 特定科目)。
+// 誤答バンク入口ボタン(全分野用・横幅いっぱい)。
 function makeMistakeReviewButton(label, count) {
   const btn = document.createElement('button');
   btn.className = 'mistake-review-btn';
   btn.textContent = count > REVIEW_MAX
     ? `過去に間違えた問題集（${label}・誤答${count}問中${REVIEW_MAX}問）`
     : `過去に間違えた問題集（${label}・誤答${count}問）`;
+  return btn;
+}
+
+// 誤答バンク入口ボタン(科目別・横1列に並べるので科目名と件数だけの小型版)。
+function makeMistakeSubjectButton(subject, count) {
+  const btn = document.createElement('button');
+  btn.className = 'mistake-subject-btn';
+  btn.title = count > REVIEW_MAX
+    ? `過去に間違えた問題集（${subject}・誤答${count}問中${REVIEW_MAX}問）`
+    : `過去に間違えた問題集（${subject}・誤答${count}問）`;
+  btn.innerHTML = `<span class="ms-name">${escapeHtml(subject)}</span>` +
+    `<span class="ms-count">${count}問</span>`;
   return btn;
 }
 
@@ -131,6 +151,7 @@ async function initSelect() {
   list.innerHTML = '';
   document.getElementById('search-input').value = '';
   document.getElementById('search-results').hidden = true;
+  syncSearchClearBtn();
   list.hidden = false;
 
   // 全期間・全科目の問題を結合してキャッシュ(誤答バンクの内訳表示・復習開始の両方で使う)。
@@ -154,14 +175,7 @@ async function initSelect() {
     list.appendChild(rbtn);
   }
 
-  // ---- 端末間の同期の入口 ----
-  const sbtn = document.createElement('button');
-  sbtn.className = 'sync-entry-btn';
-  sbtn.textContent = '端末間で同期（iPhone ⇄ iPad）';
-  sbtn.addEventListener('click', showSync);
-  list.appendChild(sbtn);
-
-  // ---- 誤答バンク入口(最上部にまとめる): 全分野1つ + 科目ごとに1つずつ ----
+  // ---- 誤答バンク入口: 全分野は横幅いっぱい、科目別はその下に横1列で並べる ----
   const globalMistakes = currentMistakes(store);
   const mistakeSet = new Set(globalMistakes);
   if (globalMistakes.length > 0) {
@@ -169,13 +183,16 @@ async function initSelect() {
     gbtn.addEventListener('click', () => startMistakeReview(null));
     list.appendChild(gbtn);
 
+    const row = document.createElement('div');
+    row.className = 'mistake-subject-row';
     for (const subject of sortedSubjects(combined)) {
       const count = combined.filter((q) => q.subject === subject && mistakeSet.has(q.id)).length;
       if (count === 0) continue;
-      const sbtn = makeMistakeReviewButton(subject, count);
+      const sbtn = makeMistakeSubjectButton(subject, count);
       sbtn.addEventListener('click', () => startMistakeReview(subject));
-      list.appendChild(sbtn);
+      row.appendChild(sbtn);
     }
+    if (row.children.length > 0) list.appendChild(row);
   }
 
   for (const exam of idx.exams) {
@@ -910,7 +927,18 @@ document.getElementById('next-btn').addEventListener('click', () => go(1));
 document.getElementById('grade-btn').addEventListener('click', grade);
 document.getElementById('home-btn').addEventListener('click', initSelect);
 document.getElementById('result-home-btn').addEventListener('click', initSelect);
-document.getElementById('search-input').addEventListener('input', (e) => renderSearchResults(e.target.value));
+document.getElementById('search-input').addEventListener('input', (e) => {
+  syncSearchClearBtn();
+  renderSearchResults(e.target.value);
+});
+document.getElementById('search-clear-btn').addEventListener('click', () => {
+  const input = document.getElementById('search-input');
+  input.value = '';
+  syncSearchClearBtn();
+  renderSearchResults('');
+  input.focus();
+});
+document.getElementById('sync-btn').addEventListener('click', showSync);
 document.getElementById('sync-copy-btn').addEventListener('click', copySyncCode);
 document.getElementById('sync-import-btn').addEventListener('click', importSyncCode);
 
