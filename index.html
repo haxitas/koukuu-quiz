@@ -29,6 +29,27 @@
     <div id="ranking-list"></div>
   </section>
 
+  <!-- 端末間の同期 -->
+  <section id="screen-sync" class="screen" hidden>
+    <h2 class="ranking-title">端末間で同期</h2>
+    <p class="hint">成績はサーバーに送りません。コードをコピーして、もう一方の端末に貼り付けます。取り込みは常に「合体」なので、既存の記録が消えることはありません。</p>
+
+    <div class="sync-block">
+      <h3>1. この端末のコードを渡す</h3>
+      <div id="sync-export-info" class="sync-info"></div>
+      <textarea id="sync-export" class="sync-text" readonly rows="4"></textarea>
+      <button id="sync-copy-btn" class="primary sync-btn">コードをコピー</button>
+      <div id="sync-copy-msg" class="sync-msg"></div>
+    </div>
+
+    <div class="sync-block">
+      <h3>2. もう一方の端末のコードを取り込む</h3>
+      <textarea id="sync-import" class="sync-text" rows="4" placeholder="ここにコードを貼り付け" autocomplete="off"></textarea>
+      <button id="sync-import-btn" class="primary sync-btn">取り込む</button>
+      <div id="sync-import-msg" class="sync-msg"></div>
+    </div>
+  </section>
+
   <!-- 出題画面 -->
   <section id="screen-quiz" class="screen" hidden>
     <div id="quiz-meta"></div>

@@ -4,7 +4,7 @@ import {
   currentMistakes, pickReviewQuestions, splitAttemptsByKey,
   searchQuestions, mistakeCounts, pickRandomQuestions, quizSizeOptions,
   unattemptedQuestions, progressSummary, mistakeRanking, scoreExam, passJudgement,
-  resolvedPassage,
+  resolvedPassage, mergeAttempts, encodeSyncCode, decodeSyncCode,
 } from './quiz-core.mjs';
 
 const STORE_KEY = 'aviation_quiz_results';
@@ -153,6 +153,13 @@ async function initSelect() {
     rbtn.addEventListener('click', showRanking);
     list.appendChild(rbtn);
   }
+
+  // ---- 端末間の同期の入口 ----
+  const sbtn = document.createElement('button');
+  sbtn.className = 'sync-entry-btn';
+  sbtn.textContent = '端末間で同期（iPhone ⇄ iPad）';
+  sbtn.addEventListener('click', showSync);
+  list.appendChild(sbtn);
 
   // ---- 誤答バンク入口(最上部にまとめる): 全分野1つ + 科目ごとに1つずつ ----
   const globalMistakes = currentMistakes(store);
@@ -324,6 +331,64 @@ function renderSearchDetail(container, q) {
   parts.push(`<div class="correct">正解: ${escapeHtml(correctText(q))}</div>`);
   if (q.explanation) parts.push(`<div class="explanation">${escapeHtml(q.explanation)}</div>`);
   container.innerHTML = parts.join('');
+}
+
+// ---- 端末間の同期(サーバーを使わず、同期コードのコピペでattemptsを持ち運ぶ) ----
+function showSync() {
+  const store = loadStore();
+  const count = Array.isArray(store.attempts) ? store.attempts.length : 0;
+  const code = encodeSyncCode(store);
+  document.getElementById('sync-export-info').textContent =
+    `記録 ${count}件 ／ コード ${code.length.toLocaleString()}文字`;
+  document.getElementById('sync-export').value = code;
+  document.getElementById('sync-import').value = '';
+  document.getElementById('sync-copy-msg').textContent = '';
+  document.getElementById('sync-import-msg').textContent = '';
+  show('screen-sync');
+}
+
+async function copySyncCode() {
+  const ta = document.getElementById('sync-export');
+  const msg = document.getElementById('sync-copy-msg');
+  try {
+    await navigator.clipboard.writeText(ta.value);
+    msg.className = 'sync-msg ok';
+    msg.textContent = 'コピーしました。もう一方の端末で貼り付けてください。';
+  } catch (_) {
+    // クリップボードAPIが使えない場合は選択状態にして手動コピーへ誘導する
+    ta.focus();
+    ta.select();
+    msg.className = 'sync-msg';
+    msg.textContent = '自動コピーできませんでした。選択されているので手動でコピーしてください。';
+  }
+}
+
+function importSyncCode() {
+  const msg = document.getElementById('sync-import-msg');
+  let incoming;
+  try {
+    incoming = decodeSyncCode(document.getElementById('sync-import').value);
+  } catch (e) {
+    msg.className = 'sync-msg ng';
+    msg.textContent = e.message;
+    return;
+  }
+  const store = loadStore();
+  const before = Array.isArray(store.attempts) ? store.attempts.length : 0;
+  const merged = mergeAttempts(store.attempts, incoming);
+  localStorage.setItem(STORE_KEY, JSON.stringify({ attempts: merged }));
+
+  // 取り込み後の状態を書き出し欄にも反映する(この端末のコードは中身が変わっているため)。
+  const added = merged.length - before;
+  document.getElementById('sync-import').value = '';
+  const code = encodeSyncCode({ attempts: merged });
+  document.getElementById('sync-export').value = code;
+  document.getElementById('sync-export-info').textContent =
+    `記録 ${merged.length}件 ／ コード ${code.length.toLocaleString()}文字`;
+  msg.className = 'sync-msg ok';
+  msg.textContent = added > 0
+    ? `${added}件を取り込みました（合計${merged.length}件）。ホームに戻ると進捗に反映されます。`
+    : `新しい記録はありませんでした（合計${merged.length}件）。`;
 }
 
 // ---- よく間違える問題ランキング(見るだけの画面。出題は下のボタンから) ----
@@ -722,12 +787,14 @@ function go(delta) {
 // それぞれ別のAttemptとして追記する(通常回はキーが1種類なので1件に退化する)。
 function grade() {
   const result = gradeExam(state.questions, state.responses);
-  const date = new Date().toISOString().slice(0, 10);
+  const at = new Date().toISOString(); // 端末間マージ時の並べ替えキー
+  const date = at.slice(0, 10);
   const attempts = splitAttemptsByKey(
     state.questions,
     result,
     date,
     (q) => `${q.examCode}-${q.subject}`,
+    at,
   );
   for (const attempt of attempts) saveAttempt(attempt);
   // 採点直後の誤答バンク残数(正解した問題はここで自動的に消えている)。
@@ -844,5 +911,7 @@ document.getElementById('grade-btn').addEventListener('click', grade);
 document.getElementById('home-btn').addEventListener('click', initSelect);
 document.getElementById('result-home-btn').addEventListener('click', initSelect);
 document.getElementById('search-input').addEventListener('input', (e) => renderSearchResults(e.target.value));
+document.getElementById('sync-copy-btn').addEventListener('click', copySyncCode);
+document.getElementById('sync-import-btn').addEventListener('click', importSyncCode);
 
 initSelect();

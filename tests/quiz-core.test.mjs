@@ -26,6 +26,10 @@ import {
   scoreExam,
   passJudgement,
   resolvedPassage,
+  attemptTimeKey,
+  mergeAttempts,
+  encodeSyncCode,
+  decodeSyncCode,
 } from '../quiz-core.mjs';
 
 // --- 最小アサートハーネス -------------------------------------------------
@@ -556,6 +560,103 @@ check('resolvedPassage 参照先が見つからない場合はスタブのまま
 check('resolvedPassage 期をまたいで誤爆しない(examCodeが違えば別物)', () => {
   const otherExamA1 = { examCode: 'Z', subject: '英語', no: 'A-1', passage: '(Zの本文・無関係)' };
   eq(resolvedPassage(pA2, [otherExamA1]), '(問1の英文はA-1を参照)', '同じ期のA-1が無いので解決できないはず');
+});
+
+// --- 端末間の同期 -----------------------------------------------------
+const atMorning = { key: 'R8-02-法規', date: '2026-08-01', at: '2026-08-01T09:00:00.000Z', score: 0, total: 1, wrong: ['X'], presented: ['X'] };
+const atNoon = { key: 'R8-02-法規', date: '2026-08-01', at: '2026-08-01T10:00:00.000Z', score: 1, total: 1, wrong: [], presented: ['X'] };
+const legacy = { key: 'R8-02-法規', date: '2026-07-31', score: 0, total: 1, wrong: ['Y'], presented: ['Y'] };
+
+check('makeAttempt atを渡すと並べ替えキーが入る', () => {
+  const a = makeAttempt('K', '2026-08-01', { score: 1, total: 1, wrong: [] }, ['q1'], '2026-08-01T09:00:00.000Z');
+  eq(a.at, '2026-08-01T09:00:00.000Z');
+  eq(a.date, '2026-08-01', 'dateは表示用のまま変えない');
+});
+check('makeAttempt atを省略すると従来どおりの形(atを持たない)', () => {
+  const a = makeAttempt('K', '2026-08-01', { score: 1, total: 1, wrong: [] }, ['q1']);
+  assert(!('at' in a), '旧形式と同じ形になる');
+});
+check('splitAttemptsByKey atを全レコードへ伝える', () => {
+  const qs = [{ id: 'a1', key: 'K1' }, { id: 'b1', key: 'K2' }];
+  const at = '2026-08-01T09:00:00.000Z';
+  const out = splitAttemptsByKey(qs, { score: 2, total: 2, wrong: [] }, '2026-08-01', (q) => q.key, at);
+  eq(out.map((a) => a.at), [at, at]);
+});
+
+check('attemptTimeKey atがあればそれを使う', () =>
+  eq(attemptTimeKey(atMorning), '2026-08-01T09:00:00.000Z'));
+check('attemptTimeKey atが無い旧レコードはその日の正午として扱う', () =>
+  eq(attemptTimeKey(legacy), '2026-07-31T12:00:00.000Z'));
+
+check('mergeAttempts 時系列に並べ直す(連結順に引きずられない)', () => {
+  // 別端末で先に解いた朝の記録を、昼の記録を持つ端末へ後から取り込むケース
+  const merged = mergeAttempts([atNoon], [atMorning]);
+  eq(merged.map((a) => a.at), ['2026-08-01T09:00:00.000Z', '2026-08-01T10:00:00.000Z']);
+});
+check('mergeAttempts 時系列が直るので誤答バンクが復活しない', () => {
+  // 朝に誤答→昼に正解。順序が正しければ「克服済み」で誤答バンクは空になる。
+  const merged = mergeAttempts([atNoon], [atMorning]);
+  eq(currentMistakes({ attempts: merged }), [], '昼の正解が後に来るのでXは消える');
+  // 連結しただけ(並べ替えなし)だと誤って復活することの確認
+  eq(currentMistakes({ attempts: [atNoon, atMorning] }), ['X'], '並べ替えないとこうなってしまう');
+});
+check('mergeAttempts 同じコードを二度取り込んでも増えない', () => {
+  const once = mergeAttempts([atMorning, atNoon], [atMorning, atNoon]);
+  eq(once.length, 2);
+  const twice = mergeAttempts(once, [atMorning, atNoon]);
+  eq(twice.length, 2);
+});
+check('mergeAttempts 旧レコード(at無し)は内容一致で重複除去する', () => {
+  eq(mergeAttempts([legacy], [legacy]).length, 1);
+});
+check('mergeAttempts 旧レコードも日付順に混ざる', () => {
+  const merged = mergeAttempts([atNoon], [legacy]);
+  eq(merged.map((a) => a.date), ['2026-07-31', '2026-08-01']);
+});
+check('mergeAttempts 空同士・片方空でも壊れない', () => {
+  eq(mergeAttempts([], []), []);
+  eq(mergeAttempts(null, [atMorning]).length, 1);
+  eq(mergeAttempts([atMorning], null).length, 1);
+});
+check('mergeAttempts どちらの端末から取り込んでも同じ結果になる(可換)', () => {
+  const a = mergeAttempts([atNoon, legacy], [atMorning]);
+  const b = mergeAttempts([atMorning], [atNoon, legacy]);
+  eq(a, b);
+});
+
+check('encodeSyncCode/decodeSyncCode 往復して元に戻る(日本語キーを含む)', () => {
+  const store = { attempts: [atMorning, atNoon, legacy] };
+  const decoded = decodeSyncCode(encodeSyncCode(store));
+  eq(decoded, store.attempts);
+});
+check('encodeSyncCode 記録が空でも往復できる', () => {
+  eq(decodeSyncCode(encodeSyncCode({ attempts: [] })), []);
+});
+check('decodeSyncCode 前後の空白は無視する', () => {
+  const code = encodeSyncCode({ attempts: [legacy] });
+  eq(decodeSyncCode(`\n  ${code}  \n`), [legacy]);
+});
+check('decodeSyncCode 空文字は理由付きで失敗する', () => {
+  let msg = '';
+  try { decodeSyncCode('   '); } catch (e) { msg = e.message; }
+  assert(msg.includes('空'), `理由が出るはず: ${msg}`);
+});
+check('decodeSyncCode 壊れたコードは理由付きで失敗する', () => {
+  let threw = false;
+  try { decodeSyncCode('これは同期コードではない***'); } catch (_) { threw = true; }
+  assert(threw, '例外を投げるはず');
+});
+check('decodeSyncCode 中身がJSONでも成績データが無ければ失敗する', () => {
+  const bogus = btoa(String.fromCharCode(...new TextEncoder().encode('{"v":1}')));
+  let threw = false;
+  try { decodeSyncCode(bogus); } catch (_) { threw = true; }
+  assert(threw);
+});
+check('decodeSyncCode 新しいバージョンのコードは案内付きで断る', () => {
+  const future = btoa(String.fromCharCode(...new TextEncoder().encode('{"v":99,"attempts":[]}')));
+  let msg = '';
+  try { decodeSyncCode(future); } catch (e) { msg = e.message; }
+  assert(msg.includes('更新'), `更新を促すはず: ${msg}`);
 });
 
 export function runTests() {

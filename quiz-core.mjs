@@ -42,8 +42,10 @@ export function gradeExam(questions, responses) {
 // 採点結果を localStorage 追記用の1レコードへ整形。
 // presented はその回に出題した問題idの一覧(通常回=科目の全問、復習回=出題した誤答のみ)。
 // これを記録しておくことで、誤答バンク(currentMistakes)を可変ストア無しに導出できる。
-export function makeAttempt(key, date, examResult, presented) {
-  return {
+// at は端末間マージ用の並べ替えキー(ISO日時)。date は表示用なので日付のまま変えない。
+// 省略時は at を付けない(この引数を足す前に作られた記録と同じ形になる)。
+export function makeAttempt(key, date, examResult, presented, at) {
+  const attempt = {
     key,
     date,
     score: examResult.score,
@@ -51,6 +53,8 @@ export function makeAttempt(key, date, examResult, presented) {
     wrong: examResult.wrong,
     presented: presented || [],
   };
+  if (at) attempt.at = at;
+  return attempt;
 }
 
 // append-only: 既存 attempts を変更せず、新配列に1件足したストアを返す。
@@ -134,6 +138,98 @@ export function pickRandomQuestions(questions, max, rng = Math.random) {
 export function quizSizeOptions(total, steps = [5, 10]) {
   if (!(total > 0)) return [];
   return [...steps.filter((n) => n < total), total];
+}
+
+// ---- 端末間の同期(同期コードのコピペでattemptsを持ち運ぶ) ----
+//
+// サーバーは持たない。attempts配列は append-only で、誤答バンク・通算誤答回数・
+// 進捗率・合格判定はすべてこの配列から都度計算しているので、
+// 「同期」は実質「2つのattempts配列を正しい時系列で合体させる」だけで済む。
+//
+// 並び順が重要な理由: currentMistakes は「同じ問題を最後に出題した回が誤答か」で
+// 判定しており、配列の並び=時系列という前提で動く。2端末の配列を単純に連結すると
+// 時系列が逆転し、克服済みの問題が誤答バンクに復活しうる。そのため必ず at で並べ直す。
+
+const SYNC_VERSION = 1;
+// at を持たない旧レコードは日付しか無いので、その日の正午に置いたものとして扱う
+// (日付単位では正しい位置に収まる。同じ日の中の前後は at を持つ記録からのみ厳密になる)。
+const LEGACY_TIME = 'T12:00:00.000Z';
+
+// 並べ替え用のキー。at があればそれを、無ければ date+正午を使う。
+export function attemptTimeKey(attempt) {
+  if (attempt && typeof attempt.at === 'string' && attempt.at) return attempt.at;
+  const date = (attempt && attempt.date) || '';
+  return `${date}${LEGACY_TIME}`;
+}
+
+// 重複判定キー。at を持つ記録は「at + key」で一意(1回の採点で同じkeyは2度出ないため)。
+// at を持たない旧レコードは内容の完全一致で判定する。
+function attemptDedupeKey(attempt) {
+  if (attempt && attempt.at) return `at:${attempt.at}|${attempt.key}`;
+  return `legacy:${JSON.stringify(attempt)}`;
+}
+
+// 2つの attempts を重複を除いて合体し、時系列に並べ直す。
+// 同じ記録が両方にあっても1件になるので、同じ同期コードを何度取り込んでも増えない。
+export function mergeAttempts(base, incoming) {
+  const a = Array.isArray(base) ? base : [];
+  const b = Array.isArray(incoming) ? incoming : [];
+  const seen = new Set();
+  const merged = [];
+  for (const attempt of [...a, ...b]) {
+    if (!attempt || typeof attempt !== 'object') continue;
+    const k = attemptDedupeKey(attempt);
+    if (seen.has(k)) continue;
+    seen.add(k);
+    merged.push(attempt);
+  }
+  // Array#sort は安定なので、時刻が同じ記録は元の順序(base→incoming)を保つ。
+  merged.sort((x, y) => (attemptTimeKey(x) < attemptTimeKey(y) ? -1 : attemptTimeKey(x) > attemptTimeKey(y) ? 1 : 0));
+  return merged;
+}
+
+// UTF-8のまま Base64 にする(日本語のキーを含むため btoa へ直接は渡せない)。
+function toBase64(text) {
+  const bytes = new TextEncoder().encode(text);
+  let bin = '';
+  for (const b of bytes) bin += String.fromCharCode(b);
+  return btoa(bin);
+}
+function fromBase64(code) {
+  const bin = atob(code);
+  const bytes = Uint8Array.from(bin, (c) => c.charCodeAt(0));
+  return new TextDecoder().decode(bytes);
+}
+
+// 成績を1行の同期コード(Base64)にする。
+export function encodeSyncCode(store) {
+  const attempts = store && Array.isArray(store.attempts) ? store.attempts : [];
+  return toBase64(JSON.stringify({ v: SYNC_VERSION, attempts }));
+}
+
+// 同期コードから attempts を取り出す。壊れていれば理由付きで例外を投げる。
+export function decodeSyncCode(code) {
+  const trimmed = String(code || '').trim();
+  if (!trimmed) throw new Error('同期コードが空です。');
+  let json;
+  try {
+    json = fromBase64(trimmed);
+  } catch (_) {
+    throw new Error('同期コードの形式が正しくありません(コピーもれの可能性があります)。');
+  }
+  let parsed;
+  try {
+    parsed = JSON.parse(json);
+  } catch (_) {
+    throw new Error('同期コードの中身を読み取れませんでした。');
+  }
+  if (!parsed || !Array.isArray(parsed.attempts)) {
+    throw new Error('同期コードに成績データが入っていません。');
+  }
+  if (parsed.v > SYNC_VERSION) {
+    throw new Error('この同期コードは新しいバージョンのアプリで作られています。先にアプリを更新してください。');
+  }
+  return parsed.attempts;
 }
 
 // ---- passageの参照解決(英語A-2〜A-5は「(問1の英文はA-1を参照)」というスタブを持つ) ----
@@ -299,7 +395,7 @@ export function passJudgement(subject, earned) {
 // keyOf(q) が全問題で同じ値を返すとき(=通常回)は要素数1になり、
 // makeAttempt(key, date, examResult, questions.map(q=>q.id)) を直接呼んだ場合と
 // 完全に同じ Attempt になる(退化ケース)。examResult はここでは採点し直さない(純関数)。
-export function splitAttemptsByKey(questions, examResult, date, keyOf) {
+export function splitAttemptsByKey(questions, examResult, date, keyOf, at) {
   const wrongSet = new Set(examResult.wrong);
   const groups = new Map(); // key -> { presented: string[], wrong: string[] }
   for (const q of questions) {
@@ -313,7 +409,7 @@ export function splitAttemptsByKey(questions, examResult, date, keyOf) {
   for (const [key, g] of groups) {
     const total = g.presented.length;
     const score = total - g.wrong.length;
-    attempts.push(makeAttempt(key, date, { score, total, wrong: g.wrong }, g.presented));
+    attempts.push(makeAttempt(key, date, { score, total, wrong: g.wrong }, g.presented, at));
   }
   return attempts;
 }

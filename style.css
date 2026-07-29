@@ -77,6 +77,26 @@ header h1 { font-size: 1.05rem; margin: 0; }
 .ranking-entry-btn:hover { border-color: var(--accent); color: var(--accent); }
 .ranking-title { margin: 0 0 .3rem; font-size: 1.1rem; }
 
+/* 端末間の同期 */
+.sync-entry-btn {
+  display: block; width: 100%; text-align: left; margin: 0 0 .6rem; padding: .8rem 1.1rem;
+  background: transparent; border: 1.5px dashed var(--muted); border-radius: 12px;
+  color: var(--ink); font-size: .95rem; font-weight: 700; cursor: pointer;
+}
+.sync-entry-btn:hover { border-color: var(--accent); color: var(--accent); }
+.sync-block { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1rem; margin-bottom: 1rem; }
+.sync-block h3 { margin: 0 0 .5rem; font-size: 1rem; }
+.sync-info { color: var(--muted); font-size: .82rem; margin-bottom: .4rem; }
+.sync-text {
+  width: 100%; padding: .7rem; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--bg); color: var(--ink); font-size: .8rem; font-family: ui-monospace, monospace;
+  word-break: break-all; resize: vertical;
+}
+.sync-btn { width: 100%; padding: .8rem; border-radius: 10px; margin-top: .6rem; cursor: pointer; font-size: 1rem; }
+.sync-msg { font-size: .85rem; margin-top: .5rem; min-height: 1.2em; color: var(--muted); }
+.sync-msg.ok { color: var(--ok); font-weight: 700; }
+.sync-msg.ng { color: var(--ng); font-weight: 700; }
+
 /* 合格判定 */
 .pass-line { margin-top: .7rem; padding: .6rem .8rem; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); font-size: .85rem; line-height: 1.7; }
 .pass-line b { font-size: 1.1rem; }
