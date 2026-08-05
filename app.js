@@ -8,7 +8,7 @@ import {
 } from './quiz-core.mjs';
 
 const STORE_KEY = 'aviation_quiz_results';
-const REVIEW_MAX = 10; // 復習モードの1回あたりの最大出題数
+const REVIEW_MAX = 10; // 誤答バンク復習・未挑戦出題の既定の問題数(誤答バンク復習は選択画面で5/10/全部を選べる)
 const SEARCH_RESULT_CAP = 50; // 検索結果の表示上限
 const SUBJECT_ORDER = ['無線工学', '法規', '英語', '英会話']; // ボタンの並び順の好み(未知の科目は末尾にアルファベット順で追加)
 
@@ -119,13 +119,11 @@ function makeProgressCard(questions, store) {
   return card;
 }
 
-// 誤答バンク入口ボタン(全分野用・横幅いっぱい)。
+// 誤答バンク入口ボタン(全分野用・横幅いっぱい)。クリックで即開始せず、下に問題数選択を出す。
 function makeMistakeReviewButton(label, count) {
   const btn = document.createElement('button');
   btn.className = 'mistake-review-btn';
-  btn.textContent = count > REVIEW_MAX
-    ? `過去に間違えた問題集（${label}・誤答${count}問中${REVIEW_MAX}問）`
-    : `過去に間違えた問題集（${label}・誤答${count}問）`;
+  btn.textContent = `過去に間違えた問題集（${label}・誤答${count}問）`;
   return btn;
 }
 
@@ -133,9 +131,7 @@ function makeMistakeReviewButton(label, count) {
 function makeMistakeSubjectButton(subject, count) {
   const btn = document.createElement('button');
   btn.className = 'mistake-subject-btn';
-  btn.title = count > REVIEW_MAX
-    ? `過去に間違えた問題集（${subject}・誤答${count}問中${REVIEW_MAX}問）`
-    : `過去に間違えた問題集（${subject}・誤答${count}問）`;
+  btn.title = `過去に間違えた問題集（${subject}・誤答${count}問）`;
   btn.innerHTML = `<span class="ms-name">${escapeHtml(subject)}</span>` +
     `<span class="ms-count">${count}問</span>`;
   return btn;
@@ -176,11 +172,30 @@ async function initSelect() {
   }
 
   // ---- 誤答バンク入口: 全分野は横幅いっぱい、科目別はその下に横1列で並べる ----
+  // クリックすると即開始せず、下に問題数(5問/10問/全部)を選ぶバーを開閉する(アコーディオン)。
+  // バーは範囲(全分野 or 科目)ごとに1つを使い回し、別の範囲を選ぶと中身を作り直す。
   const globalMistakes = currentMistakes(store);
   const mistakeSet = new Set(globalMistakes);
   if (globalMistakes.length > 0) {
+    const sizeBar = document.createElement('div');
+    let openScope = null; // 直前に開いていた範囲('' = 全分野、科目名、null = 何も開いていない)
+
+    const toggleSizeBar = (subjectFilter, scopeKey) => {
+      if (openScope === scopeKey && !sizeBar.hidden) {
+        sizeBar.hidden = true;
+        openScope = null;
+        return;
+      }
+      const matched = combined.filter((q) => mistakeSet.has(q.id) && (!subjectFilter || q.subject === subjectFilter));
+      sizeBar.innerHTML = '';
+      sizeBar.appendChild(makeQuizBar(matched, (_questions, n) => startMistakeReview(subjectFilter, n),
+        { label: '復習を始める', random: false }));
+      sizeBar.hidden = false;
+      openScope = scopeKey;
+    };
+
     const gbtn = makeMistakeReviewButton('全分野', globalMistakes.length);
-    gbtn.addEventListener('click', () => startMistakeReview(null));
+    gbtn.addEventListener('click', () => toggleSizeBar(null, ''));
     list.appendChild(gbtn);
 
     const row = document.createElement('div');
@@ -189,10 +204,13 @@ async function initSelect() {
       const count = combined.filter((q) => q.subject === subject && mistakeSet.has(q.id)).length;
       if (count === 0) continue;
       const sbtn = makeMistakeSubjectButton(subject, count);
-      sbtn.addEventListener('click', () => startMistakeReview(subject));
+      sbtn.addEventListener('click', () => toggleSizeBar(subject, subject));
       row.appendChild(sbtn);
     }
     if (row.children.length > 0) list.appendChild(row);
+
+    sizeBar.hidden = true;
+    list.appendChild(sizeBar);
   }
 
   for (const exam of idx.exams) {
@@ -266,15 +284,19 @@ function renderSearchResults(rawQuery) {
 
 // 「この一覧から出題」ボタン群。件数に応じて 5問 / 10問 / 全件 を出し分ける。
 // 検索結果とランキングの両方から使う(onStart で開始処理だけ差し替える)。
-function makeQuizBar(questions, onStart) {
+// opts.label: ボタンの前置き文言(既定「この一覧から出題」)。
+// opts.random: false にすると「ランダム」の文言を外す(出題順を保つモード向け)。
+function makeQuizBar(questions, onStart, opts = {}) {
+  const label = opts.label || 'この一覧から出題';
+  const random = opts.random !== false;
   const bar = document.createElement('div');
   bar.className = 'search-quiz-bar';
   for (const n of quizSizeOptions(questions.length)) {
     const btn = document.createElement('button');
     btn.className = 'search-quiz-btn';
     btn.textContent = n === questions.length
-      ? `この一覧から出題（全${n}問）`
-      : `この一覧から出題（ランダム${n}問）`;
+      ? `${label}（全${n}問）`
+      : `${label}（${random ? 'ランダム' : ''}${n}問）`;
     btn.addEventListener('click', () => onStart(questions, n));
     bar.appendChild(btn);
   }
@@ -514,9 +536,10 @@ async function startQuiz(exam, subject) {
   show('screen-quiz');
 }
 
-// ---- 出題開始(誤答バンクからの復習回: 全期間横断、最大 REVIEW_MAX 問) ----
+// ---- 出題開始(誤答バンクからの復習回: 全期間横断、最大 n 問) ----
 // subjectFilter が null なら全分野横断、科目名を渡せばその科目だけに絞って復習する。
-async function startMistakeReview(subjectFilter) {
+// n は選択画面のサイズ選択(5問/10問/全部)で決まる(省略時は既定の REVIEW_MAX)。
+async function startMistakeReview(subjectFilter, n = REVIEW_MAX) {
   const mistakes = currentMistakes(loadStore());
   if (mistakes.length === 0) return; // 選択画面のボタン自体が非表示のはずだが念のため
 
@@ -533,7 +556,7 @@ async function startMistakeReview(subjectFilter) {
         return all;
       })();
   const pool = subjectFilter ? combined.filter((q) => q.subject === subjectFilter) : combined;
-  const picked = pickReviewQuestions(pool, mistakes, REVIEW_MAX);
+  const picked = pickReviewQuestions(pool, mistakes, n);
   if (picked.length === 0) return;
 
   state.exam = null;
@@ -878,8 +901,7 @@ function renderResult(result, remainingMistakes, scopeSubject) {
   const resolved = remainingMistakes === 0;
   const bankLine = resolved
     ? `${scopeLabel}の誤答バンク: 0問(すべて解消)`
-    : `${scopeLabel}の誤答バンク: ${remainingMistakes}問` +
-      (remainingMistakes > REVIEW_MAX ? `(次の復習は${REVIEW_MAX}問まで)` : '');
+    : `${scopeLabel}の誤答バンク: ${remainingMistakes}問`;
   // 合格判定は「その期・科目の全問を通しで解いた」通常回だけに出す
   // (抜粋の復習・検索・未挑戦回では本番の点数として意味を持たないため)。
   const passHtml = state.mode === 'normal' ? passLine() : '';
