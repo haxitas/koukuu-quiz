@@ -150,7 +150,7 @@ export function quizSizeOptions(total, steps = [5, 10]) {
 // 判定しており、配列の並び=時系列という前提で動く。2端末の配列を単純に連結すると
 // 時系列が逆転し、克服済みの問題が誤答バンクに復活しうる。そのため必ず at で並べ直す。
 
-const SYNC_VERSION = 1;
+const SYNC_VERSION = 2;
 // at を持たない旧レコードは日付しか無いので、その日の正午に置いたものとして扱う
 // (日付単位では正しい位置に収まる。同じ日の中の前後は at を持つ記録からのみ厳密になる)。
 const LEGACY_TIME = 'T12:00:00.000Z';
@@ -202,12 +202,43 @@ function fromBase64(code) {
 }
 
 // 成績を1行の同期コード(Base64)にする。
+// presented/wrong の問題idとkeyは記録間で大量に重複する(1回の出題で十数件、
+// それを毎回の採点で繰り返し書き出す)ため、辞書化して番号参照に変える。
+// これをやらないと数十件も記録が溜まった端末ではコードが数万文字になり、
+// コピペや他アプリへの共有が非現実的になる。
 export function encodeSyncCode(store) {
   const attempts = store && Array.isArray(store.attempts) ? store.attempts : [];
-  return toBase64(JSON.stringify({ v: SYNC_VERSION, attempts }));
+  const keys = [];
+  const keyIndex = new Map();
+  const ids = [];
+  const idIndex = new Map();
+  const dictIndex = (dict, index, value) => {
+    let i = index.get(value);
+    if (i === undefined) {
+      i = dict.length;
+      dict.push(value);
+      index.set(value, i);
+    }
+    return i;
+  };
+  const rows = attempts.map((a) => {
+    const row = [
+      dictIndex(keys, keyIndex, a.key),
+      a.date,
+      a.score,
+      a.total,
+      (a.wrong || []).map((id) => dictIndex(ids, idIndex, id)),
+      (a.presented || []).map((id) => dictIndex(ids, idIndex, id)),
+    ];
+    if (a.at) row.push(a.at);
+    return row;
+  });
+  return toBase64(JSON.stringify({ v: SYNC_VERSION, keys, ids, rows }));
 }
 
 // 同期コードから attempts を取り出す。壊れていれば理由付きで例外を投げる。
+// 辞書形式(v2・rows)と、旧バージョンがそのまま書き出す attempts 配列(v1)の
+// 両方を読める(古い端末からのコードでも取り込めるようにするため)。
 export function decodeSyncCode(code) {
   const trimmed = String(code || '').trim();
   if (!trimmed) throw new Error('同期コードが空です。');
@@ -223,13 +254,28 @@ export function decodeSyncCode(code) {
   } catch (_) {
     throw new Error('同期コードの中身を読み取れませんでした。');
   }
-  if (!parsed || !Array.isArray(parsed.attempts)) {
+  if (!parsed || typeof parsed !== 'object') {
     throw new Error('同期コードに成績データが入っていません。');
   }
   if (parsed.v > SYNC_VERSION) {
     throw new Error('この同期コードは新しいバージョンのアプリで作られています。先にアプリを更新してください。');
   }
-  return parsed.attempts;
+  if (Array.isArray(parsed.attempts)) return parsed.attempts; // 旧形式(v1)
+  if (Array.isArray(parsed.rows) && Array.isArray(parsed.keys) && Array.isArray(parsed.ids)) {
+    return parsed.rows.map(([keyIdx, date, score, total, wrongIdxs, presentedIdxs, at]) => {
+      const attempt = {
+        key: parsed.keys[keyIdx],
+        date,
+        score,
+        total,
+        wrong: wrongIdxs.map((i) => parsed.ids[i]),
+        presented: presentedIdxs.map((i) => parsed.ids[i]),
+      };
+      if (at) attempt.at = at;
+      return attempt;
+    });
+  }
+  throw new Error('同期コードに成績データが入っていません。');
 }
 
 // ---- passageの参照解決(英語A-2〜A-5は「(問1の英文はA-1を参照)」というスタブを持つ) ----

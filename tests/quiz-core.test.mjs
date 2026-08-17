@@ -563,8 +563,10 @@ check('resolvedPassage 期をまたいで誤爆しない(examCodeが違えば別
 });
 
 // --- 端末間の同期 -----------------------------------------------------
-const atMorning = { key: 'R8-02-法規', date: '2026-08-01', at: '2026-08-01T09:00:00.000Z', score: 0, total: 1, wrong: ['X'], presented: ['X'] };
-const atNoon = { key: 'R8-02-法規', date: '2026-08-01', at: '2026-08-01T10:00:00.000Z', score: 1, total: 1, wrong: [], presented: ['X'] };
+// key/date/score/total/wrong/presented/at の順は makeAttempt() の実際の生成順に合わせてある
+// (encodeSyncCode/decodeSyncCode の往復テストが JSON.stringify の厳密比較をするため)。
+const atMorning = { key: 'R8-02-法規', date: '2026-08-01', score: 0, total: 1, wrong: ['X'], presented: ['X'], at: '2026-08-01T09:00:00.000Z' };
+const atNoon = { key: 'R8-02-法規', date: '2026-08-01', score: 1, total: 1, wrong: [], presented: ['X'], at: '2026-08-01T10:00:00.000Z' };
 const legacy = { key: 'R8-02-法規', date: '2026-07-31', score: 0, total: 1, wrong: ['Y'], presented: ['Y'] };
 
 check('makeAttempt atを渡すと並べ替えキーが入る', () => {
